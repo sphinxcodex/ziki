@@ -1,0 +1,19 @@
+{
+    "name": "hng/ziki",
+    "description": "A simple flat-file CMS powered by PHP, Markdown and Twig templates.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hng Inerns",
+            "email": "interns@hng.tech"
+        }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Ziki\\": "src/"
+        }
+    }
+}
