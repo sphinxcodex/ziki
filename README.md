@@ -14,12 +14,9 @@ This app is created <b>without a database</b>
 The posts are stored as markdown files.
 
 
-*Hello guys*
 
 
-
-
-FOR PR do this: 
+### FOR PR do this: 
 
 ### TITLE OF PR
 
