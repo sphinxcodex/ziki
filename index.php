@@ -8,19 +8,10 @@
  */
 /** Loads the Ziki Environment and Theme */
 
-
-
-// $app = require( dirname( __FILE__ ) . '/src/bootstrap.php' );
-$app = require( dirname( __FILE__ ) . '/src/classes/api/Router.php' );
-$app = require( dirname( __FILE__ ) . '/src/classes/api/Request.php' );
-
+$app = require( dirname( __FILE__ ) . '/src/bootstrap.php' );
 
 $router = new Router(new Request);
 
-$router->get('/post', function() {
-
-    return (new Post)->get_post();
-});
 
 $router->get('/profile', function() {
     
@@ -35,14 +26,27 @@ $router->get('/profile', function() {
 
   switch ($request) {
       
-      case '/i' :
-          require __DIR__ . '/resources/themes/ghost/templates/index.html';
+      case '/' :
+          $ziki = [
+                    [ 'name'          => 'Adroit' ],
+                    [ 'name'          => 'Olu' ],
+                    [ 'name'          => 'Amuwo' ],
+                ];
+
+            // Render our view
+            echo $twig->render('index.html', ['ziki' => $ziki] );
           break;
       case '/page' :
-          require __DIR__ . '/resources/themes/ghost/templates/timeline.html';
+          $ziki = [
+                    [ 'name'          => 'Adroit' ],
+                    [ 'name'          => 'Twig' ],
+                ];
+
+            // Render our view
+            echo $twig->render('timeline.html', ['ziki' => $ziki] );
           break;
       case '/about' :
-          require __DIR__ . '/resources/themes/ghost/template/settings.html';
+          echo $twig->render('settings.html', ['ziki' => $ziki] );
           break;
      
 

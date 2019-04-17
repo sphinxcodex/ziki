@@ -1,1 +1,16 @@
 <!-- add header and footer templates here using twig -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ziki</title>
+  </head>
+
+  <body>
+    <ul>
+      {% for item in ziki %}
+      <li>{{ item.name }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
