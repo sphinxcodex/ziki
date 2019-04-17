@@ -55,7 +55,7 @@ $router->get('/profile', function() {
             // Render our view
             echo $twig->render('timeline.html', ['ziki' => $ziki] );
           break;
-      case '/about' :
+      case '/settings' :
           echo $twig->render('settings.html', ['ziki' => $ziki] );
           break;
 
