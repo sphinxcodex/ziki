@@ -1,5 +1,7 @@
 <?php
 
+require_once 'utils.php';
+
 class Router
 {
     private $request;
@@ -7,16 +9,18 @@ class Router
         "GET",
         "POST"
     );
+
     public function __construct($request)
     {
         $this->request = $request;
     }
+
     function __call($name, $args)
     {
         list($route, $method) = $args;
         if (!in_array(strtoupper($name), $this->supportedHttpMethods)) {
-            $this->invalidMethodHandler();
-        }
+                $this->invalidMethodHandler();
+            }
         $this->{strtolower($name)}[$this->formatRoute($route)] = $method;
     }
     /**
@@ -27,8 +31,8 @@ class Router
     {
         $result = rtrim($route, '/');
         if ($result === '') {
-            return '/';
-        }
+                return '/';
+            }
         return $result;
     }
     private function invalidMethodHandler()
@@ -48,9 +52,9 @@ class Router
         $formatedRoute = $this->formatRoute($this->request->requestUri);
         $method = $methodDictionary[$formatedRoute] ?? null;
         if (is_null($method)) {
-            $this->defaultRequestHandler();
-            return;
-        }
+                $this->defaultRequestHandler();
+                return;
+            }
         echo call_user_func_array($method, array($this->request));
     }
     function __destruct()
