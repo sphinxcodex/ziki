@@ -27,7 +27,7 @@ $logger = new Monolog\Logger('Ziki');
 $logger->pushHandler(new Monolog\Handler\StreamHandler( ZIKI_BASE_PATH . DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . 'app.log'));
 Monolog\ErrorHandler::register($logger);
 
-$ziki = new Ziki\Foundation(ZIKI_BASE_PATH, $logger);
+$ziki = new Ziki\Foundation(ZIKI_BASE_PATH);
 
 $ziki->run();
 
