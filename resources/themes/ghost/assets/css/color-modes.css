@@ -1,0 +1,57 @@
+:root {
+    /* CUSTOM PURPLE FOUND ON ALL PAGES FOR BCG AND FONT COLOR*/
+    --custom-deep-purple: #280A66;
+
+    /* USER INFO */
+    --avatar-if-no-pic-bcg: #441E93;
+    --cancel-and-delete-button-color: #F14336;
+    --user-name-on-profile-font-color: #1B1B1B;
+    --user-info-on-profile-font-color: #000000;
+
+    /* POSTS STYLING */
+    --post-title-border-bottom: #A4A4A4;
+    --post-title-font-color: #1B1B1B;
+    --post-summary-font-color: #717171;
+    --post-summary-border-bottom: #EBEBEB;
+
+    /* RSS FOLLOWING/FOLLOWERS STYLING */
+    --number-of-followers-font-color: #5C5C5C;
+    --search-btn-bcg: rgba(182, 182, 182, 0.22);
+    --search-btn-font-color: rgba(40, 10, 102, 0.5);
+    --search-btn-border: rgba(40, 10, 102, 0.5);
+    --RSS-following-info-border: #B3B3B3;
+
+    /* WYSIWYG/COMMENTS STYLING */
+    --WYSIWYG-editor-modal-body-bcg: #F9F9F9;
+    --WYSIWYG-editor-input-box-bcg: #F5F5F5;
+    --comment-textarea-box-bcg: #EBEBEB;
+    --drafts-textarea-box-bcg: #EEEEEE;
+
+    /* THEME TOGGLER STYLING */
+    --theme-toggler-grey-bcg: #E0E0E0;
+}
+
+
+
+.dark {
+    --dark-bg-color: #111111;
+    --dark-bubbles: #8E9EEE;
+    --dark-color-white: #FFFFFF;
+    --dark-color-dark-purple: #7277EF;
+    --dark-horizontal-line: #EBEBEB;
+
+    /*LOGIN PAGE */
+    --dark-bg-color: rgba(9, 9, 9, 0.92);
+
+    /*LOGIN MODAL */
+    --dark-login-bg-color: #2D2D2D;
+    --dark-left-bg-color: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%), #3B0E75;
+    --dark-color-black: #000000;
+
+    /*  HOMPAGE */
+    --dark-post-text-and-date: #717171;
+    --dark-comment-link: #280A66;
+
+    /*USER PAGE */
+    --dark-profile-name: #8E9EEE;
+}
