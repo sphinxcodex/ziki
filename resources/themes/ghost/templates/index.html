@@ -1,16 +1,7 @@
-<!-- add header and footer templates here using twig -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Ziki</title>
-  </head>
+{% extends 'layout.html' %}
 
-  <body>
-    <ul>
-      {% for item in ziki %}
-      <li>{{ item.name }}</li>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+{% block page_content %}
+<div class="container">
+ <h1>Uhh!!</h1>
+</div>
+{% endblock page_content %}
