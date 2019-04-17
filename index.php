@@ -14,10 +14,10 @@ $router = new Router(new Request);
 
 
 $router->get('/profile', function() {
-    
+
     echo "hello there";
   });
-  
+
   $request = $_SERVER['REQUEST_URI'];
 
   if (strlen($request) > 1) {
@@ -25,7 +25,7 @@ $router->get('/profile', function() {
   }
 
   switch ($request) {
-      
+
       case '/' :
           $ziki = [
                     [ 'name'          => 'Adroit' ],
@@ -36,7 +36,17 @@ $router->get('/profile', function() {
             // Render our view
             echo $twig->render('index.html', ['ziki' => $ziki] );
           break;
-      case '/page' :
+      case '/blog-details' :
+          $ziki = [
+                    [ 'name'          => 'Adroit' ],
+                    [ 'name'          => 'Olu' ],
+                    [ 'name'          => 'Amuwo' ],
+                ];
+
+            // Render our view
+            echo $twig->render('blog-details.html', ['ziki' => $ziki] );
+          break;
+      case '/timeline' :
           $ziki = [
                     [ 'name'          => 'Adroit' ],
                     [ 'name'          => 'Twig' ],
@@ -48,7 +58,7 @@ $router->get('/profile', function() {
       case '/about' :
           echo $twig->render('settings.html', ['ziki' => $ziki] );
           break;
-     
+
 
     //   default:
     //       require __DIR__ . '/resources/themes/ghost/template/404.html';
