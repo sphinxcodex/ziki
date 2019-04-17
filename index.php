@@ -29,15 +29,5 @@ Monolog\ErrorHandler::register($logger);
 
 $ziki = new Ziki\Foundation(ZIKI_BASE_PATH, $logger);
 
-$router = new Ziki\Http\Router(new Ziki\Http\Request);
-
-$router->get('/', function() {
-    echo "Profile page";
-});
-
-$router->get('/profile', function() {
-    echo "hello there";
-});
-
-// $ziki->start();
+$ziki->run();
 
