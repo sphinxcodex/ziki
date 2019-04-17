@@ -1,7 +1,110 @@
 <aside>
   <!-- using semantic tags -->
-  <img src="{{userimage source}}" alt="profile photo">
   <main>
-    <!-- render more details here later -->
+    <style>
+      .wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        color: #280a66;
+      }
+
+      #sidebar {
+        width: 300px;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        height: 100vh;
+        z-index: 999;
+        transition: all 0.3s;
+        color: #280a66;
+        background: #ffffff;
+        font-family: Lemonada;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: -0.02em;
+      }
+
+      .sidebar-header #image-container {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 1.5px solid #280a66;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        background: url();
+        display: inline-block;
+        margin-bottom: 15px;
+        margin-top: 30px;
+        background: #ffffff;
+      }
+
+      .sidebar-header h4 {
+        font-size: 22px;
+      }
+
+      .sidebar-header h6 {
+        font-size: 15px;
+        width: 180px;
+        display: block;
+        margin-left: 50px;
+        font-style: italics;
+      }
+
+      .sidebar-header .btn {
+        background: #280a66;
+        border-radius: 2px;
+        color: white;
+        margin-top: 20px;
+        cursor: pointer;
+        width: 70px;
+        height: 30px;
+        font-size: 14px;
+      }
+
+      hr {
+        border: 0.5px solid #717171;
+        width: 250px;
+        margin-top: 50px;
+      }
+
+      #sidebar ul {
+        margin-top: 60px;
+        list-style: none;
+        text-align: left;
+      }
+
+      #sidebar li {
+        margin: 7px;
+      }
+
+      #sidebar li a {
+        text-decoration: none;
+        color: #280a66;
+      }
+    </style>
+
+    <div class="wrapper container-fluid">
+      <!-- Sidebar -->
+      <div class="col-12 col-sm-4">
+        <nav id="sidebar">
+          <div class="sidebar-header">
+            <div id="image-container"></div>
+            <h4>Destiny Ihejirika</h4>
+            <h6>Front-End Developer, UI/UX designer, friend and traveller</h6>
+            <button type="button" class="btn">Login</button>
+          </div>
+          <hr />
+
+          <ul>
+            <li><a href="#">Published Posts</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </main>
 </aside>
