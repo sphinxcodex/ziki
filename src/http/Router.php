@@ -1,6 +1,5 @@
 <?php
-
-require_once 'utils.php';
+namespace Ziki\Http;
 
 class Router
 {
