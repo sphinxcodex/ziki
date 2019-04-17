@@ -44,7 +44,7 @@ class Foundation
     public function __construct($basePath, $logger)
     {
         $this->logger = $logger;
-        $this->routePath = $basePath . DIRECTORY_SEPARATOR . 'src/route.php';
+        $this->routePath = $basePath . DIRECTORY_SEPARATOR . 'src/routes.php';
         // $this->settings       = new Setting;
         // $this->cachePath      = $basePath . DIRECTORY_SEPARATOR . $this->settings['cache_path'];
         // $this->templatesPath  = $basePath . DIRECTORY_SEPARATOR . $this->settings['themes_path'] . DIRECTORY_SEPARATOR . $this->settings['theme'];
