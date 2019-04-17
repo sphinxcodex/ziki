@@ -34,7 +34,7 @@ $router->get('/profile', function() {
                 ];
 
             // Render our view
-            echo $twig->render('index.html', ['ziki' => $ziki] );
+            echo (new Twig)->render('index.html', ['ziki' => $ziki] );
           break;
       case '/blog-details' :
           $ziki = [
@@ -44,7 +44,7 @@ $router->get('/profile', function() {
                 ];
 
             // Render our view
-            echo $twig->render('blog-details.html', ['ziki' => $ziki] );
+            echo (new Twig)->render('blog-details.html', ['ziki' => $ziki] );
           break;
       case '/timeline' :
           $ziki = [
@@ -53,10 +53,10 @@ $router->get('/profile', function() {
                 ];
 
             // Render our view
-            echo $twig->render('timeline.html', ['ziki' => $ziki] );
+            echo (new Twig)->render('timeline.html', ['ziki' => $ziki] );
           break;
       case '/settings' :
-          echo $twig->render('settings.html', ['ziki' => $ziki] );
+          echo (new Twig)->render('settings.html', ['ziki' => $ziki] );
           break;
 
 
