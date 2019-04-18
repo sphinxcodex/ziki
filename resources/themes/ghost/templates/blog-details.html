@@ -1,21 +1,19 @@
 {% extends "layout.html" %} {% block page_content %}
 <style>
-    /* IMAGE LOGO */
-    
     .img-logo {
-        padding-top: 20px;
+        padding-top: 15px;
         padding-bottom: 20px;
     }
     
     .body-of-blog {
-        background-color: #F9F9F9;
+        background-color: #f9f9f9;
         border-radius: 4px;
     }
     
     .blog-post-title {
         letter-spacing: -0.02em;
         color: #1B1B1B;
-        border-bottom: 1px solid #A4A4A4;
+        border-bottom: 1px solid black;
     }
     
     .about-blog-source {
@@ -74,14 +72,21 @@
         padding: 5px 9px;
         margin-left: 15px;
     }
+    
+    .categories:hover {
+        cursor: pointer;
+        background-color: #d6d6d6;
+        transition: all ease-in 0.3s;
+    }
     /*  POST TAGS STYLING  */
 </style>
 <div class="container-fluid ">
     <div class="row">
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 sidebar">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 sidebar">
 
         </div>
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
             <!-- LOGO -->
             <div class="img-logo text-right">
                 <img src="resources/themes/ghost/assets/img/Vector.png" alt="logo" width="34" height="35">
@@ -95,7 +100,7 @@
                         <img src="resources/themes/ghost/assets/img/Ellipse.png" alt="" class="author-img">
                     </div>
 
-                    <div class="col-lg-5 col-md-8 col-sm-8 col-xs-8 about-blog-source">
+                    <div class="col-lg-5 col-md-5 col-sm-4 col-xs-4 about-blog-source">
                         <p class="blog-source p-0 m-0">The Shade Room</p>
                         <p class="blog-date p-0 m-0">12<sup>th</sup> April 2019</p>
                     </div>
@@ -109,13 +114,13 @@
                     <div class="blog-posts">
                         <p>
                             placeat iusto! Eos magni quam aspernatur alias aut? Ea excepturi quasi, asperiores neque fugiat odio reprehenderit explicabo corrupti iste architecto sit nostrum in fuga sed animi incidunt repellendus quos quod, enim culpa, at labore cum ab? Ab fugit
-                            pariatur doloremque labore suscipit delectus unde minima molestias ullam, blanditiis sequi soluta atque odio exercitationem, eum nihil maxime tempora <br /> obcaecati? Eius dolorem sapiente est ratione
+                            pariatur doloremque labore suscipit delectus unde minima molestias ullam, blanditiis sequi soluta atque odio exercitationem, eum nihil maxime tempora <br> obcaecati? Eius dolorem sapiente est ratione
                             incidunt eum sit quidem error et distinctio accusantium molestias, quae voluptas quod autem veritatis, iure nulla dicta illo iste asperiores esse. Magni, repellendus! Perferendis amet a fugit earum. Sunt similique earum explicabo
                             consequatur fugiat reiciendis iure amet hic! Fugit officia dolore magni, veritatis soluta temporibus voluptatum assumenda laboriosam praesentium totam. Dignissimos nesciunt, quisquam accusantium aut qui possimus?
-                            <br /> Ipsa, eum repellendus. Quisquam est eveniet similique, aut corporis repudiandae eius molestiae itaque fuga quos autem nulla rerum sequi saepe debitis enim totam molestias, magni mollitia, doloribus non placeat fugiat!
+                            <br> Ipsa, eum repellendus. Quisquam est eveniet similique, aut corporis repudiandae eius molestiae itaque fuga quos autem nulla rerum sequi saepe debitis enim totam molestias, magni mollitia, doloribus non placeat fugiat!
                             Veritatis sint iure, non dignissimos, suscipit ratione tempore illo, aspernatur soluta vel illum repellat molestias voluptatum nisi odit eos. Quisquam ipsam incidunt br recusandae soluta, exercitationem et doloremque ipsum
                             voluptas eum mollitia accusantium dignissimos labore a dolores eius cupiditate minima deleniti. Reprehenderit, facilis!</p>
-                        <!-- <p id="post-information"><span><i class="fa fa-bookmark"></i></span> -->
+                        <!--<p id="post-information"><span><i class="fa fa-bookmark"></i></span>-->
                         <img src="resources/themes/ghost/assets/img/Rectangle 3.png" alt="tag-label">
                         <span class="categories">Remote Jobs</span>
                         <span class="categories">Developers</span></p>

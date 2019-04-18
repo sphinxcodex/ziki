@@ -2,6 +2,18 @@
   <!-- using semantic tags -->
   <main>
     <style>
+      .fa-1x {
+        font-size: 1.5rem;
+      }
+
+      .navbar-toggler {
+        cursor: pointer;
+      }
+
+      .hamburger-background {
+        color: #280A66;
+      }
+
       .wrapper {
         display: flex;
         width: 100%;
@@ -13,13 +25,13 @@
       #sidebar {
         width: 300px;
         position: fixed;
-        top: 70px;
+        top: 70;
         left: 0;
         height: 100vh;
         z-index: 999;
         transition: all 0.3s;
         color: #280a66;
-        background: #ffffff;
+        background: #ffffff !important;
         font-family: Lemonada;
         font-style: normal;
         font-weight: 300;
@@ -83,17 +95,157 @@
         text-decoration: none;
         color: #280a66;
       }
+
+      .login-modal-popup-left-column{
+
+        background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%), #3B0E75;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        
+      }
+
+      .login-modal-popup-right-column{
+        background: #FFFFFF;
+        box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.25);
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+
+      .login-modal-border-radius{
+        border-radius: 5px;
+      }
+
+      .ziki-Welcome-msg{
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: normal;
+      }
+
+      .ziki-about-msg{
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: normal;
+      }
+      .login-msg{
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: normal;
+        letter-spacing: 0.1em;
+        color:#111;
+      }
+
+      .google-signin-btn{
+        background: #FFFFFF;
+        box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        
+      }
+
+      .facebook-signin-btn{
+        background: #FFFFFF;
+        box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        margin-top:25px;
+      }
+
+      .bottom-msg{
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 9px;
+        line-height: normal;
+        text-align: justify;
+
+        color: #111;
+      }
+
+      .auth-link{
+        text-decoration: none;
+        color:#111;
+      }
+
+      .auth-link:hover{
+        text-decoration: none;
+        color:#111;
+      }
+
+      .greetings{
+        margin-top:70px;
+        
+      }
+
+      .modal-dialog-container{
+    margin:150px auto;
+  }
+
+  .logo{
+    
+    padding-left: 70px;
+    margin-top:50px;
+  }
+  @media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .greetings{
+    margin-top: 0px;
+    
+  }
+
+  .logo{
+    
+    padding-bottom:30px;
+    box-sizing: border-box; 
+  }
+
+  .modal-dialog-container{
+    margin:100px auto;
+  }
+}
+
+      
+    @media screen and (max-width: 768px) {
+		#sidebar {
+      background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%), #3B0E75 !important;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      color: #FFFFFF;
+      border-radius: 0 30px 30px 0;
+		}
+		
+		#sidebar li a {
+      color: #FFFFFF;
+		}
+		
+		.sidebar-header .btn {
+      background: #ffffff;
+      border-radius: 2px;
+      color: black;
+		}
+		
+		#sidebar ul {
+      margin-top: 20px !important;
+		}
+	  }
     </style>
 
-    <div class="wrapper container-fluid">
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="hamburger-background"><i
+    class="fas fa-bars fa-1x"></i></span></button>
+
+    <div class="wrapper container-fluid collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Sidebar -->
       <div class="col-12 col-sm-4">
-        <nav id="sidebar">
+        <nav id="sidebar" class="navbar navbar-light collapse d-flex bg-light">
           <div class="sidebar-header">
             <div id="image-container"></div>
             <h4>Destiny Ihejirika</h4>
             <h6>Front-End Developer, UI/UX designer, friend and traveller</h6>
-            <button type="button" class="btn">Login</button>
+            <button type="button" class="btn" data-toggle="modal" data-target="#modalLoginForm">Login</button>
           </div>
           <hr />
 
@@ -108,3 +260,69 @@
     </div>
   </main>
 </aside>
+
+<div class="modal fade"  id="modalLoginForm" style="background: rgba(255, 255, 255, 0.92);" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-container"  role='document'>
+    <div class="modal-content" style="background-color:#111;">
+      <div class="row login-modal-border-radius">
+          <div class="col-md-6 login-modal-popup-left-column">
+              <div class="row">
+                <div class="col-md-12 logo">
+                  <img src="resources/themes/ghost/assets/img/faviconimage.png">
+                </div>
+              
+                <div class="col-md-12 greetings" >
+                  <h3 class="text-center ziki-Welcome-msg" style="color:#fff;">Welcome to Ziki</h3>
+                  <p class="text-center ziki-about-msg" style="color:#fff;">Simplify your blogging experience.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 login-modal-popup-right-column">
+                <div class="row" style="padding:30px;padding-top:100px;padding-bottom:50px;box-sizing: border-box;">
+                    <div class="col-md-12">
+                      <p class="login-msg">LOGIN TO CONTINUE</p>
+                    </div>
+                    <div class="col-md-12  google-signin-btn">
+                      <div class="row" style="padding-top:10px;box-sizing: border-box;">
+                          <div class="col-2">
+                              <img src="http://www.stickpng.com/assets/images/5847f9cbcef1014c0b5e48c8.png" style="width:100%;">
+                          </div>
+                            <div class="col-10">
+                              <p style="color:#111;"><a href="#" class="auth-link">Sign in with google</a></p>
+                            </div>
+                      </div>
+                        
+                    </div>
+                    <div class="col-md-12  facebook-signin-btn" >
+                      <div class="row" style="padding-top:10px;box-sizing: border-box;">
+                          <div class="col-2">
+                              <img src="http://www.stickpng.com/assets/images/584ac2d03ac3a570f94a666d.png" style="width:100%;">
+                          </div>
+                          <div class="col-10">
+                            <p style="color:#111;"><a href="#" class="auth-link">Sign in with FaceBook</a></p>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:20px;box-sizing: border-box;">
+                      <p class="bottom-msg">
+                        To make this site work, we log user data and 
+                          share it with service providers.</p>
+                    </div>
+                </div>
+            </div>
+      </div>
+        
+    </div>
+      
+    </div>
+  
+</div>
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
