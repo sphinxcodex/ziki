@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ziki - Theme Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="theme.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="C:\Users\JONSNOW\Desktop\HNG\ziki\resources\themes\ghost\assets\css\color-modes.css" />
+    
+    
+    <script src=""></script>
+</head>
+
+<body>
+
+    {% extends 'layout.html' %}
+
+    {% block content%}
+
+    <!--content goes here-->
+
+    <div class = "theme-page">
+        
+            <div class = "ziki-logo">
+                    <img src = "logo.png" alt = "ziki-logo" max-width = "100%">  
+            </div>
+            <div class = "wrapper">
+        
+            <div class = "row"> 
+                <div class = "left-sidebar col-md-4 col-sm-6 col-xs-6">
+                    
+                    <div class = "profile-img">
+                        
+                    </div>
+                    
+                    <div class = "bio">
+                        <h2>Destiny Ihejirika</h2>
+                        <p>Front end developer, UI/UX developer, friend and traveller</p>
+                        <button type="button" class="btn btn-primary btn-sm">Sign Out</button>
+                    </div>
+
+                    <hr class = "sideline">
+
+                    <div class = "profile-links">
+                        <ul>
+                            <li>Timeline</li>
+                            <li>Published Posts</li>
+                            <li>Profile</li>
+                            <li>About</li>
+                            <li>Contact us</li>
+                        </ul>
+
+                    </div>
+                    
+                    
+       
+                </div> <!--end of div left-sidebar-->
+
+
+             <div class = "main col-md-8 col-sm-6 col-xs-6" >
+                   <nav>
+                        <ul class="nav-links">
+                                <li><a href = "#">Profile</a</li>
+                                <li class="active"><a href="#">Themes</a></li>
+                                <li><a href="#">Following and Followers</a></li>
+                            </ul>
+                            <hr>
+                   </nav>
+
+                <div class = "main-profile">
+
+                <h3>Themes</h3>
+
+                <select>
+                    <option id = "option">Ziki Default</option>
+                    <option id = "option">Other themes</option>
+                </select>
+<br/><br/><br/>
+       <div class = "toggle">
+            <label class="switch"> <h6>Light Mode</h6>
+                <input type="checkbox"> 
+                <span class="slider round">
+            </label>
+        </div>
+        
+
+
+
+                </div><!--end of main-profile-->
+
+                  
+                
+        
+             </div><!--end of div main-->
+             
+             <img class = "bubbles" src = "bubbles.png" alt = "bubbles">
+            </div> <!--end of div row-->
+            
+        </div> <!--end of div wrapper-->
+        
+        
+        </div> <!--end of div theme-page-->
+        
+
+    {% endblock%}
+
+
+
+</body>
+</html>

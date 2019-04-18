@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ziki - Profile Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="profile_page.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="C:\Users\JONSNOW\Desktop\HNG\ziki\resources\themes\ghost\assets\css\color-modes.css" />
+    
+    
+    <script src=""></script>
+</head>
+
+<body>
+
+    {% extends 'layout.html' %}
+
+    {% block content%}
+
+    <!--content goes here-->
+
+    <div class = "profile-page">
+        
+            <div class = "ziki-logo">
+                    <img src = "build/logo.png" alt = "ziki-logo" max-width = "100%">  
+            </div>
+            <div class = "wrapper">
+        
+            <div class = "row"> 
+                <div class = "left-sidebar col-md-4 col-sm-6 col-xs-6">
+                    
+                    <div class = "profile-img">
+                        
+                    </div>
+                    
+                    <div class = "bio">
+                        <h2>Destiny Ihejirika</h2>
+                        <p>Front end developer, UI/UX developer, friend and traveller</p>
+                        <br/><button type="button" class="btn btn-primary btn-sm">Sign Out</button>
+                    </div>
+
+                    <hr class = "sideline">
+
+                    <div class = "profile-links">
+                        <ul>
+                            <li>Timeline</li>
+                            <li>Published Posts</li>
+                            <li>Profile</li>
+                            <li>About</li>
+                            <li>Contact us</li>
+                        </ul>
+
+                    </div>
+                    
+                    
+       
+                </div> <!--end of div left-sidebar-->
+
+
+             <div class = "main col-md-8 col-sm-6 col-xs-6" >
+                   <nav>
+                        <ul class="nav-links">
+                                <li class="active">Profile</li>
+                                <li><a href="#">Themes</a></li>
+                                <li><a href="#">Following and Followers</a></li>
+                            </ul>
+                            <hr>
+                   </nav>
+
+                <div class = "main-profile">
+
+                    <p class = "profile">Profile</p>
+
+                    
+                    <div class = "profile-pic" >
+                            <a href = "#"><img src = "build/Group.png" class = "pic" alt = "editor"> </a> 
+                </div><!--end of profile-pic-->
+                
+                
+                <div class = "form-area">
+                    <form>
+                        <label for ="first_box">Full Name</label><br>
+                        <input type = "text" id = "first_box" placeholder = "Destiny Iherijika"><br><br>
+    
+                       <label for = "second_box"> Bio </label><br>
+                        <input type = "text" id = "second_box" placeholder = "Frontend developer, UI/UX developer, friend and traveller"><br>
+                       
+                
+                        <label for = "third_box"> Phone </label> <br>
+                        <input type = "text" id = "third_box"><br>
+    
+                        <button type="button" class="btn btn-primary btn-sm" style = "float: right;"> UPDATE </button>
+    
+                    </form>
+
+                </div> <!--end of div form-->
+
+
+                </div>
+
+                  
+                
+        
+             </div><!--end of div main-->
+             
+             <img class = "bubbles" src = "build/bubbles.png" alt = "bubbles">
+            </div> <!--end of div row-->
+            
+        </div> <!--end of div wrapper-->
+        
+        
+        </div> <!--end of div profile-page-->
+        
+
+    {% endblock%}
+
+
+
+</body>
+</html>
