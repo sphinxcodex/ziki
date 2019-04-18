@@ -31,13 +31,13 @@ class Document{
     public function deletePost(){
 
     }
-    
+
     /**
      * gets posts in all files in a folder
      * specified in the argument, returns a json string
      * success and false on failure
      *
-     * @return void
+     * @return bool
      */
     public function getAllPosts($directory){
         $finder = new Finder();
