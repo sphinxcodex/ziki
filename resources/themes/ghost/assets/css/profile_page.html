@@ -1,123 +1,254 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ziki - Profile Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+html, body{
+    margin: 30px;
+    height: 100%;
+}
+
+.profile-page .wrapper{
+    margin: 5px;
+
+}
+
+.ziki-logo{
+  text-align: right;
+}
+
+.profile-page .profile-img{
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    max-width: 100%;
+    background-image: url("build/profile-pic.png");
+    background-size: cover;
+    margin: auto;
     
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="profile_page.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="C:\Users\JONSNOW\Desktop\HNG\ziki\resources\themes\ghost\assets\css\color-modes.css" />
+}
+
+.profile-page .bio {
+    margin: 10px;
+    text-align: center;
+}
+.profile-page h2 {
+    font-family: Lemonada;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: -0.02em;   
+}
+
+p{
+    font-family: Lemonada;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: normal;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: var(--user-info-on-profile-font-color);
+    padding: 10px;
+}
+
+.profile-page .bio button{
+    padding: 7px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: -0.02em;
+    color:var(--dark-color-white);
+    background: var(--custom-deep-purple);
+}
+
+.profile-page .sideline {
+    width: 244px;
+    height: 0px;
+    left: 37px;
+    top: 471px;
+    border: 1px solid var(--post-summary-font-color);
+}
+
+.profile-page .profile-links li{
+    color: var( --custom-deep-purple);
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: -0.02em;
+    padding: 5px;
+    list-style: none;
     
+}
+
+.profile-page .bubbles {
+    bottom: 0px;
+    width: 100px;
+    height: 100px;
+    margin: 40px;
+}
+
+/* End of sidebar */
+
+.profile-page .nav-links {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0px;
+  }
+
+  .profile-page .nav-links li {
+      padding-right: 40px;
+      padding-left: 40px;
+      color: var(--avatar-if-no-pic-bcg);
+      font-size: 14px;
+  }
+  
+  .profile-page .nav-links li a {
+      color: var(--number-of-followers-font-color);
+      font-size: 14px;
+  }
+
+  .profile-page .nav-links-item + .nav-links-item {
+    padding-left: 0.5rem;
+  }
+  
+  .profile-page .nav-links-item + .nav-links-item::before {
+    display: inline-block;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+  }
+  
+  .profile-page .nav-links-item + .nav-links-item:hover::before {
+    text-decoration: underline;
+  }
+  
+  .profile-page .nav-links-item + .nav-links-item:hover::before {
+    text-decoration: none;
+  }
+  
+  .profile-page .nav-links-item.active {
+    color: var(--avatar-if-no-pic-bcg);
+  }
+
+  .profile-page hr {
+    width: 910px;
+    max-width: 100%;
+    height: 0px;
+    border: 1px solid var(--post-title-border-bottom);
+  }
+
+  .profile-page .main-profile {
+    width: 808px;
+    height: 900px;
+    max-width: 100%;
+    background: var(--WYSIWYG-editor-modal-body-bcg);
+    border-radius: 4px;
+  }
+
+  .profile-page .profile {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: normal;
+    letter-spacing: -0.02em;
+    color: var(--user-info-on-profile-font-color);
+    text-align:left;
     
-    <script src=""></script>
-</head>
+  }
 
-<body>
+  .profile-page .profile-pic {
+      width: 180px;
+      height: 180px;
+      max-width: 100%;
+      border-radius: 50%;
+      background: url("build/profile-pic.png");
+      background-size: cover;
+      margin-left: 50px;
+      float: left;
+      padding: 0 5px;
+      text-align: center;
+      
+  }
 
-    {% extends 'layout.html' %}
-
-    {% block content%}
-
-    <!--content goes here-->
-
-    <div class = "profile-page">
-        
-            <div class = "ziki-logo">
-                    <img src = "logo.png" alt = "ziki-logo" max-width = "100%">  
-            </div>
-            <div class = "wrapper">
-        
-            <div class = "row"> 
-                <div class = "left-sidebar col-md-4 col-sm-6 col-xs-6">
-                    
-                    <div class = "profile-img">
-                        
-                    </div>
-                    
-                    <div class = "bio">
-                        <h2>Destiny Ihejirika</h2>
-                        <p>Front end developer, UI/UX developer, friend and traveller</p>
-                        <br/><button type="button" class="btn btn-primary btn-sm">Sign Out</button>
-                    </div>
-
-                    <hr class = "sideline">
-
-                    <div class = "profile-links">
-                        <ul>
-                            <li>Timeline</li>
-                            <li>Published Posts</li>
-                            <li>Profile</li>
-                            <li>About</li>
-                            <li>Contact us</li>
-                        </ul>
-
-                    </div>
-                    
-                    
-       
-                </div> <!--end of div left-sidebar-->
-
-
-             <div class = "main col-md-8 col-sm-6 col-xs-6" >
-                   <nav>
-                        <ul class="nav-links">
-                                <li class="active">Profile</li>
-                                <li><a href="#">Themes</a></li>
-                                <li><a href="#">Following and Followers</a></li>
-                            </ul>
-                            <hr>
-                   </nav>
-
-                <div class = "main-profile">
-
-                    <p class = "profile">Profile</p>
-
-                    
-                    <div class = "profile-pic" >
-                            <a href = "#"><img src = "Group.png" class = "pic" alt = "editor"> </a> 
-                </div><!--end of profile-pic-->
-                
-                
-                <div class = "form-area">
-                    <form>
-                        <label for ="first_box">Full Name</label><br>
-                        <input type = "text" id = "first_box" placeholder = "Destiny Iherijika"><br><br>
+  .profile-page .profile-pic img {
+     padding-top: 40%;
     
-                       <label for = "second_box"> Bio </label><br>
-                        <input type = "text" id = "second_box" placeholder = "Frontend developer, UI/UX developer, friend and traveller"><br>
-                       
-                
-                        <label for = "third_box"> Phone </label> <br>
-                        <input type = "text" id = "third_box"><br>
+  }
+
+  .profile-page .profile-pic a:hover{
+    background: rgba(68, 30, 147, 0.6);
+  }
+
+  .profile-pic .label{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;    
+    color: var(--user-info-on-profile-font-color);
+  }
+
+  .profile-page #first_box {
+    width: 448px;
+    max-width: 100%;
+    height: 42px;
+    background: #FFFFFF;
+    border: 1px solid #9F9F9F;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  .profile-page #second_box {
+    width: 448px;
+    max-width: 100%;
+    height: 104px;
+    background: #FFFFFF;
+    border: 1px solid #9F9F9F;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  
+  .profile-page #third_box {
+    width: 448px;
+    max-width: 100%;
+    height: 42px;
+    background: #FFFFFF;
+    border: 1px solid #9F9F9F;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  .profile-page .form-area {
+    width: 448px;
+    max-width: 100%;
+    margin: 20px;
+    float: right;
+    margin-top: 10px;
     
-                        <button type="button" class="btn btn-primary btn-sm" style = "float: right;"> UPDATE </button>
-    
-                    </form>
+  }
 
-                </div> <!--end of div form-->
-
-
-                </div>
-
-                  
-                
-        
-             </div><!--end of div main-->
-             
-             <img class = "bubbles" src = "bubbles.png" alt = "bubbles">
-            </div> <!--end of div row-->
-            
-        </div> <!--end of div wrapper-->
-        
-        
-        </div> <!--end of div profile-page-->
-        
-
-    {% endblock%}
+  .profile-page .form-area .btn {
+      margin-top: 30px;
+  }
 
 
 
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
