@@ -31,7 +31,7 @@
         z-index: 999;
         transition: all 0.3s;
         color: #280a66;
-        background: #ffffff;
+        background: #ffffff !important;
         font-family: Lemonada;
         font-style: normal;
         font-weight: 300;
@@ -95,6 +95,29 @@
         text-decoration: none;
         color: #280a66;
       }
+
+    @media screen and (max-width: 768px) {
+		#sidebar {
+      background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%), #3B0E75 !important;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      color: #FFFFFF;
+      border-radius: 0 30px 30px 0;
+		}
+		
+		#sidebar li a {
+      color: #FFFFFF;
+		}
+		
+		.sidebar-header .btn {
+      background: #ffffff;
+      border-radius: 2px;
+      color: black;
+		}
+		
+		#sidebar ul {
+      margin-top: 20px !important;
+		}
+	  }
     </style>
 
     <!-- Collapse button -->
@@ -105,7 +128,7 @@
     <div class="wrapper container-fluid collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Sidebar -->
       <div class="col-12 col-sm-4">
-        <nav id="sidebar" class="navbar navbar-light collapse d-md-flex bg-light">
+        <nav id="sidebar" class="navbar navbar-light collapse d-flex bg-light">
           <div class="sidebar-header">
             <div id="image-container"></div>
             <h4>Destiny Ihejirika</h4>
