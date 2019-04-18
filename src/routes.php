@@ -39,6 +39,10 @@ $router->get('/contact-us', function($request) {
     return $this->template->render('contact-us.html', ['ziki' => $ziki] );
 });
 
+$router->get('/published-posts', function($request) {
+    return $this->template->render('published-posts.html');
+});
+
 $router->get('/settings', function($request) {
     return $this->template->render('settings.html');
 });
