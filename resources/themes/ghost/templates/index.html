@@ -1,6 +1,213 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block page_content %}
+<style type="text/css">
+  .top-bar {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .nav-tabs .nav-link.active {
+    border-top: 0px solid #280966 !important;
+    border-right: 0px solid #280966 !important;
+    border-left: 0px solid #280966 !important;
+    border-bottom: 4px solid #280966 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  }
+  .nav-tabs .nav-link {
+    color: #280966;
+  }
+  .timeline-wrapper {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .post-area {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 
-{% block page_content %}
+  .post-content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .author-image .side-header {
+    display: flex;
+    justify-content: center;
+  }
+  .post-author {
+    color: #280966;
+  }
+  .post-title {
+  }
+  .post-detail {
+  }
+  .post-action-bar {
+    color: #280966;
+  }
+</style>
+<div class="container-fluid">
+  <div class="row top-bar">
+    <div class="col-12 col-sm-11"></div>
+    <div class="col-12 col-sm-1">
+      <!-- ziki logo here -->
+      <img class="img-fluid" src="bg-blue.jpg" />
+    </div>
+  </div>
+  <div class="row timeline-wrapper">
+    <!-- main content.. -->
+    <div class="col-12 offset-sm-4 col-sm-8">
+      <!-- SleekX's code goes here.. -->
+      <div class="row">
+        <div class="col-12 col-sm-12">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Tech</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Machine Learning</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Comedy</a></li>
+          </ul>
 
+          <!-- Posts from here.. -->
+          <article class="post-area">
+            <div class="row post-content">
+              <div class="col-12 col-sm-10">
+                <div class="row">
+                  <div class="col-2 col-sm-1 author-image">
+                    <img class="img-fluid" src="bg-blue.jpg" />
+                  </div>
+                  <div class="col-10 col-sm-11">
+                    <h5 class="post-author">Destiny Ihejirika</h5>
+                    <h2 class="post-title">
+                      Looking for where to spend christmas
+                    </h2>
+                    <p class="post-detail">
+                      is simply dummy text of the printing and typesetting
+                      industry. Lorem Ipsum has been the industry's standard
+                      dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type
+                      specimen book.
+                    </p>
+                    <div class="row post-action-bar">
+                      <div class="col-6 col-sm-6 text-left">
+                        <p>16th, April, 2019</p>
+                      </div>
+                      <div class="col-6 col-sm-6 text-right">
+                        <p><strong>Comment</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
 
+            <div class="row post-content">
+              <div class="col-12 col-sm-10">
+                <div class="row">
+                  <div class="col-2 col-sm-1 author-image">
+                    <img class="img-fluid" src="bg-blue.jpg" />
+                  </div>
+                  <div class="col-10 col-sm-11">
+                    <h5 class="post-author">Destiny Ihejirika</h5>
+                    <h2 class="post-title">
+                      Looking for where to spend christmas
+                    </h2>
+                    <p class="post-detail">
+                      is simply dummy text of the printing and typesetting
+                      industry. Lorem Ipsum has been the industry's standard
+                      dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type
+                      specimen book.
+                    </p>
+                    <div class="row post-action-bar">
+                      <div class="col-6 col-sm-6 text-left">
+                        <p>16th, April, 2019</p>
+                      </div>
+                      <div class="col-6 col-sm-6 text-right">
+                        <p><strong>Comment</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+
+            <div class="row post-content">
+              <div class="col-12 col-sm-10">
+                <div class="row">
+                  <div class="col-2 col-sm-1 author-image">
+                    <img class="img-fluid" src="bg-blue.jpg" />
+                  </div>
+                  <div class="col-10 col-sm-11">
+                    <h5 class="post-author">Destiny Ihejirika</h5>
+                    <h2 class="post-title">
+                      Looking for where to spend christmas
+                    </h2>
+                    <p class="post-detail">
+                      is simply dummy text of the printing and typesetting
+                      industry. Lorem Ipsum has been the industry's standard
+                      dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type
+                      specimen book.
+                    </p>
+                    <div class="row post-action-bar">
+                      <div class="col-6 col-sm-6 text-left">
+                        <p>16th, April, 2019</p>
+                      </div>
+                      <div class="col-6 col-sm-6 text-right">
+                        <p><strong>Comment</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+
+            <div class="row post-content">
+              <div class="col-12 col-sm-10">
+                <div class="row">
+                  <div class="col-2 col-sm-1 author-image">
+                    <img class="img-fluid" src="bg-blue.jpg" />
+                  </div>
+                  <div class="col-10 col-sm-11">
+                    <h5 class="post-author">Destiny Ihejirika</h5>
+                    <h2 class="post-title">
+                      Looking for where to spend christmas
+                    </h2>
+                    <p class="post-detail">
+                      is simply dummy text of the printing and typesetting
+                      industry. Lorem Ipsum has been the industry's standard
+                      dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type
+                      specimen book.
+                    </p>
+                    <div class="row post-action-bar">
+                      <div class="col-6 col-sm-6 text-left">
+                        <p>16th, April, 2019</p>
+                      </div>
+                      <div class="col-6 col-sm-6 text-right">
+                        <p><strong>Comment</strong></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+          </article>
+          <!-- Post section ends here. -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row footer">
+    <div class="col-12 col-sm-4">
+      <img class="img-fluid" src="bg-blue.jpg" />
+    </div>
+    <div class="col-12 col-sm-8"></div>
+  </div>
+</div>
 {% endblock page_content %}
