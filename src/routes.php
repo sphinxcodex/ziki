@@ -21,15 +21,6 @@ $router->get('/blog-details', function($request) {
     return $this->template->render('blog-details.html', ['ziki' => $ziki] );
 });
 
-$router->get('/blog-details', function($request) {
-    $ziki = [
-        [ 'name'          => 'Adroit' ],
-        [ 'name'          => 'Olu' ],
-        [ 'name'          => 'Amuwo' ],
-    ];
-    return $this->template->render('blog-details.html', ['ziki' => $ziki] );
-});
-
 $router->get('/timeline', function($request) {
     $ziki = [
         [ 'name'          => 'Adroit' ],
