@@ -6,28 +6,61 @@
  *
  * @package Ziki
  */
+/** Loads the Ziki Environment and Theme */
 
-define('ZIKI_BASE_PATH', __DIR__);
+$app = require( dirname( __FILE__ ) . '/src/bootstrap.php' );
 
-/*
-|--------------------------------------------------------------------------
-| Register The Auto Loader
-|--------------------------------------------------------------------------
-|
-| Composer provides a convenient, automatically generated class loader for
-| our application. We just need to utilize it! We'll simply require it
-| into the script here so that we don't have to worry about manual
-| loading any of our classes later on. It feels great to relax.
-|
-*/
+$router = new Router(new Request);
 
-require ZIKI_BASE_PATH .'/vendor/autoload.php';
 
-$logger = new Monolog\Logger('Ziki');
-$logger->pushHandler(new Monolog\Handler\StreamHandler( ZIKI_BASE_PATH . DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . 'app.log'));
-Monolog\ErrorHandler::register($logger);
+$router->get('/profile', function() {
 
-$ziki = new Ziki\Foundation(ZIKI_BASE_PATH);
+    echo "hello there";
+  });
 
-$ziki->run();
+  $request = $_SERVER['REQUEST_URI'];
 
+  if (strlen($request) > 1) {
+    $request = rtrim($request, '/');
+  }
+
+  switch ($request) {
+
+      case '/' :
+          $ziki = [
+                    [ 'name'          => 'Adroit' ],
+                    [ 'name'          => 'Olu' ],
+                    [ 'name'          => 'Amuwo' ],
+                ];
+
+            // Render our view
+            echo (new Twig)->render('index.html', ['ziki' => $ziki] );
+          break;
+      case '/blog-details' :
+          $ziki = [
+                    [ 'name'          => 'Adroit' ],
+                    [ 'name'          => 'Olu' ],
+                    [ 'name'          => 'Amuwo' ],
+                ];
+
+            // Render our view
+            echo (new Twig)->render('blog-details.html', ['ziki' => $ziki] );
+          break;
+      case '/timeline' :
+          $ziki = [
+                    [ 'name'          => 'Adroit' ],
+                    [ 'name'          => 'Twig' ],
+                ];
+
+            // Render our view
+            echo (new Twig)->render('timeline.html', ['ziki' => $ziki] );
+          break;
+      case '/settings' :
+          echo (new Twig)->render('settings.html', ['ziki' => $ziki] );
+          break;
+
+
+    //   default:
+    //       require __DIR__ . '/resources/themes/ghost/template/404.html';
+    //       break;
+  }
