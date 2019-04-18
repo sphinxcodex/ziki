@@ -1,6 +1,8 @@
 :root {
   /* CUSTOM PURPLE FOUND ON ALL PAGES FOR BCG AND FONT COLOR*/
   --custom-deep-purple: #280a66;
+  --dark-bg-color: #fff;
+  --text-color: #000000;
 
   /* USER INFO */
   --avatar-if-no-pic-bcg: #441e93;
@@ -29,14 +31,24 @@
 
   /* THEME TOGGLER STYLING */
   --theme-toggler-grey-bcg: #e0e0e0;
+
+  /* Pubplished Post header */
+  --published-post-header: transparent;
+  /* Top bar link color */
+  --top-tab-link: #5c5c5c;
 }
 
 .dark {
+  /* Custom Deep purple becomes this color on dark mode */
+  --custom-deep-purple: #7277ef;
   --dark-bg-color: #111111;
   --dark-bubbles: #8e9eee;
+  --text-color: #ffffff;
   --dark-color-white: #ffffff;
-  --dark-color-dark-purple: #7277ef;
   --dark-horizontal-line: #ebebeb;
+
+  /* Post */
+  --post-title-font-color: #7277ef;
 
   /*LOGIN PAGE */
   --dark-bg-color: rgba(9, 9, 9, 0.92);
@@ -57,4 +69,10 @@
 
   /*USER PAGE */
   --dark-profile-name: #8e9eee;
+
+  /* Top bar link color */
+  --top-tab-link: #ffffff;
+
+  /* Pubplished Post header */
+  --published-post-header: #111111;
 }

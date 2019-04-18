@@ -58,8 +58,4 @@ class Document{
             return false;
         }
     }
-    public function test()
-    {
-        echo 'yeah';
-    }
 }
