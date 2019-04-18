@@ -6,51 +6,28 @@
  *
  * @package Ziki
  */
-/** Loads the Ziki Environment and Theme */
 
-$app = require( dirname( __FILE__ ) . '/src/bootstrap.php' );
+define('ZIKI_BASE_PATH', __DIR__);
 
-$router = new Router(new Request);
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| our application. We just need to utilize it! We'll simply require it
+| into the script here so that we don't have to worry about manual
+| loading any of our classes later on. It feels great to relax.
+|
+*/
 
+require ZIKI_BASE_PATH .'/vendor/autoload.php';
 
-$router->get('/profile', function() {
-    
-    echo "hello there";
-  });
-  
-  $request = $_SERVER['REQUEST_URI'];
+$logger = new Monolog\Logger('Ziki');
+$logger->pushHandler(new Monolog\Handler\StreamHandler( ZIKI_BASE_PATH . DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . 'app.log'));
+Monolog\ErrorHandler::register($logger);
 
-  if (strlen($request) > 1) {
-    $request = rtrim($request, '/');
-  }
+$ziki = new Ziki\Foundation(ZIKI_BASE_PATH);
 
-  switch ($request) {
-      
-      case '/' :
-          $ziki = [
-                    [ 'name'          => 'Adroit' ],
-                    [ 'name'          => 'Olu' ],
-                    [ 'name'          => 'Amuwo' ],
-                ];
+$ziki->run();
 
-            // Render our view
-            echo $twig->render('index.html', ['ziki' => $ziki] );
-          break;
-      case '/page' :
-          $ziki = [
-                    [ 'name'          => 'Adroit' ],
-                    [ 'name'          => 'Twig' ],
-                ];
-
-            // Render our view
-            echo $twig->render('timeline.html', ['ziki' => $ziki] );
-          break;
-      case '/about' :
-          echo $twig->render('settings.html', ['ziki' => $ziki] );
-          break;
-     
-
-    //   default:
-    //       require __DIR__ . '/resources/themes/ghost/template/404.html';
-    //       break;
-  }
