@@ -39,6 +39,15 @@ $router->get('/timeline', function($request) {
     return $this->template->render('timeline.html', ['ziki' => $ziki] );
 });
 
+$router->get('/contact-us', function($request) {
+    $ziki = [
+        [ 'name'          => 'Adroit' ],
+        [ 'name'          => 'Twig' ],
+    ];
+
+    return $this->template->render('contact-us.html', ['ziki' => $ziki] );
+});
+
 $router->get('/settings', function($request) {
     return $this->template->render('settings.html');
 });
