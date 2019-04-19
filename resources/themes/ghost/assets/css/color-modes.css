@@ -41,27 +41,41 @@
   --top-tab-link: #5c5c5c;
 }
 
-
-
 .dark {
-    --dark-bg-color: #111111;
-    --dark-bubbles: #8E9EEE;
-    --dark-color-white: #FFFFFF;
-    --dark-color-dark-purple: #7277EF;
-    --dark-horizontal-line: #EBEBEB;
+  /* Custom Deep purple becomes this color on dark mode */
+  --custom-deep-purple: #7277ef;
+  --dark-bg-color: #111111;
+  --dark-bubbles: #8e9eee;
+  --text-color: #ffffff;
+  --dark-color-white: #ffffff;
+  --dark-horizontal-line: #ebebeb;
 
-    /*LOGIN PAGE */
-    --dark-bg-color: rgba(9, 9, 9, 0.92);
+  /* Post */
+  --post-title-font-color: #7277ef;
 
-    /*LOGIN MODAL */
-    --dark-login-bg-color: #2D2D2D;
-    --dark-left-bg-color: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%), #3B0E75;
-    --dark-color-black: #000000;
+  /*LOGIN PAGE */
+  --dark-bg-color: rgba(9, 9, 9, 0.92);
 
-    /*  HOMPAGE */
-    --dark-post-text-and-date: #717171;
-    --dark-comment-link: #280A66;
+  /*LOGIN MODAL */
+  --dark-login-bg-color: #2d2d2d;
+  --dark-left-bg-color: linear-gradient(
+      180deg,
+      #973793 0%,
+      rgba(134, 64, 131, 0) 100%
+    ),
+    #3b0e75;
+  --dark-color-black: #000000;
 
-    /*USER PAGE */
-    --dark-profile-name: #8E9EEE;
+  /*  HOMPAGE */
+  --dark-post-text-and-date: #717171;
+  --dark-comment-link: #280a66;
+
+  /*USER PAGE */
+  --dark-profile-name: #8e9eee;
+
+  /* Top bar link color */
+  --top-tab-link: #ffffff;
+
+  /* Pubplished Post header */
+  --published-post-header: #111111;
 }
