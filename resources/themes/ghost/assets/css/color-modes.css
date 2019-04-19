@@ -15,6 +15,9 @@
   --post-title-font-color: #1b1b1b;
   --post-summary-font-color: #717171;
   --post-summary-border-bottom: #ebebeb;
+  --body-of-blog-bg:#f9f9f9;
+  --categories-bg-color:#EEEEEE;
+  --blog-post-title-font:#1b1b1b;
 
   /* RSS FOLLOWING/FOLLOWERS STYLING */
   --number-of-followers-font-color: #5c5c5c;
