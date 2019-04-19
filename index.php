@@ -8,7 +8,7 @@
  */
 
 define('ZIKI_BASE_PATH', __DIR__);
-
+$site_url = "https://localhost:8000";
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader

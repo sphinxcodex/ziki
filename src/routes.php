@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__."/models/Post.php";
+
 $router = new Ziki\Http\Router(new Ziki\Http\Request);
 
 $router->get('/', function($request) {
@@ -19,6 +21,13 @@ $router->get('/blog-details', function($request) {
         [ 'name'          => 'Amuwo' ],
     ];
     return $this->template->render('blog-details.html', ['ziki' => $ziki] );
+});
+
+$router->post('/timeline', function($request) {
+    $title = $_POST['title'];
+    $body = $_POST['body'];
+    $ziki = new Post();
+    return $ziki->createPost($title, $body);
 });
 
 $router->get('/timeline', function($request) {

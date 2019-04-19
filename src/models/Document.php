@@ -4,58 +4,86 @@
  * add the symphony class
  * add the Frontmatter classes.
  */
-use Symfony\Component\Finder;
-use KzykHys\FrontMatter\FrontMatter;
+
+use Parsedown;
+use Symfony\Component\Finder\SplFileInfo;
+use Symfony\Component\Yaml\Yaml;
 
 class Document{
-    //define an instance of the symfony clss
-    //define an instance of the frontMatter class
-
-    public function __construct(Finder $finder, FrontMatter $parser) {
-       $this->finder = $finder->files()->in('./storage/contents/posts'); //MARKDOWN PATH DEFINED HERE
-       $this->parser = $parser;
-    }
-    //for creating markdown files
-    public function createPost(){
-
-    }
-    //get post
-    public function getPost(){
-
-    }
-    //update post
-    public function updatePost(){
-
-    }
-    //deletepost
-    public function deletePost(){
-
-    }
-
     /**
-     * gets posts in all files in a folder
-     * specified in the argument, returns a json string
-     * success and false on failure
-     *
-     * @return bool
+     * @var string
      */
-    public function getAllPosts($directory){
-        $finder = new Finder();
-        // find all files in the specified directory
-        $finder->files()->in($directory);
-        $posts = [];
+    protected $basePath;
+    /**
+     * @var SplFileInfo
+     */
+    protected $file;
+    /**
+     * @var string
+     */
+    protected $slug;
+    /**
+     * @var string
+     */
+    protected $collection;
+    /**
+     * @param string $basePath
+     * @param SplFileInfo $file
+     * @param string $collection
+     */
+    public function __construct($basePath, $file)
+    {
+        $this->basePath   = $basePath;
+        $this->file       = $file;
+        $this->collection = $collection;
+        $this->slug       = $this->generateSlug();
+    }
+    /**
+     * @return string
+     */
+    protected function generateSlug()
+    {
+        $path = $this->file->getPath();
+        if ($this->collection) {
+            $path = $this->file->getPathname();
+        }
+        $slug = str_replace($this->basePath, '', $path);
+        $slug = preg_replace('/(\/.*?\.)/', '/', $slug);
+        $slug = preg_replace('/\.md$/', '', $slug);
+        if ($this->collection) {
+            $slug = '/' . $this->collection . $slug;
+        }
+        if (!$slug) {
+            $slug = '/';
+        }
+        return $slug;
+    }
+    /**
+     * @return string
+     */
+    public function file()
+    {
+        return $this->file;
+    }
+    /**
+     * @return string
+     */
+    public function slug()
+    {
+        return $this->slug;
+    }
+    
 
-        //checks if there are any results
-        if($finder->hasResults()){
-            foreach($finder as $file){
-                $content = $file->getContents();
-                array_push($posts, $content);
-            }
-            $post_json = json_encode($posts);
-            return $post_json;
+    public function metaAndHtml()
+    {
+        $content               = file_get_contents($this->file->getPathname());
+        list($meta, $markdown) = explode('---', $content, 2);
+        $meta                  = Yaml::parse($meta);
+        $parsedown             = new Parsedown();
+        $html                  = $parsedown->text($markdown);
+        if (!isset($meta['title'])) {
+            $meta['title'] = '';
         }
-        else{
-            return false;
-        }
+        return [$meta, $html];
     }
 }
