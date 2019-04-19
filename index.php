@@ -20,7 +20,7 @@ $site_url = "https://localhost:8000";
 | loading any of our classes later on. It feels great to relax.
 |
 */
-
+include __DIR__.'/config/config.php';
 require ZIKI_BASE_PATH .'/vendor/autoload.php';
 
 $logger = new Monolog\Logger('Ziki');
@@ -30,4 +30,3 @@ Monolog\ErrorHandler::register($logger);
 $ziki = new Ziki\Foundation(ZIKI_BASE_PATH);
 
 $ziki->run();
-

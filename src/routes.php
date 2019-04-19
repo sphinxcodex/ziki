@@ -69,7 +69,11 @@ $router->get('/following', function($request) {
 $router->get('/followers', function($request) {
     return $this->template->render('followers.html');
 });
+$router->get('/auth', function($request) {
+    $ziki = [
+        [ 'name'          => 'Adroit' ],
+        [ 'name'          => 'Twig' ],
+    ];
 
-$router->get('/editor', function($request) {
-    return $this->template->render('editor.html');
+    return $this->template->render('login.html', ['ziki' => $ziki] );
 });
