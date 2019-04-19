@@ -8,7 +8,7 @@ class Template
     private $twig;
 
     public function __construct($templatePath){
-        $this->twig = new Environment(new FilesystemLoader($templatePath));
+        $this->twig = new Environment(new FilesystemLoader($templatePath),['cache'=>ZIKI_BASE_PATH.'storage/cache/views']);
     }
    
     public function render($page, array $parameters = [])
