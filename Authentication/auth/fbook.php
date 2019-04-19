@@ -3,7 +3,7 @@ if (!session_id()) {
   session_start();
 }
 
-require 'vendor/autoload.php';
+require './vendor/autoload.php';
 
 $fb = new Facebook\Facebook([
   'app_id'=>'346578099397815',
@@ -22,12 +22,12 @@ try{
   $access_token = $helper->getAccessToken();
   if(isset($access_token)){
     $_SESSION['accesstoken'] = (string)$access_token;
-    header("Location: https://ziki.hng.tech/home.php");
+    header("Location: https://ziki.hng.tech/index");
     //header("Location: https://localhost/ziki/home.php");
 
   }
   if(isset($_SESSION['accesstoken'])){
-    
+
     try{
         $fb->setDefaultAccessToken($_SESSION['accesstoken']);
         $result = $fb->get('/me?local=en_US&fields=name,email');

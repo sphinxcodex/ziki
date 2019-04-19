@@ -13,7 +13,9 @@
         "monolog/monolog": "^1.24",
         "twig/twig": "^2.0",
         "symfony/finder": "^4.2",
-        "kzykhys/yaml-front-matter": ">=1.0"
+        "kzykhys/yaml-front-matter": ">=1.0",
+        "facebook/graph-sdk": "^5.7",
+        "google/apiclient": "^2.0"
     },
     "autoload": {
         "files": [
