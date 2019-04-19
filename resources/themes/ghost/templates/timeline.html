@@ -1,16 +1,199 @@
-<!-- add header and footer templates here using twig -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Ziki</title>
-  </head>
+{% extends 'layout.html' %} {% block page_content %}
+<style>
+	.author-img {
+		border-radius: 50%;
+	}
 
-  <body>
-    <ul>
-      {% for item in ziki %}
-      <li>{{ item.name }}</li>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+	.btn-primary {
+		background: #280a66;
+		border-radius: 2px;
+		border-color: #280166;
+		font-size: 18px;
+		padding: 11px 22px;
+	}
+
+	input.form-control,
+	textarea.form-control {
+		min-height: 58px;
+		background: #ffffff;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+		border-radius: 2px;
+		border: 0px solid #000;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: normal;
+		letter-spacing: -0.02em;
+		color: rgba(40, 10, 102, 0.5);
+	}
+
+	.timeline-content {
+		display: flex;
+		padding-top: 27px;
+		border-bottom: 1px solid #ebebeb;
+	}
+
+	.author-name {
+		font-family: Lato;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 13px;
+		line-height: normal;
+		letter-spacing: -0.02em;
+		color: #280a66;
+	}
+
+	.post-title {
+		font-family: Lato;
+		font-style: normal;
+		font-weight: 700;
+		font-size: 20px;
+		line-height: normal;
+		letter-spacing: -0.02em;
+		color: #1b1b1b;
+	}
+
+	.post-body {
+		-webkit-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+	}
+
+	.post-avatar {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		position: relative;
+		-ms-flex-negative: 0;
+		flex-shrink: 0;
+		-ms-flex-line-pack: center;
+		align-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: baseline;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	.comment-link {
+		font-family: Lato;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: normal;
+		letter-spacing: -0.02em;
+		color: #280a66;
+	}
+
+	.post-meta {
+		font-family: Lato;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 10px;
+		line-height: normal;
+		letter-spacing: -0.02em;
+		color: #717171;
+	}
+
+	.page-title {
+		font-family: Lato;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: normal;
+		letter-spacing: -0.02em;
+		color: #280a66;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<form>
+				<input type="text" class="form-control" placeholder="Title" />
+				<textarea class="form-control mt-3" placeholder="Publication" rows="7"></textarea>
+				<div class="text-right">
+					<button class="btn btn-primary mt-3">Publish</button>
+				</div>
+			</form>
+
+			<div class="timeline-container mt-5">
+				<div>
+					<h3 class="page-title">Timeline</h3>
+					<div style="border: 2px solid #280a66; width:70px;"></div>
+					<div style="border: 1px solid #EBEBEB;"></div>
+				</div>
+				<div class="timeline-content">
+					<div class="post-avatar">
+						<img src="https://via.placeholder.com/50" alt="Ziki" class="img-fluid author-img mr-4" />
+					</div>
+
+					<div class="post-body">
+						<h3 class="author-name">Thomas Matthew</h3>
+						<h1 class="post-title">
+							Looking For Where To Spend Christmas in the conform of your home
+						</h1>
+						<p class="post-content">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+							incididunt ut labore et dolore , Lorem ipsum dolor sit amet, consectetur
+							adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+						</p>
+						<div class="row pb-3">
+							<div class="col text-left post-meta">2nd April, 2019 : 04:30</div>
+							<div class="col text-right"><a href="#" class="comment-link">Comment</a></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="timeline-content">
+					<div class="post-avatar">
+						<img src="https://via.placeholder.com/50" alt="Ziki" class="img-fluid author-img mr-4" />
+					</div>
+
+					<div class="post-body">
+						<h3 class="author-name">Thomas Matthew</h3>
+						<h1 class="post-title">
+							Looking For Where To Spend Christmas in the conform of your home
+						</h1>
+						<p class="post-content">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+							incididunt ut labore et dolore , Lorem ipsum dolor sit amet, consectetur
+							adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+						</p>
+						<div class="row pb-3">
+							<div class="col text-left post-meta">2nd April, 2019 : 04:30</div>
+							<div class="col text-right"><a href="#" class="comment-link">Comment</a></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="timeline-content">
+					<div class="post-avatar">
+						<img src="https://via.placeholder.com/50" alt="Ziki" class="img-fluid author-img mr-4" />
+					</div>
+
+					<div class="post-body">
+						<h3 class="author-name">Thomas Matthew</h3>
+						<h1 class="post-title">
+							Looking For Where To Spend Christmas in the conform of your home
+						</h1>
+						<p class="post-content">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+							incididunt ut labore et dolore , Lorem ipsum dolor sit amet, consectetur
+							adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+						</p>
+						<div class="row pb-3">
+							<div class="col text-left post-meta">2nd April, 2019 : 04:30</div>
+							<div class="col text-right"><a href="#" class="comment-link">Comment</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock page_content %}
