@@ -1,6 +1,5 @@
 <?php
 namespace Ziki\Http;
-
 class Router
 {
     private $request;

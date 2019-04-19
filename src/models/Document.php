@@ -4,10 +4,8 @@
  * add the symphony class
  * add the Frontmatter classes.
  */
-
-use Parsedown;
-use Symfony\Component\Finder\SplFileInfo;
-use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Finder\Finder;
+use KzykHys\FrontMatter\FrontMatter;
 
 class Document{
     /**
@@ -64,26 +62,5 @@ class Document{
     public function file()
     {
         return $this->file;
-    }
-    /**
-     * @return string
-     */
-    public function slug()
-    {
-        return $this->slug;
-    }
-    
-
-    public function metaAndHtml()
-    {
-        $content               = file_get_contents($this->file->getPathname());
-        list($meta, $markdown) = explode('---', $content, 2);
-        $meta                  = Yaml::parse($meta);
-        $parsedown             = new Parsedown();
-        $html                  = $parsedown->text($markdown);
-        if (!isset($meta['title'])) {
-            $meta['title'] = '';
-        }
-        return [$meta, $html];
     }
 }
