@@ -39,6 +39,26 @@ $router->get('/contact-us', function($request) {
     return $this->template->render('contact-us.html', ['ziki' => $ziki] );
 });
 
-$router->get('/settings', function($request) {
-    return $this->template->render('settings.html');
+$router->get('/published-posts', function($request) {
+    return $this->template->render('published-posts.html');
+});
+
+$router->get('/theme', function($request) {
+    return $this->template->render('theme.html');
+});
+
+$router->get('/profile', function($request) {
+    return $this->template->render('profile_page.html');
+});
+
+$router->get('/following', function($request) {
+    return $this->template->render('following.html');
+});
+
+$router->get('/followers', function($request) {
+    return $this->template->render('followers.html');
+});
+
+$router->get('/editor', function($request) {
+    return $this->template->render('editor.html');
 });
