@@ -8,7 +8,7 @@
  */
 /** Loads the Ziki Environment and Theme */
 
-$app = require( dirname( __FILE__ ) . '/src/bootstrap.php' );
+$app = require('src/bootstrap.php' );
 
 $router = new Router(new Request);
 
