@@ -20,7 +20,7 @@ define('ZIKI_BASE_PATH', __DIR__);
 | loading any of our classes later on. It feels great to relax.
 |
 */
-include 'config\config.php';
+require ZIKI_BASE_PATH .'/config/config.php';
 require ZIKI_BASE_PATH .'/vendor/autoload.php';
 
 $logger = new Monolog\Logger('Ziki');
