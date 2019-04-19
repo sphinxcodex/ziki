@@ -58,3 +58,7 @@ $router->get('/following', function($request) {
 $router->get('/followers', function($request) {
     return $this->template->render('followers.html');
 });
+
+$router->get('/df_editor', function($request) {
+    return $this->template->render('df_editor.html');
+});
