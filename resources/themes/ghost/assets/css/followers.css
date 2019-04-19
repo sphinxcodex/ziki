@@ -1,0 +1,74 @@
+.top-bar {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .nav-tabs .nav-link.active {
+    border-top: 0px solid #280966 !important;
+    border-right: 0px solid #280966 !important;
+    border-left: 0px solid #280966 !important;
+    border-bottom: 4px solid #280966 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  }
+  .nav-tabs .nav-link {
+    color: #280966;
+  }
+  .timeline-wrapper {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .post-area {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    background: #eee;
+    height: 100%;
+  }
+
+  .post-content {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid grey;
+    width: 620px;
+    margin-left:75px;
+  }
+  .author-image .side-header {
+    display: flex;
+    justify-content: center;
+  }
+  .post-author {
+    color: #280966;
+  }
+  .post-title {
+  }
+  .post-detail {
+    width: 450px;
+  }
+  .post-action-bar {
+    color: #280966;
+  }
+  
+  .follow-button {
+    background: #280a66;
+    border: 1px solid #280a66;
+    float: right;
+    margin: -70px -100px 0 0;
+  }
+  
+  .following-button {
+    background: #ffffff;
+    color: #280a66;
+    border: 2px solid grey;
+    float: right;
+    margin: -70px -100px 0 0;
+    border-radius: none;
+  }
+  
+  span {
+   display: inline-block;
+   font-size: 15px;
+   margin: 20px 0 0 60px;
+  }
+  
+  .fa-search {
+    padding-left: 15px;
+  }
