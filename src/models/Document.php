@@ -4,11 +4,11 @@
  * add the symphony class
  * add the Frontmatter classes.
  */
-use Symfony\Component\Finder;
+use Symfony\Component\Finder\Finder;
 use KzykHys\FrontMatter\FrontMatter;
 
 class Document{
-    //define an instance of the symfony clss
+    //define an instance of the symfony class
     //define an instance of the frontMatter class
 
     public function __construct(Finder $finder, FrontMatter $parser) {
