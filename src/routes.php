@@ -38,7 +38,6 @@ $router->post('/timeline', function($request) {
 $router->get('/timeline', function() {
     $ziki = new Post();
     $ziki = $ziki->getPost();
-    var_dump($ziki);  die();
     return $this->template->render('timeline.html', ['ziki' => $ziki] );
 });
 

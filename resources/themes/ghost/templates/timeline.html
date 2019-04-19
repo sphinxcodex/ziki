@@ -131,92 +131,36 @@
           <div style="border: 2px solid #280a66; width:70px;"></div>
           <div style="border: 1px solid #EBEBEB;"></div>
         </div>
-        <div class="timeline-content">
-          <div class="post-avatar">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Ziki"
-              class="img-fluid author-img mr-4"
-            />
-          </div>
+        
+        <!-- Posts -->
+        
+        {% for post in ziki %}
+          <div class="timeline-content">
+            <div class="post-avatar">
+              <img
+                src="https://via.placeholder.com/50"
+                alt="Ziki"
+                class="img-fluid author-img mr-4"
+              />
+            </div>
 
-          <div class="post-body">
-            <h3 class="author-name">Thomas Matthew</h3>
-            <h1 class="post-title">
-              Looking For Where To Spend Christmas in the conform of your home
-            </h1>
-            <p class="post-content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore
-            </p>
-            <div class="row pb-3">
-              <div class="col text-left post-meta">2nd April, 2019 : 04:30</div>
-              <div class="col text-right">
-                <a href="#" class="comment-link">Comment</a>
+            <div class="post-body">
+              <h3 class="author-name">Thomas Matthew</h3>
+              <h1 class="post-title">
+                {{post.title}}
+              </h1>
+              <p class="post-content">
+                {{post.body}}
+              </p>
+              <div class="row pb-3">
+                <div class="col text-left post-meta">{{post.timestamp}}</div>
+                <div class="col text-right">
+                  <a href="#" class="comment-link">Comment</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="timeline-content">
-          <div class="post-avatar">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Ziki"
-              class="img-fluid author-img mr-4"
-            />
-          </div>
-
-          <div class="post-body">
-            <h3 class="author-name">Thomas Matthew</h3>
-            <h1 class="post-title">
-              Looking For Where To Spend Christmas in the conform of your home
-            </h1>
-            <p class="post-content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore
-            </p>
-            <div class="row pb-3">
-              <div class="col text-left post-meta">2nd April, 2019 : 04:30</div>
-              <div class="col text-right">
-                <a href="#" class="comment-link">Comment</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-content">
-          <div class="post-avatar">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Ziki"
-              class="img-fluid author-img mr-4"
-            />
-          </div>
-
-          <div class="post-body">
-            <h3 class="author-name">Thomas Matthew</h3>
-            <h1 class="post-title">
-              Looking For Where To Spend Christmas in the conform of your home
-            </h1>
-            <p class="post-content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore
-            </p>
-            <div class="row pb-3">
-              <div class="col text-left post-meta">2nd April, 2019 : 04:30</div>
-              <div class="col text-right">
-                <a href="#" class="comment-link">Comment</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>

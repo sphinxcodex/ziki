@@ -21,14 +21,17 @@ class Post{
         $parsedown  = new Parsedown();
         $header_html = $parsedown->text($title);
         // Extract the title
+        /*
         $arr = explode('</h1>', $header_html);
         $head = str_replace('<h1>','',$arr[0]);
-        $header = str_replace(' ', '-', $head);
-        $time = date("Y-m-d h:i:sa");
+        $header = str_replace(' ', '-', $head);*/
+        $time = date("F j, Y, g:i a");
         $timestamp = strtotime($time);
-        $file = $header."-".$timestamp;
+        //$file = $header."-".$timestamp;
+        $file = $timestamp;
         $yaml = fopen("./storage/contents/posts/{$file}.yaml", "w") or die ("failed while creating file");
         $document['post_dir'] = "{$site_url}/storage/contents/posts/{$file}.yaml";
+        $document['timestamp'] = $time;
         $result= FrontMatter::dump($document);
         $result = fwrite($yaml, $result);
         fclose($yaml);
@@ -57,6 +60,7 @@ class Post{
                 $content['title'] = $title;
                 $content['body'] = $html;
                 $content['url'] = $yaml['post_dir'];
+                $content['timestamp'] = $yaml['timestamp'];
                 array_push($posts, $content);
             }
             return $posts;
