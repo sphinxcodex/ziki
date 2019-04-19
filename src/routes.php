@@ -27,15 +27,18 @@ $router->post('/timeline', function($request) {
     $title = $_POST['title'];
     $body = $_POST['body'];
     $ziki = new Post();
-    return $ziki->createPost($title, $body);
+    $ziki->createPost($title, $body);
+    $ziki = [
+        [ 'error'  => false ],
+        [ 'message'  => 'Post published successfully' ],
+    ];
+    return $this->template->render('timeline.html', ['ziki' => $ziki]);
 });
 
-$router->get('/timeline', function($request) {
-    $ziki = [
-        [ 'name'          => 'Adroit' ],
-        [ 'name'          => 'Twig' ],
-    ];
-
+$router->get('/timeline', function() {
+    $ziki = new Post();
+    $ziki = $ziki->getPost();
+    var_dump($ziki);  die();
     return $this->template->render('timeline.html', ['ziki' => $ziki] );
 });
 

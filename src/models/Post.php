@@ -5,9 +5,10 @@
  * add the Frontmatter classes.
  */
 
-use Symfony\Component\Finder;
+use Symfony\Component\Finder\Finder;
 use KzykHys\FrontMatter\FrontMatter;
 use KzykHys\FrontMatter\Document;
+use Mni\FrontYAML\Parser;
 
 class Post{
     //define an instance of the symfony clss
@@ -16,23 +17,54 @@ class Post{
         global $site_url;
         $document = new Document();
         $document['title'] = $title;
-        $document['post_dir'] = "{$site_url}/storage/contents/posts/";
         $document->setContent($body);
-        $result= FrontMatter::dump($document);
         $parsedown  = new Parsedown();
         $header_html = $parsedown->text($title);
         // Extract the title
         $arr = explode('</h1>', $header_html);
-        $header = str_replace('<h1>','',$arr[0]);
-        $file = $title."-".date("Y-m-d h:i:sa");
-        $yaml = fopen("./storage/contents/posts/{$header}.yaml", "w") or die ("failed while creating file");
+        $head = str_replace('<h1>','',$arr[0]);
+        $header = str_replace(' ', '-', $head);
+        $time = date("Y-m-d h:i:sa");
+        $timestamp = strtotime($time);
+        $file = $header."-".$timestamp;
+        $yaml = fopen("./storage/contents/posts/{$file}.yaml", "w") or die ("failed while creating file");
+        $document['post_dir'] = "{$site_url}/storage/contents/posts/{$file}.yaml";
+        $result= FrontMatter::dump($document);
         $result = fwrite($yaml, $result);
         fclose($yaml);
         return $result;
     }
     //get post
     public function getPost(){
-
+        global $site_url;
+        $directory = "./storage/contents/posts";
+        $finder = new Finder();
+        // find all files in the current directory
+        $finder->files()->in($directory);
+        $posts = [];
+        if($finder->hasResults()){
+            foreach($finder as $file){
+                $raw = $file->getContents();
+                /*$parsedown  = new Parsedown();
+                $content = $parsedown->text($raw);
+                array_push($posts, $content);*/
+                $parser = new Parser();
+                $document = $parser->parse($raw);
+                $yaml = $document->getYAML();
+                $html = $document->getContent();
+                $parsedown  = new Parsedown();
+                $title = $parsedown->text($yaml['title']);
+                $content['title'] = $title;
+                $content['body'] = $html;
+                $content['url'] = $yaml['post_dir'];
+                array_push($posts, $content);
+            }
+            return $posts;
+        }
+        else{
+            return false;
+            
+        }
     }
     //update post
     public function updatePost(){
