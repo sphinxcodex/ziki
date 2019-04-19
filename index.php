@@ -30,4 +30,3 @@ Monolog\ErrorHandler::register($logger);
 $ziki = new Ziki\Foundation(ZIKI_BASE_PATH);
 
 $ziki->run();
-
