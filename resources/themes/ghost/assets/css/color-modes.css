@@ -35,7 +35,7 @@
   /* THEME TOGGLER STYLING */
   --theme-toggler-grey-bcg: #e0e0e0;
 
-  /* Pubplished Post header */
+  /* Published Post header */
   --published-post-header: transparent;
   /* Top bar link color */
   --top-tab-link: #5c5c5c;
@@ -62,6 +62,23 @@
     --dark-post-text-and-date: #717171;
     --dark-comment-link: #280A66;
 
+<<<<<<< HEAD
     /*USER PAGE */
     --dark-profile-name: #8E9EEE;
+=======
+  /* Top bar link color */
+  --top-tab-link: #ffffff;
+
+  /* Published Post header */
+  --published-post-header: #111111;
+
+  /* POSTS STYLING */
+  --body-of-blog-bg:#464646;
+  --categories-bg-color:#DFDFDF;
+  --blog-post-title-font:#FFFFFF;
+  --post-title-border-bottom: #A4A4A4;
+  --post-title-font-color: #FFFFFF;
+  --post-summary-font-color: #FFFFFF;
+  --post-summary-border-bottom: #EBEBEB;
+>>>>>>> development
 }
