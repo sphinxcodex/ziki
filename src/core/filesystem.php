@@ -18,7 +18,7 @@ class FileSystem{
      * and create a directory if needed
      */
     public static function write($file, $content){
-        makeDir(dirname($file));
+        self::makeDir(dirname($file));
         if(!file_exists($file)){
             touch($file);
             chmod($file, 0644);
