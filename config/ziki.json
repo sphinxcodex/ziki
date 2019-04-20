@@ -1,6 +1,6 @@
 {
     "APP_NAME": "Ziki App",
-    "THEME": "ghost",
+    "THEME":"ghost",
     "ZIKI_CACHE_ENABLED": true,
     "ZIKI_DEBUG_ENABLED": false
 }
