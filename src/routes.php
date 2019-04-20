@@ -1,5 +1,6 @@
 <?php
 
+
 $router->get('/', function($request) {
     $ziki = [
         [ 'name'          => 'Adroit' ],
@@ -58,5 +59,5 @@ $router->get('/followers', function($request) {
 });
 
 $router->get('/editor', function($request) {
-    return $this->template->render('editor.html');
+  return $this->template->render('editor.html');
 });
