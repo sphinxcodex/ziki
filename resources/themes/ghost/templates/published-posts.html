@@ -1,4 +1,119 @@
 {% extends 'layout.html' %} {% block page_content %}
+
+<style>
+  .published-posts ul {
+    list-style: none;
+  }
+
+  .nav-item .navbar-link.active {
+    border-top: 0 solid #280966 !important;
+    border-right: 0 solid #280966 !important;
+    border-left: 0 solid #280966 !important;
+    border-bottom:6px solid #280966 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  }
+
+  .published-posts .nav-item a {
+    color: #5c5c5c;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+    font-size: 20px;
+  }
+
+  .published-posts .nav-item a:hover {
+    color: #280a66;
+    text-decoration: none;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+  }
+
+  .published-posts .nav-item a .active {
+    color: #280a66;
+
+  }
+
+
+  .published-posts .nav-bar {
+    border-bottom: 1px solid #a4a4a4;
+  }
+
+  .published-posts .post-title a {
+    color: #1b1b1b;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+  }
+
+  .published-posts .post-title a:hover {
+    color: #280a66;
+    text-decoration: none;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+  }
+
+  .published-posts .post-author {
+    font-weight: 700;
+    color: #280a66;
+  }
+
+  .published-posts .post-content-summary {
+    color: #717171;
+    font-size: 14px;
+  }
+
+  .published-posts .post-date {
+    color: #717171;
+    font-size: 10px;
+  }
+
+  .published-posts .post-comment a {
+    font-size: 11px;
+    color: #280a66;
+    font-weight: 700;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+  }
+
+  .published-posts .post-comment a:hover {
+    color: #471aa1;
+    text-decoration: none;
+    -webkit-transition: all ease-in .3s;
+    transition: all ease-in .3s;
+  }
+
+  .published-posts .post-item:after {
+    content: "";
+    display: block;
+    position: relative;
+    width: 120%;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  .published-posts .logo-on-page {
+    position: relative;
+    top: -0.5em;
+  }
+
+  @media screen and (max-width:700px) {
+    .published-posts .post-item:after {
+      content: "";
+      display: block;
+      position: relative;
+      width: 90%;
+      border-bottom: 1px solid #ebebeb;
+    }
+
+    .published-posts .nav-bar:after {
+      content: "";
+      display: block;
+      position: relative;
+      width: 90%;
+      border-bottom: 1px solid #a4a4a4;
+      margin-left: 1em;
+    }
+  }
+</style>
+
 <div class="container-fluid published-posts">
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sidebar">
@@ -7,19 +122,19 @@
 
 
     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-      <div class="nav-bar row">
-        <ul class="col-6 d-flex justify-content-start">
-          <li class="nav-item mr-5">
-            <a href="" class="">Published</a>
-          </li>
-          <li class="nav-item mr-5"><a href="" class="">Drafts</a></li>
-        </ul>
-        <div class="col-6 logo-on-page d-flex justify-content-end pb-2">
-          <a href="#">
-            <img src="resources/themes/ghost/assets/build/img/vector.png" alt="ziki logo" class="" />
-          </a>
-        </div>
-      </div>
+        <div class="nav-bar row mt-3">
+            <ul class="col-6 d-flex justify-content-start mb-0 pb-0">
+              <li class="nav-item mr-5 pb-0 mb-0">
+                <a href="" class="navbar-link active">Published</a>
+              </li>
+              <li class="nav-item mr-5 pb-0 mb-0"><a href="" class="navbar-link">Drafts</a></li>
+            </ul>
+            <div class="col-6 logo-on-page d-flex justify-content-end">
+              <a href="#">
+                <img src="resources/themes/ghost/assets/build/img/vector.png" alt="ziki logo" class="" />
+              </a>
+            </div>
+          </div>
 
       <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-5">
 
@@ -29,7 +144,7 @@
 
           <h4 class="post-title">
             <a href="#">
-              Looking For Where To Spend Christmas in the comform of your home
+              Looking For Where To Spend Christmas in the comfort of your home
             </a>
           </h4>
 
@@ -50,7 +165,7 @@
 
           <h4 class="post-title">
             <a href="#">
-              Looking For Where To Spend Christmas in the comform of your home
+              Looking For Where To Spend Christmas in the comfort of your home
             </a>
           </h4>
 
@@ -71,7 +186,7 @@
 
           <h4 class="post-title">
             <a href="#">
-              Looking For Where To Spend Christmas in the comform of your home
+              Looking For Where To Spend Christmas in the comfort of your home
             </a>
           </h4>
 
