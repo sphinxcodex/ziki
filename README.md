@@ -17,15 +17,19 @@ This is the person that downloaded ziki and installed it on their domain. The ow
 This is the person visiting a `ziki` site. When on the site, the users can view posts by the site [owner](##The-owner). If a guest wants to interact with the posts i.e like or comment they can login to the site to access these privilleges. If the site uses [disqus](https://disqus.com/) for commenting, the guest has no access to native login only the site [owner](##The-owner) does.
 
 ### Contributing
-* Make sure you have setup your `PHP` development environment
-* Ensure `composer` is setup on your development environment
-* Ensure you have the current lts version of [NodeJs](https://nodejs.org)
-* Fork your own copy of the repository
-* Clone it 
-* Run `composer install --no-dev`
-* Run `npm install`, `npm run assets` and then `npm start`
-* Go to `localhost:8000` on your browser and you are good to go
-#### The Pull Request Template: 
+
+- Make sure you have setup your `PHP` development environment
+- Ensure `composer` is setup on your development environment
+- Ensure you have the current lts version of [NodeJs](https://nodejs.org)
+- Fork your own copy of the repository
+- Clone it
+- Run `composer install --no-dev`
+- Run `npm install`, `npm run assets -- <theme-name>` and then `npm start -- <theme-name>`.
+  For the current theme, these commands would be `npm run assets -- ghost` and then `npm start -- ghost`.
+- Go to `localhost:8000` on your browser and you are good to go
+
+#### The Pull Request Template:
+
 ```
 PR Tittle : #[STORY_ID] Story description
 
@@ -37,7 +41,9 @@ PR Tittle : #[STORY_ID] Story description
 #### Screenshots (if appropriate)
 #### Questions/Comments:
 ```
+
 #### Pull Request Example:
+
 ```
 #### What does this PR do?
 * It creates the landing page
