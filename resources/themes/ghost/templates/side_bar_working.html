@@ -2,31 +2,6 @@
 
 {% block page_content %}
 <style type="text/css">
-.ql-toolbar.ql-snow {
-    border: 0 !important;
-    box-sizing: border-box;
-    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-    padding: 8px;
-    margin-bottom: 10px;
-    background-color: #F5F5F5;
-    border-radius: 5px;
-}
-
-.ql-editor.ql-blank {
-    box-sizing: border-box;
-    height: 100%;
-    background-color: #F5F5F5;
-    border: 0 !important;
-}
-
-#editor{
-  height: 60vh !important;
-}
-
-.btn.btn-primary.canel-post{background-color: transparent !important; border: 1px solid red; color: red; padding: 6px 20px;}
-.btn.btn-primary.publish-post{background-color: #280a66 !important; border: 1px solid #280a66; padding: 6px 20px;}
-.btn.btn-primary.canel-post, .btn.btn-primary.publish-post{margin-left: 15px;}
-
 .main-content{padding-top: 30px; padding-bottom: 30px;}
 
 .btn-info{background-color: #280a66 !important; border: 0 !important;}
@@ -220,41 +195,24 @@
         <div class="container main-content">
             <!-- Page body goes here -->
             <div class="row">
-                <!-- editing area.. -->
-                <div class="col-12">
-                    <!-- SleekX's code goes here.. -->
-                    <div class="row">
-                        <div class="col-12">
-                            <h4>New Post</h4>
-                            <hr>
-                        </div>
-                    </div>
+            	<!--
+					If you are implimenting this side bar, your 
+					code is meant to be within this axis..
 
-                    <!-- The editor code goes here -->
-                    <div id="form-container">
-                        <form method="GET" action="editor">     
-                            <!-- Quill editor code goes here -->
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="row form-group">
-                                        <div class="col-12">
-                                            <input name="postVal" type="hidden">
-                                            <div id="editor">
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 d-flex flex-row-reverse">
-                                    <input type="submit" class="btn btn-primary publish-post" value="Publish">
-                                    <input type="reset" class="btn btn-primary canel-post" value="Cancel">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+					Beware of every other place..
+
+					BE... Work around maing this file includable to
+					avoid stories that touches..
+				.
+				.
+				.
+				.
+				.
+				.
+				.
+            	-->
+
             </div>
         </div> 
     </div>
