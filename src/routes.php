@@ -60,7 +60,3 @@ $router->get('/followers', function($request) {
 $router->get('/editor', function($request) {
     return $this->template->render('editor.html');
 });
-
-$router->get('/side_bar', function($request) {
-    return $this->template->render('side_bar.html');
-});
