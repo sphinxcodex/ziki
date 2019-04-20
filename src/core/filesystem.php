@@ -21,7 +21,7 @@ class FileSystem{
         makeDir(dirname($file));
         if(!file_exists($file)){
             touch($file);
-            chmod($file);
+            chmod($file, 0644);
         }
         if(is_writable($file)){
             return file_put_contents($file,$content);
