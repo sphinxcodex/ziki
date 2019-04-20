@@ -44,12 +44,12 @@ class Theme {
                 return false;
             }
 
-            $arr[]= $files;
+            $files[]= $files;
         }
 
         $themeJson_files_array = [];
 
-       foreach ($arr[0] as $file)
+       foreach ($files[0] as $file)
         {
             $themeJson_files_array[] = $file->getRealPath();
         }
