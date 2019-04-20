@@ -1,4 +1,6 @@
 <?php
+use Ziki\Core\FileSystem as FileSystem;
+
 
 $router->get('/', function($request) {
     $ziki = [
@@ -58,5 +60,7 @@ $router->get('/followers', function($request) {
 });
 
 $router->get('/editor', function($request) {
-    return $this->template->render('editor.html');
+    echo FileSystem::write("README.md","This is used in testing");
+
+    //  return $this->template->render('editor.html');
 });
