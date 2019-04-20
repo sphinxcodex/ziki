@@ -34,6 +34,10 @@ const devBuild =
     src: {
       ghost: 'resources/themes/ghost/assets/'
       // other themes' paths get added here
+    },
+    build: {
+      ghost: 'resources/themes/ghost/assets/build/'
+      // other themes' paths get added here
     }
   },
   // Node Modules
@@ -58,7 +62,7 @@ const imgConfig = {
   // original images reside in "img/" subfolder
   src: dir.src[arg.theme] + 'img/**/*',
   // processed images do not
-  build: dir.src[arg.theme]
+  build: dir.build[arg.theme] + '/img/'
 };
 const optimizeImages = () => {
   return gulp
@@ -77,7 +81,7 @@ const cssConfig = {
   // each page's stylesheet resides in "css/" subfolder
   src: dir.src[arg.theme] + 'css/**/*',
   // main.css does not
-  build: dir.src[arg.theme]
+  build: dir.build[arg.theme]
 };
 const processCSS = () => {
   var postCssOpts = [
