@@ -11,7 +11,7 @@ class Template
     {
         $this->twig = new Environment( new FilesystemLoader($templatePath),[
             'auto_reload' => true,
-            'cache' => ZIKI_BASE_PATH.'storage/cache/views',
+            'cache' => ZIKI_BASE_PATH.'/storage/cache/views',
         ]);
     }
    
