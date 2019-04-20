@@ -96,6 +96,7 @@
         color: #280a66;
       }
 
+      /* beginning of styling for the login modal */
       .login-modal-popup-left-column{
 
         background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%), #3B0E75;
@@ -140,6 +141,13 @@
         color:#111;
       }
 
+      .login-dialog{
+        padding:30px;
+        padding-top:100px;
+        padding-bottom:50px;
+        box-sizing: border-box;
+      }
+
       .google-signin-btn{
         background: #FFFFFF;
         box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
@@ -181,8 +189,8 @@
       }
 
       .modal-dialog-container{
-    margin:150px auto;
-  }
+        margin:150px auto;
+      }
 
   .logo{
     
@@ -190,14 +198,37 @@
     margin-top:50px;
   }
   @media only screen and (max-width: 768px) {
-  /* For mobile phones: */
+  /* modal styling For mobile phones: */
+  #modalLoginForm{
+    background: -webkit-linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%), #3B0E75 !important;
+  }
+  .login-modal-popup-left-column{
+
+    background: transparent;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+  }
+  .login-modal-popup-right-column{
+    width: 87%;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.26);
+    box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+  }
+  .login-dialog{
+    padding: 50px 30px;
+    box-sizing: border-box;
+  }
+  .modal-content{
+    background: transparent;
+    border: none;
+  }
   .greetings{
     margin-top: 0px;
-    
   }
 
   .logo{
-    
     padding-bottom:30px;
     box-sizing: border-box; 
   }
@@ -205,10 +236,30 @@
   .modal-dialog-container{
     margin:100px auto;
   }
+  .login-msg{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: normal;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+    color:#ffffff;
+  }
+  .bottom-msg{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 9px;
+    line-height: normal;
+    text-align: justify;
+    color: #ffffff;
+  }
 }
 
       
     @media screen and (max-width: 768px) {
+      /* sidebar styling for mobile phone */
 		#sidebar {
       background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%), #3B0E75 !important;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -264,7 +315,7 @@
 <div class="modal fade"  id="modalLoginForm" style="background: rgba(255, 255, 255, 0.92);" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-container"  role='document'>
-    <div class="modal-content" style="background-color:#111;">
+    <div class="modal-content">
       <div class="row login-modal-border-radius">
           <div class="col-md-6 login-modal-popup-left-column">
               <div class="row">
@@ -279,7 +330,7 @@
               </div>
             </div>
             <div class="col-md-6 login-modal-popup-right-column">
-                <div class="row" style="padding:30px;padding-top:100px;padding-bottom:50px;box-sizing: border-box;">
+                <div class="row login-dialog">
                     <div class="col-md-12">
                       <p class="login-msg">LOGIN TO CONTINUE</p>
                     </div>
@@ -300,11 +351,11 @@
                               <img src="http://www.stickpng.com/assets/images/584ac2d03ac3a570f94a666d.png" style="width:100%;">
                           </div>
                           <div class="col-10">
-                            <p style="color:#111;"><a href="#" class="auth-link">Sign in with FaceBook</a></p>
+                            <p style="color:#111;"><a href="#" class="auth-link">Sign in with Facebook</a></p>
                           </div>
                       </div>
                     </div>
-                    <div class="col-md-12" style="margin-top:20px;box-sizing: border-box;">
+                    <div class="col-md-12" style="margin-top:20px;box-sizing: border-box; text-align: center">
                       <p class="bottom-msg">
                         To make this site work, we log user data and 
                           share it with service providers.</p>
