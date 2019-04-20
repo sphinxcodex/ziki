@@ -27,6 +27,80 @@ class Theme {
            $dir_path_array[] = $dir->getRealPath();
          }
 
-         print_r($dir_path_array);
+         return $dir_path_array;
+    }
+
+    public function get_themeJsonFile()
+    {
+        $themes_dir = $this->get_themes_dir();
+        
+        $files = [];
+        foreach ( $themes_dir as $theme_dir)
+        {
+
+            $files = $this->finder->files()->in($theme_dir)->name('theme.json');
+            if(!$files->hasResults())
+            {
+                return false;
+            }
+
+            $arr[]= $files;
+        }
+
+        $themeJson_files_array = [];
+
+       foreach ($arr[0] as $file)
+        {
+            $themeJson_files_array[] = $file->getRealPath();
+        }
+
+        return $themeJson_files_array;
+
+    }
+
+    public  function all()
+    {
+        $get_themeJsonFiles = $this->get_themeJsonFile();
+        $resultContent=[];
+
+         foreach ($get_themeJsonFiles as $get_themeJsonFile)
+         {
+            $fileContent= file_get_contents($get_themeJsonFile);
+            if(!empty($fileContent))
+            $resultContent[]= json_decode($fileContent,true);
+         }
+
+         return $resultContent;
+         
+    }
+
+    public function activate($theme)
+    {
+        $themePath = ZIKI_BASE_PATH.'/resources/themes/'.$theme;
+        if(!is_dir($themePath) || !file_exists($themePath))
+        {
+            return false;
+        }
+
+        $themeConfigPath = ZIKI_BASE_PATH.'/config/ziki.json';
+        $ConfigContent = '{
+            "APP_NAME": "Ziki App",
+            "THEME":"'.$theme.'",
+            "ZIKI_CACHE_ENABLED": true,
+            "ZIKI_DEBUG_ENABLED": false
+        }';
+
+        $content = json_decode(file_get_contents($themeConfigPath),true);
+
+        if($theme !== $content['THEME'] )
+        {
+            $configtheme = file_put_contents($themeConfigPath,$ConfigContent);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 }
