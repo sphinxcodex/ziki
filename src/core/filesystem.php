@@ -24,7 +24,7 @@ class FileSystem{
             chmod($file);
         }
         if(is_writable($file)){
-            return file_put_contents($file,$content)
+            return file_put_contents($file,$content);
         }
     }
     /**
