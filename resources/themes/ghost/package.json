@@ -1,16 +1,17 @@
 {
-  "name": "ziki",
+  "name": "ghost",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "gulpfile.js",
+  "private": true,
   "scripts": {
-    "start": "npx gulp default --theme",
-    "assets": "npx gulp devstart --theme"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^9.5.1",
     "browser-sync": "^2.26.3",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
@@ -20,14 +21,11 @@
     "gulp-concat": "^2.6.1",
     "gulp-concat-css": "^3.1.0",
     "gulp-connect-php": "^1.0.3",
-    "gulp-postcss": "^8.0.0",
-    "postcss-assets": "^5.0.0"
-  },
-  "dependencies": {
-    "autoprefixer": "^9.5.1",
     "gulp-imagemin": "^5.0.3",
     "gulp-newer": "^1.4.0",
     "gulp-noop": "^1.0.0",
-    "gulp-sourcemaps": "^2.6.5"
+    "gulp-postcss": "^8.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "postcss-assets": "^5.0.0"
   }
 }
