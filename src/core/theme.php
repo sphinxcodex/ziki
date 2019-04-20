@@ -87,7 +87,8 @@ class Theme {
             "APP_NAME": "Ziki App",
             "THEME":"'.$theme.'",
             "ZIKI_CACHE_ENABLED": true,
-            "ZIKI_DEBUG_ENABLED": false
+            "ZIKI_DEBUG_ENABLED": false,
+            "ZIKI_PROD" : false
         }';
 
         $content = json_decode(file_get_contents($themeConfigPath),true);
