@@ -10,7 +10,6 @@ Ziki relies on the use of two terms:
 `Owner` and `Guest`
 
 ## The owner
-
 This is the person that downloaded ziki and installed it on their domain. The owner has permission to view their timeline, write and publish posts and follow other `ziki` users' posts using RSS. The owner only has an additional link called `timeline` which is private. The owner can choose to make their timeline public.
 
 ## The Guest
