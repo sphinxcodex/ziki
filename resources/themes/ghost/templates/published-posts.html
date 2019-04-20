@@ -1,186 +1,214 @@
 {% extends 'layout.html' %} {% block page_content %}
 
-<div class="container-fluid">
-  <div
-    class="row pubpost-header d-flex flex-row justify-content-between pt-5 pb-1 px-3 flex-nowrap"
-  >
-    <div class="col-3 nothing"></div>
-    <div class="col pubpostnav-area">
-      <nav class="navbar pb-0">
-        <ul class="d-flex flex-row navbar-nav ">
-          <li class="p-3 active">
-            <a href="" class="pubdrafts">Published</a>
+<style>
+  /*STANDARDS*/
+  .published-posts ul {
+    list-style: none;
+  }
+
+  /*NAVBAR STYLING*/
+
+  .published-posts .logo-on-page {
+    margin-bottom: 1em;
+  }
+
+  .published-posts ul .nav-item a {
+    color: #5c5c5c;
+    transition: all ease-in 0.3s;
+    font-size: 20px;
+  }
+
+
+  .published-posts ul .nav-item a:hover {
+    color: #280a66;
+    text-decoration: none;
+    transition: all ease-in 0.3s;
+  }
+
+  .published-posts ul .nav-item a:active {
+    border-bottom: 1px solid #280a66;
+    padding-bottom: 1.47em;
+  }
+
+  .published-posts .nav-bar:after {
+    content: "";
+    display: block;
+    position: relative;
+    width: 95%;
+    border-bottom: 1px solid #a4a4a4;
+  }
+
+
+
+  /*POSTS STYLING*/
+  .published-posts .post-title a {
+    color: #1b1b1b;
+    transition: all ease-in 0.3s;
+  }
+
+  .published-posts .post-title a:hover {
+    color: #280a66;
+    text-decoration: none;
+    transition: all ease-in 0.3s;
+  }
+
+  .published-posts .post-author {
+    font-weight: bold;
+    color: #280a66;
+  }
+
+  .published-posts .post-content-summary {
+    color: #717171;
+    font-size: 14px;
+  }
+
+  .published-posts .post-date {
+    color: #717171;
+    font-size: 10px;
+  }
+
+  .published-posts .post-comment a {
+    font-size: 11px;
+    color: #280a66;
+    font-weight: bold;
+    transition: all ease-in 0.3s;
+  }
+
+  .published-posts .post-comment a:hover {
+    color: #471aa1;
+    text-decoration: none;
+    transition: all ease-in 0.3s;
+  }
+
+  .published-posts .post-item:after {
+    content: "";
+    display: block;
+    position: relative;
+    width: 120%;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+
+  /*MEDIA QUERIES*/
+  @media screen and (max-width: 700px) {
+    .published-posts .post-item:after {
+      content: "";
+      display: block;
+      position: relative;
+      width: 90%;
+      border-bottom: 1px solid #ebebeb;
+    }
+
+    .published-posts .nav-bar:after {
+      content: "";
+      display: block;
+      position: relative;
+      width: 90%;
+      border-bottom: 1px solid #a4a4a4;
+      margin-left: 1em;
+    }
+
+  }
+</style>
+
+<div class="container-fluid published-posts">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sidebar">
+
+    </div>
+
+
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <div class="nav-bar row">
+        <ul class="col-6 d-flex justify-content-start">
+          <li class="nav-item mr-5">
+            <a href="" class="">Published</a>
           </li>
-          <li class="p-3"><a href="" class="pubdrafts">Drafts</a></li>
+          <li class="nav-item mr-5"><a href="" class="">Drafts</a></li>
         </ul>
-      </nav>
-    </div>
-    <div class="pubpost-logo-area col-sm-2 d-flex justify-content-end pb-4">
-      <img src="resources/themes/ghost/assets/img/vector.png" alt="ziki logo" class="" />
-    </div>
-  </div>
-
-  <div class="row pubpost-content py-2">
-    <div class="col-3 sidebar"></div>
-
-    <div class="col">
-      <div class="pubpost-post-area row">
-        <div class="col-sm-9 pub-area">
-          <div class="pubpost-post px-5 py-4">
-            <h4 class="pubpost-postauthor">Samaila Bala</h4>
-
-            <h3 class="">
-              <a href="" class="pubpost-post-title">
-                Looking For Where To Spend Christmas in the comform of your home
-              </a>
-            </h3>
-
-            <p class="pubpost-postbody">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore
-            </p>
-
-            <p class="pubpost-date">2nd April, 2019 : 04:30</p>
-          </div>
-
-          <div class="pubpost-post px-5 py-4">
-            <h4 class="pubpost-postauthor">Samaila Bala</h4>
-
-            <h3 class="">
-              <a href="" class="pubpost-post-title">
-                Looking For Where To Spend Christmas in the comform of your home
-              </a>
-            </h3>
-
-            <p class="pubpost-postbody">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore
-            </p>
-
-            <p class="pubpost-date">2nd April, 2019 : 04:30</p>
-          </div>
-
-          <div class="pubpost-post px-5 py-4">
-            <h4 class="pubpost-postauthor">Samaila Bala</h4>
-
-            <h3 class="">
-              <a href="" class="pubpost-post-title">
-                Looking For Where To Spend Christmas in the comform of your home
-              </a>
-            </h3>
-
-            <p class="pubpost-postbody">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore
-            </p>
-
-            <p class="pubpost-date">2nd April, 2019 : 04:30</p>
-          </div>
-
-          <div class="pubpost-post px-5 py-4">
-            <h4 class="pubpost-postauthor">Samaila Bala</h4>
-
-            <h3 class="">
-              <a href="" class="pubpost-post-title">
-                Looking For Where To Spend Christmas in the comform of your home
-              </a>
-            </h3>
-
-            <p class="pubpost-postbody">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore
-            </p>
-
-            <p class="pubpost-date">2nd April, 2019 : 04:30</p>
-          </div>
-
-          <div class="pubpost-post px-5 py-4">
-            <h4 class="pubpost-postauthor">Samaila Bala</h4>
-
-            <h3 class="">
-              <a href="" class="pubpost-post-title">
-                Looking For Where To Spend Christmas in the comform of your home
-              </a>
-            </h3>
-
-            <p class="pubpost-postbody">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore
-            </p>
-
-            <p class="pubpost-date">2nd April, 2019 : 04:30</p>
-          </div>
-
-          <div class="pubpost-post px-5 py-4">
-            <h4 class="pubpost-postauthor">Samaila Bala</h4>
-
-            <h3 class="">
-              <a href="" class="pubpost-post-title">
-                Looking For Where To Spend Christmas in the comform of your home
-              </a>
-            </h3>
-
-            <p class="pubpost-postbody">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore
-            </p>
-
-            <p class="pubpost-date">2nd April, 2019 : 04:30</p>
-          </div>
-
-          <div class="pubpost-post px-5 py-4">
-            <h4 class="pubpost-postauthor">Samaila Bala</h4>
-
-            <h3 class="">
-              <a href="" class="pubpost-post-title">
-                Looking For Where To Spend Christmas in the comform of your home
-              </a>
-            </h3>
-
-            <p class="pubpost-postbody">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore
-            </p>
-
-            <p class="pubpost-date">2nd April, 2019 : 04:30</p>
-          </div>
-
-          <div class="pubpost-post px-5 py-4">
-            <h4 class="pubpost-postauthor">Samaila Bala</h4>
-
-            <h3 class="">
-              <a href="" class="pubpost-post-title">
-                Looking For Where To Spend Christmas in the comform of your home
-              </a>
-            </h3>
-
-            <p class="pubpost-postbody">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore
-            </p>
-
-            <p class="pubpost-date">2nd April, 2019 : 04:30</p>
-          </div>
+        <div class="col-6 logo-on-page d-flex justify-content-end pb-2">
+          <a href="#">
+            <img src="resources/themes/ghost/assets/img/vector.png" alt="ziki logo" class="" />
+          </a>
         </div>
       </div>
+
+      <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-5">
+
+
+        <div class="post-item mt-3">
+          <p class="post-author">Samaila Bala</p>
+
+          <h4 class="post-title">
+            <a href="#">
+              Looking For Where To Spend Christmas in the comform of your home
+            </a>
+          </h4>
+
+          <p class="post-content-summary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore
+          </p>
+          <div class="row">
+            <p class="post-date mb-4 col-6 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
+            <p class="post-comment mb-4 col-6 d-flex justify-content-end"> <a href="">Comment</a> </p>
+          </div>
+        </div>
+
+        <div class="post-item mt-3">
+          <p class="post-author">Samaila Bala</p>
+
+          <h4 class="post-title">
+            <a href="#">
+              Looking For Where To Spend Christmas in the comform of your home
+            </a>
+          </h4>
+
+          <p class="post-content-summary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore
+          </p>
+          <div class="row">
+            <p class="post-date mb-4 col-6 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
+            <p class="post-comment mb-4 col-6 d-flex justify-content-end"> <a href="">Comment</a> </p>
+          </div>
+        </div>
+
+        <div class="post-item mt-3">
+            <p class="post-author">Samaila Bala</p>
+  
+            <h4 class="post-title">
+              <a href="#">
+                Looking For Where To Spend Christmas in the comform of your home
+              </a>
+            </h4>
+  
+            <p class="post-content-summary">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore
+            </p>
+            <div class="row">
+              <p class="post-date mb-4 col-6 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
+              <p class="post-comment mb-4 col-6 d-flex justify-content-end"> <a href="">Comment</a> </p>
+            </div>
+          </div>
+
+      </div>
+
+
+
     </div>
   </div>
+
+
+
+
   <!-- using semantic tags -->
 </div>
 
