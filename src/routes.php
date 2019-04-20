@@ -46,7 +46,7 @@ $router->get('/theme', function($request) {
 });
 
 $router->get('/profile', function($request) {
-    return $this->template->render('profile.html');
+    return $this->template->render('profile_page.html');
 });
 
 $router->get('/following', function($request) {
