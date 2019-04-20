@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "npx gulp",
-    "assets": "npx gulp devstart"
+    "start": "npx gulp default --theme",
+    "assets": "npx gulp devstart --theme"
   },
   "keywords": [],
   "author": "",
