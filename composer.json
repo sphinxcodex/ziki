@@ -15,7 +15,13 @@
         "symfony/finder": "^4.2",
         "kzykhys/yaml-front-matter": ">=1.0"
     },
+    "config": {
+        "optimize-autoloader": true
+    },
     "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
         "psr-4": {
             "Ziki\\": "src/"
         }
