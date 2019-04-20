@@ -149,6 +149,7 @@
       }
 
       .google-signin-btn{
+        cursor: pointer;
         background: #FFFFFF;
         box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
@@ -156,6 +157,7 @@
       }
 
       .facebook-signin-btn{
+        cursor: pointer;
         background: #FFFFFF;
         box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
@@ -197,8 +199,14 @@
     padding-left: 70px;
     margin-top:50px;
   }
-  @media only screen and (max-width: 768px) {
+  .modal-close-button{
+    display: none;
+  }
+  @media only screen and (max-width: 767px) {
   /* modal styling For mobile phones: */
+  .modal-close-button{
+    display: initial;
+  }
   #modalLoginForm{
     background: -webkit-linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%), #3B0E75 !important;
   }
@@ -225,11 +233,12 @@
     border: none;
   }
   .greetings{
-    margin-top: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .logo{
-    padding-bottom:30px;
+    margin-top: 0px;
     box-sizing: border-box; 
   }
 
@@ -319,9 +328,15 @@
       <div class="row login-modal-border-radius">
           <div class="col-md-6 login-modal-popup-left-column">
               <div class="row">
-                <div class="col-md-12 logo">
-                  <img src="resources/themes/ghost/assets/img/faviconimage.png">
-                </div>
+                    <div class="col-6 logo">
+                        <img src="resources/themes/ghost/assets/img/faviconimage.png">
+                      </div>
+                      <div class="col-6">
+                        <button class="modal-close-button" style="background: transparent; color:#fff; border: none; font-size: 3rem;     position: relative;
+    top: -30px;
+    left: 60px;" data-dismiss="modal">&times;</button>
+                      </div>
+
               
                 <div class="col-md-12 greetings" >
                   <h3 class="text-center ziki-Welcome-msg" style="color:#fff;">Welcome to Ziki</h3>
