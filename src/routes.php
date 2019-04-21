@@ -1,14 +1,11 @@
 <?php
 
-
 $router->get('/', function($request) {
-    $ziki = [
-        [ 'name'          => 'Adroit' ],
-        [ 'name'          => 'Olu' ],
-        [ 'name'          => 'Amuwo' ],
-    ];
+    $directory = "./storage/contents/";
+    $ziki = new Ziki\Core\Document($directory);
+    $post = $ziki->get();
     // Render our view
-    return $this->template->render('index.html', ['ziki' => $ziki] );
+    return $this->template->render('index.html', ['posts' => $post] );
 });
 
 $router->get('/blog-details', function($request) {
