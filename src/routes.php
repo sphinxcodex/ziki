@@ -26,7 +26,7 @@ $router->get('/timeline', function($request) {
     return $this->template->render('timeline.html', ['ziki' => $ziki] );
 });
 
-$router->get('/contact-us', function($request) {
+$router->post('/contact-us', function($request) {
     $ziki = [
         [ 'name'          => 'Adroit' ],
         [ 'name'          => 'Twig' ],
