@@ -7,20 +7,24 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#sidebar").mCustomScrollbar({
+        $(".sidebar-container").mCustomScrollbar({
             theme: "minimal"
         });
 
-        $('#dismiss, .overlay').on('click', function () {
+        $('#sidebarCollapse').on('click', function () {
+          if ($('.sidebar-container.sidebar-shown')[0]) {
+            // sidebar is shown so hide it
+            $('.sidebar-container').removeClass('sidebar-shown');
             $('#sidebar').removeClass('active');
             $('.overlay').removeClass('active');
-        });
-
-        $('#sidebarCollapse').on('click', function () {
+          } else {
+            // show sidebar
+            $('.sidebar-container').addClass('sidebar-shown');
             $('#sidebar').addClass('active');
             $('.overlay').addClass('active');
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+          }
         });
     });
 </script>
@@ -31,7 +35,7 @@
 
 
 <script>
-	// added by sleekX 
+	// added by sleekX
 	var form = document.querySelector('form');
 	form.onsubmit = function() {
 	  	// Populate hidden form on submit
@@ -39,14 +43,14 @@
 	  	postVal.value = JSON.stringify(quill.getContents());
 
 	  	// console.log("Submitted", $(form).serialize(), $(form).serializeArray());
-	  
+
 	  	// convert to markdown
 	  	var turndownService = new TurndownService();
 		var markdown = turndownService.turndown(postVal.value);
 		alert(markdown) //this alert is so you can see the output.. uncomment console to use console
 	  	return false;
 	};
-	// sleekx code ends here 
+	// sleekx code ends here
 
 
 	//Initialize Quill editor
@@ -69,7 +73,7 @@
 
 	  ['clean']                                         // remove formatting button
 	];
-	
+
 	var quill = new Quill('#editor', {
 		theme: 'snow',
 		modules: {

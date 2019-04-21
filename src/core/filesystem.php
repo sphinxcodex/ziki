@@ -1,7 +1,7 @@
 <?php
 namespace Ziki\Core;
 
-class FileSystem{
+class FileSystem {
     /**
      * Create directory if not existing
      */

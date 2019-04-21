@@ -1,7 +1,6 @@
 <?php
 namespace Ziki\Core;
 
-use Ziki\Core\FileSystem as FileSystem;
 use Mni\FrontYAML\Parser;
 use KzykHys\FrontMatter\FrontMatter;
 /**
@@ -15,8 +14,7 @@ class Document{
 
     protected $file;
 
-    public function __construct($file, FrontMatter $parser) {
-        $this->parser = $parser;
+    public function __construct($file) {
         $this->file       = $file;
     }
 
