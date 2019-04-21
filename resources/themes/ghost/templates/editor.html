@@ -1,3 +1,4 @@
+{% set title = "New Post"%}
 {% extends 'layout.html' %} {% block page_content %}
 <style type="text/css">
   .ql-toolbar.ql-snow {
@@ -286,6 +287,8 @@
                     type="reset"
                     class="btn btn-primary canel-post"
                     value="Cancel"
+                    data-toggle="modal"
+                    data-target="#cancelModal"
                   />
                 </div>
               </div>
@@ -295,6 +298,15 @@
       </div>
     </div>
   </div>
+</div>
+<!-- modal begins here -->
+<div id="cancelModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+    </div>
+  </div>
+
 </div>
 
 <!--
