@@ -49,11 +49,17 @@
   }
 
   .post-title a,
-  .post-title a:hover,
   .post-title a:focus {
     color: var(--post-heading-text-color);
+    transition: all ease-in 0.3s;
   }
 
+  .post-title a:hover{
+    color:var(--ziki-purple);
+    text-decoration: none;
+    transition: all ease-in 0.3s;
+  }
+  
   .post-detail {
     color: var(--post-body-text-color);
   }
@@ -123,6 +129,16 @@
     width: 100%;
     min-height: 100vh;
     transition: all 0.3s;
+  }
+
+  .post-comment a{
+    color:var(--ziki-purple);
+    transition: all ease-in 0.3s;
+  }
+
+  .post-comment a:hover{
+    text-decoration: none;
+    transition: all ease-in 0.3s;
   }
 
   /* ---------------------------------------------------
@@ -270,7 +286,7 @@
                               <p>16th, April, 2019</p>
                             </div>
                             <div class="col-6 col-sm-6 post-comment text-right">
-                              <p>Comment</p>
+                               <a href=""> <p>Comment</p></a>
                             </div>
                           </div>
                         </div>
@@ -309,7 +325,7 @@
                               <p>16th, April, 2019</p>
                             </div>
                             <div class="col-6 col-sm-6 post-comment text-right">
-                              <p>Comment</p>
+                                <a href=""> <p>Comment</p></a>
                             </div>
                           </div>
                         </div>
@@ -348,7 +364,7 @@
                               <p>16th, April, 2019</p>
                             </div>
                             <div class="col-6 col-sm-6 post-comment text-right">
-                              <p>Comment</p>
+                                <a href=""> <p>Comment</p></a>
                             </div>
                           </div>
                         </div>
@@ -387,7 +403,7 @@
                               <p>16th, April, 2019</p>
                             </div>
                             <div class="col-6 col-sm-6 post-comment text-right">
-                              <p>Comment</p>
+                                <a href=""> <p>Comment</p></a>
                             </div>
                           </div>
                         </div>
