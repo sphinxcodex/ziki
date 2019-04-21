@@ -1,3 +1,4 @@
+{% set title = "Drafts"%}
 {% extends 'layout.html' %} {% block page_content %}
 
 <style>
@@ -134,14 +135,13 @@
                     <li class="nav-item mr-5 pb-0 mb-0"><a href="" class="active navbar-link">Drafts</a></li>
                 </ul>
                 <div class="col-6 logo-on-page d-flex justify-content-end">
-                    <a href="#">
+                    <a href="/">
                         <img src="resources/themes/ghost/assets/img/vector.png" alt="ziki logo" class="" />
                     </a>
                 </div>
             </div>
 
             <div class="row">
-
                 <div class="col-10  mt-5">
                     <div class="post-item mt-3">
                         <p class="post-author">Samaila Bala</p>
@@ -151,7 +151,6 @@
                                 Looking For Where To Spend Christmas in the comfort of your home
                             </a>
                         </h4>
-
                         <p class="post-content-summary">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
@@ -165,20 +164,14 @@
 
                 </div>
 
-                <div class="col-2 row pl-5 mt-5">
-                    <a href="" class="d-flex align-self-center dropdown-btn-link"><i class="fa fa fa-angle-down "
-                            id="dropdown-btn"></i></a>
-                    {# <span class="dropdown-item">
-                        <ul>
-                            <li><a href="#">Edit draft</a></li>
-                            <li><a href="#">Delete draft</a></li>
-                        </ul>
-                    </span> 
-                    This is the section for the dropdown of 'edit drafts' and 'delete drafts'
-                    #}
-
+                <div class="dropdown col-2" style="cursor:pointer">
+                        <span class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+                        </span>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item">Edit post</button>
+                            <button class="dropdown-item">Delete post</button>
+                        </div>
                 </div>
-
             </div>
         </div>
     </div>

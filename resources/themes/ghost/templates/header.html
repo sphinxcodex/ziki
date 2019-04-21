@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{ title }}</title>
+    <title>{{ title | default('Ziki')}}</title>
+    <link rel="shortcut icon" href="resources/themes/ghost/assets/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="resources/themes/ghost/assets/main.css" />
 
     <link
@@ -58,5 +59,41 @@
     <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet" />
   </head>
 
-  <body></body>
-</html>
+  <body>
+      <style>
+          .ziki-logo{
+            position: relative;
+            top: 6em;
+      
+          }
+      
+      /**media queries**/
+      @media screen and (max-width: 700px)
+      {
+        .ziki-logo{
+          position: relative;
+          top:3.5em;
+        
+        }
+      }
+      
+        </style>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <!-- for the sidebar -->
+      
+            </div>
+      
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+              <!-- for any other part of the page -->
+              <div class="row">
+                  <div class="col-12 d-flex justify-content-end pb-0 mb-0 ziki-logo">
+                    <a href="https://ziki.hng.tech">
+                      <img src="resources/themes/ghost/assets/img/vector.png" alt="ziki logo" class="" />
+                    </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
