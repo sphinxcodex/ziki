@@ -2,38 +2,38 @@
 <style>
     @import url(https://fonts.googleapis.com/css?family=Lemonada);
     /*NAVBAR STYLING BEGINNING*/
-
+    
     .nav-bar ul {
         list-style: none;
     }
-
+    
     .nav-bar ul .nav-items a {
         color: var(--number-of-followers-font-color);
         -webkit-transition: all ease-in .3s;
         transition: all ease-in .3s;
         font-size: 20px;
     }
-
+    
     .nav-bar ul .nav-items a:hover {
         color: var(--custom-deep-purple);
         text-decoration: none;
         -webkit-transition: all ease-in .3s;
         transition: all ease-in .3s;
     }
-
+    
     .nav-bar {
         border-bottom: 1px solid #a4a4a4;
     }
     /*NAVBAR STYLING END*/
-
+    
     .main-body {
         background-color: var(--dark-bg-color);
     }
-
+    
     .main-body .error-display {
         margin-top: 2em;
     }
-
+    
     .main-body .error-number {
         font-weight: 500;
         font-size: 48px;
@@ -44,7 +44,7 @@
         font-family: Lemonada, Roboto;
         letter-spacing: 0.03em;
     }
-
+    
     .main-body .error-text {
         font-family: Lemonada, Roboto;
         letter-spacing: 0.03em;
@@ -52,7 +52,7 @@
         font-size: 24px;
         font-weight: 500;
     }
-
+    
     .main-body .homepage-btn {
         padding: 16px;
         margin-top: 50px;
@@ -63,18 +63,18 @@
         font-family: Lemonada, Roboto;
         border: 0;
     }
-
+    
     .main-body .homepage-btn:hover {
         opacity: 0.8;
         border: 0;
     }
-
+    
     .main-body .error-image {
         width: 30%;
         margin-top: 2em;
     }
     /*media queries*/
-
+    
     @media screen and (max-width: 600px) {
         .main-body .error-text {
             margin: 30px;
@@ -108,7 +108,7 @@
                         <img src="resources/themes/ghost/assets/img/404.png" alt="ZIKI" class="error-image">
                     </div>
                     <div class="form-group text-center">
-                        <button class="homepage-btn btn btn-primary">Return to Homepage</button>
+                        <a href='/'><button class="homepage-btn btn btn-primary">Return to Homepage</button></a>
                     </div>
                 </div>
             </div>
