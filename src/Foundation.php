@@ -1,8 +1,8 @@
 <?php
 namespace Ziki;
 
-use Symfony\Component\Finder\Finder;
-
+use Ziki\Core as Core;
+use Ziki\Http as Http;
 class Foundation
 {
     /**
@@ -18,44 +18,31 @@ class Foundation
      */
     protected $templatePath;
     /**
-     * @var string
-     */
-    protected $pagesPath;
-    /**
-     * @var string
-     */
-    protected $collectionsPath;
-    /**
-     * @var array
-     */
-    protected $settings;
-    /**
-     * @var array
-     */
-    protected $pages;
-    /**
-     * @var array
-     */
-    protected $collections;
-    /**
      * @param string $basePath
      * @param Logger $logger
      */
-    public function __construct($basePath)
+    public function __construct($basePath,$logger)
     {
-        // $this->settings       = new Setting;
-        $this->routePath      = $basePath . DIRECTORY_SEPARATOR . 'src/routes.php';
-        // $this->templatesPath  = $basePath . DIRECTORY_SEPARATOR . 'resources/themes' . DIRECTORY_SEPARATOR . $this->settings['theme'] . DIRECTORY_SEPARATOR . 'templates';
-        $this->templatePath  = $basePath . DIRECTORY_SEPARATOR . 'resources/themes' . DIRECTORY_SEPARATOR . 'ghost' . DIRECTORY_SEPARATOR . 'templates';
-        $this->template       = new Template($this->templatePath);
-        // $this->cachePath      = $basePath . DIRECTORY_SEPARATOR . $this->settings['cache_path'];
-        // $this->assetsPath     = $basePath . DIRECTORY_SEPARATOR . $this->settings['content_path'] . DIRECTORY_SEPARATOR . 'pages';
-        // if (!is_dir($this->cachePath)) {
-        //     mkdir($this->cachePath, 0777, true);
-        // }
+        $this->basePath = $basePath;
+        $this->logger = $logger;
+        $this->loadConfig();
+        $this->loadTemplate();
+    }
+    
+    private function loadConfig()
+    {
+        $this->configPath = $this->basePath . DIRECTORY_SEPARATOR . 'config/ziki.json';
+        Core\Config::json($this->configPath);
     }
 
-    public function run(){
-        include $this->routePath;
+    private function loadTemplate()
+    {
+        $this->templatePath = $this->basePath . DIRECTORY_SEPARATOR . 'resources/themes' . DIRECTORY_SEPARATOR . THEME . DIRECTORY_SEPARATOR . 'templates';
+        $this->template = new Core\Template($this->templatePath);
+    }
+
+    public function start(){
+        $router = new Http\Router(new Http\Request);
+        include $this->basePath . DIRECTORY_SEPARATOR . 'src/routes.php';;
     }
 }

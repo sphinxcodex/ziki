@@ -98,8 +98,4 @@ print_r($_SESSION);
 // OR
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
-<<<<<<< HEAD
 // header( 'Location: http://localhost:8000/temp_landing_page.php');
-=======
-// header( 'Location: http://localhost:8000/temp_landing_page.php');
->>>>>>> development
