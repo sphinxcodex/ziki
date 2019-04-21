@@ -7,7 +7,7 @@
 
     ## Begin - Exploits
     # If you experience problems on your site block out the operations listed below
-    # This attempts to block the most common type of exploit `attempts` to Flextype
+    # This attempts to block the most common type of exploit `attempts` to Ziki
     #
     # Block out any script trying to base64_encode data within the URL.
     RewriteCond %{QUERY_STRING} base64_encode[^(]*\([^)]*\) [OR]
