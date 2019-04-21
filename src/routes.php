@@ -69,4 +69,6 @@ $router->get('/404', function($request) {
   $router->get('/drafts', function($request) {
     return $this->template->render('drafts.html');
   });
-
+  $router->get('/about', function($request) {
+    return $this->template->render('about-us.html');
+  });
