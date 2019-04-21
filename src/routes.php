@@ -18,12 +18,20 @@ $router->get('/blog-details', function($request) {
 });
 
 $router->get('/timeline', function($request) {
-    $ziki = [
-        [ 'name'          => 'Adroit' ],
-        [ 'name'          => 'Twig' ],
-    ];
+    $directory = "./storage/contents/";
+    $ziki = new Ziki\Core\Document($directory);
+    $post = $ziki->get();
+    return $this->template->render('timeline.html', ['posts' => $post] );
+});
 
-    return $this->template->render('timeline.html', ['ziki' => $ziki] );
+$router->post('/timeline', function($request) {
+    $directory = "./storage/contents/";
+    $body = $_POST['postVal'];
+    var_dump($body); die();
+    $ziki = new Ziki\Core\Document($directory);
+    $result = $ziki->create($body);
+    var_dump($result); die();
+    return $this->template->render('timeline.html', ['ziki' => $result]);
 });
 
 $router->post('/contact-us', function($request) {

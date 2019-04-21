@@ -1,3 +1,4 @@
+{% set title = "Timeline"%}
 {% extends 'layout.html' %} {% block page_content %}
 <style>
   :root {
@@ -185,12 +186,12 @@
           Nav Bar intentionally spelt fully to prevent conflict please don't touch
         -->
         <div class="row navigation-bar">
-          <div class="col-12 text-right">
-            <!-- <p>Logo</p> -->
-            <a href="/"
+       <!--   <div class="col-12 text-right">
+       
+          <a href="/"
               ><img src="resources/themes/ghost/assets/img/logo.png"
-            /></a>
-          </div>
+	      /></a> 
+	  </div>  -->
         </div>
       </div>
 
@@ -222,7 +223,7 @@
                   <div class="col-12">
                     <!-- The editor code goes here -->
                     <div id="form-container">
-                      <form method="GET" action="editor">
+                      <form method="POST" action="/timeline">
                         <!-- Quill editor code goes here -->
                         <div class="row">
                           <div class="col-12">
@@ -256,7 +257,8 @@
 
                 <!-- Posts from here.. -->
                 <article class="post-area">
-                  <div
+                    {% for post in posts %}
+                    <div
                     class="row d-flex justify-content-center justify-content-lg-start post-content"
                   >
                     <div class="col-11 col-xl-10">
@@ -271,22 +273,18 @@
                           <h5 class="post-author">Destiny Ihejirika</h5>
                           <h2 class="post-title">
                             <a href="blog-details"
-                              >Looking for where to spend christmas</a
+                              >{{post.title | raw}}</a
                             >
                           </h2>
                           <p class="post-detail">
-                            is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type and scrambled
-                            it to make a type specimen book.
+                            {{post.body | raw}}
                           </p>
                           <div class="row post-action-bar">
                             <div class="col-6 col-sm-6 post-date text-left">
-                              <p>16th, April, 2019</p>
+                              <p>{{post.timestamp | raw}}</p>
                             </div>
                             <div class="col-6 col-sm-6 post-comment text-right">
-                               <a href=""> <p>Comment</p></a>
+                              <p>Comment</p>
                             </div>
                           </div>
                         </div>
@@ -294,123 +292,7 @@
                     </div>
                   </div>
                   <hr />
-
-                  <div
-                    class="row d-flex justify-content-center justify-content-lg-start post-content"
-                  >
-                    <div class="col-11 col-xl-10">
-                      <div class="row">
-                        <div class="col-2 col-sm-1 px-md-1">
-                          <img
-                            class="img-fluid author-image"
-                            src="resources/themes/ghost/assets/img/fiverr.jpg"
-                          />
-                        </div>
-                        <div class="col-10 col-sm-11">
-                          <h5 class="post-author">Destiny Ihejirika</h5>
-                          <h2 class="post-title">
-                            <a href="blog-details"
-                              >Looking for where to spend christmas</a
-                            >
-                          </h2>
-                          <p class="post-detail">
-                            is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type and scrambled
-                            it to make a type specimen book.
-                          </p>
-                          <div class="row post-action-bar">
-                            <div class="col-6 col-sm-6 post-date text-left">
-                              <p>16th, April, 2019</p>
-                            </div>
-                            <div class="col-6 col-sm-6 post-comment text-right">
-                                <a href=""> <p>Comment</p></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
-
-                  <div
-                    class="row d-flex justify-content-center justify-content-lg-start post-content"
-                  >
-                    <div class="col-11 col-xl-10">
-                      <div class="row">
-                        <div class="col-2 col-sm-1 px-md-1">
-                          <img
-                            class="img-fluid author-image"
-                            src="resources/themes/ghost/assets/img/fiverr.jpg"
-                          />
-                        </div>
-                        <div class="col-10 col-sm-11">
-                          <h5 class="post-author">Destiny Ihejirika</h5>
-                          <h2 class="post-title">
-                            <a href="blog-details"
-                              >Looking for where to spend christmas</a
-                            >
-                          </h2>
-                          <p class="post-detail">
-                            is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type and scrambled
-                            it to make a type specimen book.
-                          </p>
-                          <div class="row post-action-bar">
-                            <div class="col-6 col-sm-6 post-date text-left">
-                              <p>16th, April, 2019</p>
-                            </div>
-                            <div class="col-6 col-sm-6 post-comment text-right">
-                                <a href=""> <p>Comment</p></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
-
-                  <div
-                    class="row d-flex justify-content-center justify-content-lg-start post-content"
-                  >
-                    <div class="col-11 col-xl-10">
-                      <div class="row">
-                        <div class="col-2 col-sm-1 px-md-1">
-                          <img
-                            class="img-fluid author-image"
-                            src="resources/themes/ghost/assets/img/fiverr.jpg"
-                          />
-                        </div>
-                        <div class="col-10 col-sm-11">
-                          <h5 class="post-author">Destiny Ihejirika</h5>
-                          <h2 class="post-title">
-                            <a href="blog-details"
-                              >Looking for where to spend christmas</a
-                            >
-                          </h2>
-                          <p class="post-detail">
-                            is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type and scrambled
-                            it to make a type specimen book.
-                          </p>
-                          <div class="row post-action-bar">
-                            <div class="col-6 col-sm-6 post-date text-left">
-                              <p>16th, April, 2019</p>
-                            </div>
-                            <div class="col-6 col-sm-6 post-comment text-right">
-                                <a href=""> <p>Comment</p></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
+                  {% endfor %}
                 </article>
                 <!-- Post section ends here. -->
               </div>

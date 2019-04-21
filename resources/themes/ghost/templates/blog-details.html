@@ -1,4 +1,4 @@
-{% extends "layout.html" %} {% block page_content %}
+{% set title = "Blog"%} {% extends "layout.html" %} {% block page_content %}
 <style>
     h1,
     h2,
@@ -109,6 +109,7 @@
             padding: 0px;
             margin-top: 5px;
             margin-left: 15px;
+            width: 50%;
         }
         .body-of-blog .info-on-author {
             margin-bottom: 2em;
@@ -129,11 +130,11 @@
 
         </div>
 
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-5 pt-3">
             <!-- LOGO -->
-            <div class="img-logo text-right">
+            <!--     <div class="img-logo text-right">
                 <img src="resources/themes/ghost/assets/img/Vector.png" alt="logo" width="34" height="35">
-            </div>
+       </div> -->
             <div class="blog-post-title mt-2">
                 <h3>Looking for where to spend christmas from the comfort of your home</h3>
             </div>

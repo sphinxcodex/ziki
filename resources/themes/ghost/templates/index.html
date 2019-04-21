@@ -1,4 +1,6 @@
+{% set title = "Welcome to Ziki"%}
 {% extends 'layout.html' %} {% block page_content %}
+
 <style>
   :root {
     --post-heading-text-color: #1b1b1b;
@@ -151,12 +153,12 @@
           Nav Bar intentionally spelt fully to prevent conflict please don't touch
         -->
         <div class="row navigation-bar">
-          <div class="col-12 text-right">
-            <!-- <p>Logo</p> -->
+         <!-- <div class="col-12 text-right">
+           
             <a href="/"
               ><img src="resources/themes/ghost/assets/img/logo.png"
-            /></a>
-          </div>
+		    /></a>
+	 </div> -->
         </div>
       </div>
 
@@ -176,7 +178,7 @@
                 <!-- Posts from here.. -->
                 <article class="post-area">
                     {% for post in posts %}
-                  <div
+                    <div
                     class="row d-flex justify-content-center justify-content-lg-start post-content"
                   >
                     <div class="col-11 col-xl-10">
@@ -187,7 +189,25 @@
                             src="resources/themes/ghost/assets/img/fiverr.jpg"
                           />
                         </div>
-                        {{post | raw}}
+                        <div class="col-10 col-sm-11">
+                          <h5 class="post-author">Destiny Ihejirika</h5>
+                          <h2 class="post-title">
+                            <a href="blog-details"
+                              >{{post.title | raw}}</a
+                            >
+                          </h2>
+                          <p class="post-detail">
+                            {{post.body | raw}}
+                          </p>
+                          <div class="row post-action-bar">
+                            <div class="col-6 col-sm-6 post-date text-left">
+                              <p>{{post.timestamp | raw}}</p>
+                            </div>
+                            <div class="col-6 col-sm-6 post-comment text-right">
+                              <p>Comment</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
