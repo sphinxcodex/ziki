@@ -175,6 +175,7 @@
 
                 <!-- Posts from here.. -->
                 <article class="post-area">
+                    {% for post in posts %}
                   <div
                     class="row d-flex justify-content-center justify-content-lg-start post-content"
                   >
@@ -186,150 +187,12 @@
                             src="resources/themes/ghost/assets/img/fiverr.jpg"
                           />
                         </div>
-                        <div class="col-10 col-sm-11">
-                          <h5 class="post-author">Destiny Ihejirika</h5>
-                          <h2 class="post-title">
-                            <a href="blog-details"
-                              >Looking for where to spend christmas</a
-                            >
-                          </h2>
-                          <p class="post-detail">
-                            is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type and scrambled
-                            it to make a type specimen book.
-                          </p>
-                          <div class="row post-action-bar">
-                            <div class="col-6 col-sm-6 post-date text-left">
-                              <p>16th, April, 2019</p>
-                            </div>
-                            <div class="col-6 col-sm-6 post-comment text-right">
-                              <p>Comment</p>
-                            </div>
-                          </div>
-                        </div>
+                        {{post | raw}}
                       </div>
                     </div>
                   </div>
                   <hr />
-
-                  <div
-                    class="row d-flex justify-content-center justify-content-lg-start post-content"
-                  >
-                    <div class="col-11 col-xl-10">
-                      <div class="row">
-                        <div class="col-2 col-sm-1 px-md-1">
-                          <img
-                            class="img-fluid author-image"
-                            src="resources/themes/ghost/assets/img/fiverr.jpg"
-                          />
-                        </div>
-                        <div class="col-10 col-sm-11">
-                          <h5 class="post-author">Destiny Ihejirika</h5>
-                          <h2 class="post-title">
-                            <a href="blog-details"
-                              >Looking for where to spend christmas</a
-                            >
-                          </h2>
-                          <p class="post-detail">
-                            is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type and scrambled
-                            it to make a type specimen book.
-                          </p>
-                          <div class="row post-action-bar">
-                            <div class="col-6 col-sm-6 post-date text-left">
-                              <p>16th, April, 2019</p>
-                            </div>
-                            <div class="col-6 col-sm-6 post-comment text-right">
-                              <p>Comment</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
-
-                  <div
-                    class="row d-flex justify-content-center justify-content-lg-start post-content"
-                  >
-                    <div class="col-11 col-xl-10">
-                      <div class="row">
-                        <div class="col-2 col-sm-1 px-md-1">
-                          <img
-                            class="img-fluid author-image"
-                            src="resources/themes/ghost/assets/img/fiverr.jpg"
-                          />
-                        </div>
-                        <div class="col-10 col-sm-11">
-                          <h5 class="post-author">Destiny Ihejirika</h5>
-                          <h2 class="post-title">
-                            <a href="blog-details"
-                              >Looking for where to spend christmas</a
-                            >
-                          </h2>
-                          <p class="post-detail">
-                            is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type and scrambled
-                            it to make a type specimen book.
-                          </p>
-                          <div class="row post-action-bar">
-                            <div class="col-6 col-sm-6 post-date text-left">
-                              <p>16th, April, 2019</p>
-                            </div>
-                            <div class="col-6 col-sm-6 post-comment text-right">
-                              <p>Comment</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
-
-                  <div
-                    class="row d-flex justify-content-center justify-content-lg-start post-content"
-                  >
-                    <div class="col-11 col-xl-10">
-                      <div class="row">
-                        <div class="col-2 col-sm-1 px-md-1">
-                          <img
-                            class="img-fluid author-image"
-                            src="resources/themes/ghost/assets/img/fiverr.jpg"
-                          />
-                        </div>
-                        <div class="col-10 col-sm-11">
-                          <h5 class="post-author">Destiny Ihejirika</h5>
-                          <h2 class="post-title">
-                            <a href="blog-details"
-                              >Looking for where to spend christmas</a
-                            >
-                          </h2>
-                          <p class="post-detail">
-                            is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type and scrambled
-                            it to make a type specimen book.
-                          </p>
-                          <div class="row post-action-bar">
-                            <div class="col-6 col-sm-6 post-date text-left">
-                              <p>16th, April, 2019</p>
-                            </div>
-                            <div class="col-6 col-sm-6 post-comment text-right">
-                              <p>Comment</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
+                  {% endfor %}
                 </article>
                 <!-- Post section ends here. -->
               </div>
