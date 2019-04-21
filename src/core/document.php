@@ -34,6 +34,12 @@ class Document{
         $yaml = $markdown->getYAML();
         $html = $markdown->getContent();
         $doc = FileSystem::write($this->file, $yaml."\n".$html);
+        if ($doc) {
+            $result = array("error" => false, "message" => "Post published successfully");
+        }
+        else{
+            $result = array("error" => true, "message" => "Fail while publishing, please try again");
+        }
         return $doc;
     }
     //get post
@@ -43,13 +49,23 @@ class Document{
         $finder->files()->in($this->file);
         $posts = [];
         if($finder->hasResults()){
-            $posts = array();
             foreach($finder as $file){
                 $document = $file->getContents();
+                $parser = new Parser();
+                $document = $parser->parse($document);
+                $yaml = $document->getYAML();
+                $body = $document->getContent();
                 //$document = FileSystem::read($this->file);
                 $parsedown  = new Parsedown();
-                $html = $parsedown->text($document);
-                array_push($posts, $html);
+                $title = $parsedown->text($yaml['title']);
+                $bd = $parsedown->text($body);
+                $time = $parsedown->text($yaml['timestamp']);
+                $url = $parsedown->text($yaml['post_dir']);
+                $content['title'] = $title;
+                $content['body'] = $bd;
+                $content['url'] = $url;
+                $content['timestamp'] = $time;
+                array_push($posts, $content);
             }
             return $posts;
         }
