@@ -61,6 +61,12 @@ $router->get('/subscribers', function($request) {
 $router->get('/editor', function($request) {
   return $this->template->render('editor.html');
 });
+
 $router->get('/404', function($request) {
     return $this->template->render('404.html');
   });
+
+  $router->get('/drafts', function($request) {
+    return $this->template->render('drafts.html');
+  });
+
