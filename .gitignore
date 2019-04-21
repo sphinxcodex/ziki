@@ -1,6 +1,5 @@
 composer.phar
 /vendor/
-composer.lock
 composer.dev.*
 node_modules/
 build/
