@@ -1,7 +1,5 @@
 <?php
 namespace Ziki\Core;
-
-use Symfony\Component\Finder\SplFileInfo;
 /**
  *	A Collection object represents a set of Document objects (matching certain criterias).
  *

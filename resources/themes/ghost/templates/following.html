@@ -1,312 +1,293 @@
 {% extends 'layout.html' %} {% block page_content %}
-
-<style type="text/css">
-  .following-top {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
+<style>
+  .following-posts ul {
+      list-style: none;
+    }
   
-  .nav-tabs .nav-link.active {
-    border-top: 0px solid #280966 !important;
-    border-right: 0px solid #280966 !important;
-    border-left: 0px solid #280966 !important;
-    border-bottom: 4px solid #280966 !important;
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
-  }
+    .following-posts .logo {
+      margin-top: 4em;
+    }
   
-  .nav-tabs .nav-link {
-    color: #280966;
-  }
-  
-  .following-wrapper {
-    padding-top: 70px;
-    padding-bottom: 70px;
-  }
-  
-  .following-area {
-    margin-top: 40px;
-    margin-bottom: 60px;
-	background: #eee;
-	height: 100%;
-  }
-
-  .following-content {
-    margin-top: 10px;
-    margin-bottom: 10px;
-	border: 1px solid grey;
-	width: 620px;
-	margin-left:75px;
-  }
-  
-  .author-image .side-header {
+    .following-posts ul .nav-item a {
+      color: #5c5c5c;
+      font-size: 16px;
+    }
+    
+    .following-posts ul .nav-links {
+    margin-right: 10px;
+    }
+    
+    .nav-tabs .nav-link.active {
+      border-top: 0px solid #280a66 !important;
+      border-right: 0px solid #280a66 !important;
+      border-left: 0px solid #280a66 !important;
+      border-bottom: 4px solid #280a66 !important;
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+    }
+    
+    .nav-tabs .nav-link {
+      color: #280a66;
+    }
+    
+    .following-posts .following-button {
     display: flex;
-    justify-content: center;
-  }
+    background: #ffffff;
+    border: 1px solid #280a66;
+    float: right;
+    margin: -4em -7em 0 0;
+    color: #280a66;
+    }
+    
+    .following-posts .following-content {
+      margin-top: 1em;
+    border: 1px solid #B3B3B3;
+    box-sizing: border-box;
+    }
+    
+    @media screen and (max-width: 768px) {
+    .nav .nav-tabs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: no-wrap;
+    }
+      .nav-link {
+      margin: 0.1em !important;
+      padding: 0 !important;
+    }
   
-  .following-author {
-    color: #280966;
-  }
+      .following-posts .following-button {
+    margin: 1em;
+    float: left;
+      }
+    
+    .following-content {
+    font-size: 13px;
+    }
+    }
+  </style>
   
-  .following-detail {
-	width: 450px;
-  }
+  <div class="container-fluid following-posts">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sidebar">
   
-  .post-action-bar {
-    color: #280966;
-  }
+      </div>
+    
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <div class="col-12 logo d-flex justify-content-end pb-2">
+        <a href="#">
+        <img src="vector.png" alt="ziki logo" class="" />
+        </a>
+      </div>
+        <div class="nav-bar row">
+        <ul class="col-12 d-flex justify-content-start nav nav-tabs">
+          <li class="nav-item mr-5">
+          <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item mr-5">
+          <a class="nav-link" href="#">Themes</a>
+          </li>
+          <li class="nav-item mr-5">
+          <a class="nav-link" href="followers.html">720 followers</a>
+          </li>
+          <li class="nav-item mr-5">
+          <a class="nav-link active" href="following.html">50 following</a>
+          </li>
+        </ul>
+        </div>
+        
+      <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-5">
   
-  .follow-button {
-	background: #280a66;
-	border: 1px solid #280a66;
-	float: right;
-	margin: -70px 0 0 0;
-  }
   
-  .following-button {
-	background: #ffffff;
-	color: #280a66;
-	border: 2px solid grey;
-	float: right;
-	margin: -70px -100px 0 0;
-	border-radius: none;
-  }
-  
-   span {
-   display: inline-block;
-   font-size: 15px;
-   margin: 20px 0 0 60px;
-  }
-  
-  .fa-search {
-	padding-left: 15px;
-  }
-  
-</style>
-<div class="container">
-  <div class="row following-top">
-    <div class="col-12 col-sm-11"></div>
-    <div class="col-12 col-sm-1">
-      <!-- ziki logo here -->
-      <img class="img-fluid" src="resources/themes/ghost/assets/img/logo.png" />
+          <span>You follow <a><i class="fa fa-search"></i>Search</a></span>
+              <div class="row following-content">
+                <div class="col-12 col-sm-10">
+                  <div class="row">
+                    <div class="col-2 col-sm-1 author-image">
+                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
+                    </div>
+                    <div class="col-10 col-sm-11">
+                      <h5 class="post-author">Destiny Ihejirika</h5>
+            <div>
+            <p class="post-detail">
+                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                      </p>
+            <button class="btn btn-info following-button d-flex">
+              Following
+            </button>
+            </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+        
+        <div class="row following-content">
+                <div class="col-12 col-sm-10">
+                  <div class="row">
+                    <div class="col-2 col-sm-1 author-image">
+                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
+                    </div>
+                    <div class="col-10 col-sm-11">
+                      <h5 class="post-author">Destiny Ihejirika</h5>
+            <div>
+            <p class="post-detail">
+                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                      </p>
+            <button class="btn btn-info following-button d-flex">
+              Following
+            </button>
+            </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+        
+        <div class="row following-content">
+                <div class="col-12 col-sm-10">
+                  <div class="row">
+                    <div class="col-2 col-sm-1 author-image">
+                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
+                    </div>
+                    <div class="col-10 col-sm-11">
+                      <h5 class="post-author">Destiny Ihejirika</h5>
+            <div>
+            <p class="post-detail">
+                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                      </p>
+            <button class="btn btn-info following-button d-flex">
+              Following
+            </button>
+            </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+        
+        <div class="row following-content">
+                <div class="col-12 col-sm-10">
+                  <div class="row">
+                    <div class="col-2 col-sm-1 author-image">
+                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
+                    </div>
+                    <div class="col-10 col-sm-11">
+                      <h5 class="post-author">Destiny Ihejirika</h5>
+            <div>
+            <p class="post-detail">
+                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                      </p>
+            <button class="btn btn-info following-button d-flex">
+              Following
+            </button>
+            </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+        
+        <div class="row following-content">
+                <div class="col-12 col-sm-10">
+                  <div class="row">
+                    <div class="col-2 col-sm-1 author-image">
+                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
+                    </div>
+                    <div class="col-10 col-sm-11">
+                      <h5 class="post-author">Destiny Ihejirika</h5>
+            <div>
+            <p class="post-detail">
+                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                      </p>
+            <button class="btn btn-info following-button d-flex">
+              Following
+            </button>
+            </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+        
+        <div class="row following-content">
+                <div class="col-12 col-sm-10">
+                  <div class="row">
+                    <div class="col-2 col-sm-1 author-image">
+                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
+                    </div>
+                    <div class="col-10 col-sm-11">
+                      <h5 class="post-author">Destiny Ihejirika</h5>
+            <div>
+            <p class="post-detail">
+                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                      </p>
+            <button class="btn btn-info following-button d-flex">
+              Following
+            </button>
+            </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+        
+        <div class="row following-content">
+                <div class="col-12 col-sm-10">
+                  <div class="row">
+                    <div class="col-2 col-sm-1 author-image">
+                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
+                    </div>
+                    <div class="col-10 col-sm-11">
+                      <h5 class="post-author">Destiny Ihejirika</h5>
+            <div>
+            <p class="post-detail">
+                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                      </p>
+            <button class="btn btn-info following-button d-flex">
+              Following
+            </button>
+            </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+        
+        <div class="row following-content">
+                <div class="col-12 col-sm-10">
+                  <div class="row">
+                    <div class="col-2 col-sm-1 author-image">
+                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
+                    </div>
+                    <div class="col-10 col-sm-11">
+                      <h5 class="post-author">Destiny Ihejirika</h5>
+            <div>
+            <p class="post-detail">
+                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                      </p>
+            <button class="btn btn-info following-button d-flex">
+              Following
+            </button>
+            </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+        
+        <div class="row following-content">
+                <div class="col-12 col-sm-10">
+                  <div class="row">
+                    <div class="col-2 col-sm-1 author-image">
+                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
+                    </div>
+                    <div class="col-10 col-sm-11">
+                      <h5 class="post-author">Destiny Ihejirika</h5>
+            <div>
+            <p class="post-detail">
+                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                      </p>
+            <button class="btn btn-info following-button d-flex">
+              Following
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row following-wrapper">
-    <!-- main content.. -->
-    <div class="col-12 offset-sm-4 col-sm-8">
-      <!-- SleekX's code goes here.. -->
-      <div class="row">
-        <div class="col-12 col-sm-12">
-          <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Themes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="followers.html">720 followers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="following.html">50 following</a>
-                    </li>
-            </ul>
-			
-            <!-- Posts from here.. -->
-        <article class="following-area">
-		<span>You follow <a><i class="fa fa-search"></i>Search</a></span>
-			<div class="row following-content">
-			  <div class="col-12 col-sm-10">
-				<div class="row">
-				  <div class="col-2 col-sm-1 author-image">
-					<img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png." />
-				  </div>
-				  <div class="col-10 col-sm-11">
-					<h5 class="following-author">Linda Ikeji</h5>
-					<div>
-					<p class="following-detail">
-					  Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-					</p>
-					<button class="btn btn-info following-button">
-						Following
-					</button>
-					</div>
-					  </div>
-					</div>
-				  </div>
-			</div>
-			
-            <div class="row following-content">
-              <div class="col-12 col-sm-10">
-                <div class="row">
-                  <div class="col-2 col-sm-1 author-image">
-                    <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-                  </div>
-                  <div class="col-10 col-sm-11">
-                    <h5 class="following-author">Destiny Ihejirika</h5>
-					<div>
-					<p class="following-detail">
-                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                    </p>
-					<button class="btn btn-info following-button">
-						Following
-					</button>
-					</div>
-                      </div>
-                    </div>
-              </div>
-            </div>
-			
-			<div class="row following-content">
-			  <div class="col-12 col-sm-10">
-				<div class="row">
-				  <div class="col-2 col-sm-1 author-image">
-					<img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-				  </div>
-				  <div class="col-10 col-sm-11">
-					<h5 class="following-author">Linda Ikeji</h5>
-					<div>
-						<p class="following-detail">
-						  Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-						</p>
-						<button class="btn btn-info following-button">
-							Following
-						</button>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-			
-			<div class="row following-content">
-			  <div class="col-12 col-sm-10">
-				<div class="row">
-				  <div class="col-2 col-sm-1 author-image">
-					<img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-				  </div>
-				  <div class="col-10 col-sm-11">
-					<h5 class="following-author">Linda Ikeji</h5>
-					<div>
-					<p class="following-detail">
-					  Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-					</p>
-					<button class="btn btn-info following-button">
-						Following
-					</button>
-					</div>
-					  </div>
-					</div>
-			  </div>
-			</div>
-			
-			<div class="row following-content">
-			  <div class="col-12 col-sm-10">
-				<div class="row">
-				  <div class="col-2 col-sm-1 author-image">
-					<img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-				  </div>
-				  <div class="col-10 col-sm-11">
-					<h5 class="following-author">Linda Ikeji</h5>
-					<div>
-					<p class="following-detail">
-					  Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-					</p>
-					<button class="btn btn-info following-button">
-						Following
-					</button>
-					</div>
-					  </div>
-					</div>
-			  </div>
-			</div>
-			
-			<div class="row following-content">
-			  <div class="col-12 col-sm-10">
-				<div class="row">
-				  <div class="col-2 col-sm-1 author-image">
-					<img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-				  </div>
-				  <div class="col-10 col-sm-11">
-					<h5 class="following-author">Linda Ikeji</h5>
-					<div>
-					<p class="following-detail">
-					  Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-					</p>
-					<button class="btn btn-info following-button">
-						Following
-					</button>
-					</div>
-					  </div>
-					</div>
-			  </div>
-			</div>
-			
-			<div class="row following-content">
-			  <div class="col-12 col-sm-10">
-				<div class="row">
-				  <div class="col-2 col-sm-1 author-image">
-					<img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-				  </div>
-				  <div class="col-10 col-sm-11">
-					<h5 class="following-author">Linda Ikeji</h5>
-					<div>
-					<p class="following-detail">
-					  Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-					</p>
-					<button class="btn btn-info following-button">
-						Following
-					</button>
-					</div>
-					  </div>
-					</div>
-			  </div>
-			</div>
-			
-			<div class="row following-content">
-			  <div class="col-12 col-sm-10">
-				<div class="row">
-				  <div class="col-2 col-sm-1 author-image">
-					<img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-				  </div>
-				  <div class="col-10 col-sm-11">
-					<h5 class="following-author">Diary Of a Naija Girl</h5>
-					<div>
-					<p class="following-detail">
-					  Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-					</p>
-					<button class="btn btn-info following-button">
-						Following
-					</button>
-					</div>
-					  </div>
-					</div>
-			  </div>
-			</div>
-		
-			<div class="row following-content">
-			  <div class="col-12 col-sm-10">
-				<div class="row">
-				  <div class="col-2 col-sm-1 author-image">
-					<img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-				  </div>
-				  <div class="col-10 col-sm-11">
-					<h5 class="following-author">Bella Naija</h5>
-					<div>
-					<p class="following-detail">
-					  Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-					</p>
-					<button class="btn btn-info following-button">
-						Following
-					</button>
-					</div>
-					  </div>
-				</div>
-			  </div>
-			</div>
-		</article>
-		</div>
-	  </div>
-  </div>
 </div>
-
 {% endblock page_content %}
