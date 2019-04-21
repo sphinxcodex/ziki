@@ -3,6 +3,8 @@ namespace Ziki\Core;
 
 use Mni\FrontYAML\Parser;
 use KzykHys\FrontMatter\FrontMatter;
+use Symfony\Component\Finder\Finder;
+use Parsedown;
 /**
  *	The Document class holds all properties and methods of a single page document.
  *
@@ -36,10 +38,24 @@ class Document{
     }
     //get post
     public function get(){
-        $document = FileSystem::read($this->file);
-        $parsedown  = new Parsedown();
-        $html = $parsedown->text($document);
-        return $html;
+        $finder = new Finder();
+        // find all files in the current directory
+        $finder->files()->in($this->file);
+        $posts = [];
+        if($finder->hasResults()){
+            $posts = array();
+            foreach($finder as $file){
+                $document = $file->getContents();
+                //$document = FileSystem::read($this->file);
+                $parsedown  = new Parsedown();
+                $html = $parsedown->text($document);
+                array_push($posts, $html);
+            }
+            return $posts;
+        }
+        else{
+            return false;
+        }
     }
     //update post
     public function update(){
