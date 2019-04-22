@@ -1,6 +1,11 @@
 <?php
 use Ziki\Http\Router;
-$router = new Router;
+
+Router::get('/about/{any:id}', function($id) {
+    return $id;
+    return $this->template->render('about-us.html');
+  });
+
 Router::get('/', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
@@ -9,7 +14,7 @@ Router::get('/', function($request) {
     return $this->template->render('index.html', ['posts' => $posts] );
 });
 
-$router->get('/blog-details', function($request) {
+Router::get('/blog-details', function($request) {
     $ziki = [
         [ 'name'          => 'Adroit' ],
         [ 'name'          => 'Olu' ],
@@ -39,7 +44,6 @@ Router::get('/contact-us', function($request) {
         [ 'name'          => 'Adroit' ],
         [ 'name'          => 'Twig' ],
     ];
-
     return $this->template->render('contact-us.html', ['ziki' => $ziki] );
 });
 
