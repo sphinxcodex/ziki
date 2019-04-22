@@ -1,11 +1,12 @@
 <?php
-
-$router->get('/', function($request) {
+use Ziki\Http\Router;
+$router = new Router;
+Router::get('/', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
-    $post = $ziki->get();
+    $posts = $ziki->get();
     // Render our view
-    return $this->template->render('index.html', ['posts' => $post] );
+    return $this->template->render('index.html', ['posts' => $posts] );
 });
 
 $router->get('/blog-details', function($request) {
@@ -17,24 +18,23 @@ $router->get('/blog-details', function($request) {
     return $this->template->render('blog-details.html', ['ziki' => $ziki] );
 });
 
-$router->get('/timeline', function($request) {
+Router::get('/timeline', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
     $post = $ziki->get();
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
 
-$router->post('/timeline', function($request) {
+Router::post('/timeline', function($request) {
     $directory = "./storage/contents/";
-    $body = $_POST['postVal'];
-    var_dump($body); die();
+    $data = $request->getBody();
+    $body = $data['postVal'];
     $ziki = new Ziki\Core\Document($directory);
     $result = $ziki->create($body);
-    var_dump($result); die();
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
 
-$router->get('/contact-us', function($request) {
+Router::get('/contact-us', function($request) {
     $ziki = [
         [ 'name'          => 'Adroit' ],
         [ 'name'          => 'Twig' ],
@@ -43,37 +43,38 @@ $router->get('/contact-us', function($request) {
     return $this->template->render('contact-us.html', ['ziki' => $ziki] );
 });
 
-$router->get('/published-posts', function($request) {
+Router::get('/published-posts', function($request) {
     return $this->template->render('published-posts.html');
 });
 
-$router->get('/themes', function($request) {
+Router::get('/themes', function($request) {
     return $this->template->render('themes.html');
 });
 
-$router->get('/profile', function($request) {
+Router::get('/profile', function($request) {
     return $this->template->render('profile.html');
 });
 
-$router->get('/subscriptions', function($request) {
+Router::get('/subscriptions', function($request) {
     return $this->template->render('subscriptions.html');
 });
 
-$router->get('/subscribers', function($request) {
+Router::get('/subscribers', function($request) {
     return $this->template->render('subscribers.html');
 });
 
-$router->get('/editor', function($request) {
+Router::get('/editor', function($request) {
   return $this->template->render('editor.html');
 });
 
-$router->get('/404', function($request) {
+Router::get('/404', function($request) {
     return $this->template->render('404.html');
-  });
+});
 
-  $router->get('/drafts', function($request) {
+Router::get('/drafts', function($request) {
     return $this->template->render('drafts.html');
-  });
-  $router->get('/about', function($request) {
+});
+
+Router::get('/about', function($request) {
     return $this->template->render('about-us.html');
-  });
+});

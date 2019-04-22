@@ -42,7 +42,6 @@ class Foundation
     }
 
     public function start(){
-        $router = new Http\Router(new Http\Request);
         include $this->basePath . DIRECTORY_SEPARATOR . 'src/routes.php';;
     }
 }
