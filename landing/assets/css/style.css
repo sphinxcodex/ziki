@@ -1,111 +1,83 @@
-/* If you're reading this then you're the lucky person that gets to inherit this 
-bizzare css that I wrote with both eyes closed. Goodluck you'll need it
-*/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/*nav section*/
+.top-nav{padding-bottom: 30px; padding-top: 30px;}
+.top-menu-item>a{color: white; padding: 25px 15px 0 10px;}
+.third-tier-nav{background-color: var(--blue); padding-bottom: 10px; padding-top: 10px;}
+.third-tier-nav>ul>li>a.nav-link{color: var(--white) !important;}
+
+.nav-contact-area{display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: -18px;}
+.nav-contact-appeal{color: var(--blue); font-weight: bold;}
+.nav-call-us{font-weight: bold; margin: 0 0 0 -3px}
+
+.top-section{
+    background: url("../img/top-bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 70px;
+    color: white;
 }
-body {
-  font-family: "Roboto", sans-serif;
-}
-a {
-  text-decoration: none;
-}
-/* Top Section */
-.top-section {
-  background: #7f46b4;
-}
+
+.btn-light{pa-left: 15px;}
+
+.nav-container{padding-top: 30px !important; padding-bottom: 30px !important;}
+
 .btn-hero {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
 }
-.topnav-feature {
-  color: white;
-}
-.topnav-feature:hover {
-  color: white;
-}
-.topnav-earlyaccess {
-  color: #8449b5;
-  border-radius: 5px;
-  background-color: #ffffff;
-}
-.topnav-earlyaccess {
-  color: #8449b5;
-  text-decoration: none;
+
+.padd-1{padding-top: 20px; padding-bottom: 20px;}
+.padd-2{padding-top: 40px; padding-bottom: 40px;}
+.padd-3{padding-top: 60px; padding-bottom: 60px;}
+.padd-3{padding-top: 80px; padding-bottom: 80px;}
+
+.padd-top-1{padding-top: 20px;}
+.padd-top-2{padding-top: 40px;}
+.padd-top-3{padding-top: 60px;}
+.padd-top-3{padding-top: 80px;}
+
+.padd-bottom-1{padding-bottom: 20px;}
+.padd-bottom-2{padding-bottom: 40px;}
+.padd-bottom-3{padding-bottom: 60px;}
+.padd-bottom-3{padding-bottom: 80px;}
+
+.working-progress-section{}
+.intro-heading{color: #7f46b4;}
+
+nav>a{color: white; text-decoration: none;}
+nav>a:hover{color: red; text-decoration: none;}
+
+.mobile-ready{
+    background: url("../img/middle-bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
 }
 
-/* Working Section */
-.working-title-area h1 {
-  color: #000;
-}
-.working-title-area h6 {
-  color: #7f46b4;
-}
-.working-section-grid img {
-  margin-bottom: 25px;
-}
-.working-section-grid h3 {
-  font-weight: 900;
-  font-size: 18px;
-}
-.working-section-grid p {
-  font-size: 12px;
-  line-height: 1.5em;
-}
-/* Mobile Ready Section */
-.mobile-ready-section-container {
-  background: #7f46b4;
-}
-.mobile-ready-section p {
-  line-height: 1.5em;
-}
-.iphone {
-  margin-bottom: -150px;
-}
-/* Features */
-.feature-section-container {
-  background-color: #fbfbfb;
-  z-index: 1;
-}
-.feature-section h6 {
-  color: #7f46b4;
-}
-.feature-section h3 {
-  color: #000;
-  font-weight: 900;
-}
-.feature-area-grid h2 {
-  font-size: 20px;
-  color: #000;
-}
-.feature-area-grid img {
-  object-fit: none;
-}
-.feature-area-grid p {
-  font-size: 12px;
-}
-.feature-detail {
-  margin-left: 20px;
+button.get-access{
+    background: #7f46b4 !important;
 }
 
-/* Subsvription Section */
-.subscription-section {
-  width: 347px;
+.waiting-list{
+    background-image: url("../img/purple-gradient-bg.png") !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    border-radius: 20px;
 }
-.subscription-section h2 {
-  font-size: 30px;
-  color: #000;
-  font-weight: bolder;
+
+.footer{
+    display: flex;
+    justify-content: center;
+    min-height: 10vh;
+    background: #01081f url("../img/footer_overlay.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    color: white;
 }
-.subscription-section p {
-  font-size: 14px;
-  line-height: 1.5em;
-}
-.subscription-section button {
-  background: url("../img/purple-gradient-bg.png");
-  background-size: cover;
+
+.mailing-container{
+    margin-bottom: -100px;
+    z-index: 100;
 }
 /* Waiting List Section */
 .waiting-list-section {
@@ -129,7 +101,12 @@ a {
   box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
   color: #ffffff;
 }
-/* Footer Area */
-footer {
-  background: #01081f url("../img/footer_overlay.png") no-repeat 50px 150px;
+
+form{
+    padding-top: 30px;
 }
+
+.banner-info{z-index: 9999}
+/* Footer Area */
+
+/**/
