@@ -25,7 +25,6 @@
         --body-bg: rgba(17, 17, 17, 0.93) !important;
     }
 
-
     body {
         background: var(--body-bg) !important;
     }
@@ -139,6 +138,7 @@
 
     input:focus + .slider {
         box-shadow: 0 0 1px #E0E0E0;
+        outline: 0;
     }
 
     input:checked + .slider:before {
@@ -172,6 +172,12 @@
         color: #fff;
     }
 
+    .form-control-no-border:focus {
+        border-color:#ccc;
+        outline: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
 
     /* Mobile Styles  */
     @media screen and (max-width: 1280px) {}
@@ -180,6 +186,12 @@
         .follow-numbers {
             display: none;
         }
+        .themes-edit-title {
+            font-size: .9rem;
+        }
+        .switch-text {
+            font-size: .8rem;
+        }
     }
 
     @media screen and (max-width: 768px) {
@@ -187,11 +199,23 @@
             margin: 3rem 1rem !important;
             padding: 0 !important;
         }
+        .themes-edit-title {
+            font-size: 1rem;
+        }
+        input, input::-webkit-input-placeholder {
+            font-size: .7rem;
+        }
+        .themes-edit-title {
+            font-size: .9rem;
+        }
+        .switch-text {
+            font-size: .8rem;
+        }
     }
 
     @media screen and (max-width: 600px) {
         .themes-edit-title {
-            display: none;
+            /*display: none;*/
         }
 
         .themes-top-link {
@@ -200,6 +224,12 @@
 
         .navbar-nav li {
             padding: 0 8px !important;
+        }
+        .themes-edit-title {
+            font-size: .9rem;
+        }
+        .switch-text {
+            font-size: .9rem;
         }
     }
 </style>
@@ -244,35 +274,36 @@
             <div class="row themes-main py-2">
                 <div class="col themes-content-area p-1 pb-5 m-5">
                     <div class="row px-5 pt-4 pb-5">
-                        <div class="col-5">
+
+                        <div class="col-lg-5 col-md-3 col-sm-6 col-6 order-lg-1 order-md-1 order-sm-1 order-1">
                             <h3 class="themes-edit-title">Themes<span class="badge badge-round ml-3">4</span></h3>
                         </div>
 
-                        <div class="col-5 select-option">
-                            <form><input class="form-control rounded-0 search-box" type="text" placeholder="Search installed themes"></form>
+                        <div class="col-lg-5 col-md-5 select-option col-sm-12 order-lg-2 order-md-2 order-sm-2 order-2">
+                            <form><input class="form-control form-control-no-border rounded-0 search-box" type="text" placeholder="Search installed themes"></form>
                         </div>
 
-                        <div class="col-2 switch-toggle">
-                            <label class="switch"> <h6>Light Mode</h6>
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-6 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1">
+                            <label class="switch"> <h6 class="switch-text">Light Mode</h6>
                                 <input type="checkbox"><span class="slider round"></span>
                             </label>
                         </div>
                     </div>
 
                     <div class="row themes-main px-5">
-                        <div class="col-5">
+                        <div class="col-md-5 col-sm-6 pb-2">
                             <img src="resources/themes/ghost/assets/build/img/theme1.png" alt="" class="img-fluid w-100">
                             <div class="theme-state theme-active"><span class="text-uppercase">Active:</span> Ghost</div>
                         </div>
 
-                        <div class="col-5">
+                        <div class="col-md-5 col-sm-6 pb-2">
                             <img src="resources/themes/ghost/assets/build/img/theme2.png" alt="" class="img-fluid w-100">
                             <div class="theme-state">Canery</div>
                         </div>
 
-                        <div class="w-100 my-5"></div>
+                        <div class="w-100 my-3"></div>
 
-                        <div class="col-5">
+                        <div class="col-md-5 col-sm-6 pb-2">
                             <img src="resources/themes/ghost/assets/build/img/theme3.png" alt="" class="img-fluid w-100">
                             <div class="theme-state">Jumbo</div>
                         </div>
