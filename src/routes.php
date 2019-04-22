@@ -1,5 +1,4 @@
 <?php
-
 $router->get('/', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
@@ -9,12 +8,13 @@ $router->get('/', function($request) {
 });
 
 $router->get('/rss', function($request) {
+  header('Content-type: text/xml');
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
     $post = $ziki->getRSS();
     // Render our view
 
-    return $this->template->render('rss.xml');
+    return $this->template->render('storage\contents\lrss.xml');
 });
 
 $router->get('/blog-details', function($request) {

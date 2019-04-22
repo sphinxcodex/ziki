@@ -1,6 +1,5 @@
 <?php
 namespace Ziki\Core;
-
 use Mni\FrontYAML\Parser;
 use KzykHys\FrontMatter\FrontMatter;
 use Symfony\Component\Finder\Finder;
@@ -79,7 +78,6 @@ class Document{
     public function getRSS(){
       date_default_timezone_set('UTC');
 $Feed = new RSS2;
-// Setting some basic channel elements. These three elements are mandatory.
 $Feed->setTitle('Elijah feeds');
 $Feed->setLink('https://github.com/mibe/FeedWriter');
 $Feed->setDescription('feeds below.');
@@ -140,7 +138,11 @@ $Feed->addGenerator();
             }
           $myFeed = $Feed->generateFeed();
             // If you want to send the feed directly to the browser, use the printFeed() method.
-          return $Feed->printFeed();
+        $Feed->printFeed();
+        Header('Content-type: text/xml');
+
+//output the xml file
+print($Feed->asXML('storage\contents\rss.xml'));
 
         }
         else{
