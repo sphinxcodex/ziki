@@ -50,7 +50,7 @@
   }
 
   .profile-top-link {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: var(--top-tab-link);
   }
@@ -130,11 +130,24 @@
     }
   }
 
-  @media screen and (max-width: 768px) {}
+  @media screen and (max-width: 768px) {
+    .profile-content-area {
+      margin: 3rem 1rem !important;
+      padding: 0 !important;
+    }
+  }
 
   @media screen and (max-width: 600px) {
     .profile-edit-title {
       display: none;
+    }
+
+    .profile-top-link {
+      font-size: 12px !important;
+    }
+
+    .navbar-nav li {
+      padding: 0 8px !important;
     }
   }
 </style>
@@ -147,12 +160,12 @@
       <!-- for the sidebar -->
     </div>
 
-    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3">
       <!-- for any other part of the page -->
       <div class="row profile-header d-flex flex-row justify-content-between pt-5 pb-1 px-3 flex-nowrap">
         <div class="col profilenav-area">
-          <nav class="navbar pb-0">
-            <ul class="d-flex flex-row navbar-nav ">
+          <nav class="navbar pb-0 row">
+            <ul class="d-flex flex-row navbar-nav col-12">
               <li class="p-3 active">
                 <a href="profile" class="profile-top-link">Profile</a>
               </li>
@@ -165,9 +178,7 @@
             </ul>
           </nav>
         </div>
-<!--        <div class="profile-logo-area col-sm-2 d-flex justify-content-end pb-4">
-          <img src="resources/themes/ghost/assets/img/Vector.png" alt="ziki logo" class="" />
-</div>  -->
+
       </div>
 
       <div class="row profile-main py-2">
