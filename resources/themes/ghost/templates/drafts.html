@@ -1,3 +1,4 @@
+{% set title = "Drafts"%}
 {% extends 'layout.html' %} {% block page_content %}
 
 <style>
@@ -9,7 +10,7 @@
         border-top: 0 solid #280966 !important;
         border-right: 0 solid #280966 !important;
         border-left: 0 solid #280966 !important;
-        border-bottom: 6px solid #280966 !important;
+        border-bottom: 4px solid #280966 !important;
         border-top-left-radius: 0 !important;
         border-top-right-radius: 0 !important;
     }
@@ -89,10 +90,17 @@
         border-bottom: 1px solid #ebebeb;
     }
 
-    .post-drafts .logo-on-page {
+    .post-drafts .dropdown-menu {
         position: relative;
-        top: -0.5em;
+        margin-top: 2em;
+        margin-left: -2.5em;
     }
+
+    .post-drafts .dropdown-icon {
+        font-size: 30px;
+        margin-left: -30px;
+    }
+
 
     .post-drafts .dropdown-btn-link {
         font-size: 15px;
@@ -115,7 +123,25 @@
             width: 90%;
             border-bottom: 1px solid #ebebeb;
         }
+
+        .post-drafts .dropdown-menu {
+            position: relative;
+            margin-top: 2em;
+            margin-left: -6em;
+        }
+    
     }
+
+    @media screen and (max-width:900px) {
+        .post-drafts .dropdown-menu {
+            position: relative;
+            margin-top: 2em;
+            margin-left: -6em;
+        }
+    
+    }
+
+
 </style>
 
 <div class="container-fluid post-drafts">
@@ -125,19 +151,14 @@
         </div>
 
 
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-5 pt-3">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-5 pt-2">
             <div class="nav-bar row mt-3">
-                <ul class="col-6 d-flex justify-content-start mb-0 pb-0">
+                <ul class="col-12 d-flex justify-content-start mb-0 pb-0">
                     <li class="nav-item mr-5 pb-0 mb-0">
-                        <a href="" class="navbar-link ">Published</a>
+                        <a href="/published-posts" class="navbar-link ">Published</a>
                     </li>
-                    <li class="nav-item mr-5 pb-0 mb-0"><a href="" class="active navbar-link">Drafts</a></li>
+                    <li class="nav-item mr-5 pb-0 mb-0"><a href="#" class="active navbar-link">Drafts</a></li>
                 </ul>
-                <div class="col-6 logo-on-page d-flex justify-content-end">
-                    <a href="#">
-                        <img src="resources/themes/ghost/assets/img/vector.png" alt="ziki logo" class="" />
-                    </a>
-                </div>
             </div>
 
             <div class="row">
@@ -165,18 +186,13 @@
 
                 </div>
 
-                <div class="col-2 row pl-5 mt-5">
-                    <a href="" class="d-flex align-self-center dropdown-btn-link"><i class="fa fa fa-angle-down "
-                            id="dropdown-btn"></i></a>
-                    {# <span class="dropdown-item">
-                        <ul>
-                            <li><a href="#">Edit draft</a></li>
-                            <li><a href="#">Delete draft</a></li>
-                        </ul>
-                    </span> 
-                    This is the section for the dropdown of 'edit drafts' and 'delete drafts'
-                    #}
-
+                <div class="dropdown col-2" style="cursor:pointer">
+                    <span class="dropdown-toggle dropdown-icon " aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+                    </span>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item">Edit post</button>
+                        <button class="dropdown-item">Delete post</button>
+                    </div>
                 </div>
 
             </div>

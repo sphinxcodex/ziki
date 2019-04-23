@@ -1,3 +1,4 @@
+{% set title = "Published Posts"%}
 {% extends 'layout.html' %} {% block page_content %}
 
 <style>
@@ -9,7 +10,7 @@
     border-top: 0 solid #280966 !important;
     border-right: 0 solid #280966 !important;
     border-left: 0 solid #280966 !important;
-    border-bottom:6px solid #280966 !important;
+    border-bottom:4px solid #280966 !important;
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
   }
@@ -115,17 +116,12 @@
 
     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-5 pt-2">
         <div class="nav-bar row mt-3">
-            <ul class="col-6 d-flex justify-content-start mb-0 pb-0">
+            <ul class="col-12 d-flex justify-content-start mb-0 pb-0">
               <li class="nav-item mr-5 pb-0 mb-0">
-                <a href="" class="navbar-link active">Published</a>
+                <a href="#" class="navbar-link active">Published</a>
               </li>
-              <li class="nav-item mr-5 pb-0 mb-0"><a href="" class="navbar-link">Drafts</a></li>
+              <li class="nav-item mr-5 pb-0 mb-0"><a href="/drafts" class="navbar-link">Drafts</a></li>
             </ul>
-            <div class="col-6 logo-on-page d-flex justify-content-end">
-              <a href="#">
-                <img src="resources/themes/ghost/assets/img/vector.png" alt="ziki logo" class="" />
-              </a>
-            </div>
           </div>
 
       <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-5">

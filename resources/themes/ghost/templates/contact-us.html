@@ -1,4 +1,4 @@
-{% extends 'layout.html' %} {% block page_content %}
+{% set title = "Contact Us"%} {% extends 'layout.html' %} {% block page_content %}
 <style>
     .contact-us__heading {
         font-family: Lato;
@@ -49,6 +49,7 @@
         border-radius: 2px;
         border: 2px solid #280A66;
     }
+    
     .contact-us-form button:hover {
         font-family: Lato;
         font-style: normal;
@@ -133,13 +134,13 @@
 
         </div>
 
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 body-of-blog">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 body-of-blog mt-5 pt-3">
             <!--
                 LOGO
             -->
-            <div class="m-4 text-right">
+            <!--     <div class="m-4 text-right">
                 <img src="resources/themes/ghost/assets/img/Vector.png" alt="ZIKI" class="img-ziki-logo">
-            </div>
+	    </div>   -->
             <div class="">
                 <h3 class="contact-us__heading">Contact Me</h3>
                 <div style="border: 2px solid #280a66; width:110px;"></div>
