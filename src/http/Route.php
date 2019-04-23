@@ -1,6 +1,6 @@
 <?php
 namespace Ziki\Http;
-class Router
+class Route
 {
     protected $request;
     protected $pattern = '/^[0-9A-Za-z]+$/'; // ['int' => '/^[0-9]+$/', 'any' => '/^[0-9A-Za-z]+$/'];

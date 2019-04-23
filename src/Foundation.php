@@ -1,8 +1,6 @@
 <?php
 namespace Ziki;
-
 use Ziki\Core as Core;
-use Ziki\Http\Router;
 
 class Foundation
 {
@@ -43,8 +41,7 @@ class Foundation
     }
 
     public function start() {
-        new Router;
         require_once $this->basePath . DIRECTORY_SEPARATOR . 'src/config/routes.php';
-        echo $this->template->render('404.html');
+        // echo $this->template->render('404.html');
     }
 }
