@@ -2,7 +2,8 @@
 namespace Ziki;
 
 use Ziki\Core as Core;
-use Ziki\Http as Http;
+use Ziki\Http\Router;
+
 class Foundation
 {
     /**
@@ -41,7 +42,9 @@ class Foundation
         $this->template = new Core\Template($this->templatePath);
     }
 
-    public function start(){
-        include $this->basePath . DIRECTORY_SEPARATOR . 'src/routes.php';;
+    public function start() {
+        new Router;
+        include $this->basePath . DIRECTORY_SEPARATOR . 'src/routes.php';
+        echo $this->template->render('404.html');
     }
 }

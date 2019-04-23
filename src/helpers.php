@@ -12,10 +12,9 @@ function error($message){
 }
 
 function dd(...$value){
-    var_dump($value);
     foreach ($value as $data) {
         print_r($data);
         echo '</br> </br>';
     }
-    die;
+    exit;
 }

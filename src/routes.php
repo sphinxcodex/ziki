@@ -1,10 +1,9 @@
 <?php
-use Ziki\Http\Router;
 
-Router::get('/about/{any:id}', function($id) {
-    return $id;
-    return $this->template->render('about-us.html');
-  });
+Router::get('/about/{id}', function($request) {
+    return 'Hello';
+    // return $this->template->render('about-us.html');
+});
 
 Router::get('/', function($request) {
     $directory = "./storage/contents/";
