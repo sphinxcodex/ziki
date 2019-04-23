@@ -4,16 +4,16 @@
   .followers-posts ul {
     list-style: none;
   }
-  
+
   .followers-posts ul .nav-item a {
     color: #5c5c5c;
     font-size: 16px;
   }
-    
+
   .followers-posts ul .nav-links {
   margin-right: 10px;
   }
-  
+
   .nav-tabs .nav-link.active {
     border-top: 0px solid #280a66 !important;
     border-right: 0px solid #280a66 !important;
@@ -22,11 +22,11 @@
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
   }
-  
+
   .nav-tabs .nav-link {
     color: #280a66;
   }
-  
+
   .followers-posts .follow-button {
   display: flex;
   background: #280a66;
@@ -34,7 +34,7 @@
   float: right;
   margin: -4em -6em 0 0;
   }
-  
+
   .followers-posts .following-button {
   display: flex;
   background: #ffffff;
@@ -43,7 +43,7 @@
   margin: -4em -6.5em 0 0;
   color: #280a66;
   }
-  
+
   .followers-posts .followers-content {
     margin-top: 1em;
   margin-left: 3em;
@@ -51,34 +51,34 @@
   box-sizing: border-box;
   width: 85%;
   }
-  
+
   .followers-area {
     background: #EEEEEE;
     height: 100%;
   }
-  
+
   .followers-posts span {
   margin: 3em;
   }
-  
+
   .followers-posts span a {
   color: rgba(40, 10, 102, 0.5);
   background: rgba(182, 182, 182, 0.22);
   border: 1px solid rgba(40, 10, 102, 0.5);
   text-decoration: none;
   }
-    
+
 @media screen and (max-width: 768px) {
-    
+
     .followers-posts .sidebar {
       margin-top: 4em;
     }
-    
+
       .nav-item a {
     font-size: 12px !important;
     text-align: center;
     }
-    
+
     .mr-5 {
     margin-right: 0.3rem !important;
     }
@@ -90,28 +90,28 @@
     margin: 0.4em;
     float: left;
       }
-    
+
     .followers-posts .following-button {
     margin: 0.4em;
     float: left;
       }
-    
+
     .followers-posts .followers-content {
     width: 80%;
     margin-left: 2em;
     }
 }
  </style>
-  
+
   <div class="container-fluid followers-posts">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sidebar">
-  
+
       </div>
-    
+
     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
       <div class="col-12 d-flex justify-content-end pb-2">
-        
+
       </div>
         <div class="nav-bar mt-5 pt-3">
         <ul class="col-12 d-flex nav nav-tabs">
@@ -129,128 +129,24 @@
           </li>
         </ul>
         </div>
-        
+
       <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-5 followers-area">
-  
-  
+
+
           <span>Your subscribers <a href="#"><i class="fa fa-search"></i>Search</a></span>
-              <div class="row followers-content">
-                <div class="col-12 col-sm-10">
-            <div class="row">
-                    <div class="col-2 col-sm-1 author-image">
-                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-                    </div>
-                    <div class="col-10 col-sm-11">
-                      <h5 class="post-author">Destiny Ihejirika</h5>
-            <div>
-            <p class="post-detail">
-                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                      </p>
-            <button class="btn btn-info following-button d-flex">
-              Subscribed
-            </button>
-            </div>
-                        </div>
-            </div>
-                </div>
-              </div>
-        
+
+{% for list in sub %}
+
         <div class="row followers-content">
                 <div class="col-12 col-sm-10">
                   <div class="row">
                     <div class="col-2 col-sm-1 author-image">
-                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
+                      <img class="img-fluid" src="{{list.img | raw }}" />
                     </div>
                     <div class="col-10 col-sm-11">
-                      <h5 class="post-author">Destiny Ihejirika</h5>
+                      <h5 class="post-author">{{list.name | raw }}</h5>
             <div>
-            <p class="post-detail">
-                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                      </p>
-            <button class="btn btn-info follow-button d-flex">
-              Subscribe
-            </button>
-            </div>
-                        </div>
-            </div>
-                </div>
-              </div>
-        
-        <div class="row followers-content">
-                <div class="col-12 col-sm-10">
-                  <div class="row">
-                    <div class="col-2 col-sm-1 author-image">
-                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-                    </div>
-                    <div class="col-10 col-sm-11">
-                      <h5 class="post-author">Destiny Ihejirika</h5>
-            <div>
-            <p class="post-detail">
-                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                      </p>
-            <button class="btn btn-info follow-button d-flex">
-              Subscribe
-            </button>
-            </div>
-                        </div>
-                      </div>
-                </div>
-              </div>
-        
-        <div class="row followers-content">
-                <div class="col-12 col-sm-10">
-                  <div class="row">
-                    <div class="col-2 col-sm-1 author-image">
-                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-                    </div>
-                    <div class="col-10 col-sm-11">
-                      <h5 class="post-author">Destiny Ihejirika</h5>
-            <div>
-            <p class="post-detail">
-                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                      </p>
-            <button class="btn btn-info following-button d-flex">
-              Subscribed
-            </button>
-            </div>
-                        </div>
-                      </div>
-                </div>
-              </div>
-        
-        <div class="row followers-content">
-                <div class="col-12 col-sm-10">
-                  <div class="row">
-                    <div class="col-2 col-sm-1 author-image">
-                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-                    </div>
-                    <div class="col-10 col-sm-11">
-                      <h5 class="post-author">Destiny Ihejirika</h5>
-            <div>
-            <p class="post-detail">
-                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                      </p>
-            <button class="btn btn-info follow-button d-flex">
-              Subscribe
-            </button>
-            </div>
-                        </div>
-                      </div>
-                </div>
-              </div>
-        
-        <div class="row followers-content">
-                <div class="col-12 col-sm-10">
-                  <div class="row">
-                    <div class="col-2 col-sm-1 author-image">
-                      <img class="img-fluid" src="resources/themes/ghost/assets/img/ellipse.png" />
-                    </div>
-                    <div class="col-10 col-sm-11">
-                      <h5 class="post-author">Destiny Ihejirika</h5>
-            <div>
-            <p class="post-detail">
-                        Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                      </p>
+
             <button class="btn btn-info follow-button d-flex">
               Subscribe
             </button>
@@ -259,6 +155,8 @@
         </div>
       </div>
     </div>
+
+    {% endfor %}
   </div>
-</div>  
+</div>
 {% endblock page_content %}

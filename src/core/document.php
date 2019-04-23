@@ -1,11 +1,10 @@
 <?php
 namespace Ziki\Core;
+
 use Mni\FrontYAML\Parser;
 use KzykHys\FrontMatter\FrontMatter;
 use Symfony\Component\Finder\Finder;
-//use Item';
-//use Ziki\Core\Feed';
-//use Ziki\Core\RSS2';
+
 use Parsedown;
 /**
  *	The Document class holds all properties and methods of a single page document.
@@ -35,6 +34,7 @@ class Document{
         $markdown = $md->parse($document);
         $yaml = $markdown->getYAML();
         $html = $markdown->getContent();
+        createRSS();
         $doc = FileSystem::write($this->file, $yaml."\n".$html);
         if ($doc) {
             $result = array("error" => false, "message" => "Post published successfully");
@@ -75,9 +75,70 @@ class Document{
             return false;
         }
     }
-    public function getRSS(){
+//
+public function fetchAllRss()
+{
+  $rss = new \DOMDocument();
+  $feed = [];
+  $data = file_get_contents("storage/rss/subscriber.json");
+    $urlArray = json_decode($data, true);
+
+  //$urlArray = array(array('name' => 'Elijah Okokn', 'url' => 'storage/contents/rss.xml'),
+    //                array('name' => 'Sample',  'url' => 'rss/rss.xml')
+    //                );
+
+  foreach ($urlArray as $url) {
+      $rss->load($url['rss']);
+
+      foreach ($rss->getElementsByTagName('item') as $node) {
+          $item = array (
+              'site'  => $url['name'],
+              'img'  => $url['img'],
+              'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
+              'desc'  => $node->getElementsByTagName('description')->item(0)->nodeValue,
+              'link'  => $node->getElementsByTagName('link')->item(0)->nodeValue,
+              'date'  => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
+              );
+          array_push($feed, $item);
+      }
+  }
+  usort($feed, function($a, $b) {
+      return strtotime($b['date']) - strtotime($a['date']);
+  });
+  return $feed;
+}
+public function fetchRss()
+{
+  $rss = new \DOMDocument();
+  $feed = [];
+  $urlArray = array(array('name' => 'Elijah Okokn', 'url' => 'storage/rss/rss.xml','img' =>'\/landing\/assets\/img\/black-logo.png'),
+);
+
+  foreach ($urlArray as $url) {
+      $rss->load($url['url']);
+
+      foreach ($rss->getElementsByTagName('item') as $node) {
+          $item = array (
+              'site'  => $url['name'],
+              'img'  => $url['img'],
+              'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
+              'desc'  => $node->getElementsByTagName('description')->item(0)->nodeValue,
+              'link'  => $node->getElementsByTagName('link')->item(0)->nodeValue,
+              'date'  => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
+              );
+          array_push($feed, $item);
+      }
+  }
+  usort($feed, function($a, $b) {
+      return strtotime($b['date']) - strtotime($a['date']);
+  });
+  return $feed;
+}
+    //store rss
+    public function createRSS(){
       date_default_timezone_set('UTC');
 $Feed = new RSS2;
+// Setting some basic channel elements. These three elements are mandatory.
 $Feed->setTitle('Elijah feeds');
 $Feed->setLink('https://github.com/mibe/FeedWriter');
 $Feed->setDescription('feeds below.');
@@ -128,7 +189,7 @@ $Feed->addGenerator();
 
                 $newItem->setAuthor('elijah okokon', 'okoelijah@gmail.com');
 
-                $newItem->setId('http://example.com/URL/to/article', true);
+                $newItem->setId($url, true);
 
                 $newItem->addElement('source', 'Mike\'s page', array('url' => 'http://www.example.com'));
 
@@ -138,16 +199,48 @@ $Feed->addGenerator();
             }
           $myFeed = $Feed->generateFeed();
             // If you want to send the feed directly to the browser, use the printFeed() method.
-        $Feed->printFeed();
-        Header('Content-type: text/xml');
-
-//output the xml file
-print($Feed->asXML('storage\contents\rss.xml'));
-
+        // $strxml= $Feed->printFeed();
+          $handle = fopen("storage/rss/rss.xml", "w");
+          fwrite($handle, $myFeed);
+          fclose($handle);
         }
         else{
             return false;
         }
+    }
+    public function subscriber()
+    {
+      $db = "storage/rss/subscriber.json";
+      $file = file_get_contents($db, true);
+      $data=json_decode($file,true);
+      unset($file);
+      $posts =[];
+     foreach ($data as $key => $value) {
+
+       $content['name'] = $value['name'];
+       $content['img'] = $value['img'];
+       array_push($posts, $content);
+   }
+   return $posts;
+
+
+    }
+    public function subscription()
+    {
+      $db = "storage/rss/subscriber.json";
+      $file = file_get_contents($db, true);
+      $data=json_decode($file,true);
+      unset($file);
+      $posts =[];
+     foreach ($data as $key => $value) {
+
+       $content['name'] = $value['name'];
+       $content['img'] = $value['img'];
+       array_push($posts, $content);
+   }
+   return $posts;
+
+
     }
     //update post
     public function update(){

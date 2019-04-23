@@ -1,20 +1,12 @@
 <?php
+
 $router->get('/', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
-    $post = $ziki->get();
+    $feed = $ziki->fetchAllRss();
     // Render our view
-    return $this->template->render('index.html', ['posts' => $post] );
-});
-
-$router->get('/rss', function($request) {
-  header('Content-type: text/xml');
-    $directory = "./storage/contents/";
-    $ziki = new Ziki\Core\Document($directory);
-    $post = $ziki->getRSS();
-    // Render our view
-
-    return $this->template->render('storage\contents\lrss.xml');
+    //print_r($feed);
+    return $this->template->render('index.html',['posts' => $feed] );
 });
 
 $router->get('/blog-details', function($request) {
@@ -26,21 +18,13 @@ $router->get('/blog-details', function($request) {
     return $this->template->render('blog-details.html', ['ziki' => $ziki] );
 });
 
-$router->get('/timeline', function($request) {
-    $directory = "./storage/contents/";
-    $ziki = new Ziki\Core\Document($directory);
-    $post = $ziki->get();
-    return $this->template->render('timeline.html', ['posts' => $post] );
-});
 
-$router->post('/timeline', function($request) {
-    $directory = "./storage/contents/";
-    $body = $_POST['postVal'];
-    var_dump($body); die();
-    $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->create($body);
-    var_dump($result); die();
-    return $this->template->render('timeline.html', ['ziki' => $result]);
+$router->get('/timeline', function($request) {
+  $directory = "./storage/contents/";
+  $ziki = new Ziki\Core\Document($directory);
+  $feed = $ziki->fetchRss();
+    //var_dump($feed);
+    return $this->template->render('timeline.html', ['posts' => $feed]);
 });
 
 $router->get('/contact-us', function($request) {
@@ -65,11 +49,16 @@ $router->get('/profile', function($request) {
 });
 
 $router->get('/subscriptions', function($request) {
+
     return $this->template->render('subscriptions.html');
 });
 
 $router->get('/subscribers', function($request) {
-    return $this->template->render('subscribers.html');
+  $directory = "./storage/contents/";
+  $ziki = new Ziki\Core\Document($directory);
+  $list = $ziki->subscriber();
+  print_r($list);
+    return $this->template->render('subscribers.html', ['sub' => $list] );
 });
 
 $router->get('/editor', function($request) {

@@ -147,7 +147,7 @@ abstract class Feed
         if ($this->version == Feed::ATOM)
             $this->setChannelElement('atom:generator', 'FeedWriter', array('uri' => 'https://github.com/mibe/FeedWriter'));
         else if ($this->version == Feed::RSS2)
-            $this->setChannelElement('generator', 'FeedWriter');
+            $this->setChannelElement('generator', 'Ziki');
         else
             die('The generator element is not supported in RSS1 feeds.');
 
