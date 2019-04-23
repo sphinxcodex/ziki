@@ -32,19 +32,19 @@ class Foundation
     
     private function loadConfig()
     {
-        $this->configPath = $this->basePath . DIRECTORY_SEPARATOR . 'config/ziki.json';
+        $this->configPath = $this->basePath . DIRECTORY_SEPARATOR . 'src/config/ziki.json';
         Core\Config::json($this->configPath);
     }
 
     private function loadTemplate()
     {
-        $this->templatePath = $this->basePath . DIRECTORY_SEPARATOR . 'resources/themes' . DIRECTORY_SEPARATOR . THEME . DIRECTORY_SEPARATOR . 'templates';
+        $this->templatePath = $this->basePath . DIRECTORY_SEPARATOR . 'site/themes' . DIRECTORY_SEPARATOR . THEME . DIRECTORY_SEPARATOR . 'templates';
         $this->template = new Core\Template($this->templatePath);
     }
 
     public function start() {
         new Router;
-        include $this->basePath . DIRECTORY_SEPARATOR . 'src/routes.php';
+        require_once $this->basePath . DIRECTORY_SEPARATOR . 'src/config/routes.php';
         echo $this->template->render('404.html');
     }
 }

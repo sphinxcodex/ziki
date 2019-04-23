@@ -4,7 +4,7 @@ use Symfony\Component\Finder\Finder;
 
 class Theme {
 
-    public $themes_path = 'resources/themes';
+    public $themes_path = 'site/themes';
     public $finder;
 
     public function __construct()
@@ -76,13 +76,13 @@ class Theme {
 
     public function activate($theme)
     {
-        $themePath = ZIKI_BASE_PATH.'/resources/themes/'.$theme;
+        $themePath = ZIKI_BASE_PATH.'/site/themes/'.$theme;
         if(!is_dir($themePath) || !file_exists($themePath))
         {
             return false;
         }
 
-        $themeConfigPath = ZIKI_BASE_PATH.'/config/ziki.json';
+        $themeConfigPath = ZIKI_BASE_PATH.'/src/config/ziki.json';
         $ConfigContent = '{
             "APP_NAME": "Ziki App",
             "THEME":"'.$theme.'",
