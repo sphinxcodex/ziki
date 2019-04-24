@@ -28,7 +28,7 @@ class Foundation
         $this->loadConfig();
         $this->loadTemplate();
     }
-    
+
     private function loadConfig()
     {
         $this->configPath = $this->basePath . DIRECTORY_SEPARATOR . 'config/ziki.json';

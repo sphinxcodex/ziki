@@ -34,7 +34,7 @@ class Document{
         $markdown = $md->parse($document);
         $yaml = $markdown->getYAML();
         $html = $markdown->getContent();
-        createRSS();
+        $this->createRSS();
         $doc = FileSystem::write($this->file, $yaml."\n".$html);
         if ($doc) {
             $result = array("error" => false, "message" => "Post published successfully");
@@ -47,6 +47,7 @@ class Document{
     //get post
     public function get(){
         $finder = new Finder();
+
         // find all files in the current directory
         $finder->files()->in($this->file);
         $posts = [];
@@ -136,7 +137,7 @@ public function fetchRss()
 }
     //store rss
     public function createRSS(){
-      date_default_timezone_set('UTC');
+    //  date_default_timezone_set('UTC');
 $Feed = new RSS2;
 // Setting some basic channel elements. These three elements are mandatory.
 $Feed->setTitle('Elijah feeds');
@@ -180,18 +181,19 @@ $Feed->addGenerator();
                 $bd = $parsedown->text($body);
                 $time = $parsedown->text($yaml['timestamp']);
                 $url = $parsedown->text($yaml['post_dir']);
+                $slug = $parsedown->text($yaml['slug']);
 
                 $newItem = $Feed->createNewItem();
-                $newItem->setTitle($title);
-                $newItem->setLink('http://www.example.com');
-                $newItem->setDescription(substr($bd,0,100));
+                $newItem->setTitle(strip_tags($title));
+                $newItem->setLink("/"."post"."/".strip_tags($slug));
+                $newItem->setDescription(substr(strip_tags($bd),0,100));
                 $newItem->setDate('2013-04-07 00:50:30');
 
                 $newItem->setAuthor('elijah okokon', 'okoelijah@gmail.com');
 
                 $newItem->setId($url, true);
 
-                $newItem->addElement('source', 'Mike\'s page', array('url' => 'http://www.example.com'));
+                $newItem->addElement('source', 'Elijah\'s page', array('url' => 'http://www.example.com'));
 
 
                 $Feed->addItem($newItem);
