@@ -1,29 +1,38 @@
 <?php
-include "./src/core/subscribe.php";
+include "C:\Users\user\ziki-1\src\core\subscribe.php";
 
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    //$title = isset($_POST['title']) ? trim($_POST['title']) : null;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $rss = new DOMDocument();
+    $url = isset($_POST['rss']) ? trim($_POST['rss']) : null;
 
-    $name= "Elijah";
-    $rss = "/storage/contents/rss.xml";
-    $img = "/landing/assets/img/black-logo.png";
+    //$url = "http://www.scriptol.com/rss.xml";
+        $rss->load($url);
+        foreach ($rss->getElementsByTagName('channel') as $r) {
+          $title = $r->getElementsByTagName('title')->item(0)->nodeValue;
+          $link = $r->getElementsByTagName('link')->item(0)->nodeValue;
+          $description = $r->getElementsByTagName('description')->item(0)->nodeValue;
+          $image = isset($r->getElementsByTagName('image')->item(0)->nodeValue);
 
-                $db_json = file_get_contents("C:\Users\user\ziki-1\storage\contents\subscriber.json");
+        }
+                $db_json = file_get_contents("C:/Users/user/ziki-1/storage/rss/subscriber.json");
                 $newSub = new Ziki\Core\Subscribe();
-                $newSub->setSubName($name);
-                $newSub->setSubRss($rss);
-                $newSub->setSubimg($img);
-                if ($newSub->follow($db_json, $name, $rss, $img)) {
-                    $response = array('error' => false, 'message' => 'post published successfully');
+                $newSub->setSubName($title);
+                $newSub->setSubRss($url);
+                $newSub->setSubDesc($description);
+                $newSub->setSubImg($image);
+
+                if ($newSub->follow($db_json))
+                {
+                  $response = "Added successfully";
+
                 } else {
-                    $response = array('error' => true, 'message' => 'error occured while posting');
+                    $response = "Your have already Subscribed to this channel";
                 }
-            } else {
+                echo $response;
+                header("location: ../subscription");
+          } else {
 
             //  $newSub = new Ziki\Core\Subscribe();
               //$newSub->unfollow("elijah");
             }
-
-    //die(json_encode($response));
-    //header("Location: {$site_url}/timeline.php");

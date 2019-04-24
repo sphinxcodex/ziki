@@ -29,28 +29,21 @@
     });
 </script>
 <script>
-  function follow(url,id) {
+  function addrss() {
+    $("#rss").click(function () {
+      var url = $("#imput").serialize();
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
       if (xhttp.readyState == 4 && xhttp.status == 200) {
-        document.getElementById("follow"+id+"").innerHTML = xhttp.responseText;
+        document.getElementById("rss").innerHTML = xhttp.responseText;
 
       }
     };
-    xhttp.open("GET", url , true);
+    xhttp.open("GET", "storage/rss/addsubscribers.php?rss="+url , true);
     xhttp.send();
   }
-  function unfollow(url,id) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function(){
-      if (xhttp.readyState == 4 && xhttp.status == 200) {
-        document.getElementById("follow"+id+"").innerHTML = xhttp.responseText;
 
-      }
-    };
-    xhttp.open("GET", url , true);
-    xhttp.send();
-  }
 </script>
 <!-- Convert to markdown script -->
 <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
