@@ -361,11 +361,18 @@
       display: initial;
     }
 
-    #modalLoginForm {
+    #modalLoginForm,
+    #modalLoginForm .modal-content {
+      /* bootstrap sets background of .modal-content */
+      /* so it must also be overridden along with #modalLoginForm */
       background: -webkit-linear-gradient(180deg,
         #973793 0%,
         rgba(134, 64, 131, 0) 100%),
         #3b0e75 !important;
+    }
+
+    #modalLoginForm .modal-content {
+      border: none;
     }
 
     .login-modal-popup-left-column {
@@ -385,11 +392,6 @@
     .login-dialog {
       padding: 50px 30px;
       box-sizing: border-box;
-    }
-
-    .modal-content {
-      background: transparent;
-      border: none;
     }
 
     .greetings {
@@ -450,7 +452,7 @@
     }
   }
 </style>
-<div class="container-fluid py-3 sidebar-container">
+<div class="container-fluid py-3 sidebar-container position-fixed">
   <div class="row">
     <div class="col-6 text-left">
       <button type="button" id="sidebarCollapse" class="btn btn-info side-trigger">
@@ -473,11 +475,9 @@
           </div>
           <h4 class="owner-name">Owner's Name</h4>
           <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto">Front end developer, ui/ux developer,
-            friend
-            and
-            traveller.</span>
+            friend and traveller.</span>
           <!-- <h6 class="bio">Owner's Bio</h6> -->
-          <a href="#"><button class="btn btn-default login-button" type="button" data-toggle="modal"
+          <a href="javascript:void(0)"><button class="btn btn-default login-button" type="button" data-toggle="modal"
               data-target="#modalLoginForm">
               Login
             </button></a>
@@ -493,6 +493,9 @@
         <ul class="pl-0">
           <li><a href="published-posts">Published Posts</a></li>
           <li><a href="profile">Profile</a></li>
+          <li>
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#subscribe-here">Subscribe</a>
+          </li>
           <li><a href="about">About Ziki</a></li>
           <li><a href="contact-us">Contact Us</a></li>
         </ul>
