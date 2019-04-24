@@ -3,7 +3,7 @@ namespace Ziki\Http;
 class Route
 {
     protected $request;
-    protected $pattern = '/^[0-9A-Za-z]+$/'; // ['int' => '/^[0-9]+$/', 'any' => '/^[0-9A-Za-z]+$/'];
+    protected $pattern = '/^[0-9A-Za-z-_]+$/'; // ['int' => '/^[0-9]+$/', 'any' => '/^[0-9A-Za-z]+$/'];
     protected $httpMethods = ['get', 'post', 'put', 'patch', 'delete'];
 
     public function __construct()

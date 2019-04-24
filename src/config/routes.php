@@ -15,15 +15,13 @@ Route::get('/', function($request) {
     return $this->template->render('index.html', ['posts' => $posts] );
 });
 
-Route::get('/blog-details', function($request) {
-    $ziki = [
-        [ 'name'          => 'Adroit' ],
-        [ 'name'          => 'Olu' ],
-        [ 'name'          => 'Amuwo' ],
-    ];
-    return $this->template->render('blog-details.html', ['ziki' => $ziki] );
-});
 
+Route::get('/blog-details/{id}', function($request, $id) {
+    $directory = "./storage/contents/";
+    $ziki = new Ziki\Core\Document($directory);
+   $result = $ziki->getEach($id);
+   return $this->template->render('blog-details.html', ['result' => $result] );
+});
 Route::get('/timeline', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
