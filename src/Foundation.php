@@ -36,7 +36,7 @@ class Foundation
 
     private function loadTemplate()
     {
-        $this->templatePath = $this->basePath . DIRECTORY_SEPARATOR . 'site/themes' . DIRECTORY_SEPARATOR . THEME . DIRECTORY_SEPARATOR . 'templates';
+        $this->templatePath = $this->basePath . DIRECTORY_SEPARATOR . 'resources/themes' . DIRECTORY_SEPARATOR . THEME . DIRECTORY_SEPARATOR . 'templates';
         $this->template = new Core\Template($this->templatePath);
     }
 
