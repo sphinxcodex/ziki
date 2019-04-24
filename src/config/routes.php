@@ -2,9 +2,9 @@
 
 use Ziki\Http\Route;
 
-Route::get('/about/{id}', function($request) {
-    return 'Hello';
-    // return $this->template->render('about-us.html');
+Route::get('/about/{id}', function($request,$id) {
+    
+     return $this->template->render('about-us.html');
 });
 
 Route::get('/', function($request) {
