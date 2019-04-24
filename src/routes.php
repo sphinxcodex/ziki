@@ -27,7 +27,6 @@ $router->get('/timeline', function($request) {
 $router->post('/timeline', function($request) {
     $directory = "./storage/contents/";
     $body = $_POST['postVal'];
-    var_dump($body); die();
     $ziki = new Ziki\Core\Document($directory);
     $result = $ziki->create($body);
     var_dump($result); die();

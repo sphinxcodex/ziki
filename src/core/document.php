@@ -33,7 +33,12 @@ class Document{
         $markdown = $md->parse($document);
         $yaml = $markdown->getYAML();
         $html = $markdown->getContent();
-        $doc = FileSystem::write($this->file, $yaml."\n".$html);
+        $file = $this->file;
+        $time = date("Y-m-d h:i:sa");
+        $unix = strtotime($time);
+        $dir = $file.$unix.".yaml";
+        //return $dir; die();
+        $doc = FileSystem::write($dir, $yaml."\n".$html);
         if ($doc) {
             $result = array("error" => false, "message" => "Post published successfully");
         }
