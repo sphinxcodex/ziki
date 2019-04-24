@@ -1,5 +1,4 @@
-{% set title = "Timeline"%}
-{% extends 'layout.html' %} {% block page_content %}
+{% set title = "Timeline"%} {% extends 'layout.html' %} {% block page_content %}
 <style>
   :root {
     --post-heading-text-color: #1b1b1b;
@@ -55,12 +54,12 @@
     transition: all ease-in 0.3s;
   }
 
-  .post-title a:hover{
-    color:var(--ziki-purple);
+  .post-title a:hover {
+    color: var(--ziki-purple);
     text-decoration: none;
     transition: all ease-in 0.3s;
   }
-  
+
   .post-detail {
     color: var(--post-body-text-color);
   }
@@ -74,13 +73,10 @@
     margin-bottom: 50px;
   }
   .ql-toolbar.ql-snow {
-    border: 0 !important;
     box-sizing: border-box;
     font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     padding: 8px;
-    margin-bottom: 10px;
     background-color: #f5f5f5;
-    border-radius: 5px;
   }
 
   .ql-editor.ql-blank {
@@ -132,12 +128,12 @@
     transition: all 0.3s;
   }
 
-  .post-comment a{
-    color:var(--ziki-purple);
+  .post-comment a {
+    color: var(--ziki-purple);
     transition: all ease-in 0.3s;
   }
 
-  .post-comment a:hover{
+  .post-comment a:hover {
     text-decoration: none;
     transition: all ease-in 0.3s;
   }
@@ -186,12 +182,14 @@
           Nav Bar intentionally spelt fully to prevent conflict please don't touch
         -->
         <div class="row navigation-bar">
-       <!--   <div class="col-12 text-right">
-       
-          <a href="/"
-              ><img src="resources/themes/ghost/assets/img/logo.png"
-	      /></a> 
-	  </div>  -->
+          <!--
+            <div class="col-12 text-right">
+
+                   <a href="/"
+                       ><img src="resources/themes/ghost/assets/img/logo.png"
+                /></a>
+            </div>
+          -->
         </div>
       </div>
 
@@ -228,6 +226,18 @@
                         <div class="row">
                           <div class="col-12">
                             <div class="row form-group">
+                              <div class="col-12 py-3">
+                                <label for="new-post-title" class="sr-only"
+                                  >Title</label
+                                >
+                                <input
+                                  type="text"
+                                  name="postTitle"
+                                  id="new-post-title"
+                                  class="form-control"
+                                  placeholder="Title"
+                                />
+                              </div>
                               <div class="col-12">
                                 <input name="postVal" type="hidden" />
                                 <div id="editor"></div>
@@ -257,8 +267,8 @@
 
                 <!-- Posts from here.. -->
                 <article class="post-area">
-                    {% for post in posts %}
-                    <div
+                  {% for post in posts %}
+                  <div
                     class="row d-flex justify-content-center justify-content-lg-start post-content"
                   >
                     <div class="col-11 col-xl-10">
@@ -272,13 +282,9 @@
                         <div class="col-10 col-sm-11">
                           <h5 class="post-author">Destiny Ihejirika</h5>
                           <h2 class="post-title">
-                            <a href="blog-details"
-                              >{{post.title | raw}}</a
-                            >
+                            <a href="blog-details">{{post.title | raw}}</a>
                           </h2>
-                          <p class="post-detail">
-                            {{post.body | raw}}
-                          </p>
+                          <p class="post-detail">{{post.body | raw}}</p>
                           <div class="row post-action-bar">
                             <div class="col-6 col-sm-6 post-date text-left">
                               <p>{{post.timestamp | raw}}</p>
