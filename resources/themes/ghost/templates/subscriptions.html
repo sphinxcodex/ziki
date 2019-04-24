@@ -63,15 +63,11 @@
     margin-top: -20px;
   }
 
-  .profile-content-area {
+  .subscription-content-area {
     background: var(--profile-edit-form);
-    height: 930px;
+    /*height: 930px;*/
+    height: auto;
   }
-
-  .profile-edit-title {
-    color: #000000
-  }
-
 
   /* Mobile Styles  */
   @media screen and (max-width: 1280px) {}
@@ -83,16 +79,13 @@
   }
 
   @media screen and (max-width: 768px) {
-    .profile-content-area {
+    .subscription-content-area {
       margin: 3rem 1rem !important;
       padding: 0 !important;
     }
   }
 
   @media screen and (max-width: 600px) {
-    .profile-edit-title {
-      display: none;
-    }
 
     .profile-top-link {
       font-size: 12px !important;
@@ -103,95 +96,95 @@
     }
   }
 
-  /*Subscribers Styles*/
-  .following-posts ul {
-    list-style: none;
+ /*Subscriptions styles */
+  .following-content {
+    border: 1px solid #b2b2b2;
+    border-radius: 4px;
   }
 
-  .following-posts ul .nav-item a {
-    color: #5c5c5c;
-    font-size: 16px;
+  .post-detail {
+    font-size: 12px;
+    color: #808080
   }
 
-  .following-posts ul .nav-links {
-    margin-right: 10px;
+  .post-author {
+    color: #313131;
+    font-size: 14px;
   }
 
-  .nav-tabs .nav-link.active {
-    border-top: 0px solid #280a66 !important;
-    border-right: 0px solid #280a66 !important;
-    border-left: 0px solid #280a66 !important;
-    border-bottom: 4px solid #280a66 !important;
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
+  .following-button {
+    background: var(--custom-deep-purple);
+    color: #fff;
+    border-radius: 0;
   }
 
-  .nav-tabs .nav-link {
-    color: #280a66;
+  .following-button:hover {
+    border: 1px solid var(--custom-deep-purple);
+    color: 1px solid var(--custom-deep-purple);
+    border-radius: 0;
+    background: transparent;
   }
 
-  .following-posts .following-button {
-    display: flex;
-    background: #ffffff;
-    border: 1px solid #280a66;
-    float: right;
-    margin: -4em -6.5em 0 0;
-    color: #280a66;
+  .not-following-button {
+    border: 1px solid var(--custom-deep-purple);
+    color: 1px solid var(--custom-deep-purple);
+    border-radius: 0;
+    background: transparent;
   }
 
-  .following-posts .following-content {
-    margin-top: 1em;
-    margin-left: 3em;
-    border: 1px solid #b3b3b3;
-    box-sizing: border-box;
-    width: 85%;
+  .not-following-button:hover {
+    background: var(--custom-deep-purple);
+    color: #fff;
+    border-radius: 0;
   }
 
-  .following-area {
-    background: #eeeeee;
-    height: 100%;
+
+
+  /*input-field Icon*/
+
+  .has-search .form-control {
+    padding-left: 1.5rem;
   }
 
-  .following-posts span {
-    margin: 3em;
+  .has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 1.3rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #5C5C5C;
   }
 
-  .following-posts span a {
-    color: rgba(40, 10, 102, 0.5);
-    background: rgba(182, 182, 182, 0.22);
-    border: 1px solid rgba(40, 10, 102, 0.5);
-    text-decoration: none;
+  .form-control-no-border {
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: transparent;
+    border: 0;
+
   }
 
-  @media screen and (max-width: 768px) {
-    .following-posts .sidebar {
-      margin-top: 4em;
-    }
-
-    .nav-item a {
-      font-size: 12px !important;
-      text-align: center;
-    }
-
-    .mr-5 {
-      margin-right: 0.3rem !important;
-    }
-    .nav-link {
-      margin: 0.1em !important;
-      padding: 0 !important;
-    }
-
-    .following-posts .following-button {
-      margin: 0.4em;
-      float: left;
-    }
-
-    .following-posts .following-content {
-      width: 80%;
-      margin-left: 2em;
-    }
+  .form-control-no-border:focus {
+    border: 1px solid var(--custom-deep-purple);
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: transparent;
   }
-  /*Subscribers styles*/
+
+  .followed-text {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  /*input-field Icon*/
+
+
+  /*Subscriptions styles */
+
 </style>
 
 <!-- content goes here -->
@@ -203,6 +196,7 @@
     </div>
 
     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3">
+
       <!-- for any other part of the page -->
       <div class="row profile-header d-flex flex-row justify-content-between pt-5 pb-1 px-3 flex-nowrap">
         <div class="col profilenav-area">
@@ -227,11 +221,208 @@
       </div>
 
       <div class="row profile-main py-2">
-        <div class="col profile-content-area p-1 pb-5 m-5">
-          <h3 class="px-5 profile-edit-title">Subscriptions</h3>
+        <div class="col-10 subscription-content-area p-1 pb-5 m-5">
 
+          <div class="px-5">
+            <div class="row d-flex align-items-center my-4">
 
-        </div>
+              <div class="col-4">
+                <p class="followed-text">You are followed by</p>
+              </div>
+
+              <div class="col-4 col-xs-4">
+                <form action="post">
+                  <div class="form-group has-search">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" class="form-control form-control-no-border" placeholder="Search">
+                  </div>
+                </form>
+              </div>
+
+              <!--<div class="following-area">-->
+                <div class="col-4 text-center py-3">
+                  <button
+                          type="button"
+                          class="btn btn-primary"
+                          data-toggle="modal"
+                          data-target="#add-subscription">
+                    Add subscription
+                  </button>
+                </div>
+
+            </div>
+
+            <div class="row my-4 ">
+
+              <div class="col-12 col-sm-10 py-1 following-content">
+
+              <div class="row d-flex align-items-center mx-2">
+
+                <div class="div col-1 author-image">
+                  <img class="max-width" src="resources/themes/ghost/assets/img/ellipse.png"/>
+                </div>
+
+                <div class="col-9 py-4">
+                  <h5 class="post-author ml-3">Mercy Ikpe</h5>
+                  <div class="ml-3">
+                    <p class="post-detail">
+                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-2">
+                  <button class="btn following-button">
+                    Follow
+                  </button>
+                </div>
+              </div>
+
+              </div>
+            </div>
+            <div class="row my-4 ">
+
+              <div class="col-12 col-sm-10 py-1 following-content">
+
+              <div class="row d-flex align-items-center mx-2">
+
+                <div class="div col-1 author-image">
+                  <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (3).png"/>
+                </div>
+
+                <div class="col-9 py-4">
+                  <h5 class="post-author ml-3">Destiny Ihejirika</h5>
+                  <div class="ml-3">
+                    <p class="post-detail">
+                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-2">
+                  <button class="btn following-button">
+                    Follow
+                  </button>
+                </div>
+              </div>
+
+              </div>
+            </div>
+            <div class="row my-4 ">
+
+              <div class="col-12 col-sm-10 py-1 following-content">
+
+              <div class="row d-flex align-items-center mx-2">
+
+                <div class="div col-1 author-image">
+                  <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (2).png"/>
+                </div>
+
+                <div class="col-9 py-4">
+                  <h5 class="post-author ml-3">Uche Ozoemena</h5>
+                  <div class="ml-3">
+                    <p class="post-detail">
+                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-2">
+                  <button class="btn not-following-button">
+                    Following
+                  </button>
+                </div>
+              </div>
+
+              </div>
+            </div>
+            <div class="row my-4 ">
+
+              <div class="col-12 col-sm-10 py-1 following-content">
+
+              <div class="row d-flex align-items-center mx-2">
+
+                <div class="div col-1 author-image">
+                  <img class="max-width" src="resources/themes/ghost/assets/img/ellipse.png"/>
+                </div>
+
+                <div class="col-9 py-4">
+                  <h5 class="post-author ml-3">Vanessa</h5>
+                  <div class="ml-3">
+                    <p class="post-detail">
+                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-2">
+                  <button class="btn following-button">
+                    Follow
+                  </button>
+                </div>
+              </div>
+
+              </div>
+            </div>
+            <div class="row my-4 ">
+
+              <div class="col-12 col-sm-10 py-1 following-content">
+
+              <div class="row d-flex align-items-center mx-2">
+
+                <div class="div col-1 author-image">
+                  <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (2).png"/>
+                </div>
+
+                <div class="col-9 py-4">
+                  <h5 class="post-author ml-3">mista_oba</h5>
+                  <div class="ml-3">
+                    <p class="post-detail">
+                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-2">
+                  <button class="btn not-following-button">
+                    Following
+                  </button>
+                  </button>
+                </div>
+              </div>
+
+              </div>
+            </div>
+            <div class="row my-4 ">
+
+              <div class="col-12 col-sm-10 py-1 following-content">
+
+              <div class="row d-flex align-items-center mx-2">
+
+                <div class="div col-1 author-image">
+                  <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (3).png"/>
+                </div>
+
+                <div class="col-9 py-4">
+                  <h5 class="post-author ml-3">Eniayomi</h5>
+                  <div class="ml-3">
+                    <p class="post-detail">
+                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-2">
+                  <button class="btn following-button">
+                    Follow
+                  </button>
+                </div>
+              </div>
+
+              </div>
+            </div>
+          </div>
+
       </div>
     </div>
   </div>
