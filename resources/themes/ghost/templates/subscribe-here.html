@@ -56,9 +56,17 @@
     color: #fff;
     background-color: var(--ziki-purple);
   }
+
+  @media screen and (max-width: 767px) {
+    #subscribe-here .modal-dialog {
+      height: 100%;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
 </style>
 
-<!-- Modal -->
+<!-- Subscribe Here Modal -->
 <div
   class="modal fade"
   id="subscribe-here"
@@ -67,7 +75,10 @@
   aria-labelledby="subscribe-here-label"
   aria-hidden="true"
 >
-  <div class="modal-dialog" role="document">
+  <div
+    class="modal-dialog d-flex d-md-block align-items-center"
+    role="document"
+  >
     <div class="modal-content">
       <div class="modal-header justify-content-center">
         <div class="row row-container align-items-center">
