@@ -42,6 +42,6 @@ class Foundation
 
     public function start() {
         require_once $this->basePath . DIRECTORY_SEPARATOR . 'src/config/routes.php';
-        // echo $this->template->render('404.html');
+        echo $this->template->render('404.html');
     }
 }

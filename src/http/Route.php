@@ -31,6 +31,7 @@ class Route
         if (is_array($matches)) {
             $params = implode(',', $matches);
             echo call_user_func($callable, $this->request, $params );
+            exit;
         };
     }  
     /**
