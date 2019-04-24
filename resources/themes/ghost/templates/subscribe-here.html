@@ -60,8 +60,12 @@
   @media screen and (max-width: 767px) {
     #subscribe-here .modal-dialog {
       height: 100%;
-      margin-top: 0;
-      margin-bottom: 0;
+      margin: 0;
+    }
+
+    #subscribe-here .title-container * {
+      /* hide everything in the title-container to create empty space */
+      display: none;
     }
   }
 </style>
@@ -75,10 +79,7 @@
   aria-labelledby="subscribe-here-label"
   aria-hidden="true"
 >
-  <div
-    class="modal-dialog d-flex d-md-block align-items-center"
-    role="document"
-  >
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header justify-content-center">
         <div class="row row-container align-items-center">
@@ -89,7 +90,7 @@
               alt=""
             />
           </div>
-          <div class="col-8">
+          <div class="col-8 title-container">
             <h2 class="modal-title font-weight-bold" id="subscribe-here-label">
               Subscribe
             </h2>
