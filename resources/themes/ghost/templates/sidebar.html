@@ -78,7 +78,7 @@
     color: var(--ziki-purple);
   }
 
-  #sidebar ul li.shown>a,
+  #sidebar ul li.shown > a,
   a[aria-expanded='true'] {
     color: #fff;
     background: #6d7fcc;
@@ -177,13 +177,18 @@
       margin-top: 20px;
     }
 
+    #sidebar li {
+      margin: 0;
+      font-size: 0.8em;
+    }
+
     #sidebar ul li a {
       padding: 5px;
       font-size: 1.2em;
     }
 
     .mobile-login {
-      font-size: 1.2em;
+      font-size: 1em;
     }
   }
 
@@ -355,7 +360,6 @@
   }
 
   @media only screen and (max-width: 767px) {
-
     /* modal styling For mobile phones: */
     .modal-close-button {
       display: initial;
@@ -365,9 +369,11 @@
     #modalLoginForm .modal-content {
       /* bootstrap sets background of .modal-content */
       /* so it must also be overridden along with #modalLoginForm */
-      background: -webkit-linear-gradient(180deg,
-        #973793 0%,
-        rgba(134, 64, 131, 0) 100%),
+      background: -webkit-linear-gradient(
+          180deg,
+          #973793 0%,
+          rgba(134, 64, 131, 0) 100%
+        ),
         #3b0e75 !important;
     }
 
@@ -431,7 +437,6 @@
   }
 
   @media screen and (min-width: 768px) {
-
     /* login modal for tabs */
     .modal-content {
       width: 125%;
@@ -441,7 +446,6 @@
   }
 
   @media screen and (min-width: 992px) {
-
     /* login modal for PC */
     .auth-link {
       font-size: 1.4rem;
@@ -455,10 +459,18 @@
 <div class="container-fluid py-3 sidebar-container position-fixed">
   <div class="row">
     <div class="col-6 text-left">
-      <button type="button" id="sidebarCollapse" class="btn btn-info side-trigger">
+      <button
+        type="button"
+        id="sidebarCollapse"
+        class="btn btn-info side-trigger"
+      >
         <i class="fas fa-align-left"></i> <span></span>
       </button>
-      <img src="/resources/themes/ghost/assets/img/faviconimage.png" alt="logo" class="sidebar-logo p-3" />
+      <img
+        src="resources/themes/ghost/assets/img/faviconimage.png"
+        alt="logo"
+        class="sidebar-logo p-3"
+      />
     </div>
     <div class="col-6 text-right">
       <button type="button" class="sidebar-close">&times;</button>
@@ -471,16 +483,26 @@
       <div class="row">
         <div class="col-12 side-content pt-5">
           <div>
-            <img class="img-fluid profile-pic" src="/resources/themes/ghost/assets/img/fiverr.jpg" />
+            <img
+              class="img-fluid profile-pic"
+              src="resources/themes/ghost/assets/img/fiverr.jpg"
+            />
           </div>
           <h4 class="owner-name">Owner's Name</h4>
-          <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto">Front end developer, ui/ux developer,
-            friend and traveller.</span>
+          <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto"
+            >Front end developer, ui/ux developer, friend and traveller.</span
+          >
           <!-- <h6 class="bio">Owner's Bio</h6> -->
-          <a href="javascript:void(0)"><button class="btn btn-default login-button" type="button" data-toggle="modal"
-              data-target="#modalLoginForm">
+          <a href="javascript:void(0)"
+            ><button
+              class="btn btn-default login-button"
+              type="button"
+              data-toggle="modal"
+              data-target="#modalLoginForm"
+            >
               Login
-            </button></a>
+            </button></a
+          >
         </div>
       </div>
 
@@ -489,19 +511,27 @@
 
     <!-- side bar menu links -->
     <div class="row">
-      <div class="col-12 col-sm-8 mx-auto">
+      <div class="col-12 col-sm-8 mx-md-auto">
         <ul class="pl-0">
           <li><a href="/published-posts">Published Posts</a></li>
           <li><a href="/profile">Profile</a></li>
           <li>
-            <a href="javascript:void(0)" data-toggle="modal" data-target="#subscribe-here">Subscribe</a>
+            <a
+              href="javascript:void(0)"
+              data-toggle="modal"
+              data-target="#subscribe-here"
+              >Subscribe</a
+            >
           </li>
           <li><a href="/about">About Ziki</a></li>
           <li><a href="/contact-us">Contact Us</a></li>
         </ul>
       </div>
       <div class="pl-4 col-12">
-        <button type="button" class="mobile-login px-5 py-2 mt-2 mt-sm-2 btn btn-primary">
+        <button
+          type="button"
+          class="mobile-login px-5 px-sm-3 px-md-5 py-2 mt-2 mt-sm-0 mt-md-2 btn btn-primary"
+        >
           Login
         </button>
         <script>
@@ -525,8 +555,15 @@
 </div>
 
 <!-- Login Modal -->
-<div class="modal fade" id="modalLoginForm" style="background: rgba(255, 255, 255, 0.92);" tabindex="-1" role="dialog"
-  aria-labelledby="myModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="modalLoginForm"
+  style="background: rgba(255, 255, 255, 0.92);"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-lg modal-dialog-container" role="document">
     <div class="modal-content">
       <div class="row login-modal-border-radius">
@@ -536,9 +573,11 @@
               <img src="/resources/themes/ghost/assets/img/faviconimage.png" />
             </div>
             <div class="col-6">
-              <button class="modal-close-button"
+              <button
+                class="modal-close-button"
                 style="background: transparent; color:#fff; border: none; font-size: 3rem; position: relative;top: -30px;left: 60px;"
-                data-dismiss="modal">
+                data-dismiss="modal"
+              >
                 &times;
               </button>
             </div>
@@ -561,11 +600,18 @@
             <div class="col-md-12  google-signin-btn">
               <div class="row" style="padding-top:10px;box-sizing: border-box;">
                 <div class="col-2">
-                  <img src="/resources/themes/ghost/assets/build/img/google.png" style="width:100%;" />
+                  <img
+                    src="resources/themes/ghost/assets/build/img/google.png"
+                    style="width:100%;"
+                  />
                 </div>
                 <div class="col-10">
                   <p style="color:#111;">
-                    <a href="#" class="auth-link">Sign in with google</a>
+                    <a
+                      href="https://auth.techteel.com/login/google"
+                      class="auth-link"
+                      >Sign in with google</a
+                    >
                   </p>
                 </div>
               </div>
@@ -573,16 +619,26 @@
             <div class="col-md-12  facebook-signin-btn">
               <div class="row" style="padding-top:10px;box-sizing: border-box;">
                 <div class="col-2">
-                  <img src="/resources/themes/ghost/assets/build/img/facebook.png" style="width:100%;" />
+                  <img
+                    src="resources/themes/ghost/assets/build/img/facebook.png"
+                    style="width:100%;"
+                  />
                 </div>
                 <div class="col-10">
                   <p style="color:#111;">
-                    <a href="#" class="auth-link">Sign in with Facebook</a>
+                    <a
+                      href="https://auth.techteel.com/login/facebook"
+                      class="auth-link"
+                      >Sign in with Facebook</a
+                    >
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-md-12" style="margin-top:20px;box-sizing: border-box; text-align: center">
+            <div
+              class="col-md-12"
+              style="margin-top:20px;box-sizing: border-box; text-align: center"
+            >
               <p class="bottom-msg">
                 To make this site work, we log user data and share it with
                 service providers.
