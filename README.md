@@ -24,9 +24,12 @@ This is the person visiting a `ziki` site. When on the site, the users can view 
 - Fork your own copy of the repository
 - Clone it
 - Run `composer install --no-dev`
-- Run `npm install`, `npm run assets -- <theme-name>` and then `npm start -- <theme-name>`.
-  For the current theme, these commands would be `npm run assets -- ghost` and then `npm start -- ghost`.
-- Go to `localhost:8000` on your browser and you are good to go
+
+### Start ther server from terminal
+
+- Change directory to the path of ziki app `cd path/to/your/ziki`
+- Type `php -S localhost:port` e.g `php -S localhost:8000`.
+- Go to `localhost:8000` on your browser and you are good to go.
 
 #### The Pull Request Template:
 
