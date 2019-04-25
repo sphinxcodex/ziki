@@ -3,6 +3,7 @@ namespace Ziki\Core;
 
 use Mni\FrontYAML\Parser;
 use KzykHys\FrontMatter\FrontMatter;
+use KzykHys\FrontMatter\Document as Doc;
 use Symfony\Component\Finder\Finder;
 
 use Parsedown;
@@ -27,15 +28,31 @@ class Document{
     }
 
     //for creating markdown files
-    public function create($content){
+    public function create($title, $content){
+        $time = date("F j, Y, g:i a");
+        $unix = strtotime($time);
         // Write md file
         $document = FrontMatter::parse($content);
         $md = new Parser();
         $markdown = $md->parse($document);
+<<<<<<< HEAD
         $yaml = $markdown->getYAML();
         $html = $markdown->getContent();
         $this->createRSS();
         $doc = FileSystem::write($this->file, $yaml."\n".$html);
+=======
+        $yamlfile = new Doc();
+        $yamlfile['title'] = $title;
+        $yamlfile['post_dir'] = SITE_URL."/storage/contents/{$unix}";
+        $yamlfile['slug'] = "post-detail-{$unix}";
+        $yamlfile['timestamp'] = $time;
+        $yamlfile->setContent($content);
+        $yaml = FrontMatter::dump($yamlfile);
+        $file = $this->file;
+        $dir = $file.$unix.".yaml";
+        //return $dir; die();
+        $doc = FileSystem::write($dir, $yaml);
+>>>>>>> pr/5
         if ($doc) {
             $result = array("error" => false, "message" => "Post published successfully");
         }
@@ -61,12 +78,15 @@ class Document{
                 //$document = FileSystem::read($this->file);
                 $parsedown  = new Parsedown();
                 $title = $parsedown->text($yaml['title']);
+                $slug = $parsedown->text($yaml['slug']);
+                $slug = preg_replace("/<[^>]+>/", '',$slug);
                 $bd = $parsedown->text($body);
                 $time = $parsedown->text($yaml['timestamp']);
                 $url = $parsedown->text($yaml['post_dir']);
                 $content['title'] = $title;
                 $content['body'] = $bd;
                 $content['url'] = $url;
+                $content['slug'] = $slug;
                 $content['timestamp'] = $time;
                 array_push($posts, $content);
             }
@@ -76,6 +96,7 @@ class Document{
             return false;
         }
     }
+<<<<<<< HEAD
 //
 public function fetchAllRss()
 {
@@ -169,6 +190,14 @@ $Feed->addGenerator();
         $finder = new Finder();
         $finder->files()->in($this->file);
 
+=======
+    //get each post detail
+    public function getEach($id){
+        $finder = new Finder();
+        // find all files in the current directory
+        $finder->files()->in($this->file);
+        $posts = [];
+>>>>>>> pr/5
         if($finder->hasResults()){
             foreach($finder as $file){
                 $document = $file->getContents();
@@ -176,11 +205,20 @@ $Feed->addGenerator();
                 $document = $parser->parse($document);
                 $yaml = $document->getYAML();
                 $body = $document->getContent();
+<<<<<<< HEAD
                 $parsedown  = new Parsedown();
+=======
+                //$document = FileSystem::read($this->file);
+                $parsedown  = new Parsedown();
+                $slug = $parsedown->text($yaml['slug']);
+                $slug = preg_replace("/<[^>]+>/", '',$slug);
+                if($slug == $id){
+>>>>>>> pr/5
                 $title = $parsedown->text($yaml['title']);
                 $bd = $parsedown->text($body);
                 $time = $parsedown->text($yaml['timestamp']);
                 $url = $parsedown->text($yaml['post_dir']);
+<<<<<<< HEAD
                 $slug = $parsedown->text($yaml['slug']);
 
                 $newItem = $Feed->createNewItem();
@@ -244,6 +282,18 @@ $Feed->addGenerator();
 
 
     }
+=======
+                $content['title'] = $title;
+                $content['body'] = $bd;
+                $content['url'] = $url;
+                $content['timestamp'] = $time;
+                array_push($posts, $content);
+                }
+            }
+            return $posts;
+        }
+    }
+>>>>>>> pr/5
     //update post
     public function update(){
 

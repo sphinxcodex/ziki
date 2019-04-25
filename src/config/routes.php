@@ -16,15 +16,13 @@ Route::get('/', function($request) {
     return $this->template->render('index.html',['posts' => $feed] );
 });
 
-Route::get('/blog-details', function($request) {
-    $ziki = [
-        [ 'name'          => 'Adroit' ],
-        [ 'name'          => 'Olu' ],
-        [ 'name'          => 'Amuwo' ],
-    ];
-    return $this->template->render('blog-details.html', ['ziki' => $ziki] );
-});
 
+Route::get('/blog-details/{id}', function($request, $id) {
+    $directory = "./storage/contents/";
+    $ziki = new Ziki\Core\Document($directory);
+   $result = $ziki->getEach($id);
+   return $this->template->render('blog-details.html', ['result' => $result] );
+});
 Route::get('/timeline', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
@@ -32,12 +30,13 @@ Route::get('/timeline', function($request) {
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
 
-Route::post('/timeline', function($request) {
+Route::post('/publish', function($request) {
     $directory = "./storage/contents/";
     $data = $request->getBody();
+    $title = $data['title'];
     $body = $data['postVal'];
     $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->create($body);
+    $result = $ziki->create($title, $body);
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
 
@@ -48,6 +47,7 @@ Route::get('/contact-us', function($request) {
     ];
     return $this->template->render('contact-us.html', ['ziki' => $ziki] );
 });
+
 
 Route::get('/published-posts', function($request) {
     return $this->template->render('published-posts.html');
