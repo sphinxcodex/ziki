@@ -3,16 +3,17 @@
 use Ziki\Http\Route;
 
 Route::get('/about/{id}', function($request,$id) {
-    
+
      return $this->template->render('about-us.html');
 });
 
 Route::get('/', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
-    $posts = $ziki->get();
+    $feed = $ziki->fetchAllRss();
     // Render our view
-    return $this->template->render('index.html', ['posts' => $posts] );
+    //print_r($feed);
+    return $this->template->render('index.html',['posts' => $feed] );
 });
 
 
@@ -25,7 +26,7 @@ Route::get('/blog-details/{id}', function($request, $id) {
 Route::get('/timeline', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
-    $post = $ziki->get();
+    $post = $ziki->fetchAllRss();
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
 
