@@ -35,6 +35,10 @@
     width: 100%;
   }
 
+  #subscribe-here .instructions-mobile {
+    display: none;
+  }
+
   .subscribe-here-form .form-control {
     box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
   }
@@ -89,6 +93,12 @@
       display: flex;
       align-items: center;
     }
+
+    #subscribe-here .instructions-mobile {
+      display: block;
+      color: #fff;
+      font-size: 1.2em;
+    }
   }
 </style>
 
@@ -135,6 +145,12 @@
       </div>
       <div class="modal-body py-5">
         <form class="subscribe-here-form" method="post">
+          <div class="instructions-mobile">
+            <p class="text-center">
+              Stay up to date with the latest posts from {{ domain }} on your
+              timeline
+            </p>
+          </div>
           <div class="form-row justify-content-center">
             <div class="col-7 mx-3">
               <label for="guest-ziki-domain" class="sr-only"
