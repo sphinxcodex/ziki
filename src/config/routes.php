@@ -84,3 +84,6 @@ Route::get('/drafts', function($request) {
 Route::get('/about', function($request) {
     return $this->template->render('about-us.html');
 });
+Route::get('/auth/{provider}/{token}', function($request, $token){
+    echo $token;
+});
