@@ -1,5 +1,5 @@
 <style>
-  @import url("https://fonts.googleapis.com/css?family=Lato");
+  @import url('https://fonts.googleapis.com/css?family=Lato');
 
   :root {
     --ziki-purple: #280966;
@@ -68,7 +68,7 @@
     padding: 10px;
     font-size: 1.7em;
     font-weight: bold;
-    font-family: "Lato", sans-serif;
+    font-family: 'Lato', sans-serif;
     display: block;
     color: #fff;
     text-decoration: none;
@@ -79,12 +79,12 @@
   }
 
   #sidebar ul li.shown > a,
-  a[aria-expanded="true"] {
+  a[aria-expanded='true'] {
     color: #fff;
     background: #6d7fcc;
   }
 
-  a[data-toggle="collapse"] {
+  a[data-toggle='collapse'] {
     position: relative;
   }
 
@@ -177,13 +177,18 @@
       margin-top: 20px;
     }
 
+    #sidebar li {
+      margin: 0;
+      font-size: 0.8em;
+    }
+
     #sidebar ul li a {
       padding: 5px;
       font-size: 1.2em;
     }
 
     .mobile-login {
-      font-size: 1.2em;
+      font-size: 1em;
     }
   }
 
@@ -461,7 +466,11 @@
       >
         <i class="fas fa-align-left"></i> <span></span>
       </button>
-      <img src="/resources/themes/ghost/assets/img/faviconimage.png" alt="logo" class="sidebar-logo p-3" />
+      <img
+        src="resources/themes/ghost/assets/img/faviconimage.png"
+        alt="logo"
+        class="sidebar-logo p-3"
+      />
     </div>
     <div class="col-6 text-right">
       <button type="button" class="sidebar-close">&times;</button>
@@ -474,7 +483,10 @@
       <div class="row">
         <div class="col-12 side-content pt-5">
           <div>
-            <img class="img-fluid profile-pic" src="/resources/themes/ghost/assets/img/fiverr.jpg" />
+            <img
+              class="img-fluid profile-pic"
+              src="resources/themes/ghost/assets/img/fiverr.jpg"
+            />
           </div>
           <h4 class="owner-name">Owner's Name</h4>
           <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto"
@@ -499,7 +511,7 @@
 
     <!-- side bar menu links -->
     <div class="row">
-      <div class="col-12 col-sm-8 mx-auto">
+      <div class="col-12 col-sm-8 mx-md-auto">
         <ul class="pl-0">
           <li><a href="/published-posts">Published Posts</a></li>
           <li><a href="/profile">Profile</a></li>
@@ -518,15 +530,15 @@
       <div class="pl-4 col-12">
         <button
           type="button"
-          class="mobile-login px-5 py-2 mt-2 mt-sm-2 btn btn-primary"
+          class="mobile-login px-5 px-sm-3 px-md-5 py-2 mt-2 mt-sm-0 mt-md-2 btn btn-primary"
         >
           Login
         </button>
         <script>
           // click login modal
           document
-            .querySelector(".mobile-login")
-            .addEventListener("click", e => {
+            .querySelector('.mobile-login')
+            .addEventListener('click', e => {
               document.querySelector('[data-toggle="modal"]').click();
             });
         </script>
@@ -588,7 +600,10 @@
             <div class="col-md-12  google-signin-btn">
               <div class="row" style="padding-top:10px;box-sizing: border-box;">
                 <div class="col-2">
-                  <img src="/resources/themes/ghost/assets/build/img/google.png" style="width:100%;" />
+                  <img
+                    src="resources/themes/ghost/assets/build/img/google.png"
+                    style="width:100%;"
+                  />
                 </div>
                 <div class="col-10">
                   <p style="color:#111;">
@@ -604,7 +619,10 @@
             <div class="col-md-12  facebook-signin-btn">
               <div class="row" style="padding-top:10px;box-sizing: border-box;">
                 <div class="col-2">
-                  <img src="/resources/themes/ghost/assets/build/img/facebook.png" style="width:100%;" />
+                  <img
+                    src="resources/themes/ghost/assets/build/img/facebook.png"
+                    style="width:100%;"
+                  />
                 </div>
                 <div class="col-10">
                   <p style="color:#111;">
