@@ -3,23 +3,17 @@
 use Ziki\Http\Route;
 
 Route::get('/about/{id}', function($request,$id) {
-    
+
      return $this->template->render('about-us.html');
 });
 
 Route::get('/', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
-<<<<<<< HEAD:src/routes.php
     $feed = $ziki->fetchAllRss();
     // Render our view
     //print_r($feed);
     return $this->template->render('index.html',['posts' => $feed] );
-=======
-    $posts = $ziki->get();
-    // Render our view
-    return $this->template->render('index.html', ['posts' => $posts] );
->>>>>>> pr/4:src/config/routes.php
 });
 
 Route::get('/blog-details', function($request) {
@@ -31,19 +25,10 @@ Route::get('/blog-details', function($request) {
     return $this->template->render('blog-details.html', ['ziki' => $ziki] );
 });
 
-<<<<<<< HEAD:src/routes.php
-
-$router->get('/timeline', function($request) {
-  $directory = "./storage/contents/";
-  $ziki = new Ziki\Core\Document($directory);
-  $feed = $ziki->fetchRss();
-    //var_dump($feed);
-    return $this->template->render('timeline.html', ['posts' => $feed]);
-=======
 Route::get('/timeline', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
-    $post = $ziki->get();
+    $post = $ziki->fetchAllRss();
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
 
@@ -54,7 +39,6 @@ Route::post('/timeline', function($request) {
     $ziki = new Ziki\Core\Document($directory);
     $result = $ziki->create($body);
     return $this->template->render('timeline.html', ['ziki' => $result]);
->>>>>>> pr/4:src/config/routes.php
 });
 
 Route::get('/contact-us', function($request) {
@@ -77,26 +61,12 @@ Route::get('/profile', function($request) {
     return $this->template->render('profile.html');
 });
 
-<<<<<<< HEAD:src/routes.php
-$router->get('/subscriptions', function($request) {
-
-    return $this->template->render('subscriptions.html');
-});
-
-$router->get('/subscribers', function($request) {
-  $directory = "./storage/contents/";
-  $ziki = new Ziki\Core\Document($directory);
-  $list = $ziki->subscriber();
-  print_r($list);
-    return $this->template->render('subscribers.html', ['sub' => $list] );
-=======
 Route::get('/subscriptions', function($request) {
     return $this->template->render('subscriptions.html');
 });
 
 Route::get('/subscribers', function($request) {
     return $this->template->render('subscribers.html');
->>>>>>> pr/4:src/config/routes.php
 });
 
 Route::get('/editor', function($request) {
