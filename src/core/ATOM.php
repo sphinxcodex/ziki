@@ -28,11 +28,10 @@ namespace Ziki\Core;
 class ATOM extends Feed
 {
     /**
-    * {@inheritdoc}
-    */
+     * {@inheritdoc}
+     */
     public function __construct()
     {
         parent::__construct(Feed::ATOM);
     }
-
 }
