@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           $image = isset($r->getElementsByTagName('image')->item(0)->nodeValue);
 
         }
-                $db_json = file_get_contents("C:/Users/user/ziki-1/storage/rss/subscriber.json");
+                $db_json = file_get_contents("storage/rss/subscriber.json");
                 $newSub = new Ziki\Core\Subscribe();
                 $newSub->setSubName($title);
                 $newSub->setSubRss($url);
