@@ -46,33 +46,50 @@
 
 </script>
 <!-- Convert to markdown script -->
-<script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" integrity="sha256-LSUpTY0kkXGKvcBC9kbmgibmx3NVVgJvAEfTZbs51mU=" crossorigin="anonymous"></script>
 <!-- convert to markdown script ends -->
 
 
 <script>
   // added by sleekX
-  var form = document.querySelector('form');
-  form.onsubmit = function() {
-      // Populate hidden form on submit
-      var postVal = document.querySelector('input[name=postVal]');
-      postVal.value = JSON.stringify(quill.getContents());
+  var form = document.querySelector('.timeline-editor');
+  form.onsubmit = function(event) {
+    event.preventDefault();
 
-      // console.log("Submitted", $(form).serialize(), $(form).serializeArray());
+    const formData = new FormData(event.target);
+    const blogBody = document.querySelector('.ql-editor').innerHTML;
 
-      // convert to markdown
-      var turndownService = new TurndownService();
-    var markdown = turndownService.turndown(postVal.value);
-    alert(markdown) //this alert is so you can see the output.. uncomment console to use console
-      return false;
+    // convert to markdown
+    const converter = new showdown.Converter();
+    const markdown = converter.makeMarkdown(blogBody);
+    formData.set('postVal', markdown);
+
+    // get tags
+    const selected = document.querySelectorAll('#new-post-tags option:checked');
+    const selectedTags = Array.from(selected).map(el => el.value);
+    formData.set('tags', selectedTags);
+
+    // send the form data
+    fetch('/timeline', {
+      method: 'POST',
+      body: formData
+    }).then(res => res.text()).then((res) => {
+      console.log(res);
+      if(window.confirm(`Check console for response.
+      Redirect to view new post?`)) {
+        window.location = '/timeline';
+      }
+    }).catch((err) => {
+      alert(`Failed with the following message: ${err.message}`);
+    });
   };
   // sleekx code ends here
 
 
   //Initialize Quill editor
   var toolbarOptions = [
-    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    ['blockquote', 'code-block'],
+    ['bold', 'italic'],        // toggled buttons
+    // ['blockquote', 'code-block'],
 
     // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
@@ -80,12 +97,12 @@
     //[{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
     //[{ 'direction': 'rtl' }],                         // text direction
 
-    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+    // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
 
-    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+    // [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
     // [{ 'font': [] }],
-    [{ 'align': [] }],
+    // [{ 'align': [] }],
 
     ['clean']                                         // remove formatting button
   ];
