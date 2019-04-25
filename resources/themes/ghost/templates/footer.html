@@ -46,7 +46,7 @@
 
 </script>
 <!-- Convert to markdown script -->
-<script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" integrity="sha256-LSUpTY0kkXGKvcBC9kbmgibmx3NVVgJvAEfTZbs51mU=" crossorigin="anonymous"></script>
 <!-- convert to markdown script ends -->
 
 
@@ -60,8 +60,8 @@
     const blogBody = document.querySelector('.ql-editor').innerHTML;
 
     // convert to markdown
-    const turndownService = new TurndownService();
-    const markdown = turndownService.turndown(blogBody);
+    const converter = new showdown.Converter();
+    const markdown = converter.makeMarkdown(blogBody);
     formData.set('postVal', markdown);
 
     console.log(event);
