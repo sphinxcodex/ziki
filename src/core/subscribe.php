@@ -6,10 +6,10 @@ namespace Ziki\Core;
  */
 class Subscribe
 {
- var $name;
- var $rss;
- var $img;
- var $desc;
+  var $name;
+  var $rss;
+  var $img;
+  var $desc;
 
   public function setSubName($value)
   {
@@ -27,6 +27,7 @@ class Subscribe
   {
     $this->img = $value;
   }
+
 public function follow($db)
 {
               //Saving new post
@@ -63,31 +64,26 @@ public function follow($db)
                   $new_sub = fwrite($fp, json_encode($new));
                   fclose($fp);
 
-                  return true;
-                }else {
-                return false;
-                }
+      return true;
+    } else {
+      return false;
+    }
+  }
+  public function unfollow($del)
+  {
+    $db = "storage/contents/subscriber.json";
+    $file = file_get_contents($db, true);
+    $data = json_decode($file, true);
+    unset($file);
+    foreach ($data as $key => $value) {
 
+      if ($value["name"] == $del) {
+        unset($data[$key]);
+      }
+    };
 
-
-}
-public function unfollow($del)
-{
-            $db = "storage/contents/subscriber.json";
-            $file = file_get_contents($db, true);
-            $data=json_decode($file,true);
-            unset($file);
-           foreach ($data as $key => $value) {
-
-               if ($value["name"] == $del) {
-              unset($data[$key]);
-              }
-           };
-
-            $result=json_encode($data);
-            file_put_contents($db, $result);
-            unset($result);
-          }
-
-
+    $result = json_encode($data);
+    file_put_contents($db, $result);
+    unset($result);
+  }
 }
