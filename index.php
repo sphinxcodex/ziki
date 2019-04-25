@@ -14,4 +14,3 @@ define('SITE_AUTH', 'kamponistullar@gmail.com');
 $ziki = require_once ZIKI_BASE_PATH . '/src/bootstrap.php';
 
 $ziki->start();
-

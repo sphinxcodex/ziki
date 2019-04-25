@@ -23,19 +23,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <form class="add-subscription-form" method="post">
+        <form class="add-subscription-form" action="storage/rss/addsubscribers.php" method="post">
           <div class="form-group">
             <label for="guest-ziki-domain">Subscription's RSS URL</label>
             <input
               type="url"
               class="form-control"
               name="rss"
-              id="rss"
+              id="input"
               placeholder="https://zikidomain.com/feed.xml"
               required
             />
           </div>
-          <button type="submit" class="btn btn-success">
+          <button onclick="addrss()" class="btn btn-success">
             Add Subscription
           </button>
         </form>
