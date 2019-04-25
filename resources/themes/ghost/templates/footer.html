@@ -64,11 +64,19 @@
     const markdown = converter.makeMarkdown(blogBody);
     formData.set('postVal', markdown);
 
-    console.log(event);
-    for (const val of formData) {
-      console.log(val);
-    }
-    return;
+    // send the form data
+    fetch('/timeline', {
+      method: 'POST',
+      body: formData
+    }).then(res => res.text()).then((res) => {
+      console.log(res);
+      if(window.confirm(`Check console for response.
+      Redirect to view new post?`)) {
+        window.location = '/timeline';
+      }
+    }).catch((err) => {
+      alert(`Failed with the following message: ${err.message}`);
+    });
   };
   // sleekx code ends here
 
