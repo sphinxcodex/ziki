@@ -3,6 +3,7 @@ namespace Ziki\Core;
 
 use Mni\FrontYAML\Parser;
 use KzykHys\FrontMatter\FrontMatter;
+use KzykHys\FrontMatter\Document as Doc;
 use Symfony\Component\Finder\Finder;
 use Parsedown;
 /**
@@ -26,19 +27,24 @@ class Document{
     }
 
     //for creating markdown files
-    public function create($content){
+    public function create($title, $content){
+        $time = date("F j, Y, g:i a");
+        $unix = strtotime($time);
         // Write md file
         $document = FrontMatter::parse($content);
         $md = new Parser();
         $markdown = $md->parse($document);
-        $yaml = $markdown->getYAML();
-        $html = $markdown->getContent();
+        $yamlfile = new Doc();
+        $yamlfile['title'] = $title;
+        $yamlfile['post_dir'] = SITE_URL."/storage/contents/{$unix}";
+        $yamlfile['slug'] = "post-detail-{$unix}";
+        $yamlfile['timestamp'] = $time;
+        $yamlfile->setContent($content);
+        $yaml = FrontMatter::dump($yamlfile);
         $file = $this->file;
-        $time = date("Y-m-d h:i:sa");
-        $unix = strtotime($time);
         $dir = $file.$unix.".yaml";
         //return $dir; die();
-        $doc = FileSystem::write($dir, $yaml."\n".$html);
+        $doc = FileSystem::write($dir, $yaml);
         if ($doc) {
             $result = array("error" => false, "message" => "Post published successfully");
         }

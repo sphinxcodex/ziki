@@ -29,12 +29,13 @@ Route::get('/timeline', function($request) {
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
 
-Route::post('/timeline', function($request) {
+Route::post('/publish', function($request) {
     $directory = "./storage/contents/";
     $data = $request->getBody();
+    $title = $data['title'];
     $body = $data['postVal'];
     $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->create($body);
+    $result = $ziki->create($title, $body);
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
 
