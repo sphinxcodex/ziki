@@ -1,6 +1,5 @@
 <?php
 defined('ZIKI') or die('Direct access not permitted!');
-
 // Autoloading.
 require ZIKI_BASE_PATH .'/vendor/autoload.php';
 

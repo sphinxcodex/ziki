@@ -177,13 +177,18 @@
       margin-top: 20px;
     }
 
+    #sidebar li {
+      margin: 0;
+      font-size: 0.8em;
+    }
+
     #sidebar ul li a {
       padding: 5px;
       font-size: 1.2em;
     }
 
     .mobile-login {
-      font-size: 1.2em;
+      font-size: 1em;
     }
   }
 
@@ -451,7 +456,7 @@
     }
   }
 </style>
-<div class="container-fluid py-3 sidebar-container">
+<div class="container-fluid py-3 sidebar-container position-fixed">
   <div class="row">
     <div class="col-6 text-left">
       <button
@@ -506,10 +511,10 @@
 
     <!-- side bar menu links -->
     <div class="row">
-      <div class="col-12 col-sm-8 mx-auto">
+      <div class="col-12 col-sm-8 mx-md-auto">
         <ul class="pl-0">
-          <li><a href="published-posts">Published Posts</a></li>
-          <li><a href="profile">Profile</a></li>
+          <li><a href="/published-posts">Published Posts</a></li>
+          <li><a href="/profile">Profile</a></li>
           <li>
             <a
               href="javascript:void(0)"
@@ -518,14 +523,14 @@
               >Subscribe</a
             >
           </li>
-          <li><a href="about">About Ziki</a></li>
-          <li><a href="contact-us">Contact Us</a></li>
+          <li><a href="/about">About Ziki</a></li>
+          <li><a href="/contact-us">Contact Us</a></li>
         </ul>
       </div>
       <div class="pl-4 col-12">
         <button
           type="button"
-          class="mobile-login px-5 py-2 mt-2 mt-sm-2 btn btn-primary"
+          class="mobile-login px-5 px-sm-3 px-md-5 py-2 mt-2 mt-sm-0 mt-md-2 btn btn-primary"
         >
           Login
         </button>
@@ -543,7 +548,7 @@
     <!-- bubble -->
     <div class="row align-items-end sidebar-bubble">
       <div class="col-12">
-        <img src="resources/themes/ghost/assets/img/bubbles.png" alt="" />
+        <img src="/resources/themes/ghost/assets/img/bubbles.png" alt="" />
       </div>
     </div>
   </div>
@@ -565,7 +570,7 @@
         <div class="col-md-6 login-modal-popup-left-column">
           <div class="row">
             <div class="col-6 logo">
-              <img src="resources/themes/ghost/assets/img/faviconimage.png" />
+              <img src="/resources/themes/ghost/assets/img/faviconimage.png" />
             </div>
             <div class="col-6">
               <button
@@ -602,7 +607,11 @@
                 </div>
                 <div class="col-10">
                   <p style="color:#111;">
-                    <a href="#" class="auth-link">Sign in with google</a>
+                    <a
+                      href="https://auth.techteel.com/login/google"
+                      class="auth-link"
+                      >Sign in with google</a
+                    >
                   </p>
                 </div>
               </div>
@@ -617,7 +626,11 @@
                 </div>
                 <div class="col-10">
                   <p style="color:#111;">
-                    <a href="#" class="auth-link">Sign in with Facebook</a>
+                    <a
+                      href="https://auth.techteel.com/login/facebook"
+                      class="auth-link"
+                      >Sign in with Facebook</a
+                    >
                   </p>
                 </div>
               </div>
