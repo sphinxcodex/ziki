@@ -30,7 +30,9 @@ class Subscribe
 public function follow($db)
 {
               //Saving new post
+
               $db = "storage/rss/subscriber.json";
+
               $file = file_get_contents($db, true);
               $data=json_decode($file,true);
               unset($file);
@@ -50,7 +52,9 @@ public function follow($db)
 
                   $img = $this->img;
                   $sub[] = array('name'=> $this->name, 'rss'=>$this->rss,'desc'=>$this->desc, 'img'=> $this->img, 'time' => $time);
+
                   $json_db = "storage/rss/subscriber.json";
+
                   $prev_sub = json_decode($db);
 
                   $new =array_merge($sub, $prev_sub);

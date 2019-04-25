@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         }
                 $db_json = file_get_contents("storage/rss/subscriber.json");
+
                 $newSub = new Ziki\Core\Subscribe();
                 $newSub->setSubName($title);
                 $newSub->setSubRss($url);
