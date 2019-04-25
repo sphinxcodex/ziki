@@ -1,432 +1,529 @@
-{% set title = "Subscriptions"%}
+{% set title = "Subscription"%}
 {% extends 'layout.html' %} {% block page_content%}
-
-<style>
-  :root {
-    --custom-deep-purple: #280a66;
-    --dark-bg-color: #fff;
-    --text-color: #000000;
-    --body-of-blog-bg: #f9f9f9;
-    --post-summary-border-bottom: #ebebeb;
-    --published-post-header: transparent;
-    --top-tab-link: #5c5c5c;
-    --profile-edit-form: var(--body-of-blog-bg);
-    --body-bg: #fff;
-  }
-
-  .dark {
-    --custom-deep-purple: #7277ef;
-    --dark-bg-color: #111111;
-    --text-color: #7277ef;
-    --top-tab-link: #ffffff;
-    --published-post-header: #111111;
-    --post-summary-border-bottom: #EBEBEB;
-    --profile-edit-form: var(--dark-bg-color);
-    --body-bg: rgba(17, 17, 17, 0.93) !important;
-  }
-
-
-  body {
-    background: var(--body-bg) !important;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .profile-logo-area img {
-    object-fit: none;
-  }
-
-  .profilenav-area {
-    border-bottom: 1px solid var(--post-summary-border-bottom);
-  }
-
-  .profile-top-link {
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--top-tab-link);
-  }
-
-  .active {
-    border-bottom: 2px solid var(--custom-deep-purple);
-  }
-
-  .profile-top-link:hover,
-  .active>a {
-    color: var(--custom-deep-purple);
-    text-decoration: none;
-  }
-
-  .profile-main {
-    background: var(--profile-main-bg);
-    margin-top: -20px;
-  }
-
-  .subscription-content-area {
-    background: var(--profile-edit-form);
-    /*height: 930px;*/
-    height: auto;
-  }
-
-  /* Mobile Styles  */
-  @media screen and (max-width: 1280px) {}
-
-  @media screen and (max-width: 1024px) {
-    .follow-numbers {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    .subscription-content-area {
-      margin: 3rem 1rem !important;
-      padding: 0 !important;
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-
-    .profile-top-link {
-      font-size: 12px !important;
-    }
-
-    .navbar-nav li {
-      padding: 0 8px !important;
-    }
-  }
-
- /*Subscriptions styles */
-  .following-content {
-    border: 1px solid #b2b2b2;
-    border-radius: 4px;
-  }
-
-  .post-detail {
-    font-size: 12px;
-    color: #808080
-  }
-
-  .post-author {
-    color: #313131;
-    font-size: 14px;
-  }
-
-  .following-button {
-    background: var(--custom-deep-purple);
-    color: #fff;
-    border-radius: 0;
-  }
-
-  .following-button:hover {
-    border: 1px solid var(--custom-deep-purple);
-    color: 1px solid var(--custom-deep-purple);
-    border-radius: 0;
-    background: transparent;
-  }
-
-  .not-following-button {
-    border: 1px solid var(--custom-deep-purple);
-    color: 1px solid var(--custom-deep-purple);
-    border-radius: 0;
-    background: transparent;
-  }
-
-  .not-following-button:hover {
-    background: var(--custom-deep-purple);
-    color: #fff;
-    border-radius: 0;
-  }
-
-
-
-  /*input-field Icon*/
-
-  .has-search .form-control {
-    padding-left: 1.5rem;
-  }
-
-  .has-search .form-control-feedback {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    width: 1.3rem;
-    height: 2.375rem;
-    line-height: 2.375rem;
-    text-align: center;
-    pointer-events: none;
-    color: #5C5C5C;
-  }
-
-  .form-control-no-border {
-    outline: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    background: transparent;
-    border: 0;
-
-  }
-
-  .form-control-no-border:focus {
-    border: 1px solid var(--custom-deep-purple);
-    outline: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    background: transparent;
-  }
-
-  .followed-text {
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  /*input-field Icon*/
-
-
-  /*Subscriptions styles */
-
-</style>
 
 <!-- content goes here -->
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <!-- for the sidebar -->
-    </div>
-
-    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3">
-
-      <!-- for any other part of the page -->
-      <div class="row profile-header d-flex flex-row justify-content-between pt-5 pb-1 px-3 flex-nowrap">
-        <div class="col profilenav-area">
-          <nav class="navbar pb-0 row">
-            <ul class="d-flex flex-row navbar-nav col-12">
-              <li class="p-3">
-                <a href="profile" class="profile-top-link">Profile</a>
-              </li>
-              <li class="p-3">
-                <a href="themes" class="profile-top-link">Themes</a>
-              </li>
-              <li class="p-3 active">
-                <a href="subscriptions" class="profile-top-link"><span class="follow-numbers">76</span> Subscriptions</a>
-              </li>
-              <li class="p-3">
-                <a href="subscribers" class="profile-top-link "><span class="follow-numbers">52</span> Subscribers</a>
-              </li>
-            </ul>
-          </nav>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <!-- for the sidebar -->
         </div>
 
-      </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3">
 
-      <div class="row profile-main py-2">
-        <div class="col-10 subscription-content-area p-1 pb-5 m-5">
-
-          <div class="px-5">
-            <div class="row d-flex align-items-center my-4">
-
-              <div class="col-4">
-                <p class="followed-text">You are followed by</p>
-              </div>
-
-              <div class="col-4 col-xs-4">
-                <form action="post">
-                  <div class="form-group has-search">
-                    <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" class="form-control form-control-no-border" placeholder="Search">
-                  </div>
-                </form>
-              </div>
-
-              <!--<div class="following-area">-->
-                <div class="col-4 text-center py-3">
-                  <button
-                          type="button"
-                          class="btn btn-primary"
-                          data-toggle="modal"
-                          data-target="#add-subscription">
-                    Add subscription
-                  </button>
+            <!-- for any other part of the page -->
+            <div class="row profile-header d-flex flex-row justify-content-between pt-5 pb-1 px-3 flex-nowrap">
+                <div class="col profilenav-area">
+                    <nav class="navbar pb-0 row">
+                        <ul class="d-flex flex-row navbar-nav col-12">
+                            <li class="p-3">
+                                <a href="profile" class="profile-top-link">Profile</a>
+                            </li>
+                            <li class="p-3">
+                                <a href="themes" class="profile-top-link">Themes</a>
+                            </li>
+                            <li class="p-3 active">
+                                <a href="subscriptions" class="profile-top-link"><span class="follow-numbers">76</span> Subscriptions</a>
+                            </li>
+                            <li class="p-3">
+                                <a href="subscribers" class="profile-top-link "><span class="follow-numbers">52</span> Subscribers</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
 
             </div>
 
-            <div class="row my-4 ">
+            <div class="row profile-main py-2">
+                <div class="col-10 subscription-content-area p-1 pb-5 m-5">
 
-              <div class="col-12 col-sm-10 py-1 following-content">
+                    <div class="px-3">
+                        <div class="row d-flex align-items-center my-4">
 
-              <div class="row d-flex align-items-center mx-2">
+                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                <p class="followed-text">Subscribed</p>
+                            </div>
 
-                <div class="div col-1 author-image">
-                  <img class="max-width" src="resources/themes/ghost/assets/img/ellipse.png"/>
+                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                <form action="post">
+                                    <div class="form-group has-search">
+                                        <span class="fa fa-search form-control-feedback"></span>
+                                        <input type="text" class="form-control form-control-no-border" placeholder="Search">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!--<div class="following-area">-->
+                            <div class="col-lg-4 col-md-4 col-sm-12 py-3">
+                                <button
+                                        type="button"
+                                        class="btn following-button"
+                                        data-toggle="modal"
+                                        data-target="#add-subscription">
+                                    Add subscription
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (1).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn following-button">
+                                            Follow
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (3).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn not-following-button">
+                                            Following
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/ellipse.png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn not-following-button">
+                                            Following
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (2).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn following-button">
+                                            Follow
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (1).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn following-button">
+                                            Follow
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (3).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn not-following-button">
+                                            Following
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/ellipse.png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn following-button">
+                                            Follow
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (2).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn not-following-button">
+                                            Following
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (1).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn not-following-button">
+                                            Following
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (3).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn following-button">
+                                            Follow
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/ellipse.png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn following-button">
+                                            Follow
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (2).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn not-following-button">
+                                            Following
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (1).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn following-button">
+                                            Follow
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (3).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn not-following-button">
+                                            Following
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/ellipse.png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn not-following-button">
+                                            Following
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center my-3">
+
+                            <div class="col-12 col-sm-10 py-1 following-content">
+
+                                <div class="row d-flex align-items-center">
+
+                                    <div class="col-lg-1 col-md-2 col-sm-6 col-6 author-image order-lg-1 order-md-1 order-sm-1 order-1 p-2">
+                                        <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (2).png"/>
+                                    </div>
+
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-12 py-4 order-lg-2 order-md-2 order-sm-3 order-3 p-2">
+                                        <div class="px-2">
+                                            <h5 class="post-author">Mercy Ikpe</h5>
+                                            <p class="post-detail">
+                                                Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-6 col-6 p-2 order-lg-3 order-md-3 order-sm-2 order-2 ">
+                                        <button class="btn following-button">
+                                            Follow
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
-
-                <div class="col-9 py-4">
-                  <h5 class="post-author ml-3">Mercy Ikpe</h5>
-                  <div class="ml-3">
-                    <p class="post-detail">
-                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-2">
-                  <button class="btn following-button">
-                    Follow
-                  </button>
-                </div>
-              </div>
-
-              </div>
             </div>
-            <div class="row my-4 ">
-
-              <div class="col-12 col-sm-10 py-1 following-content">
-
-              <div class="row d-flex align-items-center mx-2">
-
-                <div class="div col-1 author-image">
-                  <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (3).png"/>
-                </div>
-
-                <div class="col-9 py-4">
-                  <h5 class="post-author ml-3">Destiny Ihejirika</h5>
-                  <div class="ml-3">
-                    <p class="post-detail">
-                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-2">
-                  <button class="btn following-button">
-                    Follow
-                  </button>
-                </div>
-              </div>
-
-              </div>
-            </div>
-            <div class="row my-4 ">
-
-              <div class="col-12 col-sm-10 py-1 following-content">
-
-              <div class="row d-flex align-items-center mx-2">
-
-                <div class="div col-1 author-image">
-                  <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (2).png"/>
-                </div>
-
-                <div class="col-9 py-4">
-                  <h5 class="post-author ml-3">Uche Ozoemena</h5>
-                  <div class="ml-3">
-                    <p class="post-detail">
-                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-2">
-                  <button class="btn not-following-button">
-                    Following
-                  </button>
-                </div>
-              </div>
-
-              </div>
-            </div>
-            <div class="row my-4 ">
-
-              <div class="col-12 col-sm-10 py-1 following-content">
-
-              <div class="row d-flex align-items-center mx-2">
-
-                <div class="div col-1 author-image">
-                  <img class="max-width" src="resources/themes/ghost/assets/img/ellipse.png"/>
-                </div>
-
-                <div class="col-9 py-4">
-                  <h5 class="post-author ml-3">Vanessa</h5>
-                  <div class="ml-3">
-                    <p class="post-detail">
-                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-2">
-                  <button class="btn following-button">
-                    Follow
-                  </button>
-                </div>
-              </div>
-
-              </div>
-            </div>
-            <div class="row my-4 ">
-
-              <div class="col-12 col-sm-10 py-1 following-content">
-
-              <div class="row d-flex align-items-center mx-2">
-
-                <div class="div col-1 author-image">
-                  <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (2).png"/>
-                </div>
-
-                <div class="col-9 py-4">
-                  <h5 class="post-author ml-3">mista_oba</h5>
-                  <div class="ml-3">
-                    <p class="post-detail">
-                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-2">
-                  <button class="btn not-following-button">
-                    Following
-                  </button>
-                  </button>
-                </div>
-              </div>
-
-              </div>
-            </div>
-            <div class="row my-4 ">
-
-              <div class="col-12 col-sm-10 py-1 following-content">
-
-              <div class="row d-flex align-items-center mx-2">
-
-                <div class="div col-1 author-image">
-                  <img class="max-width" src="resources/themes/ghost/assets/img/Ellipse (3).png"/>
-                </div>
-
-                <div class="col-9 py-4">
-                  <h5 class="post-author ml-3">Eniayomi</h5>
-                  <div class="ml-3">
-                    <p class="post-detail">
-                      Storyteller | Combat wounded veteran | Metalhead | Designer | Bleeding on a page just makes it more authentic: https://ziki.hng.tech
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-2">
-                  <button class="btn following-button">
-                    Follow
-                  </button>
-                </div>
-              </div>
-
-              </div>
-            </div>
-          </div>
-
-      </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
-{% endblock page_content %}
+    {% endblock page_content %}

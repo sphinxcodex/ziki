@@ -10,3 +10,11 @@ function error($message){
     $data["message"] = $message;
     return $data;
 }
+
+function dd(...$value){
+    foreach ($value as $data) {
+        print_r($data);
+        echo '</br> </br>';
+    }
+    exit;
+}
