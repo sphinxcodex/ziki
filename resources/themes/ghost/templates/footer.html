@@ -28,7 +28,23 @@
         });
     });
 </script>
+<script>
+  function addrss() {
+    $("#rss").click(function () {
+      var url = $("#imput").serialize();
 
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+      if (xhttp.readyState == 4 && xhttp.status == 200) {
+        document.getElementById("rss").innerHTML = xhttp.responseText;
+
+      }
+    };
+    xhttp.open("GET", "storage/rss/addsubscribers.php?rss="+url , true);
+    xhttp.send();
+  }
+
+</script>
 <!-- Convert to markdown script -->
 <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
 <!-- convert to markdown script ends -->
