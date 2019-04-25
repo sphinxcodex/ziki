@@ -46,6 +46,7 @@ Route::get('/contact-us', function($request) {
     return $this->template->render('contact-us.html', ['ziki' => $ziki] );
 });
 
+
 Route::get('/published-posts', function($request) {
     return $this->template->render('published-posts.html');
 });
