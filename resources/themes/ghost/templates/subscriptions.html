@@ -10,21 +10,27 @@ page_content %}
     font-size: 16px;
   }
 
-  .following-posts ul .nav-links {
-    margin-right: 10px;
+  .following-posts ul .nav-link {
+    margin-right: 7px;
   }
 
   .nav-tabs .nav-link.active {
-    border-top: 0px solid #280a66 !important;
-    border-right: 0px solid #280a66 !important;
-    border-left: 0px solid #280a66 !important;
-    border-bottom: 4px solid #280a66 !important;
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
+    border: 0px solid #280a66 !important;
   }
-
+  
+  .nav-tabs .nav-link:hover {
+    border: 0px solid #280a66 !important;
+	color: #280a66;
+	font-weight: bold;
+  }
+  
   .nav-tabs .nav-link {
+    color: #717171;
+  }
+  
+  .nav-tabs .nav-link.active {
     color: #280a66;
+	font-weight: bold;
   }
 
   .following-posts .following-button {
@@ -56,7 +62,7 @@ page_content %}
   .following-posts span a {
     color: rgba(40, 10, 102, 0.5);
     background: rgba(182, 182, 182, 0.22);
-    border: 1px solid rgba(40, 10, 102, 0.5);
+
     text-decoration: none;
   }
 
@@ -128,7 +134,7 @@ page_content %}
         </div>
         <span
           >You subscribed to
-          <a href="#"><i class="fa fa-search"></i>Search</a></span
+          <a href="#"><i class="fa fa-search"></i>    Search</a></span
         >
         <div class="row following-content">
           <div class="col-12 col-sm-10">
