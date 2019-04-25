@@ -3,6 +3,7 @@ namespace Ziki\Core;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+
 class Template
 {
     private $twig;
@@ -11,7 +12,7 @@ class Template
     public function __construct($templatePath)
     {
 
-        $this->twig = new Environment( new FilesystemLoader($templatePath),$this->setTwigCaching());
+        $this->twig = new Environment(new FilesystemLoader($templatePath), $this->setTwigCaching());
     }
 
     public function render($page, array $parameters = [])
@@ -21,16 +22,14 @@ class Template
 
     private function setTwigCaching()
     {
-        $data=[];
+        $data = [];
 
-        if (ZIKI_PROD){
+        if (ZIKI_PROD) {
             $data = [
-                        'auto_reload' => true,
-                        'cache' => ZIKI_BASE_PATH.'/storage/cache/views',
-                    ];
-            }
-            else
-            {
+                'auto_reload' => true,
+                'cache' => ZIKI_BASE_PATH . '/storage/cache/views',
+            ];
+        } else {
                 $data = [
                     'auto_reload' => true,
                     'cache' => false,
