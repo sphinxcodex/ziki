@@ -361,11 +361,18 @@
       display: initial;
     }
 
-    #modalLoginForm {
+    #modalLoginForm,
+    #modalLoginForm .modal-content {
+      /* bootstrap sets background of .modal-content */
+      /* so it must also be overridden along with #modalLoginForm */
       background: -webkit-linear-gradient(180deg,
         #973793 0%,
         rgba(134, 64, 131, 0) 100%),
         #3b0e75 !important;
+    }
+
+    #modalLoginForm .modal-content {
+      border: none;
     }
 
     .login-modal-popup-left-column {
@@ -385,11 +392,6 @@
     .login-dialog {
       padding: 50px 30px;
       box-sizing: border-box;
-    }
-
-    .modal-content {
-      background: transparent;
-      border: none;
     }
 
     .greetings {
@@ -450,13 +452,13 @@
     }
   }
 </style>
-<div class="container-fluid py-3 sidebar-container">
+<div class="container-fluid py-3 sidebar-container position-fixed">
   <div class="row">
     <div class="col-6 text-left">
       <button type="button" id="sidebarCollapse" class="btn btn-info side-trigger">
         <i class="fas fa-align-left"></i> <span></span>
       </button>
-      <img src="resources/themes/ghost/assets/img/faviconimage.png" alt="logo" class="sidebar-logo p-3" />
+      <img src="/resources/themes/ghost/assets/img/faviconimage.png" alt="logo" class="sidebar-logo p-3" />
     </div>
     <div class="col-6 text-right">
       <button type="button" class="sidebar-close">&times;</button>
@@ -469,15 +471,13 @@
       <div class="row">
         <div class="col-12 side-content pt-5">
           <div>
-            <img class="img-fluid profile-pic" src="resources/themes/ghost/assets/img/fiverr.jpg" />
+            <img class="img-fluid profile-pic" src="/resources/themes/ghost/assets/img/fiverr.jpg" />
           </div>
           <h4 class="owner-name">Owner's Name</h4>
           <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto">Front end developer, ui/ux developer,
-            friend
-            and
-            traveller.</span>
+            friend and traveller.</span>
           <!-- <h6 class="bio">Owner's Bio</h6> -->
-          <a href="#"><button class="btn btn-default login-button" type="button" data-toggle="modal"
+          <a href="javascript:void(0)"><button class="btn btn-default login-button" type="button" data-toggle="modal"
               data-target="#modalLoginForm">
               Login
             </button></a>
@@ -491,10 +491,13 @@
     <div class="row">
       <div class="col-12 col-sm-8 mx-auto">
         <ul class="pl-0">
-          <li><a href="published-posts">Published Posts</a></li>
-          <li><a href="profile">Profile</a></li>
-          <li><a href="about">About Ziki</a></li>
-          <li><a href="contact-us">Contact Us</a></li>
+          <li><a href="/published-posts">Published Posts</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li>
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#subscribe-here">Subscribe</a>
+          </li>
+          <li><a href="/about">About Ziki</a></li>
+          <li><a href="/contact-us">Contact Us</a></li>
         </ul>
       </div>
       <div class="pl-4 col-12">
@@ -515,7 +518,7 @@
     <!-- bubble -->
     <div class="row align-items-end sidebar-bubble">
       <div class="col-12">
-        <img src="resources/themes/ghost/assets/img/bubbles.png" alt="" />
+        <img src="/resources/themes/ghost/assets/img/bubbles.png" alt="" />
       </div>
     </div>
   </div>
@@ -530,7 +533,7 @@
         <div class="col-md-6 login-modal-popup-left-column">
           <div class="row">
             <div class="col-6 logo">
-              <img src="resources/themes/ghost/assets/img/faviconimage.png" />
+              <img src="/resources/themes/ghost/assets/img/faviconimage.png" />
             </div>
             <div class="col-6">
               <button class="modal-close-button"
@@ -558,7 +561,7 @@
             <div class="col-md-12  google-signin-btn">
               <div class="row" style="padding-top:10px;box-sizing: border-box;">
                 <div class="col-2">
-                  <img src="resources/themes/ghost/assets/build/img/google.png" style="width:100%;" />
+                  <img src="/resources/themes/ghost/assets/build/img/google.png" style="width:100%;" />
                 </div>
                 <div class="col-10">
                   <p style="color:#111;">
@@ -570,7 +573,7 @@
             <div class="col-md-12  facebook-signin-btn">
               <div class="row" style="padding-top:10px;box-sizing: border-box;">
                 <div class="col-2">
-                  <img src="resources/themes/ghost/assets/build/img/facebook.png" style="width:100%;" />
+                  <img src="/resources/themes/ghost/assets/build/img/facebook.png" style="width:100%;" />
                 </div>
                 <div class="col-10">
                   <p style="color:#111;">

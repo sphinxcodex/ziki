@@ -82,7 +82,7 @@ class Theme {
             return false;
         }
 
-        $themeConfigPath = ZIKI_BASE_PATH.'/config/ziki.json';
+        $themeConfigPath = ZIKI_BASE_PATH.'/src/config/ziki.json';
         $ConfigContent = '{
             "APP_NAME": "Ziki App",
             "THEME":"'.$theme.'",

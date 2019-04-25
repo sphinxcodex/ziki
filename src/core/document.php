@@ -63,6 +63,43 @@ class Document{
                 //$document = FileSystem::read($this->file);
                 $parsedown  = new Parsedown();
                 $title = $parsedown->text($yaml['title']);
+                $slug = $parsedown->text($yaml['slug']);
+                $slug = preg_replace("/<[^>]+>/", '',$slug);
+                $bd = $parsedown->text($body);
+                $time = $parsedown->text($yaml['timestamp']);
+                $url = $parsedown->text($yaml['post_dir']);
+                $content['title'] = $title;
+                $content['body'] = $bd;
+                $content['url'] = $url;
+                $content['slug'] = $slug;
+                $content['timestamp'] = $time;
+                array_push($posts, $content);
+            }
+            return $posts;
+        }
+        else{
+            return false;
+        }
+    }
+    //get each post detail
+    public function getEach($id){
+        $finder = new Finder();
+        // find all files in the current directory
+        $finder->files()->in($this->file);
+        $posts = [];
+        if($finder->hasResults()){
+            foreach($finder as $file){
+                $document = $file->getContents();
+                $parser = new Parser();
+                $document = $parser->parse($document);
+                $yaml = $document->getYAML();
+                $body = $document->getContent();
+                //$document = FileSystem::read($this->file);
+                $parsedown  = new Parsedown();
+                $slug = $parsedown->text($yaml['slug']);
+                $slug = preg_replace("/<[^>]+>/", '',$slug);
+                if($slug == $id){
+                $title = $parsedown->text($yaml['title']);
                 $bd = $parsedown->text($body);
                 $time = $parsedown->text($yaml['timestamp']);
                 $url = $parsedown->text($yaml['post_dir']);
@@ -71,11 +108,9 @@ class Document{
                 $content['url'] = $url;
                 $content['timestamp'] = $time;
                 array_push($posts, $content);
+                }
             }
             return $posts;
-        }
-        else{
-            return false;
         }
     }
     //update post
