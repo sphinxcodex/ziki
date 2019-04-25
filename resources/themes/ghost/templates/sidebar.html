@@ -1,5 +1,5 @@
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Lato');
+  @import url("https://fonts.googleapis.com/css?family=Lato");
 
   :root {
     --ziki-purple: #280966;
@@ -68,7 +68,7 @@
     padding: 10px;
     font-size: 1.7em;
     font-weight: bold;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     display: block;
     color: #fff;
     text-decoration: none;
@@ -78,13 +78,13 @@
     color: var(--ziki-purple);
   }
 
-  #sidebar ul li.shown>a,
-  a[aria-expanded='true'] {
+  #sidebar ul li.shown > a,
+  a[aria-expanded="true"] {
     color: #fff;
     background: #6d7fcc;
   }
 
-  a[data-toggle='collapse'] {
+  a[data-toggle="collapse"] {
     position: relative;
   }
 
@@ -355,7 +355,6 @@
   }
 
   @media only screen and (max-width: 767px) {
-
     /* modal styling For mobile phones: */
     .modal-close-button {
       display: initial;
@@ -365,9 +364,11 @@
     #modalLoginForm .modal-content {
       /* bootstrap sets background of .modal-content */
       /* so it must also be overridden along with #modalLoginForm */
-      background: -webkit-linear-gradient(180deg,
-        #973793 0%,
-        rgba(134, 64, 131, 0) 100%),
+      background: -webkit-linear-gradient(
+          180deg,
+          #973793 0%,
+          rgba(134, 64, 131, 0) 100%
+        ),
         #3b0e75 !important;
     }
 
@@ -431,7 +432,6 @@
   }
 
   @media screen and (min-width: 768px) {
-
     /* login modal for tabs */
     .modal-content {
       width: 125%;
@@ -441,7 +441,6 @@
   }
 
   @media screen and (min-width: 992px) {
-
     /* login modal for PC */
     .auth-link {
       font-size: 1.4rem;
@@ -455,7 +454,11 @@
 <div class="container-fluid py-3 sidebar-container position-fixed">
   <div class="row">
     <div class="col-6 text-left">
-      <button type="button" id="sidebarCollapse" class="btn btn-info side-trigger">
+      <button
+        type="button"
+        id="sidebarCollapse"
+        class="btn btn-info side-trigger"
+      >
         <i class="fas fa-align-left"></i> <span></span>
       </button>
       <img src="/resources/themes/ghost/assets/img/faviconimage.png" alt="logo" class="sidebar-logo p-3" />
@@ -474,13 +477,20 @@
             <img class="img-fluid profile-pic" src="/resources/themes/ghost/assets/img/fiverr.jpg" />
           </div>
           <h4 class="owner-name">Owner's Name</h4>
-          <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto">Front end developer, ui/ux developer,
-            friend and traveller.</span>
+          <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto"
+            >Front end developer, ui/ux developer, friend and traveller.</span
+          >
           <!-- <h6 class="bio">Owner's Bio</h6> -->
-          <a href="javascript:void(0)"><button class="btn btn-default login-button" type="button" data-toggle="modal"
-              data-target="#modalLoginForm">
+          <a href="javascript:void(0)"
+            ><button
+              class="btn btn-default login-button"
+              type="button"
+              data-toggle="modal"
+              data-target="#modalLoginForm"
+            >
               Login
-            </button></a>
+            </button></a
+          >
         </div>
       </div>
 
@@ -494,21 +504,29 @@
           <li><a href="/published-posts">Published Posts</a></li>
           <li><a href="/profile">Profile</a></li>
           <li>
-            <a href="javascript:void(0)" data-toggle="modal" data-target="#subscribe-here">Subscribe</a>
+            <a
+              href="javascript:void(0)"
+              data-toggle="modal"
+              data-target="#subscribe-here"
+              >Subscribe</a
+            >
           </li>
           <li><a href="/about">About Ziki</a></li>
           <li><a href="/contact-us">Contact Us</a></li>
         </ul>
       </div>
       <div class="pl-4 col-12">
-        <button type="button" class="mobile-login px-5 py-2 mt-2 mt-sm-2 btn btn-primary">
+        <button
+          type="button"
+          class="mobile-login px-5 py-2 mt-2 mt-sm-2 btn btn-primary"
+        >
           Login
         </button>
         <script>
           // click login modal
           document
-            .querySelector('.mobile-login')
-            .addEventListener('click', e => {
+            .querySelector(".mobile-login")
+            .addEventListener("click", e => {
               document.querySelector('[data-toggle="modal"]').click();
             });
         </script>
@@ -525,8 +543,15 @@
 </div>
 
 <!-- Login Modal -->
-<div class="modal fade" id="modalLoginForm" style="background: rgba(255, 255, 255, 0.92);" tabindex="-1" role="dialog"
-  aria-labelledby="myModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="modalLoginForm"
+  style="background: rgba(255, 255, 255, 0.92);"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-lg modal-dialog-container" role="document">
     <div class="modal-content">
       <div class="row login-modal-border-radius">
@@ -536,9 +561,11 @@
               <img src="/resources/themes/ghost/assets/img/faviconimage.png" />
             </div>
             <div class="col-6">
-              <button class="modal-close-button"
+              <button
+                class="modal-close-button"
                 style="background: transparent; color:#fff; border: none; font-size: 3rem; position: relative;top: -30px;left: 60px;"
-                data-dismiss="modal">
+                data-dismiss="modal"
+              >
                 &times;
               </button>
             </div>
@@ -565,7 +592,11 @@
                 </div>
                 <div class="col-10">
                   <p style="color:#111;">
-                    <a href="#" class="auth-link">Sign in with google</a>
+                    <a
+                      href="https://auth.techteel.com/login/google"
+                      class="auth-link"
+                      >Sign in with google</a
+                    >
                   </p>
                 </div>
               </div>
@@ -577,12 +608,19 @@
                 </div>
                 <div class="col-10">
                   <p style="color:#111;">
-                    <a href="#" class="auth-link">Sign in with Facebook</a>
+                    <a
+                      href="https://auth.techteel.com/login/facebook"
+                      class="auth-link"
+                      >Sign in with Facebook</a
+                    >
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-md-12" style="margin-top:20px;box-sizing: border-box; text-align: center">
+            <div
+              class="col-md-12"
+              style="margin-top:20px;box-sizing: border-box; text-align: center"
+            >
               <p class="bottom-msg">
                 To make this site work, we log user data and share it with
                 service providers.
