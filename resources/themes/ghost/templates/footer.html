@@ -64,6 +64,11 @@
     const markdown = converter.makeMarkdown(blogBody);
     formData.set('postVal', markdown);
 
+    // get tags
+    const selected = document.querySelectorAll('#new-post-tags option:checked');
+    const selectedTags = Array.from(selected).map(el => el.value);
+    formData.set('tags', selectedTags);
+
     // send the form data
     fetch('/timeline', {
       method: 'POST',
