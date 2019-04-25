@@ -5,10 +5,6 @@ use Ziki\Core as Core;
 class Foundation
 {
     /**
-     * @var Logger
-     */
-    protected $logger;
-    /**
      * @var string
      */
     protected $cachePath;
@@ -20,14 +16,13 @@ class Foundation
      * @param string $basePath
      * @param Logger $logger
      */
-    public function __construct($basePath,$logger)
+    public function __construct($basePath)
     {
         $this->basePath = $basePath;
-        $this->logger = $logger;
         $this->loadConfig();
         $this->loadTemplate();
     }
-    
+
     private function loadConfig()
     {
         $this->configPath = $this->basePath . DIRECTORY_SEPARATOR . 'src/config/ziki.json';
@@ -41,7 +36,7 @@ class Foundation
     }
 
     public function start() {
-        require_once $this->basePath . DIRECTORY_SEPARATOR . 'src/config/routes.php';
+        require $this->basePath . DIRECTORY_SEPARATOR . 'src/config/routes.php';
         echo $this->template->render('404.html');
     }
 }

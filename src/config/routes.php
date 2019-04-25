@@ -3,40 +3,40 @@
 use Ziki\Http\Route;
 
 Route::get('/about/{id}', function($request,$id) {
-    
+
      return $this->template->render('about-us.html');
 });
 
 Route::get('/', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
-    $posts = $ziki->get();
+    $feed = $ziki->fetchAllRss();
     // Render our view
-    return $this->template->render('index.html', ['posts' => $posts] );
+    //print_r($feed);
+    return $this->template->render('index.html',['posts' => $feed] );
 });
 
-Route::get('/blog-details', function($request) {
-    $ziki = [
-        [ 'name'          => 'Adroit' ],
-        [ 'name'          => 'Olu' ],
-        [ 'name'          => 'Amuwo' ],
-    ];
-    return $this->template->render('blog-details.html', ['ziki' => $ziki] );
-});
 
+Route::get('/blog-details/{id}', function($request, $id) {
+    $directory = "./storage/contents/";
+    $ziki = new Ziki\Core\Document($directory);
+   $result = $ziki->getEach($id);
+   return $this->template->render('blog-details.html', ['result' => $result] );
+});
 Route::get('/timeline', function($request) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
-    $post = $ziki->get();
+    $post = $ziki->fetchAllRss();
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
 
-Route::post('/timeline', function($request) {
+Route::post('/publish', function($request) {
     $directory = "./storage/contents/";
     $data = $request->getBody();
+    $title = $data['title'];
     $body = $data['postVal'];
     $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->create($body);
+    $result = $ziki->create($title, $body);
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
 
@@ -47,6 +47,7 @@ Route::get('/contact-us', function($request) {
     ];
     return $this->template->render('contact-us.html', ['ziki' => $ziki] );
 });
+
 
 Route::get('/published-posts', function($request) {
     return $this->template->render('published-posts.html');
@@ -60,7 +61,7 @@ Route::get('/profile', function($request) {
     return $this->template->render('profile.html');
 });
 
-Route::get('/subscriptions', function($request) {
+Route::post('/subscriptions', function($request) {
     return $this->template->render('subscriptions.html');
 });
 
