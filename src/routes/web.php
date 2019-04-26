@@ -1,5 +1,7 @@
 <?php
 
+use Ziki\Http\Route;
+
 $router->get('/about/{id}', function($request,$id) {
 
      return $this->template->render('about-us.html');
@@ -15,7 +17,7 @@ $router->get('/', function($request) {
 });
 
 
-$router->get('/blog-details/{id}', function($request, $id) {
+$router->get('stay/{id}', function($request, $id) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
    $result = $ziki->getEach($id);
@@ -33,8 +35,9 @@ $router->post('/publish', function($request) {
     $data = $request->getBody();
     $title = $data['title'];
     $body = $data['postVal'];
+    $tags = $data['tags'];
     $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->create($title, $body);
+    $result = $ziki->create($title, $body,$tags);
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
 
@@ -82,6 +85,11 @@ $router->get('/drafts', function($request) {
 $router->get('/about', function($request) {
     return $this->template->render('about-us.html');
 });
+
+$router->get('/download', function($request) {
+    return $this->template->render('download.html');
+});
+
 $router->get('/auth/{provider}/{token}', function($request, $token){
     $user = new Ziki\Core\Auth();
     $check = $user->validateAuth($token);
