@@ -15,6 +15,7 @@ body {
   --subscribe-header: #313131;
   /* THEMES STYLING */
   --theme-main-bg: #f9f9f9;
+  --switcher-bg: #ccc;
 }
 /* Dark Theme */
 .dark {
@@ -174,8 +175,6 @@ a {
   height: 0;
 }
 
-.switch-text 
-
 /* The slider */
 .slider {
   position: absolute;
@@ -184,7 +183,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #000;
+  background-color: var(--switcher-bg);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
