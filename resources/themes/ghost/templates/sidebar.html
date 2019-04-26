@@ -78,7 +78,7 @@
     color: var(--ziki-purple);
   }
 
-  #sidebar ul li.shown > a,
+  #sidebar ul li.shown>a,
   a[aria-expanded='true'] {
     color: #fff;
     background: #6d7fcc;
@@ -95,9 +95,7 @@
     right: 20px;
     transform: translateY(-50%);
   }
-  .p-h {
-    padding: .5rem
-  }
+
   .side-content {
     display: flex;
     align-items: center;
@@ -196,7 +194,7 @@
 
   @media (min-width: 768px) {
     .sidebar-container {
-      width: 33%;
+      width: 25%;
     }
 
     #sidebar,
@@ -305,19 +303,25 @@
     box-sizing: border-box;
   }
 
-  .signin-btn {
+  .google-signin-btn {
     cursor: pointer;
     background: #ffffff;
     box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    line-height: 2;
   }
-  .width-150px {
-    width: 150px;
+
+  .facebook-signin-btn {
+    cursor: pointer;
+    background: #ffffff;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-top: 25px;
   }
+
   .width-250px {
     width: 250px;
   }
+
   .bottom-msg {
     font-family: Lato;
     font-style: normal;
@@ -358,28 +362,35 @@
   .modal-close-button {
     display: none;
   }
+
   .bg-purple {
     background-color: #8d348f;
-    border-radius: 0 5px 5px  0;
+    border-radius: 0 5px 5px 0;
     width: 20%;
     line-height: 2;
     padding: .5rem;
   }
+
   .email-login {
     align-items: center;
     padding-left: .5rem
   }
+
   .width-100pc {
     width: 100%;
   }
+
   .no-border {
     border: none;
   }
+
   .magic-msg {
     margin: 3rem auto 3rem auto;
     width: 250px
   }
+
   @media only screen and (max-width: 767px) {
+
     /* modal styling For mobile phones: */
     .modal-close-button {
       display: initial;
@@ -389,11 +400,9 @@
     #modalLoginForm .modal-content {
       /* bootstrap sets background of .modal-content */
       /* so it must also be overridden along with #modalLoginForm */
-      background: -webkit-linear-gradient(
-          180deg,
-          #973793 0%,
-          rgba(134, 64, 131, 0) 100%
-        ),
+      background: -webkit-linear-gradient(180deg,
+        #973793 0%,
+        rgba(134, 64, 131, 0) 100%),
         #3b0e75 !important;
     }
 
@@ -457,6 +466,7 @@
   }
 
   @media screen and (min-width: 768px) {
+
     /* login modal for tabs */
     .modal-content {
       width: 125%;
@@ -466,6 +476,7 @@
   }
 
   @media screen and (min-width: 992px) {
+
     /* login modal for PC */
     .auth-link {
       font-size: 1.4rem;
@@ -479,18 +490,10 @@
 <div class="container-fluid py-3 sidebar-container position-fixed">
   <div class="row">
     <div class="col-6 text-left">
-      <button
-        type="button"
-        id="sidebarCollapse"
-        class="btn btn-info side-trigger"
-      >
+      <button type="button" id="sidebarCollapse" class="btn btn-info side-trigger">
         <i class="fas fa-align-left"></i> <span></span>
       </button>
-      <img
-        src="resources/themes/ghost/assets/img/faviconimage.png"
-        alt="logo"
-        class="sidebar-logo p-3"
-      />
+      <img src="resources/themes/ghost/assets/img/faviconimage.png" alt="logo" class="sidebar-logo p-3" />
     </div>
     <div class="col-6 text-right">
       <button type="button" class="sidebar-close">&times;</button>
@@ -498,31 +501,21 @@
   </div>
 
   <!-- Owner profile details -->
-  <div id="sidebar" class="w-75">
+  <div id="sidebar" class="">
     <div class="owner-info">
       <div class="row">
         <div class="col-12 side-content pt-5">
           <div>
-            <img
-              class="img-fluid profile-pic"
-              src="resources/themes/ghost/assets/img/fiverr.jpg"
-            />
+            <img class="img-fluid profile-pic" src="resources/themes/ghost/assets/img/fiverr.jpg" />
           </div>
           <h4 class="owner-name">Owner's Name</h4>
-          <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto"
-            >Front end developer, ui/ux developer, friend and traveller.</span
-          >
+          <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto">Front end developer, ui/ux developer,
+            friend and traveller.</span>
           <!-- <h6 class="bio">Owner's Bio</h6> -->
-          <a href="javascript:void(0)"
-            ><button
-              class="btn btn-default login-button"
-              type="button"
-              data-toggle="modal"
-              data-target="#modalLoginForm"
-            >
+          <a href="javascript:void(0)"><button class="btn btn-default login-button" type="button" data-toggle="modal"
+              data-target="#modalLoginForm">
               Login
-            </button></a
-          >
+            </button></a>
         </div>
       </div>
 
@@ -536,22 +529,14 @@
           <li><a href="/published-posts">Published Posts</a></li>
           <li><a href="/profile">Profile</a></li>
           <li>
-            <a
-              href="javascript:void(0)"
-              data-toggle="modal"
-              data-target="#subscribe-here"
-              >Subscribe</a
-            >
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#subscribe-here">Subscribe</a>
           </li>
           <li><a href="/about">About Ziki</a></li>
           <li><a href="/contact-us">Contact Us</a></li>
         </ul>
       </div>
       <div class="pl-4 col-12">
-        <button
-          type="button"
-          class="mobile-login px-5 px-sm-3 px-md-5 py-2 mt-2 mt-sm-0 mt-md-2 btn btn-primary"
-        >
+        <button type="button" class="mobile-login px-5 px-sm-3 px-md-5 py-2 mt-2 mt-sm-0 mt-md-2 btn btn-primary">
           Login
         </button>
         <script>
@@ -575,15 +560,8 @@
 </div>
 
 <!-- Login Modal -->
-<div
-  class="modal fade"
-  id="modalLoginForm"
-  style="background: rgba(255, 255, 255, 0.92);"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="modalLoginForm" style="background: rgba(255, 255, 255, 0.92);" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-container" role="document">
     <div class="modal-content">
       <div class="row login-modal-border-radius">
@@ -593,11 +571,9 @@
               <img src="/resources/themes/ghost/assets/img/faviconimage.png" />
             </div>
             <div class="col-6">
-              <button
-                class="modal-close-button"
+              <button class="modal-close-button"
                 style="background: transparent; color:#fff; border: none; font-size: 3rem; position: relative;top: -30px;left: 60px;"
-                data-dismiss="modal"
-              >
+                data-dismiss="modal">
                 &times;
               </button>
             </div>
@@ -656,4 +632,3 @@
     </div>
   </div>
 </div>
-
