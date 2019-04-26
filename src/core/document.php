@@ -63,7 +63,6 @@ class Document
         $dir = $file . $unix . ".md";
         //return $dir; die();
         $doc = FileSystem::write($dir, $yaml);
-
         if ($doc) {
             $result = array("error" => false, "message" => "Post published successfully");
         } else {
