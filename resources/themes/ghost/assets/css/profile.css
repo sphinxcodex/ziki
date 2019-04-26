@@ -275,8 +275,8 @@ input:checked + .slider:before {
 }
 
 .not-following-button:hover {
-  background: var(--custom-deep-purple);
-  color: var(--text-color) !important;
+  background: var(--custom-deep-purple) !important;
+  color: #FFFFFF!important;
 }
 
 /*input-field Icon*/
@@ -356,6 +356,9 @@ input:checked + .slider:before {
   .following-button {
     font-size: 14px !important;
   }
+  .not-following-button {
+    font-size: 14px !important;
+  }
   .subscription-content-header {
     margin: 1rem 0 !important;
   }
@@ -420,6 +423,13 @@ input:checked + .slider:before {
   }
   .search-area {
     display: none !important;
+  }
+  .following-button {
+    font-size: 14px !important;
+  }
+  .not-following-button {
+    font-size: 14px !important;
+    margin-left: -1.5rem;
   }
 }
 

@@ -531,6 +531,14 @@
           <li>
             <a href="javascript:void(0)" data-toggle="modal" data-target="#subscribe-here">Subscribe</a>
           </li>
+          <li>
+            <a
+              href="javascript:void(0)"
+              data-toggle="modal"
+              data-target="#unsubscribe-here"
+              >Unsubscribe</a
+            >
+          </li>
           <li><a href="/about">About Ziki</a></li>
           <li><a href="/contact-us">Contact Us</a></li>
         </ul>
@@ -539,14 +547,6 @@
         <button type="button" class="mobile-login px-5 px-sm-3 px-md-5 py-2 mt-2 mt-sm-0 mt-md-2 btn btn-primary">
           Login
         </button>
-        <script>
-          // click login modal
-          document
-            .querySelector('.mobile-login')
-            .addEventListener('click', e => {
-              document.querySelector('[data-toggle="modal"]').click();
-            });
-        </script>
       </div>
     </div>
 
