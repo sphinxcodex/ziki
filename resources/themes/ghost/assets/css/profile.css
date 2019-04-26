@@ -159,8 +159,9 @@ a {
   max-width: 200px;
   height: auto;
   padding-top: 10px;
+  position: absolute;
+  top: -30%;
 }
-
 .switch-toggle h6 {
   padding-left: 4.2em;
   clear: both;
@@ -172,6 +173,8 @@ a {
   width: 0;
   height: 0;
 }
+
+.switch-text 
 
 /* The slider */
 .slider {
