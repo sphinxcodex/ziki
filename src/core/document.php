@@ -241,6 +241,7 @@ class Document
 
             $content['name'] = $value['name'];
             $content['img'] = $value['img'];
+            $content['desc'] = $value['desc'];
             array_push($posts, $content);
         }
         return $posts;

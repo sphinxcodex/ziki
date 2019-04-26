@@ -293,7 +293,7 @@
 
                 <!-- Posts from here.. -->
                 <article class="post-area">
-                  {% for post in posts %}
+                  {% for key, feed in posts %}
                   <div
                     class="row d-flex justify-content-center justify-content-lg-start post-content"
                   >
@@ -302,20 +302,20 @@
                         <div class="col-2 col-sm-1 px-md-1">
                           <img
                             class="img-fluid author-image"
-                            src="/resources/themes/ghost/assets/img/fiverr.jpg"
+                            src="{{feed.img | raw}}"
                           />
                         </div>
                         <div class="col-10 col-sm-11">
-                          <h5 class="post-author">Destiny Ihejirika</h5>
+                          <h5 class="post-author">{{feed.site | raw}}</h5>
                           <h2 class="post-title">
                             <a href="/blog-details/{{post.slug}}"
-                              >{{post.title | raw}}</a
+                              >{{feed.title | raw}}</a
                             >
                           </h2>
-                          <p class="post-detail">{{post.body | raw}}</p>
+                          <p class="post-detail">{{feed.desc | raw}}</p>
                           <div class="row post-action-bar">
                             <div class="col-6 col-sm-6 post-date text-left">
-                              <p>{{post.timestamp | raw}}</p>
+                              <p>{{feed.date | raw}}</p>
                             </div>
                             <div class="col-6 col-sm-6 post-comment text-right">
                               <p>Comment</p>
