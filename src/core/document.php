@@ -31,7 +31,8 @@ class Document
     }
 
     //for creating markdown files
-    public function create($title, $content, $tags){
+    public function create($title, $content)
+    {
         $time = date("F j, Y, g:i a");
         $unix = strtotime($time);
         // Write md file
@@ -46,19 +47,13 @@ class Document
 
         $yamlfile = new Doc();
         $yamlfile['title'] = $title;
-
-       /* $tag = [];
-        foreach($tags as $result){
-            array_push($tag, $result);
-        }*/
-        $yamlfile['tags'] = array('Books','Music');
-        $yamlfile['post_dir'] = SITE_URL."/storage/contents/{$unix}";
-        $yamlfile['slug'] = $title."-{$unix}";
+        $yamlfile['post_dir'] = SITE_URL . "/storage/contents/{$unix}";
+        $yamlfile['slug'] = "post-detail-{$unix}";
         $yamlfile['timestamp'] = $time;
         $yamlfile->setContent($content);
         $yaml = FrontMatter::dump($yamlfile);
         $file = $this->file;
-        $dir = $file.$unix.".md";
+        $dir = $file . $unix . ".yaml";
         //return $dir; die();
         $doc = FileSystem::write($dir, $yaml);
 
