@@ -40,9 +40,10 @@
         document.getElementById("rss").innerHTML = xhttp.responseText;
 
       }
-    };
+    }
     xhttp.open("GET", "storage/rss/addsubscribers.php?rss="+url , true);
     xhttp.send();
+  });
   }
 
 </script>
@@ -71,7 +72,7 @@
     formData.set('tags', selectedTags);
 
     // send the form data
-    fetch('/timeline', {
+    fetch('/publish', {
       method: 'POST',
       body: formData
     }).then(res => res.text()).then((res) => {
