@@ -14,6 +14,7 @@ body {
   --not-following-btn: transparent;
   --subscribe-header: #313131;
 }
+/* Dark Theme */
 .dark {
   --custom-deep-purple: #7277ef;
   --dark-bg-color: #111111;
@@ -29,6 +30,8 @@ body {
 a {
   text-decoration: none;
 }
+
+/* Profile Page */
 .profile-container {
   background: var(--profile-main-bg);
 }
@@ -79,135 +82,12 @@ a {
   background: var(--custom-deep-purple) !important;
 }
 
-/* Image Overlay */
 .profile-dp {
   max-width: 189px;
   max-height: 189px;
 }
-.subscription-content-header {
-  margin: 1.5rem 3rem !important;
-}
 
-/* Mobile Styles  */
-@media screen and (max-width: 1024px) {
-  .nothing,
-  .sidebar {
-    display: none;
-  }
-  .follow-numbers {
-    display: none;
-  }
-  .themes-edit-title {
-    font-size: 0.9rem;
-  }
-  .switch-text {
-    font-size: 0.8rem;
-  }
-}
-@media screen and (max-width: 768px) {
-  .follow-numbers {
-    display: none;
-  }
-  .profile-content-area {
-    margin: 3rem 1rem !important;
-    padding: 0 !important;
-  }
-  .themes-content-area {
-    margin: 3rem 1rem !important;
-    padding: 0 !important;
-  }
-  .themes-edit-title {
-    font-size: 1rem;
-  }
-  input,
-  input::-webkit-input-placeholder {
-    font-size: 0.7rem;
-  }
-  .themes-edit-title {
-    font-size: 0.9rem;
-  }
-  .switch-text {
-    font-size: 0.8rem;
-  }
-  .subscription-content-area {
-    margin: 3rem 1rem !important;
-    padding: 0 !important;
-  }
-}
-@media screen and (max-width: 600px) {
-  .profile-edit-title {
-    display: none;
-  }
-  .themes-edit-title {
-    /*display: none;*/
-  }
-  .profile-top-link {
-    font-size: 12px !important;
-  }
-
-  .navbar-nav li {
-    padding: 0 8px !important;
-  }
-  .themes-top-link {
-    font-size: 12px !important;
-  }
-
-  .navbar-nav li {
-    padding: 0 8px !important;
-  }
-  .themes-edit-title {
-    font-size: 0.9rem;
-  }
-  .switch-text {
-    font-size: 0.9rem;
-  }
-  .search-area {
-    display: none !important;
-  }
-}
-
-.profile-dp-link {
-  text-decoration: none;
-  position: relative;
-  display: inline-block;
-}
-
-.profile-dp-link:hover:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f044";
-  font-size: 28px;
-  color: #fff;
-  text-align: center;
-  padding: 4rem 0;
-  display: block;
-  background: rgba(68, 30, 147, 0.6);
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.profile-edit-title {
-  color: #000000;
-}
-
-/* Mobile Styles  */
-@media screen and (max-width: 600px) {
-  .profile-top-link {
-    font-size: 12px !important;
-  }
-
-  .navbar-nav li {
-    padding: 0 8px !important;
-  }
-
-  .subscription-content-header {
-    margin: 10px 5px !important;
-  }
-}
-
+/* Themes Page */
 .themes-logo-area img {
   object-fit: none;
 }
@@ -349,13 +229,15 @@ input:checked + .slider:before {
   box-shadow: none;
 }
 
-/*Profile-themes-Subscriptions-Subscribers styles*/
+/*Subscription and Subscribers*/
 .subscription-content-area {
   background: var(--profile-edit-form);
   /*height: 930px;*/
   height: auto;
 }
-
+.subscription-content-header {
+  margin: 1.5rem 3rem !important;
+}
 /*Subscriptions styles */
 .following-content {
   border: 1px solid #b2b2b2;
@@ -454,4 +336,142 @@ input:checked + .slider:before {
 .post-detail {
   font-size: 12px;
   color: #808080;
+}
+
+/* Mobile Styles  */
+@media screen and (max-width: 1024px) {
+  .nothing,
+  .sidebar {
+    display: none;
+  }
+  .follow-numbers {
+    display: none;
+  }
+  .themes-edit-title {
+    font-size: 0.9rem;
+  }
+  .switch-text {
+    font-size: 0.8rem;
+  }
+  .following-button {
+    font-size: 14px !important;
+  }
+  .subscription-content-header {
+    margin: 1rem 0 !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .follow-numbers {
+    display: none;
+  }
+
+  .profile-content-area {
+    margin: 3rem 1rem !important;
+    padding: 0 !important;
+  }
+  .themes-content-area {
+    margin: 3rem 1rem !important;
+    padding: 0 !important;
+  }
+  .themes-edit-title {
+    font-size: 1rem;
+  }
+  input,
+  input::-webkit-input-placeholder {
+    font-size: 0.7rem;
+  }
+  .themes-edit-title {
+    font-size: 0.9rem;
+  }
+  .switch-text {
+    font-size: 0.8rem;
+  }
+  .subscription-content-area {
+    margin: 3rem 1rem !important;
+    padding: 0 !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .profile-edit-title {
+    display: none;
+  }
+  .themes-edit-title {
+    /*display: none;*/
+  }
+  .profile-top-link {
+    font-size: 12px !important;
+  }
+
+  .navbar-nav li {
+    padding: 0 8px !important;
+  }
+  .themes-top-link {
+    font-size: 12px !important;
+  }
+
+  .navbar-nav li {
+    padding: 0 8px !important;
+  }
+  .themes-edit-title {
+    font-size: 0.9rem;
+  }
+  .switch-text {
+    font-size: 0.9rem;
+  }
+  .search-area {
+    display: none !important;
+  }
+}
+
+.profile-dp-link {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+.profile-dp-link:hover:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f044";
+  font-size: 28px;
+  color: #fff;
+  text-align: center;
+  padding: 4rem 0;
+  display: block;
+  background: rgba(68, 30, 147, 0.6);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.profile-edit-title {
+  color: #000000;
+}
+
+@media screen and (max-width: 600px) {
+  .profile-top-link {
+    font-size: 12px !important;
+  }
+  .subscribe-box-area {
+    align-items: flex-end !important;
+  }
+  .following-content {
+    height: 200px;
+  }
+  .not-following-area {
+    margin-left: 2rem !important;
+  }
+  .post-sm-content {
+    position: absolute;
+    top: 4rem;
+  }
+  .navbar-nav li {
+    padding: 0 8px !important;
+  }
+
+  .subscription-content-header {
+    margin: 10px 5px !important;
+  }
 }
