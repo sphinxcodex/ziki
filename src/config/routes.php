@@ -84,3 +84,12 @@ Route::get('/drafts', function($request) {
 Route::get('/about', function($request) {
     return $this->template->render('about-us.html');
 });
+Route::get('/auth/{provider}/{token}', function($request, $token){
+    $user = new Ziki\Core\Auth();
+    $check = $user->validateAuth($token);
+    if($check){
+        var_dump($check);
+        die();
+    }
+    return $this->redirectToRoute("/timeline");
+});
