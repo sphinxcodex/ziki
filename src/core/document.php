@@ -31,7 +31,7 @@ class Document
     }
 
     //for creating markdown files
-    public function create($title, $content)
+    public function create($title, $content,$tags)
     {
         $time = date("F j, Y, g:i a");
         $unix = strtotime($time);
@@ -47,16 +47,22 @@ class Document
 
         $yamlfile = new Doc();
         $yamlfile['title'] = $title;
+        $tag = explode(",",$tags);
+        $put = [];
+        foreach($tag as $value){
+            array_push($put,$value);
+        }
+        $yamlfile['tags'] = $put;
         $yamlfile['post_dir'] = SITE_URL . "/storage/contents/{$unix}";
-        $yamlfile['slug'] = "post-detail-{$unix}";
+        $striped = str_replace(' ', '-', $title);
+        $yamlfile['slug'] = $striped."-{$unix}";
         $yamlfile['timestamp'] = $time;
         $yamlfile->setContent($content);
         $yaml = FrontMatter::dump($yamlfile);
         $file = $this->file;
-        $dir = $file . $unix . ".yaml";
+        $dir = $file . $unix . ".md";
         //return $dir; die();
         $doc = FileSystem::write($dir, $yaml);
-
         if ($doc) {
             $result = array("error" => false, "message" => "Post published successfully");
         } else {
@@ -295,4 +301,5 @@ class Document
     //deletepost
     public function delete()
     { }
+   
 }

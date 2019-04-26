@@ -101,7 +101,14 @@
     border: 1px solid #280a66;
     padding: 6px 20px;
   }
+  .btn.btn-primary.save-draft {
+    background-color: #fff !important;
+    color: #280a66 !important;
+    border: 1px solid #280a66;
+    padding: 6px 20px;
+  }
   .btn.btn-primary.canel-post,
+  .btn.btn-primary.save-draft,
   .btn.btn-primary.publish-post {
     margin-left: 15px;
   }
@@ -225,6 +232,7 @@
                         method="POST"
                         action="/timeline"
                         class="timeline-editor"
+                        id="editor-form"
                       >
                         <!-- Quill editor code goes here -->
                         <div class="row">
@@ -277,6 +285,11 @@
                               type="submit"
                               class="btn btn-primary publish-post"
                               value="Publish"
+                            />
+                            <input
+                              type="button"
+                              class="btn btn-primary save-draft"
+                              value="Save Draft"
                             />
                             <input
                               type="reset"
