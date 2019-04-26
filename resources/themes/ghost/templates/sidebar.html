@@ -78,7 +78,7 @@
     color: var(--ziki-purple);
   }
 
-  #sidebar ul li.shown > a,
+  #sidebar ul li.shown>a,
   a[aria-expanded='true'] {
     color: #fff;
     background: #6d7fcc;
@@ -194,7 +194,7 @@
 
   @media (min-width: 768px) {
     .sidebar-container {
-      width: 33%;
+      width: 25%;
     }
 
     #sidebar,
@@ -318,6 +318,10 @@
     margin-top: 25px;
   }
 
+  .width-250px {
+    width: 250px;
+  }
+
   .bottom-msg {
     font-family: Lato;
     font-style: normal;
@@ -359,7 +363,34 @@
     display: none;
   }
 
+  .bg-purple {
+    background-color: #8d348f;
+    border-radius: 0 5px 5px 0;
+    width: 20%;
+    line-height: 2;
+    padding: .5rem;
+  }
+
+  .email-login {
+    align-items: center;
+    padding-left: .5rem
+  }
+
+  .width-100pc {
+    width: 100%;
+  }
+
+  .no-border {
+    border: none;
+  }
+
+  .magic-msg {
+    margin: 3rem auto 3rem auto;
+    width: 250px
+  }
+
   @media only screen and (max-width: 767px) {
+
     /* modal styling For mobile phones: */
     .modal-close-button {
       display: initial;
@@ -369,11 +400,9 @@
     #modalLoginForm .modal-content {
       /* bootstrap sets background of .modal-content */
       /* so it must also be overridden along with #modalLoginForm */
-      background: -webkit-linear-gradient(
-          180deg,
-          #973793 0%,
-          rgba(134, 64, 131, 0) 100%
-        ),
+      background: -webkit-linear-gradient(180deg,
+        #973793 0%,
+        rgba(134, 64, 131, 0) 100%),
         #3b0e75 !important;
     }
 
@@ -437,6 +466,7 @@
   }
 
   @media screen and (min-width: 768px) {
+
     /* login modal for tabs */
     .modal-content {
       width: 125%;
@@ -446,6 +476,7 @@
   }
 
   @media screen and (min-width: 992px) {
+
     /* login modal for PC */
     .auth-link {
       font-size: 1.4rem;
@@ -459,18 +490,10 @@
 <div class="container-fluid py-3 sidebar-container position-fixed">
   <div class="row">
     <div class="col-6 text-left">
-      <button
-        type="button"
-        id="sidebarCollapse"
-        class="btn btn-info side-trigger"
-      >
+      <button type="button" id="sidebarCollapse" class="btn btn-info side-trigger">
         <i class="fas fa-align-left"></i> <span></span>
       </button>
-      <img
-        src="resources/themes/ghost/assets/img/faviconimage.png"
-        alt="logo"
-        class="sidebar-logo p-3"
-      />
+      <img src="resources/themes/ghost/assets/img/faviconimage.png" alt="logo" class="sidebar-logo p-3" />
     </div>
     <div class="col-6 text-right">
       <button type="button" class="sidebar-close">&times;</button>
@@ -478,31 +501,21 @@
   </div>
 
   <!-- Owner profile details -->
-  <div id="sidebar" class="w-75">
+  <div id="sidebar" class="">
     <div class="owner-info">
       <div class="row">
         <div class="col-12 side-content pt-5">
           <div>
-            <img
-              class="img-fluid profile-pic"
-              src="resources/themes/ghost/assets/img/fiverr.jpg"
-            />
+            <img class="img-fluid profile-pic" src="resources/themes/ghost/assets/img/fiverr.jpg" />
           </div>
           <h4 class="owner-name">Owner's Name</h4>
-          <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto"
-            >Front end developer, ui/ux developer, friend and traveller.</span
-          >
+          <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto">Front end developer, ui/ux developer,
+            friend and traveller.</span>
           <!-- <h6 class="bio">Owner's Bio</h6> -->
-          <a href="javascript:void(0)"
-            ><button
-              class="btn btn-default login-button"
-              type="button"
-              data-toggle="modal"
-              data-target="#modalLoginForm"
-            >
+          <a href="javascript:void(0)"><button class="btn btn-default login-button" type="button" data-toggle="modal"
+              data-target="#modalLoginForm">
               Login
-            </button></a
-          >
+            </button></a>
         </div>
       </div>
 
@@ -516,12 +529,7 @@
           <li><a href="/published-posts">Published Posts</a></li>
           <li><a href="/profile">Profile</a></li>
           <li>
-            <a
-              href="javascript:void(0)"
-              data-toggle="modal"
-              data-target="#subscribe-here"
-              >Subscribe</a
-            >
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#subscribe-here">Subscribe</a>
           </li>
           <li>
             <a
@@ -536,10 +544,7 @@
         </ul>
       </div>
       <div class="pl-4 col-12">
-        <button
-          type="button"
-          class="mobile-login px-5 px-sm-3 px-md-5 py-2 mt-2 mt-sm-0 mt-md-2 btn btn-primary"
-        >
+        <button type="button" class="mobile-login px-5 px-sm-3 px-md-5 py-2 mt-2 mt-sm-0 mt-md-2 btn btn-primary">
           Login
         </button>
       </div>
@@ -555,15 +560,8 @@
 </div>
 
 <!-- Login Modal -->
-<div
-  class="modal fade"
-  id="modalLoginForm"
-  style="background: rgba(255, 255, 255, 0.92);"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="modalLoginForm" style="background: rgba(255, 255, 255, 0.92);" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-container" role="document">
     <div class="modal-content">
       <div class="row login-modal-border-radius">
@@ -573,15 +571,12 @@
               <img src="/resources/themes/ghost/assets/img/faviconimage.png" />
             </div>
             <div class="col-6">
-              <button
-                class="modal-close-button"
+              <button class="modal-close-button"
                 style="background: transparent; color:#fff; border: none; font-size: 3rem; position: relative;top: -30px;left: 60px;"
-                data-dismiss="modal"
-              >
+                data-dismiss="modal">
                 &times;
               </button>
             </div>
-
             <div class="col-md-12 greetings">
               <h3 class="text-center ziki-Welcome-msg" style="color:#fff;">
                 Welcome to Ziki
@@ -592,59 +587,46 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 login-modal-popup-right-column">
-          <div class="row login-dialog">
-            <div class="col-md-12">
-              <p class="login-msg">LOGIN TO CONTINUE</p>
-            </div>
-            <div class="col-md-12  google-signin-btn">
-              <div class="row" style="padding-top:10px;box-sizing: border-box;">
-                <div class="col-2">
-                  <img
-                    src="resources/themes/ghost/assets/build/img/google.png"
-                    style="width:100%;"
-                  />
-                </div>
-                <div class="col-10">
-                  <p style="color:#111;">
-                    <a
-                      href="https://auth.techteel.com/auth?s=start&d=http://localhost:8000/&p=google"
-                      class="auth-link"
-                      >Sign in with google</a
-                    >
-                  </p>
-                </div>
+
+        <!-- for the login auth -->
+        <!-- <div class="login-modal-popup-right-column col-md-6 text-center">
+          <p class="mt-5">
+            LOGIN TO CONTINUE
+          </p>
+          <div class="signin-btn d-flex justify-content-between email-login">
+            <svg width="32" height="23" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M25.109 17.028C24.986 17.028 24.863 16.983 24.767 16.892L19.013 11.494C18.812 11.306 18.802 10.989 18.991 10.788C19.18 10.585 19.495 10.576 19.698 10.766L25.452 16.164C25.653 16.352 25.663 16.669 25.474 16.87C25.375 16.975 25.243 17.028 25.109 17.028Z" fill="black"/>
+              <path d="M5.90186 17.028C5.76886 17.028 5.63586 16.975 5.53686 16.87C5.34786 16.669 5.35786 16.352 5.55886 16.164L11.3149 10.766C11.5169 10.578 11.8339 10.586 12.0219 10.788C12.2109 10.989 12.2009 11.306 11.9999 11.494L6.24386 16.892C6.14786 16.983 6.02486 17.028 5.90186 17.028Z" fill="black"/>
+              <path d="M28.512 22.047H2.5C1.122 22.047 0 20.926 0 19.547V2.5C0 1.121 1.122 0 2.5 0H28.512C29.89 0 31.012 1.121 31.012 2.5V19.547C31.012 20.926 29.89 22.047 28.512 22.047ZM2.5 1C1.673 1 1 1.673 1 2.5V19.547C1 20.374 1.673 21.047 2.5 21.047H28.512C29.339 21.047 30.012 20.374 30.012 19.547V2.5C30.012 1.673 29.339 1 28.512 1H2.5Z" fill="black"/>
+              <path d="M15.5058 13.536C14.8408 13.536 14.1758 13.315 13.6698 12.874L0.829791 1.67303C0.621791 1.49203 0.599791 1.17603 0.780791 0.967026C0.963791 0.759026 1.27879 0.740026 1.48679 0.919026L14.3268 12.119C14.9658 12.676 16.0458 12.676 16.6838 12.119L29.5078 0.937026C29.7148 0.756026 30.0298 0.776026 30.2138 0.985026C30.3948 1.19403 30.3738 1.50903 30.1658 1.69103L17.3418 12.873C16.8348 13.315 16.1708 13.536 15.5058 13.536Z" fill="black"/>
+              </svg>
+              <input type="text" value="Enter your Email Address" class="width-100pc ml-1 no-border">
+              <div class="bg-purple">
+                <svg width="20" height="16" viewBox="0 0 30 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 25.7143L30 12.8571L0 0V10L21.4286 12.8571L0 15.7143V25.7143Z" fill="white"/>
+                </svg>
               </div>
-            </div>
-            <div class="col-md-12  facebook-signin-btn">
-              <div class="row" style="padding-top:10px;box-sizing: border-box;">
-                <div class="col-2">
-                  <img
-                    src="resources/themes/ghost/assets/build/img/facebook.png"
-                    style="width:100%;"
-                  />
-                </div>
-                <div class="col-10">
-                  <p style="color:#111;">
-                    <a
-                      href="https://auth.techteel.com/auth?s=start&d=http://localhost:8000/&p=google"
-                      class="auth-link"
-                      >Sign in with Facebook</a
-                    >
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="col-md-12"
-              style="margin-top:20px;box-sizing: border-box; text-align: center"
-            >
-              <p class="bottom-msg">
-                To make this site work, we log user data and share it with
-                service providers.
-              </p>
-            </div>
           </div>
+          <p class=" mt-5">or sign in with</p>
+          <div class=" mb-5">
+            <button class="signin-btn width-150px">
+              facebook
+            </button>
+            <button class="signin-btn width-150px">
+              google
+            </button>
+          </div>
+        </div> -->
+
+        <!-- for the magic link -->
+        <div class="login-modal-popup-right-column col-md-6 text-center">
+          <p class=" mt-5 fa-2x">
+            Check your Email
+          </p>
+          <img src="resources/themes/ghost/assets/img/bubbles.png" alt="">
+          <p class="magic-msg">
+            A magic link has been sent to your email address
+          </p>
         </div>
       </div>
     </div>
