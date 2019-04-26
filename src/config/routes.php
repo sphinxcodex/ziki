@@ -61,7 +61,7 @@ Route::get('/profile', function($request) {
     return $this->template->render('profile.html');
 });
 
-Route::get('/subscriptions', function($request) {
+Route::post('/subscriptions', function($request) {
     return $this->template->render('subscriptions.html');
 });
 
