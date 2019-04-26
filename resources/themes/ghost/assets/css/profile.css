@@ -393,8 +393,8 @@ input:checked + .slider:before {
 }
 
 .not-following-button:hover {
-  background: var(--custom-deep-purple);
-  color: var(--text-color) !important;
+  background: var(--custom-deep-purple) !important;
+  color: #FFFFFF!important;
 }
 
 /*input-field Icon*/
