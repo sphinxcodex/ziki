@@ -48,22 +48,54 @@
 
 </script>
 <!-- Convert to markdown script -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" integrity="sha256-LSUpTY0kkXGKvcBC9kbmgibmx3NVVgJvAEfTZbs51mU=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" integrity="sha256-LSUpTY0kkXGKvcBC9kbmgibmx3NVVgJvAEfTZbs51mU=" crossorigin="anonymous"></script> -->
+<script src="https://unpkg.com/turndown-plugin-gfm/dist/turndown-plugin-gfm.js"></script>
 <!-- convert to markdown script ends -->
 
 
 <script>
   // added by sleekX
   var form = document.querySelector('.timeline-editor');
-  form.onsubmit = function(event) {
+
+  // handle creating new post
+  form.onsubmit = newPostSubmitHandler;
+
+  // handle saving draft
+  document.querySelector('input[value="Save Draft"]').addEventListener('click', newPostSubmitHandler);
+
+  function newPostSubmitHandler(event) {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
+    const formData = new FormData(document.querySelector('#editor-form'));
     const blogBody = document.querySelector('.ql-editor').innerHTML;
 
     // convert to markdown
-    const converter = new showdown.Converter();
-    const markdown = converter.makeMarkdown(blogBody);
+    const turndownService = new TurndownService({ codeBlockStyle: 'fenced' });
+    const gfm = turndownPluginGfm.gfm;
+    turndownService.use(gfm);
+    let markdown = turndownService.turndown(blogBody);
+
+    // check if the form is being submitted
+    // which would mean a new post is being created rather than saving a draft
+    const newPostIsBeingCreated = event.target instanceof HTMLFormElement;
+    if (newPostIsBeingCreated) {
+      // get all imageURIs in the document
+      const imageURIs = markdown.match(/data:image\/\w+;base64,.*==/g);
+      // are there images in the blog post?
+      if (imageURIs.length > 0) {
+        imageURIs.forEach(imageURI => {
+          const [match, ext, uri] = imageURI.match(/data:image\/(\w+);base64,(.*==)/);
+          const id = Math.random().toString(36).substr(2, 10);
+          const newImgName = `img-${id}.${ext}`;
+          // replace the image URI in the markdown
+          markdown = markdown.replace(match, newImgName);
+          // add this info to the form data being sent to the backend
+          formData.set(newImgName, uri);
+        });
+      }
+    }
+
     formData.set('postVal', markdown);
 
     // get tags
@@ -72,7 +104,7 @@
     formData.set('tags', selectedTags);
 
     // send the form data
-    fetch('/publish', {
+    fetch(newPostIsBeingCreated ? '/publish' : '/draft', {
       method: 'POST',
       body: formData
     }).then(res => res.text()).then((res) => {
@@ -90,23 +122,12 @@
 
   //Initialize Quill editor
   var toolbarOptions = [
-    ['bold', 'italic'],        // toggled buttons
-    // ['blockquote', 'code-block'],
-
-    // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+    ['bold', 'italic'],
+    ['blockquote'],
     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-    //[{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-    //[{ 'direction': 'rtl' }],                         // text direction
-
-    // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-    // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-    // [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-    // [{ 'font': [] }],
-    // [{ 'align': [] }],
-
-    ['clean']                                         // remove formatting button
+    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    ['link', 'image'],
+    ['clean']
   ];
 
   var quill = new Quill('#editor', {
