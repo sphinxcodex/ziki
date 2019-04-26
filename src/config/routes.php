@@ -17,7 +17,7 @@ Route::get('/', function($request) {
 });
 
 
-Route::get('/blog-details/{id}', function($request, $id) {
+Route::get('stay/{id}', function($request, $id) {
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
    $result = $ziki->getEach($id);
@@ -35,8 +35,9 @@ Route::post('/publish', function($request) {
     $data = $request->getBody();
     $title = $data['title'];
     $body = $data['postVal'];
+    $tags = $data['tags'];
     $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->create($title, $body);
+    $result = $ziki->create($title, $body,$tags);
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
 
