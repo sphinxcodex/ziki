@@ -11,8 +11,8 @@ class Template
 
     public function __construct($templatePath)
     {
-
         $this->twig = new Environment(new FilesystemLoader($templatePath), $this->setTwigCaching());
+        $this->twig->addGlobal('settings', 'nnn');
     }
 
     public function render($page, array $parameters = [])

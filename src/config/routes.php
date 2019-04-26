@@ -93,9 +93,7 @@ Route::get('/download', function($request) {
 Route::get('/auth/{provider}/{token}', function($request, $token){
     $user = new Ziki\Core\Auth();
     $check = $user->validateAuth($token);
-    if($check){
-        var_dump($check);
+    var_dump($check);
         die();
-    }
     return $this->redirectToRoute("/timeline");
 });
