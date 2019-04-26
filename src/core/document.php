@@ -28,7 +28,7 @@ class Document{
     }
 
     //for creating markdown files
-    public function create($title, $content){
+    public function create($title, $content, $tags){
         $time = date("F j, Y, g:i a");
         $unix = strtotime($time);
         // Write md file
@@ -43,13 +43,19 @@ class Document{
 
         $yamlfile = new Doc();
         $yamlfile['title'] = $title;
+
+       /* $tag = [];
+        foreach($tags as $result){
+            array_push($tag, $result);
+        }*/
+        $yamlfile['tags'] = array('Books','Music');
         $yamlfile['post_dir'] = SITE_URL."/storage/contents/{$unix}";
-        $yamlfile['slug'] = "post-detail-{$unix}";
+        $yamlfile['slug'] = $title."-{$unix}";
         $yamlfile['timestamp'] = $time;
         $yamlfile->setContent($content);
         $yaml = FrontMatter::dump($yamlfile);
         $file = $this->file;
-        $dir = $file.$unix.".yaml";
+        $dir = $file.$unix.".md";
         //return $dir; die();
         $doc = FileSystem::write($dir, $yaml);
 
@@ -61,43 +67,7 @@ class Document{
         }
         return $doc;
     }
-    //get post
-    public function get(){
-        $finder = new Finder();
-
-        // find all files in the current directory
-        $finder->files()->in($this->file);
-        $posts = [];
-        if($finder->hasResults()){
-            foreach($finder as $file){
-                $document = $file->getContents();
-                $parser = new Parser();
-                $document = $parser->parse($document);
-                $yaml = $document->getYAML();
-                $body = $document->getContent();
-                //$document = FileSystem::read($this->file);
-                $parsedown  = new Parsedown();
-                $title = $parsedown->text($yaml['title']);
-                $slug = $parsedown->text($yaml['slug']);
-                $slug = preg_replace("/<[^>]+>/", '',$slug);
-                $bd = $parsedown->text($body);
-                $time = $parsedown->text($yaml['timestamp']);
-                $url = $parsedown->text($yaml['post_dir']);
-                $content['title'] = $title;
-                $content['body'] = $bd;
-                $content['url'] = $url;
-                $content['slug'] = $slug;
-                $content['timestamp'] = $time;
-                array_push($posts, $content);
-            }
-            return $posts;
-        }
-        else{
-            return false;
-        }
-    }
-
-//
+   
 public function fetchAllRss()
 {
   $rss = new \DOMDocument();
