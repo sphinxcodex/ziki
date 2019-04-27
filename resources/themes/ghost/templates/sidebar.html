@@ -539,24 +539,27 @@
           <div>
             <img
               class="img-fluid profile-pic"
-              src="resources/themes/ghost/assets/img/fiverr.jpg"
+              src="{{settings.image}}"
             />
           </div>
-          <h4 class="owner-name">Owner's Name</h4>
+          <h4 class="owner-name">{{settings.name}}</h4>
           <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto"
             >Front end developer, ui/ux developer, friend and traveller.</span
           >
           <!-- <h6 class="bio">Owner's Bio</h6> -->
-          <a href="javascript:void(0)"
-            ><button
-              class="btn btn-default login-button"
-              type="button"
-              data-toggle="modal"
-              data-target="#modalLoginForm"
-            >
-              Login
-            </button></a
-          >
+          {% if not user.email %}
+            <a href="javascript:void(0)">
+              <button class="btn btn-default login-button" type="button" data-toggle="modal" data-target="#modalLoginForm">
+                Login
+              </button>
+            </a>
+          {% else %}
+            <a href="/logout">
+              <button class="btn btn-default login-button" type="button">
+                Logout
+              </button>
+            </a>
+          {% endif %}
         </div>
       </div>
 
@@ -661,12 +664,16 @@
             </div>
           <p class="optional-login-text mt-5 mb-5"><span>or sign in with</span></p>
           <div class="d-flex justify-content-around mb-5">
-            <button class="signin-btn width-150px">
-              facebook
-            </button>
-            <button class="signin-btn width-150px">
-              google
-            </button>
+            <a href="https://auth.techteel.com/login/facebook">
+              <button class="signin-btn width-150px">
+                facebook
+              </button>
+            </a>
+            <a href="https://auth.techteel.com/login/google">
+              <button class="signin-btn width-150px">
+                google
+              </button>
+            </a>
           </div>
         </div>
 
