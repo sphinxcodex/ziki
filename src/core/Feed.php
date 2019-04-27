@@ -2,6 +2,7 @@
 namespace Ziki\Core;
 
 use \DateTime;
+use FeedItem as Item;
 
 /*
  * Copyright (C) 2008 Anis uddin Ahmad <anisniit@gmail.com>
