@@ -1,14 +1,9 @@
 <?php
+
 namespace Ziki;
 
-use Ziki\Core as Core;
-use Ziki\Http as Http;
 class Foundation
 {
-    /**
-     * @var Logger
-     */
-    protected $logger;
     /**
      * @var string
      */
@@ -21,17 +16,16 @@ class Foundation
      * @param string $basePath
      * @param Logger $logger
      */
-    public function __construct($basePath,$logger)
+    public function __construct($basePath)
     {
         $this->basePath = $basePath;
-        $this->logger = $logger;
         $this->loadConfig();
         $this->loadTemplate();
     }
-    
+
     private function loadConfig()
     {
-        $this->configPath = $this->basePath . DIRECTORY_SEPARATOR . 'config/ziki.json';
+        $this->configPath = $this->basePath . DIRECTORY_SEPARATOR . 'src/config/ziki.json';
         Core\Config::json($this->configPath);
     }
 
@@ -41,8 +35,8 @@ class Foundation
         $this->template = new Core\Template($this->templatePath);
     }
 
-    public function start(){
-        $router = new Http\Router(new Http\Request);
-        include $this->basePath . DIRECTORY_SEPARATOR . 'src/routes.php';;
+    public function start() {
+        require $this->basePath . DIRECTORY_SEPARATOR . 'src/config/routes.php';
+        echo $this->template->render('404.html');
     }
 }

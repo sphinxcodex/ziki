@@ -4,8 +4,8 @@ const devBuild =
     (process.env.NODE_ENV || "development").trim().toLowerCase() ===
     "development",
   dir = {
-    templates: "resources/themes/ghost/templates/**/*.html",
-    src: "resources/themes/ghost/assets/",
+    templates: "templates/**/*.html",
+    src: "assets/",
     build: "build/"
   },
   // Node Modules
@@ -105,8 +105,4 @@ const watchFiles = () => {
   );
 };
 const serve = () => browsersync.init(syncConfig);
-// Run tasks manually
-gulp.task("devstart", build);
-
-// Run and let it watch for changes
-gulp.task("default", gulp.parallel(watchFiles, gulp.series(phpserver, serve)));
+gulp.task("start", gulp.parallel(watchFiles, gulp.series(phpserver, serve)));
