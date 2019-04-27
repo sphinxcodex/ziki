@@ -39,6 +39,7 @@ Route::get('/timeline', function($request) {
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
 
+/*
 Route::post('/publish', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
@@ -53,6 +54,31 @@ Route::post('/publish', function($request) {
     $result = $ziki->create($title, $body,$tags);
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
+*/
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+Route::post('/timeline', function($request) {
+    $data = $request->getBody();
+    $url = $_POST['domain'];
+
+    $ziki = new Ziki\Core\Subscribe();
+    $result = $ziki->extract($url);
+    $directory = "./storage/contents/";
+    $ziki = new Ziki\Core\Document($directory);
+    $feed = $ziki->fetchAllRss();
+
+    return $this->template->render('index.html', ['posts' => $feed]);
+});
+}
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+  Route::get('/timeline', function($request) {
+      $directory = "./storage/contents/";
+      $ziki = new Ziki\Core\Document($directory);
+      $feed = $ziki->fetchAllRss();
+      // Render our view
+      //print_r($feed);
+      return $this->template->render('timeline.html',['posts' => $feed] );
+  });
+}
 
 Route::get('/contact-us', function($request) {
     $ziki = [
@@ -92,7 +118,13 @@ Route::post('/subscriptions', function($request) {
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
     }
-    return $this->template->render('subscriptions.html');
+    $ziki = new Ziki\Core\Subscribe();
+    $count = $ziki->count();
+    $directory = "./storage/contents/";
+    $ziki = new Ziki\Core\Document($directory);
+    $sub = $ziki->subscription();
+
+    return $this->template->render('subscriptions.html', ["count" => $count, "posts" => $sub] );
 });
 
 Route::get('/subscribers', function($request) {
