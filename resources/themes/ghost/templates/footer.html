@@ -29,25 +29,6 @@
         });
     });
 </script>
-<<<<<<< HEAD
-<script>
-  function addrss() {
-    $("#rss").click(function () {
-      var url = $("#imput").serialize();
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function(){
-      if (xhttp.readyState == 4 && xhttp.status == 200) {
-        document.getElementById("rss").innerHTML = xhttp.responseText;
-
-      }
-    }
-    xhttp.open("GET", "storage/rss/addsubscribers.php?rss="+url , true);
-    xhttp.send();
-  });
-  }
-=======
->>>>>>> d0a116b940027dd0341900283e97b900ebd4f572
 
 <!-- Convert to markdown script -->
 <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
@@ -91,9 +72,9 @@
           const id = Math.random().toString(36).substr(2, 10);
           const newImgName = `img-${id}.${ext}`;
           // replace the image URI in the markdown
-          markdown = markdown.replace(match, newImgName);
+          markdown = markdown.replace(match, 'image1');
           // add this info to the form data being sent to the backend
-          formData.set(newImgName, uri);
+          formData.set('image1', uri);
         });
       }
     }
@@ -106,11 +87,7 @@
     formData.set('tags', selectedTags);
 
     // send the form data
-<<<<<<< HEAD
-    fetch('/publish', {
-=======
     fetch(newPostIsBeingCreated ? '/publish' : '/draft', {
->>>>>>> d0a116b940027dd0341900283e97b900ebd4f572
       method: 'POST',
       body: formData
     }).then(res => res.text()).then((res) => {

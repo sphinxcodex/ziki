@@ -31,10 +31,10 @@ class Document
     }
 
     //for creating markdown files
-    public function create($title, $content,$tags)
+    public function create($title, $content,$tags,$image)
     {
         $time = date("F j, Y, g:i a");
-        $unix = strtotime($time);
+        $unix = strtotime($time); 
         // Write md file
         $document = FrontMatter::parse($content);
         $md = new Parser();
@@ -53,6 +53,10 @@ class Document
             array_push($put,$value);
         }
         $yamlfile['tags'] = $put;
+        $yamlfile['image1'] = $image;
+        $decoded = base64_decode($image);
+        $url = "./storage/images/image1.png";
+        FileSystem::write($url,$decoded);
         $yamlfile['post_dir'] = SITE_URL . "/storage/contents/{$unix}";
         $striped = str_replace(' ', '-', $title);
         $yamlfile['slug'] = $striped."-{$unix}";
