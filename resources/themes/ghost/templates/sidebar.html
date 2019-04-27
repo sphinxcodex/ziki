@@ -1,5 +1,5 @@
 <style>
-  @import url("https://fonts.googleapis.com/css?family=Lato");
+  @import url('https://fonts.googleapis.com/css?family=Lato');
 
   :root {
     --ziki-purple: #280966;
@@ -68,7 +68,7 @@
     padding: 10px;
     font-size: 1.7em;
     font-weight: bold;
-    font-family: "Lato", sans-serif;
+    font-family: 'Lato', sans-serif;
     display: block;
     color: #fff;
     text-decoration: none;
@@ -79,12 +79,12 @@
   }
 
   #sidebar ul li.shown > a,
-  a[aria-expanded="true"] {
+  a[aria-expanded='true'] {
     color: #fff;
     background: #6d7fcc;
   }
 
-  a[data-toggle="collapse"] {
+  a[data-toggle='collapse'] {
     position: relative;
   }
 
@@ -363,7 +363,6 @@
     display: none;
   }
 
-
   .email-login-button {
     background-color: transparent;
     border: none;
@@ -371,33 +370,33 @@
 
   .email-login-container {
     align-items: center;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     background-color: #ffffff;
     box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
-    border-radius: .6rem;
+    border-radius: 0.6rem;
     font-size: 1.1rem;
   }
-  .email-input{
-    padding: .4rem;
+  .email-input {
+    padding: 0.4rem;
   }
 
-  .optional-login-text{
-    width:100%;
-    text-align:center;
+  .optional-login-text {
+    width: 100%;
+    text-align: center;
     border-bottom: 1px solid #000;
-    line-height:0.1em;
-    margin:10px 0 20px;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
   }
   .optional-login-text span {
-    background:#fff; 
-    padding:0 10px; 
+    background: #fff;
+    padding: 0 10px;
   }
-  .signin-btn{
+  .signin-btn {
     background-color: #ffffff;
-    border-radius: .6rem;
+    border-radius: 0.6rem;
     border: none;
     box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
   }
 
   .width-100pc {
@@ -537,10 +536,7 @@
       <div class="row">
         <div class="col-12 side-content pt-5">
           <div>
-            <img
-              class="img-fluid profile-pic"
-              src="{{settings.image}}"
-            />
+            <img class="img-fluid profile-pic" src="{{settings.image}}" />
           </div>
           <h4 class="owner-name">{{settings.name}}</h4>
           <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto"
@@ -548,17 +544,22 @@
           >
           <!-- <h6 class="bio">Owner's Bio</h6> -->
           {% if not user.email %}
-            <a href="javascript:void(0)">
-              <button class="btn btn-default login-button" type="button" data-toggle="modal" data-target="#modalLoginForm">
-                Login
-              </button>
-            </a>
+          <a href="javascript:void(0)">
+            <button
+              class="btn btn-default login-button"
+              type="button"
+              data-toggle="modal"
+              data-target="#modalLoginForm"
+            >
+              Login
+            </button>
+          </a>
           {% else %}
-            <a href="/logout">
-              <button class="btn btn-default login-button" type="button">
-                Logout
-              </button>
-            </a>
+          <a href="/logout">
+            <button class="btn btn-default login-button" type="button">
+              Logout
+            </button>
+          </a>
           {% endif %}
         </div>
       </div>
@@ -570,6 +571,7 @@
     <div class="row">
       <div class="col-12 col-sm-8 mx-md-auto">
         <ul class="pl-0 mt-0">
+          <li><a href="/">Home</a></li>
           <li><a href="/published-posts">Published Posts</a></li>
           <li><a href="/profile">Profile</a></li>
           <li>
@@ -651,42 +653,56 @@
 
         <!-- for the login auth -->
         <div class="login-modal-popup-right-column col-md-6 text-center">
-          <p class="mt-5">
-            LOGIN TO CONTINUE
+          <p class="mt-5">LOGIN TO CONTINUE</p>
+          <div
+            class="signin-btn d-flex justify-content-between email-login-container"
+          >
+            <input
+              type="email"
+              placeholder="Enter your Email Address"
+              class="width-100pc ml-1 no-border email-input"
+              required
+            />
+            <button class="email-login-button">
+              <svg
+                width="20"
+                height="16"
+                viewBox="0 0 30 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 25.7143L30 12.8571L0 0V10L21.4286 12.8571L0 15.7143V25.7143Z"
+                  fill="#682681"
+                />
+              </svg>
+            </button>
+          </div>
+          <p class="optional-login-text mt-5 mb-5">
+            <span>or sign in with</span>
           </p>
-            <div class="signin-btn d-flex justify-content-between email-login-container">
-                <input type="email" placeholder="Enter your Email Address" class="width-100pc ml-1 no-border email-input" required>
-                <button class="email-login-button">
-                  <svg width="20" height="16" viewBox="0 0 30 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 25.7143L30 12.8571L0 0V10L21.4286 12.8571L0 15.7143V25.7143Z" fill="#682681"/>
-                  </svg>
-                </button>
-            </div>
-          <p class="optional-login-text mt-5 mb-5"><span>or sign in with</span></p>
           <div class="d-flex justify-content-around mb-5">
             <a href="https://auth.techteel.com/login/facebook">
-              <button class="signin-btn width-150px">
-                facebook
-              </button>
+              <button class="signin-btn width-150px">facebook</button>
             </a>
             <a href="https://auth.techteel.com/login/google">
-              <button class="signin-btn width-150px">
-                google
-              </button>
+              <button class="signin-btn width-150px">google</button>
             </a>
           </div>
         </div>
 
         <!-- for the magic link -->
-        <!-- <div class="login-modal-popup-right-column col-md-6 text-center">
-          <p class=" mt-5 fa-2x">
-            Check your Email
-          </p>
-          <img class="magic-link-img" src="resources/themes/ghost/assets/img/magic-link-img.png" alt="magic link image">
-          <p class="magic-msg">
-            A magic link has been sent to your email address
-          </p>
-        </div> -->
+        <!--
+          <div class="login-modal-popup-right-column col-md-6 text-center">
+            <p class=" mt-5 fa-2x">
+              Check your Email
+            </p>
+            <img class="magic-link-img" src="resources/themes/ghost/assets/img/magic-link-img.png" alt="magic link image">
+            <p class="magic-msg">
+              A magic link has been sent to your email address
+            </p>
+          </div>
+        -->
       </div>
     </div>
   </div>
