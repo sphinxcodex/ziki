@@ -95,9 +95,7 @@
     right: 20px;
     transform: translateY(-50%);
   }
-  .p-h {
-    padding: .5rem
-  }
+
   .side-content {
     display: flex;
     align-items: center;
@@ -196,7 +194,7 @@
 
   @media (min-width: 768px) {
     .sidebar-container {
-      width: 33%;
+      width: 25%;
     }
 
     #sidebar,
@@ -305,19 +303,25 @@
     box-sizing: border-box;
   }
 
-  .signin-btn {
+  .google-signin-btn {
     cursor: pointer;
     background: #ffffff;
     box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    line-height: 2;
   }
-  .width-150px {
-    width: 150px;
+
+  .facebook-signin-btn {
+    cursor: pointer;
+    background: #ffffff;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-top: 25px;
   }
+
   .width-250px {
     width: 250px;
   }
+
   .bottom-msg {
     font-family: Lato;
     font-style: normal;
@@ -358,27 +362,56 @@
   .modal-close-button {
     display: none;
   }
-  .bg-purple {
-    background-color: #8d348f;
-    border-radius: 0 5px 5px  0;
-    width: 20%;
-    line-height: 2;
-    padding: .5rem;
+
+  .email-login-button {
+    background-color: transparent;
+    border: none;
   }
-  .email-login {
+
+  .email-login-container {
     align-items: center;
-    padding-left: .5rem
+    padding: 0.5rem 1rem;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 0.6rem;
+    font-size: 1.1rem;
   }
+  .email-input {
+    padding: 0.4rem;
+  }
+
+  .optional-login-text {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+  }
+  .optional-login-text span {
+    background: #fff;
+    padding: 0 10px;
+  }
+  .signin-btn {
+    background-color: #ffffff;
+    border-radius: 0.6rem;
+    border: none;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+    padding: 0.5rem 1rem;
+  }
+
   .width-100pc {
     width: 100%;
   }
+
   .no-border {
     border: none;
   }
+
   .magic-msg {
     margin: 3rem auto 3rem auto;
-    width: 250px
+    width: 250px;
   }
+
   @media only screen and (max-width: 767px) {
     /* modal styling For mobile phones: */
     .modal-close-button {
@@ -498,31 +531,36 @@
   </div>
 
   <!-- Owner profile details -->
-  <div id="sidebar" class="w-75">
+  <div id="sidebar" class="">
     <div class="owner-info">
       <div class="row">
         <div class="col-12 side-content pt-5">
           <div>
-            <img
-              class="img-fluid profile-pic"
-              src="resources/themes/ghost/assets/img/fiverr.jpg"
-            />
+            <img class="img-fluid profile-pic" src="{{settings.image}}" />
           </div>
-          <h4 class="owner-name">Owner's Name</h4>
+          <h4 class="owner-name">{{settings.name}}</h4>
           <span class="text-center bio-text p-3 pt-1 font-italic w-75 mx-auto"
             >Front end developer, ui/ux developer, friend and traveller.</span
           >
           <!-- <h6 class="bio">Owner's Bio</h6> -->
-          <a href="javascript:void(0)"
-            ><button
+          {% if not user.email %}
+          <a href="javascript:void(0)">
+            <button
               class="btn btn-default login-button"
               type="button"
               data-toggle="modal"
               data-target="#modalLoginForm"
             >
               Login
-            </button></a
-          >
+            </button>
+          </a>
+          {% else %}
+          <a href="/logout">
+            <button class="btn btn-default login-button" type="button">
+              Logout
+            </button>
+          </a>
+          {% endif %}
         </div>
       </div>
 
@@ -533,6 +571,7 @@
     <div class="row">
       <div class="col-12 col-sm-8 mx-md-auto">
         <ul class="pl-0 mt-0">
+          <li><a href="/">Home</a></li>
           <li><a href="/published-posts">Published Posts</a></li>
           <li><a href="/profile">Profile</a></li>
           <li>
@@ -541,6 +580,14 @@
               data-toggle="modal"
               data-target="#subscribe-here"
               >Subscribe</a
+            >
+          </li>
+          <li>
+            <a
+              href="javascript:void(0)"
+              data-toggle="modal"
+              data-target="#unsubscribe-here"
+              >Unsubscribe</a
             >
           </li>
           <li><a href="/about">About Ziki</a></li>
@@ -554,14 +601,6 @@
         >
           Login
         </button>
-        <script>
-          // click login modal
-          document
-            .querySelector('.mobile-login')
-            .addEventListener('click', e => {
-              document.querySelector('[data-toggle="modal"]').click();
-            });
-        </script>
       </div>
     </div>
 
@@ -614,46 +653,57 @@
 
         <!-- for the login auth -->
         <div class="login-modal-popup-right-column col-md-6 text-center">
-          <p class="mt-5">
-            LOGIN TO CONTINUE
-          </p>
-          <div class="signin-btn d-flex justify-content-between email-login">
-            <svg width="32" height="23" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M25.109 17.028C24.986 17.028 24.863 16.983 24.767 16.892L19.013 11.494C18.812 11.306 18.802 10.989 18.991 10.788C19.18 10.585 19.495 10.576 19.698 10.766L25.452 16.164C25.653 16.352 25.663 16.669 25.474 16.87C25.375 16.975 25.243 17.028 25.109 17.028Z" fill="black"/>
-              <path d="M5.90186 17.028C5.76886 17.028 5.63586 16.975 5.53686 16.87C5.34786 16.669 5.35786 16.352 5.55886 16.164L11.3149 10.766C11.5169 10.578 11.8339 10.586 12.0219 10.788C12.2109 10.989 12.2009 11.306 11.9999 11.494L6.24386 16.892C6.14786 16.983 6.02486 17.028 5.90186 17.028Z" fill="black"/>
-              <path d="M28.512 22.047H2.5C1.122 22.047 0 20.926 0 19.547V2.5C0 1.121 1.122 0 2.5 0H28.512C29.89 0 31.012 1.121 31.012 2.5V19.547C31.012 20.926 29.89 22.047 28.512 22.047ZM2.5 1C1.673 1 1 1.673 1 2.5V19.547C1 20.374 1.673 21.047 2.5 21.047H28.512C29.339 21.047 30.012 20.374 30.012 19.547V2.5C30.012 1.673 29.339 1 28.512 1H2.5Z" fill="black"/>
-              <path d="M15.5058 13.536C14.8408 13.536 14.1758 13.315 13.6698 12.874L0.829791 1.67303C0.621791 1.49203 0.599791 1.17603 0.780791 0.967026C0.963791 0.759026 1.27879 0.740026 1.48679 0.919026L14.3268 12.119C14.9658 12.676 16.0458 12.676 16.6838 12.119L29.5078 0.937026C29.7148 0.756026 30.0298 0.776026 30.2138 0.985026C30.3948 1.19403 30.3738 1.50903 30.1658 1.69103L17.3418 12.873C16.8348 13.315 16.1708 13.536 15.5058 13.536Z" fill="black"/>
+          <p class="mt-5">LOGIN TO CONTINUE</p>
+          <div
+            class="signin-btn d-flex justify-content-between email-login-container"
+          >
+            <input
+              type="email"
+              placeholder="Enter your Email Address"
+              class="width-100pc ml-1 no-border email-input"
+              required
+            />
+            <button class="email-login-button">
+              <svg
+                width="20"
+                height="16"
+                viewBox="0 0 30 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 25.7143L30 12.8571L0 0V10L21.4286 12.8571L0 15.7143V25.7143Z"
+                  fill="#682681"
+                />
               </svg>
-              <input type="text" value="Enter your Email Address" class="width-100pc ml-1 no-border">
-              <div class="bg-purple">
-                <svg width="20" height="16" viewBox="0 0 30 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 25.7143L30 12.8571L0 0V10L21.4286 12.8571L0 15.7143V25.7143Z" fill="white"/>
-                </svg>
-              </div>
+            </button>
           </div>
-          <p class=" mt-5">or sign in with</p>
-          <div class=" mb-5">
-            <button class="signin-btn width-150px">
-              facebook
-            </button>
-            <button class="signin-btn width-150px">
-              google
-            </button>
+          <p class="optional-login-text mt-5 mb-5">
+            <span>or sign in with</span>
+          </p>
+          <div class="d-flex justify-content-around mb-5">
+            <a href="https://auth.techteel.com/login/facebook">
+              <button class="signin-btn width-150px">facebook</button>
+            </a>
+            <a href="https://auth.techteel.com/login/google">
+              <button class="signin-btn width-150px">google</button>
+            </a>
           </div>
         </div>
 
         <!-- for the magic link -->
-        <!-- <div class="login-modal-popup-right-column col-md-6 text-center">
-          <p class=" mt-5 fa-2x">
-            Check your Email
-          </p>
-          <img src="resources/themes/ghost/assets/img/bubbles.png" alt="">
-          <p class="magic-msg">
-            A magic link has been sent to your email address
-          </p>
-        </div> -->
+        <!--
+          <div class="login-modal-popup-right-column col-md-6 text-center">
+            <p class=" mt-5 fa-2x">
+              Check your Email
+            </p>
+            <img class="magic-link-img" src="resources/themes/ghost/assets/img/magic-link-img.png" alt="magic link image">
+            <p class="magic-msg">
+              A magic link has been sent to your email address
+            </p>
+          </div>
+        -->
       </div>
     </div>
   </div>
 </div>
-
