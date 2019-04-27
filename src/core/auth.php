@@ -2,18 +2,38 @@
 namespace Ziki\Core;
 
 use Ziki\Core\filesystem as FileSystem;
+
+session_start();
+
 class Auth {
     /**
      * This function will get the auth details from specified url
      */
     public static function getAuth($data, $role){
-        session_start();
-        $_SESSION['name'] = $data->name;
-        $_SESSION['email'] = $data->email;
-        $_SESSION['image'] = $data->image;
-        $_SESSION['last_login'] = $data->updated_at;
-        $_SESSION['role'] = $role;
-        return $_SESSION;
+        $user['name'] = $data->name;
+        $user['email'] = $data->email;
+        $user['image'] = $data->image;
+        $user['last_login'] = $data->updated_at;
+        $user['role'] = $role;
+        $user['login_token'] = md5($data->id.$data->name.$email);
+        $_SESSION['login_user'] = $user;
+        return true;
+    }
+
+    // Log in user check
+    public function is_logged_in() {
+        // Check if user session has been set
+        if (isset($_SESSION['login_user']) && ($_SESSION['login_user']['login_token'] != '')) {
+            return $_SESSION;
+        }
+    }
+
+    // Log out user
+    public function log_out() {
+        // Destroy and unset active session
+        session_destroy();
+        unset($_SESSION['login_user']);
+        return true;
     }
 
     public function validateAuth($params) {

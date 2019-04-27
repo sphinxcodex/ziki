@@ -3,6 +3,7 @@ namespace Ziki\Core;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class Template
 {
@@ -22,10 +23,23 @@ class Template
 		}
     }
 
+    public static function getLoginUser() {
+        $user = new Auth();
+        if (!$user->is_logged_in()) {
+            return new RedirectResponse("/");
+        }
+        else{
+            $login_user = $user->is_logged_in();
+            return $login_user['login_user'];
+        }
+    }
+
     public function render($page, array $parameters = [])
     {
         $settings = self::getSettings();
+        $user = self::getLoginUser();
         $this->twig->addGlobal('settings', $settings);
+        $this->twig->addGlobal('user', $user);
         return $this->twig->render($page, $parameters);
     }
 
