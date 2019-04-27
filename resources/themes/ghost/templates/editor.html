@@ -1,5 +1,9 @@
-{% set title = "New Post"%} {% extends 'layout.html' %} {% block page_content %}
+{% set title = "Edit Post"%} {% extends 'layout.html' %} {% block page_content
+%}
 <style type="text/css">
+  .editor-row {
+    margin-bottom: 50px;
+  }
   .ql-toolbar.ql-snow {
     box-sizing: border-box;
     font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
@@ -15,7 +19,7 @@
   }
 
   #editor {
-    height: 60vh !important;
+    height: 20vh !important;
   }
 
   .btn.btn-primary.canel-post {
@@ -29,54 +33,42 @@
     border: 1px solid #280a66;
     padding: 6px 20px;
   }
+  .btn.btn-primary.save-draft {
+    background-color: #fff !important;
+    color: #280a66 !important;
+    border: 1px solid #280a66;
+    padding: 6px 20px;
+  }
   .btn.btn-primary.canel-post,
+  .btn.btn-primary.save-draft,
   .btn.btn-primary.publish-post {
     margin-left: 15px;
-  }
-
-  .main-content {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-
-  /* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
-  #content {
-    width: 100%;
-    /*padding: 0px;*/
-    min-height: 100vh;
-    transition: all 0.3s;
-    position: absolute;
-    top: 0;
-    right: 0;
   }
 
   /*------------------------------------------------------
     MODAL STYLE
     ----------------------------------------------------*/
-  .no-border{
-    border:none;
+  .no-border {
+    border: none;
   }
-  .modal-content{
-    border-radius: .7rem;
+  .modal-content {
+    border-radius: 0.7rem;
   }
-  .modal-header .close{
+  .modal-header .close {
     opacity: 1;
   }
-  .cancel-modal-text{
+  .cancel-modal-text {
     font-size: 1.1rem;
     margin-bottom: 0;
     margin-top: 1.2rem;
   }
-  @media screen and (max-width: 767px){
-    .dialog-img{
+  @media screen and (max-width: 767px) {
+    .dialog-img {
       width: 170px;
     }
   }
-  @media screen and (min-width: 768px){
-    .modal-content{
+  @media screen and (min-width: 768px) {
+    .modal-content {
       left: initial;
     }
   }
@@ -86,7 +78,7 @@
 <div class="container-fluid main-body">
   <!-- Page body goes here -->
   <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sidebar">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <!-- SIDE-BAR-ENTERS-HERE -->
     </div>
 
@@ -94,52 +86,73 @@
       <!-- SleekX's code goes here.. -->
       <div class="row">
         <div class="col-12">
-          <h4>New Post</h4>
+          <h4>{{ title }}</h4>
           <hr />
         </div>
       </div>
 
       <!-- The editor code goes here -->
-      <div id="form-container">
-        <form method="GET" action="editor">
-          <!-- Quill editor code goes here -->
-          <div class="row">
-            <div class="col-12">
-              <div class="row form-group">
-                <div class="col-12 py-3">
-                  <label for="new-post-title" class="sr-only">Title</label>
-                  <input
-                    type="text"
-                    name="postTitle"
-                    id="new-post-title"
-                    class="form-control"
-                    placeholder="Title"
-                  />
-                </div>
+      <div class="row editor-row">
+        <div class="col-12">
+          <!-- The editor code goes here -->
+          <div id="form-container">
+            <form method="POST" class="timeline-editor" id="editor-form">
+              <!-- Quill editor code goes here -->
+              <div class="row">
                 <div class="col-12">
-                  <input name="postVal" type="hidden" />
-                  <div id="editor"></div>
+                  <div class="row form-group">
+                    <div class="col-12 py-3">
+                      <label for="new-post-title" class="sr-only">Title</label>
+                      <input
+                        type="text"
+                        name="title"
+                        id="new-post-title"
+                        class="form-control"
+                        placeholder="Title"
+                        required
+                      />
+                    </div>
+                    <div class="col-12 py-3">
+                      <label for="new-post-tags">Post tags</label>
+                      <select multiple class="form-control" id="new-post-tags">
+                        <option value="#politics">politics</option>
+                        <option value="#sports">sports</option>
+                        <option value="#food-health">food/health</option>
+                        <option value="#travel">travel</option>
+                        <option value="#technology">technology</option>
+                        <option value="#music">music</option>
+                        <option value="#news-lifestyle">news/lifestyle</option>
+                        <option value="#fitness">fitness</option>
+                        <option value="#movies">movies</option>
+                        <option value="#culture">culture</option>
+                      </select>
+                    </div>
+                    <div class="col-12"><div id="editor"></div></div>
+                  </div>
                 </div>
               </div>
-            </div>
+              <div class="row">
+                <div class="col-12 d-flex flex-row-reverse">
+                  <input
+                    type="submit"
+                    class="btn btn-primary publish-post"
+                    value="Publish"
+                  />
+                  <input
+                    type="button"
+                    class="btn btn-primary save-draft"
+                    value="Save Draft"
+                  />
+                  <input
+                    type="reset"
+                    class="btn btn-primary canel-post"
+                    value="Cancel"
+                  />
+                </div>
+              </div>
+            </form>
           </div>
-          <div class="row">
-            <div class="col-12 d-flex flex-row-reverse">
-              <input
-                type="submit"
-                class="btn btn-primary publish-post"
-                value="Publish"
-              />
-              <input
-                type="reset"
-                class="btn btn-primary canel-post"
-                value="Cancel"
-                data-toggle="modal"
-                data-target="#cancelModal"
-              />
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -149,18 +162,24 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content no-border">
       <div class="modal-header no-border">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
       </div>
       <div class="modal-body no-border">
-        <img src="/resources/themes/ghost/assets/img/cancel-post-modal.png" class="img-fluid mx-auto d-block dialog-img" alt="cancel post image">
-        <p class="cancel-modal-text text-center font-weight-bold">Do you want to delete this post?</p>
+        <img
+          src="/resources/themes/ghost/assets/img/cancel-post-modal.png"
+          class="img-fluid mx-auto d-block dialog-img"
+          alt="cancel post image"
+        />
+        <p class="cancel-modal-text text-center font-weight-bold">
+          Do you want to delete this post?
+        </p>
       </div>
       <div class="modal-footer no-border mx-auto d-block">
-        
-        <button class="btn btn-primary canel-post" >Delete</button>
+        <button class="btn btn-primary canel-post">Delete</button>
         <button class="btn btn-primary publish-post">Save as Draft</button>
       </div>
-
     </div>
   </div>
 </div>
