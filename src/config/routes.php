@@ -19,10 +19,6 @@ Route::get('/', function($request) {
 
 
 Route::get('stay/{id}', function($request, $id) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return new RedirectResponse("/");
-    }
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
    $result = $ziki->getEach($id);
@@ -30,9 +26,6 @@ Route::get('stay/{id}', function($request, $id) {
 });
 Route::get('/timeline', function($request) {
     $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return new RedirectResponse("/");
-    }
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
     $post = $ziki->fetchAllRss();
@@ -90,34 +83,18 @@ Route::get('/contact-us', function($request) {
 
 
 Route::get('/published-posts', function($request) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return new RedirectResponse("/");
-    }
     return $this->template->render('published-posts.html');
 });
 
 Route::get('/themes', function($request) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return new RedirectResponse("/");
-    }
     return $this->template->render('themes.html');
 });
 
 Route::get('/profile', function($request) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return new RedirectResponse("/");
-    }
     return $this->template->render('profile.html');
 });
 
 Route::post('/subscriptions', function($request) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return new RedirectResponse("/");
-    }
     $ziki = new Ziki\Core\Subscribe();
     $count = $ziki->count();
     $directory = "./storage/contents/";
@@ -128,10 +105,6 @@ Route::post('/subscriptions', function($request) {
 });
 
 Route::get('/subscribers', function($request) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return new RedirectResponse("/");
-    }
     return $this->template->render('subscribers.html');
 });
 
@@ -165,9 +138,6 @@ Route::get('/download', function($request) {
 
 Route::get('/auth/{provider}/{token}', function($request, $token){
     $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return new RedirectResponse("/");
-    }
     $check = $user->validateAuth($token);
     return new RedirectResponse("/timeline");
 });
