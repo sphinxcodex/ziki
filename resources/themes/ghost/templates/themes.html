@@ -11,7 +11,7 @@
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3">
 
             <!-- for any other part of the page -->
-            <div class="row themes-header d-flex flex-row justify-content-between pt-5 pb-1 px-3 flex-nowrap">
+            <div class="row themes-header d-flex flex-row justify-content-between pt-5 pb-1 flex-nowrap">
                 <div class="col themesnav-area">
                     <nav class="navbar pb-0 row">
                         <ul class="d-flex flex-row navbar-nav col-12">
@@ -38,44 +38,79 @@
             </div>
 
             <div class="row themes-main py-2">
-                <div class="col themes-content-area p-1 pb-5 m-5">
-                    <div class="row px-5 pt-4 pb-5">
+                <div class="col themes-content-area pb-5 mt-5 mr-3">
+                    <div class="row px-3 pt-4 pb-5">
 
                         <div class="col-lg-5 col-md-3 col-sm-6 col-6 order-lg-1 order-md-1 order-sm-1 order-1">
                             <h3 class="themes-edit-title">Themes<span class="badge badge-round ml-3">4</span></h3>
                         </div>
 
-                        <div class="col-lg-5 col-md-5 select-option col-sm-12 order-lg-2 order-md-2 order-sm-2 order-2">
+                        <div class="col-lg-4 col-md-5 select-option col-sm-12 order-lg-2 order-md-2 order-sm-2 order-2">
                             <form><input class="form-control form-control-no-border rounded-0 search-box" type="text" placeholder="Search installed themes"></form>
                         </div>
 
-                        <div class="col-lg-2 col-md-4 col-sm-6 col-6 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1">
-                            <label class="switch"> <h6 class="switch-text">Light Mode</h6>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1 d-flex align-items-center">
+                            <label class="switch d-flex align-items-center">
                                 <input type="checkbox"><span class="slider round"></span>
+                                <h6 class="switch-text flex-grow-1">Light Mode</h6>
                             </label>
                         </div>
                     </div>
 
-                    <div class="row themes-main px-5">
-                        <div class="col-md-5 col-sm-6 pb-2">
-                            <img src="/resources/themes/ghost/assets/build/img/theme1.png" alt="" class="img-fluid w-100">
+                    <div class="row themes-main px-3 themes-cont">
+                        <!-- just add backend looping code here: use of the div as template for looping -->
+                        <div class="col-md-5 col-sm-6 pb-2 theme-item mt-3" data-name="Ghost">
+                            <img src="/resources/themes/ghost/assets/img/theme1.png" alt="" class="img-fluid w-100">
                             <div class="theme-state theme-active"><span class="text-uppercase">Active:</span> Ghost</div>
                         </div>
 
-                        <div class="col-md-5 col-sm-6 pb-2">
-                            <img src="/resources/themes/ghost/assets/build/img/theme2.png" alt="" class="img-fluid w-100">
+                        <div class="col-md-5 col-sm-6 pb-2 theme-item mt-3" data-name="Canery">
+                            <img src="/resources/themes/ghost/assets/img/theme2.png" alt="" class="img-fluid w-100">
                             <div class="theme-state">Canery</div>
                         </div>
 
-                        <div class="w-100 my-3"></div>
-
-                        <div class="col-md-5 col-sm-6 pb-2">
-                            <img src="/resources/themes/ghost/assets/build/img/theme3.png" alt="" class="img-fluid w-100">
+                        <div class="col-md-5 col-sm-6 pb-2 theme-item mt-3" data-name="Jumbo">
+                            <img src="/resources/themes/ghost/assets/img/theme3.png" alt="" class="img-fluid w-100">
                             <div class="theme-state">Jumbo</div>
                         </div>
-
-                        <div class="col-5"></div>
+                        <!-- /end backend looping code here -->
                     </div>
+                    <script>
+                        window.addEventListener('load', function () {
+                            
+                            //handle filter
+                            var theme_cont = document.querySelector('.themes-cont');
+                            var theme_list = document.querySelectorAll('.themes-cont div.theme-item'); //each theme div
+                            var search_input = document.querySelector('.search-box');
+
+                            //not found temp 
+                            var notfound = document.createElement('p');
+                            notfound.classList.add('notfound');
+                            notfound.innerText = 'No such theme found';
+
+                            //event
+                            search_input.addEventListener('keyup', function(e){
+                                var value = e.target.value.trim().toLowerCase();
+                                var found = false;
+
+                                //first remove notfound template if exist
+                                (theme_cont.contains(notfound) ? theme_cont.removeChild(notfound) : null);
+                                
+                                theme_list.forEach(function(elem,index){
+                                    var name = elem.dataset.name.trim().toLowerCase();
+                                    if(name.includes(value)){ //check if the value exist in each theme name
+                                        elem.classList.remove('hide');
+                                        found = true;
+                                    }else{
+                                        elem.classList.add('hide');
+                                    }
+                                });
+                                //if no theme match
+                                !found ? theme_cont.appendChild(notfound) : (theme_cont.contains(notfound) ? theme_cont.removeChild(notfound) : null);
+                            });
+
+                        }, false);
+                    </script>
                 </div>
 
             </div>

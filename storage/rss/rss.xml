@@ -9,7 +9,7 @@
 <url>https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Rss-feed.svg/256px-Rss-feed.svg.png</url>
 </image>
 <language>en-US</language>
-<lastBuildDate>Fri, 26 Apr 2019 01:23:32 +0200</lastBuildDate>
+<lastBuildDate>Fri, 26 Apr 2019 14:18:15 +0200</lastBuildDate>
 <pubDate>Sat, 06 Apr 2013 00:00:00 +0200</pubDate>
 <atom:link href="http://example.com/myfeed" rel="self" type="application/rss+xml"></atom:link>
 <atom:link href="http://pubsubhubbub.appspot.com" rel="hub"></atom:link>
@@ -44,47 +44,11 @@
 </item>
 <item>
 <title>Welcome to a new Era</title>
-<link>/post/post-detail-1556232900</link>
-<description><![CDATA[Some random text here&#10;&#10;]]></description>
+<link>/post/Welcome-to-a-new-Era-1556280600</link>
+<description><![CDATA[&#60;span style=&#34;color: rgb(0, 0, 0);&#34;&#62;Implode() Function The implode function is used t]]></description>
 <pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
 <author>okoelijah@gmail.com (elijah okokon)</author>
-<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556232900&quot;&gt;http://localhost:8000//storage/contents/1556232900&lt;/a&gt;&lt;/p&gt;</guid>
-<source url="http://www.example.com">Elijah's page</source>
-</item>
-<item>
-<title>Welcome to a new Era</title>
-<link>/post/</link>
-<description><![CDATA[Some random texts here&#10;&#10;]]></description>
-<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
-<author>okoelijah@gmail.com (elijah okokon)</author>
-<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556233020&quot;&gt;http://localhost:8000//storage/contents/1556233020&lt;/a&gt;&lt;/p&gt;</guid>
-<source url="http://www.example.com">Elijah's page</source>
-</item>
-<item>
-<title>Welcome to a new Era</title>
-<link>/post/</link>
-<description><![CDATA[Welcome To Ziki&#10;&#10;&#60;br&#62;&#10;&#10;]]></description>
-<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
-<author>okoelijah@gmail.com (elijah okokon)</author>
-<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556233200&quot;&gt;http://localhost:8000//storage/contents/1556233200&lt;/a&gt;&lt;/p&gt;</guid>
-<source url="http://www.example.com">Elijah's page</source>
-</item>
-<item>
-<title>Welcome to a new Era</title>
-<link>/post/post-detail-1556233800</link>
-<description><![CDATA[Front end developer, ui/ux developer, friend and traveller&#10;&#10;]]></description>
-<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
-<author>okoelijah@gmail.com (elijah okokon)</author>
-<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556233800&quot;&gt;http://localhost:8000//storage/contents/1556233800&lt;/a&gt;&lt;/p&gt;</guid>
-<source url="http://www.example.com">Elijah's page</source>
-</item>
-<item>
-<title>Welcome to a new Era</title>
-<link>/post/post-detail-1556233860</link>
-<description><![CDATA[Front end developer, ui/ux developer, friend and traveller&#10;&#10;]]></description>
-<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
-<author>okoelijah@gmail.com (elijah okokon)</author>
-<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556233860&quot;&gt;http://localhost:8000//storage/contents/1556233860&lt;/a&gt;&lt;/p&gt;</guid>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556280600&quot;&gt;http://localhost:8000//storage/contents/1556280600&lt;/a&gt;&lt;/p&gt;</guid>
 <source url="http://www.example.com">Elijah's page</source>
 </item>
 </channel>

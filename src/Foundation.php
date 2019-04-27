@@ -1,6 +1,6 @@
 <?php
+
 namespace Ziki;
-use Ziki\Core as Core;
 
 class Foundation
 {
