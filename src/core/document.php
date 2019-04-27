@@ -295,7 +295,13 @@ class Document
             return $posts;
         }
     }
-    //update post
+    //Save Draft
+    public function createDraft()
+    { }
+    //Get Draft
+    public function getDraft()
+    { }
+    // post
     public function update()
     { }
     //deletepost
