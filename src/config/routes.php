@@ -121,10 +121,6 @@ Route::get('/404', function($request) {
 });
 
 Route::get('/drafts', function($request) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return new RedirectResponse("/");
-    }
     return $this->template->render('drafts.html');
 });
 
