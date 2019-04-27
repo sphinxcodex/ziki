@@ -66,7 +66,7 @@
       // get all imageURIs in the document
       const imageURIs = markdown.match(/data:image\/\w+;base64,.*==/g);
       // are there images in the blog post?
-      if (imageURIs.length > 0) {
+      if (imageURIs) {
         imageURIs.forEach(imageURI => {
           const [match, ext, uri] = imageURI.match(/data:image\/(\w+);base64,(.*==)/);
           const id = Math.random().toString(36).substr(2, 10);
