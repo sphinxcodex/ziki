@@ -12,11 +12,20 @@ class Template
     public function __construct($templatePath)
     {
         $this->twig = new Environment(new FilesystemLoader($templatePath), $this->setTwigCaching());
-        $this->twig->addGlobal('settings', 'nnn');
+    }
+
+    public static function getSettings() {
+        $file = "./src/config/settings.json";
+        if (file_exists($file)) {
+            $content = json_decode(file_get_contents($file), true);
+			return $content;
+		}
     }
 
     public function render($page, array $parameters = [])
     {
+        $settings = self::getSettings();
+        $this->twig->addGlobal('settings', $settings);
         return $this->twig->render($page, $parameters);
     }
 
