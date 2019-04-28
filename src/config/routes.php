@@ -47,12 +47,6 @@ Route::get('/timeline', function($request) {
 });
 
 Route::post('/publish', function($request) {
-    
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return new RedirectResponse("/");
-    }
-    
     $directory = "./storage/contents/";
     $data = $request->getBody();
     $title = $data['title'];
