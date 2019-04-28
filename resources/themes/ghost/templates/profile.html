@@ -67,11 +67,12 @@
       </div>
       <script>
         // handle image upload
-        var image_input = document.getElementById('imagefile');
-        var edit_pic = document.querySelector('.profile-dp-link img');
-        var profile_pic = document.querySelector('.profile-pic');
+        var defaultImagePath = '/resources/themes/ghost/assets/img/user-icon-placeholder.png';
+        var imageInput = document.getElementById('imagefile');
+        var editPic = document.querySelector('.profile-dp-link img');
+        var profilePic = document.querySelector('.profile-pic');
     
-        image_input.addEventListener('change', function(){
+        imageInput.addEventListener('change', function(){
           var fileData = this.files[0],
           fileType = fileData.type,
           match = ["image/jpeg", "image/png", "image/jpg"];
@@ -87,8 +88,8 @@
           
           //render image preview
           function imageIsLoaded(e) {
-            edit_pic.setAttribute('src', e.target.result);
-            profile_pic.setAttribute('src', e.target.result);
+            editPic.setAttribute('src', e.target.result);
+            profilePic.setAttribute('src', e.target.result);
             localStorage.setItem("profilepic", e.target.result); //save offline
             //perform upload in background
             handleUpload(fileData);
@@ -99,7 +100,7 @@
         function handleUpload(fileData){
           var formData = new FormData();
           formData.append("file", fileData);
-          
+          //call upload image api      
           fetch('/api/upload-image', {
             method: 'POST',
             body: formData
