@@ -86,8 +86,10 @@ a {
 }
 
 .profile-dp {
-  max-width: 189px;
-  max-height: 189px;
+  width: 200px;
+  height: 150px;
+  max-width: 100%;
+  background: #dddde5;
 }
 
 /* Themes Page */
@@ -354,6 +356,22 @@ input:checked + .slider:before {
 .post-detail {
   font-size: 12px;
   color: #808080;
+}
+
+/* image upload styles */
+
+#imagefile {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-size: 23px;
+  cursor: pointer;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  direction: ltr;
 }
 
 /* Mobile Styles  */
