@@ -1,16 +1,16 @@
 <?php
 
-use Ziki\Http\Route;
+use Ziki\Http\Router;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 session_start();
 
-Route::get('/about/{id}', function($request,$id) {
+Router::get('/about/{id}', function($request,$id) {
 
      return $this->template->render('about-us.html');
 });
 
-Route::get('/', function($request) {
+Router::get('/', function($request) {
     $user = new Ziki\Core\Auth();
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
@@ -23,7 +23,7 @@ Route::get('/', function($request) {
 });
 
 
-Route::get('stay/{id}', function($request, $id) {
+Router::get('stay/{id}', function($request, $id) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -33,7 +33,7 @@ Route::get('stay/{id}', function($request, $id) {
    $result = $ziki->getEach($id);
    return $this->template->render('blog-details.html', ['result' => $result] );
 });
-Route::get('/timeline', function($request) {
+Router::get('/timeline', function($request) {
    
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
@@ -46,7 +46,7 @@ Route::get('/timeline', function($request) {
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
 
-Route::post('/publish', function($request) {
+Router::post('/publish', function($request) {
     
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
@@ -67,7 +67,7 @@ Route::post('/publish', function($request) {
 });
 
 /* Working on draft by devmohy */
-Route::post('/saveDraft', function($request) {
+Router::post('/saveDraft', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -84,7 +84,7 @@ Route::post('/saveDraft', function($request) {
 /* Working on draft by devmohy */
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-Route::post('/timeline', function($request) {
+Router::post('/timeline', function($request) {
   $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -102,7 +102,7 @@ Route::post('/timeline', function($request) {
 });
 }
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-  Route::get('/timeline', function($request) {
+  Router::get('/timeline', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   });
 }
 
-Route::get('/contact-us', function($request) {
+Router::get('/contact-us', function($request) {
     $ziki = [
         [ 'name'          => 'Adroit' ],
         [ 'name'          => 'Twig' ],
@@ -125,7 +125,7 @@ Route::get('/contact-us', function($request) {
 });
 
 
-Route::get('/published-posts', function($request) {
+Router::get('/published-posts', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -133,7 +133,7 @@ Route::get('/published-posts', function($request) {
     return $this->template->render('published-posts.html');
 });
 
-Route::get('/themes', function($request) {
+Router::get('/themes', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -141,7 +141,7 @@ Route::get('/themes', function($request) {
     return $this->template->render('themes.html');
 });
 
-Route::get('/profile', function($request) {
+Router::get('/profile', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -149,7 +149,7 @@ Route::get('/profile', function($request) {
     return $this->template->render('profile.html');
 });
 
-Route::post('/subscriptions', function($request) {
+Router::post('/subscriptions', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -157,7 +157,7 @@ Route::post('/subscriptions', function($request) {
     return $this->template->render('subscriptions.html');
 });
 
-Route::get('/subscribers', function($request) {
+Router::get('/subscribers', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -165,7 +165,7 @@ Route::get('/subscribers', function($request) {
     return $this->template->render('subscribers.html');
 });
 
-Route::get('/editor', function($request) {
+Router::get('/editor', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -173,11 +173,11 @@ Route::get('/editor', function($request) {
   return $this->template->render('editor.html');
 });
 
-Route::get('/404', function($request) {
+Router::get('/404', function($request) {
     return $this->template->render('404.html');
 });
 
-Route::get('/drafts', function($request) {
+Router::get('/drafts', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -185,15 +185,15 @@ Route::get('/drafts', function($request) {
     return $this->template->render('drafts.html');
 });
 
-Route::get('/about', function($request) {
+Router::get('/about', function($request) {
     return $this->template->render('about-us.html');
 });
 
-Route::get('/download', function($request) {
+Router::get('/download', function($request) {
     return $this->template->render('download.html');
 });
 
-Route::get('/auth/{provider}/{token}', function($request, $token){
+Router::get('/auth/{provider}/{token}', function($request, $token){
     $user = new Ziki\Core\Auth();
     $check = $user->validateAuth($token);
     if($_SESSION['login_user']['role'] == 'guest'){
@@ -204,8 +204,17 @@ Route::get('/auth/{provider}/{token}', function($request, $token){
     }
 });
 
-Route::get('/logout', function($request) {
+Router::get('/logout', function($request) {
     $user = new Ziki\Core\Auth();
     $user->log_out();
     return new RedirectResponse("/");
 });
+
+Router::get('/api/images', function() {
+    return (new Ziki\Core\UploadImage)->getAllImages();
+});
+  
+Router::post('/api/upload-image', function() {
+    return (new Ziki\Core\UploadImage)->upload();
+});
+  
