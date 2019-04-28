@@ -94,18 +94,18 @@ Route::get('/profile', function($request) {
     return $this->template->render('profile.html');
 });
 
-Route::post('/subscriptions', function($request) {
+Route::post('/following', function($request) {
     $ziki = new Ziki\Core\Subscribe();
     $count = $ziki->count();
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
     $sub = $ziki->subscription();
 
-    return $this->template->render('subscriptions.html', ["count" => $count, "posts" => $sub] );
+    return $this->template->render('following.html', ["count" => $count, "posts" => $sub] );
 });
 
-Route::get('/subscribers', function($request) {
-    return $this->template->render('subscribers.html');
+Route::get('/followers', function($request) {
+    return $this->template->render('followers.html');
 });
 
 Route::get('/editor', function($request) {

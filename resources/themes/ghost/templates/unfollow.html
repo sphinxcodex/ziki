@@ -5,11 +5,11 @@
     --ziki-purple: #280a66;
   }
 
-  #subscribe-here .modal-content {
+  #unsubscribe-here .modal-content {
     border-radius: 2em;
   }
 
-  #subscribe-here .modal-header {
+  #unsubscribe-here .modal-header {
     background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%),
       #3b0e75;
     border-top-left-radius: 1.9em;
@@ -20,30 +20,30 @@
     box-shadow: 0 3px 2px rgba(0, 0, 0, 0.2);
   }
 
-  #subscribe-here .modal-header .close {
+  #unsubscribe-here .modal-header .close {
     color: #fff;
     font-size: 3em;
     opacity: 1;
   }
 
-  #subscribe-here .modal-header .row-container {
+  #unsubscribe-here .modal-header .row-container {
     width: 100%;
   }
 
-  .subscribe-here-logo {
+  .unsubscribe-here-logo {
     max-width: 40px;
     width: 100%;
   }
 
-  #subscribe-here .hide-above-mobile {
+  #unsubscribe-here .hide-above-mobile {
     display: none;
   }
 
-  .subscribe-here-form .form-control {
+  .unsubscribe-here-form .form-control {
     box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
   }
 
-  .subscribe-here-form #guest-ziki-domain {
+  .unsubscribe-here-form #subscriber-ziki-domain {
     /* browser icon that shows in the text field */
     background: url('/resources/themes/ghost/assets/img/browser-icon.png')
       no-repeat center;
@@ -56,13 +56,13 @@
     box-sizing: border-box;
   }
 
-  .subscribe-here-form .btn {
+  .unsubscribe-here-form .btn {
     color: #fff;
     background-color: var(--ziki-purple);
   }
 
   @media screen and (max-width: 767px) {
-    #subscribe-here .modal-dialog {
+    #unsubscribe-here .modal-dialog {
       height: 100%;
       margin: 0;
       background: linear-gradient(
@@ -74,45 +74,45 @@
       overflow-y: hidden;
     }
 
-    #subscribe-here .title-container * {
+    #unsubscribe-here .title-container * {
       /* hide everything in the title-container to create empty space */
       display: none;
     }
 
-    #subscribe-here .modal-dialog {
+    #unsubscribe-here .modal-dialog {
       max-width: 100%;
     }
 
-    #subscribe-here .modal-content,
-    #subscribe-here .modal-header {
+    #unsubscribe-here .modal-content,
+    #unsubscribe-here .modal-header {
       border-radius: 0;
       background: none;
       border: none;
     }
 
-    #subscribe-here .modal-content {
+    #unsubscribe-here .modal-content {
       height: 100%;
     }
 
-    #subscribe-here .modal-header {
+    #unsubscribe-here .modal-header {
       box-shadow: none;
     }
 
-    #subscribe-here .modal-body {
+    #unsubscribe-here .modal-body {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    #subscribe-here .hide-above-mobile {
+    #unsubscribe-here .hide-above-mobile {
       display: block;
     }
 
-    #subscribe-here .center-body-on-mobile {
+    #unsubscribe-here .center-body-on-mobile {
       margin-top: -4em;
     }
 
-    .subscribe-here-form {
+    .unsubscribe-here-form {
       padding: 2em 1em;
       background: #745387;
       border-radius: 1.5em;
@@ -122,20 +122,20 @@
       margin: 0 1.5em;
     }
 
-    .subscribe-here-form #guest-ziki-domain {
+    .unsubscribe-here-form #subscriber-ziki-domain {
       background-color: #fff;
       border: none;
     }
   }
 </style>
 
-<!-- Subscribe Here Modal -->
+<!-- Unsubscribe Modal -->
 <div
   class="modal fade"
-  id="subscribe-here"
+  id="unsubscribe-here"
   tabindex="-1"
   role="dialog"
-  aria-labelledby="subscribe-here-label"
+  aria-labelledby="unsubscribe-here-label"
   aria-hidden="true"
 >
   <div class="modal-dialog" role="document">
@@ -145,17 +145,17 @@
           <div class="col-3">
             <img
               src="/resources/themes/ghost/assets/img/white-logo.png"
-              class="subscribe-here-logo"
-              alt=""
+              class="unsubscribe-here-logo"
+              alt="ziki logo"
             />
           </div>
           <div class="col-4 col-md-8 title-container">
-            <h2 class="modal-title font-weight-bold" id="subscribe-here-label">
-              Subscribe
+            <h2 class="modal-title font-weight-bold" id="unsubscribe-here-label">
+              Unfollow
             </h2>
-            <p>
-              Stay up to date with the latest posts from {{ domain }} on your
-              timeline
+			<p>
+              Are you sure you want to unfollow {{ domain }} on your
+              timeline?
             </p>
           </div>
           <div class="col-5 col-md-1 align-self-start">
@@ -168,41 +168,40 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-        </div>
+		</div>
       </div>
       <div class="modal-body py-5">
         <div class="center-body-on-mobile text-white">
           <h2 class="hide-above-mobile text-center mb-3 font-weight-bold">
-            Subscribe
+            Unsubscribe
           </h2>
-          <form id="rss" action="/timeline" method="post" class="subscribe-here-form">
+		  <form class="unsubscribe-here-form" method="post">
             <div class="hide-above-mobile text-center">
               <p>
-                Stay up to date with the latest posts from {{ domain }} on your
-                timeline
+                Are you sure you want to unfollow {{ domain }} on your
+              timeline?
               </p>
             </div>
             <div class="form-row justify-content-center">
               <div class="col-12 col-md-7 mx-0 mx-md-3 pb-4 pb-md-0">
-                <label for="guest-ziki-domain" class="sr-only"
-                  >Your domain</label
+                <label for="subscriber-ziki-domain" class="sr-only"
+                  >Subscriber's Ziki domain</label
                 >
                 <input
                   type="url"
                   class="form-control"
-                  name="domain"
-                  id="guest-ziki-domain"
-                  placeholder="Enter Rss URL"
+                  name="subscriber-ziki-domain"
+                  id="subscriber-ziki-domain"
+                  placeholder="Enter subscriber's domain URL"
                   required
                 />
               </div>
-              <div
+			<div
                 class="col-12 col-md-2 mx-0 mx-md-3 d-flex justify-content-center justify-content-md-end"
-              >
-                <div><button id="submitButton" type="submit" class="btn">Subscribe</button></div>
-              </div>
-            </form>
+            >
+                <div><button type="submit" class="btn">Unfollow</button></div>
             </div>
+		  </form>
         </div>
       </div>
     </div>
