@@ -1,5 +1,7 @@
 <?php
+
 namespace Ziki\Http;
+
 class Route
 {
     protected $request;
