@@ -1,12 +1,11 @@
 <?php
 namespace Ziki\Core;
 
+use Parsedown;
 use Mni\FrontYAML\Parser;
 use KzykHys\FrontMatter\FrontMatter;
-use KzykHys\FrontMatter\Document as Doc;
 use Symfony\Component\Finder\Finder;
-
-use Parsedown;
+use KzykHys\FrontMatter\Document as Doc;
 
 /**
  *	The Document class holds all properties and methods of a single page document.
@@ -50,8 +49,8 @@ class Document
         if($tags != ""){
         $tag = explode(",",$tags);
         $put = [];
-        foreach($tag as $value){
-            array_push($put,$value);
+        foreach ($tag as $value) {
+            array_push($put, $value);
         }
         $yamlfile['tags'] = $put;
     }
@@ -66,7 +65,7 @@ class Document
         
         $yamlfile['post_dir'] = SITE_URL . "/storage/contents/{$unix}";
         $striped = str_replace(' ', '-', $title);
-        $yamlfile['slug'] = $striped."-{$unix}";
+        $yamlfile['slug'] = $striped . "-{$unix}";
         $yamlfile['timestamp'] = $time;
         $yamlfile->setContent($content);
         $yaml = FrontMatter::dump($yamlfile);
