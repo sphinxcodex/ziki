@@ -319,7 +319,7 @@ public function createDraft($title, $content,$tags)
             array_push($put,$value);
         }
         $yamlfile['tags'] = $put;
-        $yamlfile['post_dir'] = SITE_URL . "/storage/contents/{$unix}";
+        $yamlfile['post_dir'] = SITE_URL . "/storage/contents/drafts/{$unix}";
         $striped = str_replace(' ', '-', $title);
         $yamlfile['slug'] = $striped."-{$unix}";
         $yamlfile['timestamp'] = $time;
