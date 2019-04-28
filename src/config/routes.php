@@ -32,7 +32,6 @@ Route::get('/timeline', function($request) {
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
 
-/*
 Route::post('/publish', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
@@ -47,7 +46,24 @@ Route::post('/publish', function($request) {
     $result = $ziki->create($title, $body,$tags);
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
-*/
+
+/* Working on draft by devmohy */
+Route::post('/saveDraft', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return new RedirectResponse("/");
+    }
+    $directory = "./storage/contents/drafts";
+    $data = $request->getBody();
+    $title = $data['title'];
+    $body = $data['postVal'];
+    $tags = $data['tags'];
+    $ziki = new Ziki\Core\Document($directory);
+    $result = $ziki->create($title, $body,$tags);
+    return $this->template->render('drafts.html', ['ziki' => $result]);
+});
+/* Working on draft by devmohy */
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 Route::post('/timeline', function($request) {
     $data = $request->getBody();
@@ -119,7 +135,7 @@ Route::get('/editor', function($request) {
 Route::get('/404', function($request) {
     return $this->template->render('404.html');
 });
-
+!
 Route::get('/drafts', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {

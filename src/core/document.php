@@ -295,12 +295,10 @@ class Document
             return $posts;
         }
     }
-     /**
-     * This allows you to save posts in draft
-     * 
-     */
-     //for creating markdown files
-     public function createDraft($title, $content,$tags)
+
+/* Working on draft by devmohy */
+//for creating markdown files
+public function createDraft($title, $content,$tags)
      {
         $time = date("F j, Y, g:i a");
         $unix = strtotime($time);
@@ -335,7 +333,7 @@ class Document
         if ($doc) {
             $result = array("error" => false, "message" => "Draft saved successfully");
         } else {
-            $result = array("error" => true, "message" => "Fail while publishing, please try again");
+            $result = array("error" => true, "message" => "Fail while saving, please try again");
         }
         return $doc;
      }
@@ -374,6 +372,8 @@ class Document
              return false;
          }
      }
+/* Working on draft by devmohy */
+
 
     // post
     public function update()
