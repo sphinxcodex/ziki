@@ -34,12 +34,10 @@ Router::get('stay/{id}', function($request, $id) {
    return $this->template->render('blog-details.html', ['result' => $result] );
 });
 Router::get('/timeline', function($request) {
-   
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
     }
-    
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
     $post = $ziki->fetchAllRss();
