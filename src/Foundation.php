@@ -17,7 +17,7 @@ class Foundation
 
     private function loadConfig()
     {
-        $configPath = $this->basePath . DIRECTORY_SEPARATOR . 'src/config/ziki.json';
+        $configPath = $this->basePath . DIRECTORY_SEPARATOR . 'src/config/app.json';
         Core\Config::json($configPath);
     }
 
