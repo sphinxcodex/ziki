@@ -59,6 +59,56 @@ Route::post('/publish', function($request) {
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
 
+/* Working on draft by devmohy */
+Route::post('/saveDraft', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return new RedirectResponse("/");
+    }
+    $directory = "./storage/contents/drafts";
+    $data = $request->getBody();
+    $title = $data['title'];
+    $body = $data['postVal'];
+    $tags = $data['tags'];
+    $ziki = new Ziki\Core\Document($directory);
+    $result = $ziki->create($title, $body,$tags);
+    return $this->template->render('drafts.html', ['ziki' => $result]);
+});
+/* Working on draft by devmohy */
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+Route::post('/timeline', function($request) {
+  $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return new RedirectResponse("/");
+    }
+    $data = $request->getBody();
+    $url = $_POST['domain'];
+
+    $ziki = new Ziki\Core\Subscribe();
+    $result = $ziki->extract($url);
+    $directory = "./storage/contents/";
+    $ziki = new Ziki\Core\Document($directory);
+    $feed = $ziki->fetchAllRss();
+
+    return $this->template->render('index.html', ['posts' => $feed]);
+});
+}
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+  Route::get('/timeline', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return new RedirectResponse("/");
+    }
+      $directory = "./storage/contents/";
+      $ziki = new Ziki\Core\Document($directory);
+      $feed = $ziki->fetchAllRss();
+      // Render our view
+      //print_r($feed);
+      return $this->template->render('timeline.html',['posts' => $feed] );
+  });
+}
+
 Route::get('/contact-us', function($request) {
     $ziki = [
         [ 'name'          => 'Adroit' ],
