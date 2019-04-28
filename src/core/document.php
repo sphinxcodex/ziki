@@ -47,16 +47,23 @@ class Document
 
         $yamlfile = new Doc();
         $yamlfile['title'] = $title;
+        if($tags != ""){
         $tag = explode(",",$tags);
         $put = [];
         foreach($tag as $value){
             array_push($put,$value);
         }
         $yamlfile['tags'] = $put;
-        $yamlfile['image1'] = $image;
-        $decoded = base64_decode($image);
-        $url = "./storage/images/image1.png";
-        FileSystem::write($url,$decoded);
+    }
+        if(!empty($image)){
+            foreach($image as $key => $value)
+            $yamlfile[$key] = $image[$key];
+            $decoded = base64_decode($image[$key]);
+            $url = "./storage/images/".$key;
+            FileSystem::write($url,$decoded);
+        }
+       
+        
         $yamlfile['post_dir'] = SITE_URL . "/storage/contents/{$unix}";
         $striped = str_replace(' ', '-', $title);
         $yamlfile['slug'] = $striped."-{$unix}";
@@ -303,7 +310,28 @@ class Document
     public function update()
     { }
     //deletepost
-    public function delete()
-    { }
+    public function delete($id)
+    {
+        $finder = new Finder();
+        // find all files in the current directory
+        $finder->files()->in($this->file);
+        if ($finder->hasResults()) {
+            foreach ($finder as $file) {
+                $document = $file->getContents();
+                $parser = new Parser();
+                $document = $parser->parse($document);
+                $yaml = $document->getYAML();
+                $body = $document->getContent();
+                $parsedown  = new Parsedown();
+                $slug = $parsedown->text($yaml['slug']);
+                $slug = preg_replace("/<[^>]+>/", '', $slug);
+                if ($slug == $id) {
+                    unlink($file);
+                    $delete = "File deleted successfully";
+                }
+            }
+            return $delete;
+        }
+     }
    
 }
