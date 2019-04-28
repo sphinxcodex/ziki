@@ -9,8 +9,12 @@
 <url>https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Rss-feed.svg/256px-Rss-feed.svg.png</url>
 </image>
 <language>en-US</language>
+
+<lastBuildDate>Sun, 28 Apr 2019 11:11:13 +0200</lastBuildDate>
+<pubDate>Sat, 06 Apr 2013 00:00:00 +0200</pubDate>
 <lastBuildDate>Sat, 27 Apr 2019 21:58:31 +0000</lastBuildDate>
 <pubDate>Sat, 06 Apr 2013 00:00:00 +0000</pubDate>
+
 <atom:link href="http://example.com/myfeed" rel="self" type="application/rss+xml"></atom:link>
 <atom:link href="http://pubsubhubbub.appspot.com" rel="hub"></atom:link>
 <creativeCommons:license>http://www.creativecommons.org/licenses/by/1.0</creativeCommons:license>
@@ -43,6 +47,184 @@
 <source url="http://www.example.com">Elijah's page</source>
 </item>
 <item>
+<title>another</title>
+<link>/post/another-1556374380</link>
+<description><![CDATA[is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556374380&quot;&gt;http://localhost:8000//storage/contents/1556374380&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>hahhha</title>
+<link>/post/hahhha-1556374440</link>
+<description><![CDATA[is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556374440&quot;&gt;http://localhost:8000//storage/contents/1556374440&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>another</title>
+<link>/post/another-1556374920</link>
+<description><![CDATA[is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556374920&quot;&gt;http://localhost:8000//storage/contents/1556374920&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556375100</link>
+<description><![CDATA[is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556375100&quot;&gt;http://localhost:8000//storage/contents/1556375100&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556375160</link>
+<description><![CDATA[is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556375160&quot;&gt;http://localhost:8000//storage/contents/1556375160&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556375280</link>
+<description><![CDATA[is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556375280&quot;&gt;http://localhost:8000//storage/contents/1556375280&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>drugs</title>
+<link>/post/drugs-1556375760</link>
+<description><![CDATA[Front end developer, ui/ux developer, friend and traveller.![](img-ahvcuih2ky.jpeg]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556375760&quot;&gt;http://localhost:8000//storage/contents/1556375760&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>PHP database management</title>
+<link>/post/PHP-database-management-1556375820</link>
+<description><![CDATA[Front end developer, ui/ux developer, friend and traveller.![](img-n2tdmrkm8o.jpeg]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556375820&quot;&gt;http://localhost:8000//storage/contents/1556375820&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556375880</link>
+<description><![CDATA[Front end developer, ui/ux developer, friend and traveller.![](img-qrugefy7wx.jpeg]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556375880&quot;&gt;http://localhost:8000//storage/contents/1556375880&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556375940</link>
+<description><![CDATA[Front end developer, ui/ux developer, friend and traveller.![](img-ftlpp3h3vb.png]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556375940&quot;&gt;http://localhost:8000//storage/contents/1556375940&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556376180</link>
+<description><![CDATA[Front end developer, ui/ux developer, friend and traveller.![](img-x9h5zq25ti.jpeg]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556376180&quot;&gt;http://localhost:8000//storage/contents/1556376180&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556383620</link>
+<description><![CDATA[The foreach construct provides an easy way to iterate over arrays. foreach works only on arrays ]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556383620&quot;&gt;http://localhost:8000//storage/contents/1556383620&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556383740</link>
+<description><![CDATA[The foreach construct provides an easy way to iterate over arrays. foreach works only on arrays ]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556383740&quot;&gt;http://localhost:8000//storage/contents/1556383740&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556383860</link>
+<description><![CDATA[The foreach construct provides an easy way to iterate over arrays. foreach works only on arrays ]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556383860&quot;&gt;http://localhost:8000//storage/contents/1556383860&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556384100</link>
+<description><![CDATA[The foreach construct provides an easy way to iterate over arrays. foreach works only on arrays ]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556384100&quot;&gt;http://localhost:8000//storage/contents/1556384100&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>another</title>
+<link>/post/another-1556389440</link>
+<description><![CDATA[preg_match — Perform a regular expression matchimg-kg9q37v8zm.jpeg]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556389440&quot;&gt;http://localhost:8000//storage/contents/1556389440&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>PHP database management</title>
+<link>/post/PHP-database-management-1556393640</link>
+<description><![CDATA[Front end deveimg-tzv6ykv68q.jpegloper, ui/ux developer, friend and traveller]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556393640&quot;&gt;http://localhost:8000//storage/contents/1556393640&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era and work please</title>
+<link>/post/Welcome-to-a-new-Era-and-work-please-1556400360</link>
+<description><![CDATA[I have a html form which has a select list box from which you can select multiple values because its]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556400360&quot;&gt;http://localhost:8000//storage/contents/1556400360&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556442420</link>
+<description><![CDATA[This library uses dependency injection and abstraction to allow you to provide your own YAML or Mark]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556442420&quot;&gt;http://localhost:8000//storage/contents/1556442420&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://www.example.com">Elijah's page</source>
+</item>
+<item>
+<title>Welcome to a new Era</title>
+<link>/post/Welcome-to-a-new-Era-1556442660</link>
+<description><![CDATA[This library uses dependency injection and abstraction to allow you to provide your own YAML or Mark]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556442660&quot;&gt;http://localhost:8000//storage/contents/1556442660&lt;/a&gt;&lt;/p&gt;</guid>
+
 <title>bhahhah</title>
 <link>/post/bhahhah-1556398500</link>
 <description><![CDATA[gvhjbknlm;,&#39;.]]></description>
