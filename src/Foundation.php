@@ -1,5 +1,4 @@
 <?php
-
 namespace Ziki;
 
 class Foundation
@@ -34,9 +33,7 @@ class Foundation
     }
 
     public function start() {
-        $router = $this->router;
-        require $this->basePath . DIRECTORY_SEPARATOR . 'src/routes/web.php';
-        require $this->basePath . DIRECTORY_SEPARATOR . 'src/routes/api.php';
+        require $this->basePath . DIRECTORY_SEPARATOR . 'src/config/routes.php';
         echo $this->template->render('404.html');
     }
 }
