@@ -1,5 +1,6 @@
 composer.phar
 /vendor/
+/src/config/settings.json
 composer.dev.*
 node_modules/
 build/
