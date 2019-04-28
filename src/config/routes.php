@@ -34,10 +34,12 @@ Route::get('stay/{id}', function($request, $id) {
    return $this->template->render('blog-details.html', ['result' => $result] );
 });
 Route::get('/timeline', function($request) {
+   
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
     }
+    
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
     $post = $ziki->fetchAllRss();
@@ -45,17 +47,22 @@ Route::get('/timeline', function($request) {
 });
 
 Route::post('/publish', function($request) {
+    
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
     }
+    
     $directory = "./storage/contents/";
     $data = $request->getBody();
     $title = $data['title'];
     $body = $data['postVal'];
     $tags = $data['tags'];
-    $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->create($title, $body,$tags);
+    $images = $data['images'];
+   
+  $ziki = new Ziki\Core\Document($directory);
+    $result = $ziki->create($title, $body,$tags,$images);
+
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
 
