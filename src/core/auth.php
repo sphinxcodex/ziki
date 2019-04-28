@@ -1,7 +1,7 @@
 <?php
 namespace Ziki\Core;
 
-use Ziki\Core\filesystem as FileSystem;
+use Ziki\Core\FileSystem as FileSystem;
 
 session_start();
 
