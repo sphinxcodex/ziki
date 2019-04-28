@@ -1,7 +1,7 @@
 <?php
 namespace Ziki\Core;
 
-use FileSystem;
+use Ziki\Core\FileSystem;
 
 class Auth {
     /**
