@@ -31,10 +31,10 @@ class Document
     }
 
     //for creating markdown files
-    public function create($title, $content,$tags)
+    public function create($title, $content,$tags,$image)
     {
         $time = date("F j, Y, g:i a");
-        $unix = strtotime($time);
+        $unix = strtotime($time); 
         // Write md file
         $document = FrontMatter::parse($content);
         $md = new Parser();
@@ -47,12 +47,23 @@ class Document
 
         $yamlfile = new Doc();
         $yamlfile['title'] = $title;
+        if($tags != ""){
         $tag = explode(",",$tags);
         $put = [];
         foreach($tag as $value){
             array_push($put,$value);
         }
         $yamlfile['tags'] = $put;
+    }
+        if(!empty($image)){
+            foreach($image as $key => $value)
+            $yamlfile[$key] = $image[$key];
+            $decoded = base64_decode($image[$key]);
+            $url = "./storage/images/".$key;
+            FileSystem::write($url,$decoded);
+        }
+       
+        
         $yamlfile['post_dir'] = SITE_URL . "/storage/contents/{$unix}";
         $striped = str_replace(' ', '-', $title);
         $yamlfile['slug'] = $striped."-{$unix}";
@@ -295,11 +306,112 @@ class Document
             return $posts;
         }
     }
-    //update post
+
+/* Working on draft by devmohy */
+//for creating markdown files
+public function createDraft($title, $content,$tags)
+     {
+        $time = date("F j, Y, g:i a");
+        $unix = strtotime($time);
+        // Write md file
+        $document = FrontMatter::parse($content);
+        $md = new Parser();
+        $markdown = $md->parse($document);
+
+        $yaml = $markdown->getYAML();
+        $html = $markdown->getContent();
+        $doc = FileSystem::write($this->file, $yaml . "\n" . $html);
+
+        $yamlfile = new Doc();
+        $yamlfile['title'] = $title;
+        $tag = explode(",",$tags);
+        $put = [];
+        foreach($tag as $value){
+            array_push($put,$value);
+        }
+        $yamlfile['tags'] = $put;
+        $yamlfile['post_dir'] = SITE_URL . "/storage/contents/drafts/{$unix}";
+        $striped = str_replace(' ', '-', $title);
+        $yamlfile['slug'] = $striped."-{$unix}";
+        $yamlfile['timestamp'] = $time;
+        $yamlfile->setContent($content);
+        $yaml = FrontMatter::dump($yamlfile);
+        $file = $this->file;
+        $dir = $file . $unix . ".md";
+        //return $dir; die();
+        $doc = FileSystem::write($dir, $yaml);
+
+        if ($doc) {
+            $result = array("error" => false, "message" => "Draft saved successfully");
+        } else {
+            $result = array("error" => true, "message" => "Fail while saving, please try again");
+        }
+        return $doc;
+     }
+     //get post
+     public function getDraft()
+     {
+         $finder = new Finder();
+ 
+         // find all files in the current directory
+         $finder->files()->in($this->file);
+         $posts = [];
+         if ($finder->hasResults()) {
+             foreach ($finder as $file) {
+                 $document = $file->getContents();
+                 $parser = new Parser();
+                 $document = $parser->parse($document);
+                 $yaml = $document->getYAML();
+                 $body = $document->getContent();
+                 //$document = FileSystem::read($this->file);
+                 $parsedown  = new Parsedown();
+                 $title = $parsedown->text($yaml['title']);
+                 $slug = $parsedown->text($yaml['slug']);
+                 $slug = preg_replace("/<[^>]+>/", '', $slug);
+                 $bd = $parsedown->text($body);
+                 $time = $parsedown->text($yaml['timestamp']);
+                 $url = $parsedown->text($yaml['post_dir']);
+                 $content['title'] = $title;
+                 $content['body'] = $bd;
+                 $content['url'] = $url;
+                 $content['slug'] = $slug;
+                 $content['timestamp'] = $time;
+                 array_push($posts, $content);
+             }
+             return $posts;
+         } else {
+             return false;
+         }
+     }
+/* Working on draft by devmohy */
+
+
+    // post
     public function update()
     { }
     //deletepost
-    public function delete()
-    { }
+    public function delete($id)
+    {
+        $finder = new Finder();
+        // find all files in the current directory
+        $finder->files()->in($this->file);
+        if ($finder->hasResults()) {
+            foreach ($finder as $file) {
+                $document = $file->getContents();
+                $parser = new Parser();
+                $document = $parser->parse($document);
+                $yaml = $document->getYAML();
+                $body = $document->getContent();
+                $parsedown  = new Parsedown();
+                $slug = $parsedown->text($yaml['slug']);
+                $slug = preg_replace("/<[^>]+>/", '', $slug);
+                if ($slug == $id) {
+                    unlink($file);
+                    $delete = "File deleted successfully";
+                }
+            }
+            return $delete;
+        }
+     }
    
 }
