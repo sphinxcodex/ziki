@@ -22,13 +22,13 @@
                                 <a href="/themes" class="themes-top-link">Themes</a>
                             </li>
                             <li class="p-3">
-                                <a href="/following" class="themes-top-link">
-                                    <span class="follow-numbers">76</span> Following
+                                <a href="/subscriptions" class="themes-top-link">
+                                    <span class="follow-numbers">76</span> Subscriptions
                                 </a>
                             </li>
                             <li class="p-3">
-                                <a href="/followers" class="themes-top-link ">
-                                    <span class="follow-numbers">52</span> Followers
+                                <a href="/subscribers" class="themes-top-link ">
+                                    <span class="follow-numbers">52</span> Subscribers
                                 </a>
                             </li>
                         </ul>
@@ -77,13 +77,13 @@
                     </div>
                     <script>
                         window.addEventListener('load', function () {
-
+                            
                             //handle filter
                             var theme_cont = document.querySelector('.themes-cont');
                             var theme_list = document.querySelectorAll('.themes-cont div.theme-item'); //each theme div
                             var search_input = document.querySelector('.search-box');
 
-                            //not found temp
+                            //not found temp 
                             var notfound = document.createElement('p');
                             notfound.classList.add('notfound');
                             notfound.innerText = 'No such theme found';
@@ -95,7 +95,7 @@
 
                                 //first remove notfound template if exist
                                 (theme_cont.contains(notfound) ? theme_cont.removeChild(notfound) : null);
-
+                                
                                 theme_list.forEach(function(elem,index){
                                     var name = elem.dataset.name.trim().toLowerCase();
                                     if(name.includes(value)){ //check if the value exist in each theme name
