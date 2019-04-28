@@ -38,10 +38,6 @@ Route::get('/timeline', function($request) {
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
     }
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return new RedirectResponse("/");
-    }
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
     $post = $ziki->fetchAllRss();
@@ -96,18 +92,20 @@ Route::get('/profile', function($request) {
     return $this->template->render('profile.html');
 });
 
-Route::post('/following', function($request) {
-    $ziki = new Ziki\Core\Subscribe();
-    $count = $ziki->count();
-    $directory = "./storage/contents/";
-    $ziki = new Ziki\Core\Document($directory);
-    $sub = $ziki->subscription();
-
-    return $this->template->render('following.html', ["count" => $count, "posts" => $sub] );
+Route::post('/subscriptions', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return new RedirectResponse("/");
+    }
+    return $this->template->render('subscriptions.html');
 });
 
-Route::get('/followers', function($request) {
-    return $this->template->render('followers.html');
+Route::get('/subscribers', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return new RedirectResponse("/");
+    }
+    return $this->template->render('subscribers.html');
 });
 
 Route::get('/editor', function($request) {
