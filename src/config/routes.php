@@ -113,11 +113,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 Router::get('/contact-us', function($request) {
-    $ziki = [
-        [ 'name'          => 'Adroit' ],
-        [ 'name'          => 'Twig' ],
-    ];
-    return $this->template->render('contact-us.html', ['ziki' => $ziki] );
+    include ZIKI_BASE_PATH."/src/core/SendMail.php";
+    $checkifOwnersMailIsprovided = new  SendContactMail();
+    $checkifOwnersMailIsprovided->getOwnerEmail();
+    $message = [];
+    if(empty($checkifOwnersMailIsprovided->getOwnerEmail()))
+    {
+        $message['ownerEmailNotProvided'] = true;
+    }
+    
+    if(isset($_SESSION['messages']))
+    {
+        $message = $_SESSION['messages'];
+        unset($_SESSION['messages']);
+    }
+    return $this->template->render('contact-us.html',['message'=>$message]);
+});
+
+Router::post('/send',function($request){
+    include ZIKI_BASE_PATH."/src/core/SendMail.php";
+    $request=$request->getBody();
+    $SendMail = new SendContactMail();
+    $SendMail->mailBody= $this->template->render('mail-template.html',['guestName'=>$request['guestName'],'guestEmail'=>$request['guestEmail'],'guestMsg'=>$request['guestMsg']]);
+    $SendMail->sendMail($request);
+    $SendMail->clientMessage();
+    return $SendMail->redirect('/contact-us');   
 });
 
 
