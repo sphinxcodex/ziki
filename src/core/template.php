@@ -16,7 +16,7 @@ class Template
     }
 
     public static function getSettings() {
-        $file = "./src/config/settings.json";
+        $file = "./src/config/auth.json";
         if (file_exists($file)) {
             $content = json_decode(file_get_contents($file), true);
 			return $content;
