@@ -254,3 +254,7 @@ Router::post('/api/upload-image', function() {
     return (new Ziki\Core\UploadImage)->upload();
 });
 
+Router::get('/install', function($request) {
+    return $this->installer->render('lucid-installation.html');
+});
+
