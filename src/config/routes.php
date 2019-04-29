@@ -21,9 +21,7 @@ Router::get('/', function($request) {
     return $this->template->render('index.html',['posts' => $feed, 'host' => $host] );
 });
 
-
-
-Route::get('blog-details/{id}', function($request, $id) {
+Router::get('blog-details/{id}', function($request, $id) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
@@ -58,7 +56,7 @@ Router::post('/publish', function($request) {
     $initial_images = array_filter($data , function($key) {
         return preg_match('/^img-\w*$/', $key);
       }, ARRAY_FILTER_USE_KEY);
-  
+
       // PHP automatically converts the '.' of the extension to an underscore
       // undo this
       $images = [];
@@ -132,7 +130,7 @@ Router::get('/contact-us', function($request) {
     {
         $message['ownerEmailNotProvided'] = true;
     }
-    
+
     if(isset($_SESSION['messages']))
     {
         $message = $_SESSION['messages'];
@@ -148,15 +146,15 @@ Router::post('/send',function($request){
     $SendMail->mailBody= $this->template->render('mail-template.html',['guestName'=>$request['guestName'],'guestEmail'=>$request['guestEmail'],'guestMsg'=>$request['guestMsg']]);
     $SendMail->sendMail($request);
     $SendMail->clientMessage();
-    return $SendMail->redirect('/contact-us');   
+    return $SendMail->redirect('/contact-us');
 });
-Route::get('delete/{id}', function($request, $id) {
-    
+
+Router::get('delete/{id}', function($request, $id) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
     }
-    
+
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
     $result = $ziki->delete($id);
@@ -171,12 +169,12 @@ Router::get('/published-posts', function($request) {
     return $this->template->render('published-posts.html');
 });
 
-Router::get('/themes', function($request) {
+Router::get('/settings', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
-    return $this->template->render('themes.html');
+    return $this->template->render('settings.html');
 });
 
 Router::get('/profile', function($request) {
@@ -251,8 +249,8 @@ Router::get('/logout', function($request) {
 Router::get('/api/images', function() {
     return (new Ziki\Core\UploadImage)->getAllImages();
 });
-  
+
 Router::post('/api/upload-image', function() {
     return (new Ziki\Core\UploadImage)->upload();
 });
-  
+
