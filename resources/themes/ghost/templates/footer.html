@@ -30,6 +30,32 @@
     });
 </script>
 
+<!--Email login modal-->
+<script>
+  const $ = document.querySelector.bind(document)
+  let congrat = $('.login-mail-sent')
+  let form = $('.login-form')
+  let message = $('.magic-msg')
+  congrat.style.display = 'none';
+  let sendEmail = () => {
+    let param = $('.email-input').value;
+    let host = $('.host').value;
+    let url = `https://auth.techteel.com/api/login/email?address=${param}?domain=${host}`;
+    fetch(url)
+      .then((res) => { return res.json() })
+      .then((data) => { 
+        console.log(data)
+          form.style.display = 'none';
+          congrat.style.display = 'block';
+          message.innerHTML = "Magic link sent successfully, check your email.";
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  };
+  $('.email-login-button').addEventListener('click', sendEmail);
+</script>
+
 <!-- Convert to markdown script -->
 <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" integrity="sha256-LSUpTY0kkXGKvcBC9kbmgibmx3NVVgJvAEfTZbs51mU=" crossorigin="anonymous"></script> -->
