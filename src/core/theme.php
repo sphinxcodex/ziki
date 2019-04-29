@@ -1,8 +1,9 @@
-<?php 
+<?php
 
 use Symfony\Component\Finder\Finder;
 
-class Theme {
+class Theme
+{
 
     public $themes_path = 'resources/themes';
     public $finder;
@@ -10,98 +11,85 @@ class Theme {
     public function __construct()
     {
         $this->finder =  new Finder();
-    } 
+    }
 
     public function get_themes_dir()
     {
-         $dirs = $this->finder->directories()->in($this->themes_path)->depth('< 1');
-         $dir_path_array = [];
+        $dirs = $this->finder->directories()->in($this->themes_path)->depth('< 1');
+        $dir_path_array = [];
 
-        if(!$dirs->hasResults())
-         {
-             return false;
-         }
+        if (!$dirs->hasResults()) {
+                return false;
+            }
 
-         foreach ($dirs as $dir)
-         {
-           $dir_path_array[] = $dir->getRealPath();
-         }
+        foreach ($dirs as $dir) {
+                $dir_path_array[] = $dir->getRealPath();
+            }
 
-         return $dir_path_array;
+        return $dir_path_array;
     }
 
     public function get_themeJsonFile()
     {
         $themes_dir = $this->get_themes_dir();
-        
+
         $files = [];
-        foreach ( $themes_dir as $theme_dir)
-        {
+        foreach ($themes_dir as $theme_dir) {
 
-            $files = $this->finder->files()->in($theme_dir)->name('theme.json');
-            if(!$files->hasResults())
-            {
-                return false;
+                $files = $this->finder->files()->in($theme_dir)->name('theme.json');
+                if (!$files->hasResults()) {
+                        return false;
+                    }
+
+                $files[] = $files;
             }
-
-            $files[]= $files;
-        }
 
         $themeJson_files_array = [];
 
-       foreach ($files[0] as $file)
-        {
-            $themeJson_files_array[] = $file->getRealPath();
-        }
+        foreach ($files[0] as $file) {
+                $themeJson_files_array[] = $file->getRealPath();
+            }
 
         return $themeJson_files_array;
-
     }
 
     public  function all()
     {
         $get_themeJsonFiles = $this->get_themeJsonFile();
-        $resultContent=[];
+        $resultContent = [];
 
-         foreach ($get_themeJsonFiles as $get_themeJsonFile)
-         {
-            $fileContent= file_get_contents($get_themeJsonFile);
-            if(!empty($fileContent))
-            $resultContent[]= json_decode($fileContent,true);
-         }
+        foreach ($get_themeJsonFiles as $get_themeJsonFile) {
+                $fileContent = file_get_contents($get_themeJsonFile);
+                if (!empty($fileContent))
+                    $resultContent[] = json_decode($fileContent, true);
+            }
 
-         return $resultContent;
-         
+        return $resultContent;
     }
 
     public function activate($theme)
     {
-        $themePath = ZIKI_BASE_PATH.'/resources/themes/'.$theme;
-        if(!is_dir($themePath) || !file_exists($themePath))
-        {
-            return false;
-        }
+        $themePath = ZIKI_BASE_PATH . '/resources/themes/' . $theme;
+        if (!is_dir($themePath) || !file_exists($themePath)) {
+                return false;
+            }
 
-        $themeConfigPath = ZIKI_BASE_PATH.'/src/config/ziki.json';
+        $themeConfigPath = ZIKI_BASE_PATH . '/src/config/app.json';
         $ConfigContent = '{
             "APP_NAME": "Ziki App",
-            "THEME":"'.$theme.'",
+            "THEME":"' . $theme . '",
             "ZIKI_CACHE_ENABLED": true,
             "ZIKI_DEBUG_ENABLED": false,
             "ZIKI_PROD" : false
         }';
 
-        $content = json_decode(file_get_contents($themeConfigPath),true);
+        $content = json_decode(file_get_contents($themeConfigPath), true);
 
-        if($theme !== $content['THEME'] )
-        {
-            $configtheme = file_put_contents($themeConfigPath,$ConfigContent);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
+        if ($theme !== $content['THEME']) {
+                file_put_contents($themeConfigPath, $ConfigContent);
+                return true;
+            } else {
+                return false;
+            }
     }
 }
