@@ -11,14 +11,19 @@ Router::get('/about/{id}', function($request,$id) {
 
 Router::get('/', function($request) {
     $user = new Ziki\Core\Auth();
-    $directory = "./storage/contents/";
-    $ziki = new Ziki\Core\Document($directory);
-    $feed = $ziki->fetchRss();
-    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-    $host = $user->hash($url);
-    // Render our view
-    //print_r($feed);
-    return $this->template->render('index.html',['posts' => $feed, 'host' => $host] );
+    if ($user::isInstalled() == true) {
+        return $user->redirect('/install');
+    }
+    else{
+        $directory = "./storage/contents/";
+        $ziki = new Ziki\Core\Document($directory);
+        $feed = $ziki->fetchRss();
+        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+        $host = $user->hash($url);
+        // Render our view
+        //print_r($feed);
+        return $this->template->render('index.html',['posts' => $feed, 'host' => $host] );
+    }
 });
 
 Router::get('blog-details/{id}', function($request, $id) {
