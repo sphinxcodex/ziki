@@ -22,7 +22,8 @@ Router::get('/', function($request) {
 });
 
 
-Router::get('stay/{id}', function($request, $id) {
+
+Route::get('blog-details/{id}', function($request, $id) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
@@ -53,10 +54,21 @@ Router::post('/publish', function($request) {
     $title = $data['title'];
     $body = $data['postVal'];
     $tags = $data['tags'];
-    $images = $data['images'];
-   
-  $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->create($title, $body,$tags,$images);
+    // filter out non-image data
+    $initial_images = array_filter($data , function($key) {
+        return preg_match('/^img-\w*$/', $key);
+      }, ARRAY_FILTER_USE_KEY);
+  
+      // PHP automatically converts the '.' of the extension to an underscore
+      // undo this
+      $images = [];
+      foreach ($initial_images as $key => $value) {
+        $newKey = preg_replace('/_/', '.', $key);
+        $images[$newKey] = $value;
+      }
+      //return json_encode([$images]);
+      $ziki = new Ziki\Core\Document($directory);
+      $result = $ziki->create($title, $body, $tags, $images);
 
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
@@ -138,7 +150,18 @@ Router::post('/send',function($request){
     $SendMail->clientMessage();
     return $SendMail->redirect('/contact-us');   
 });
-
+Route::get('delete/{id}', function($request, $id) {
+    
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return new RedirectResponse("/");
+    }
+    
+    $directory = "./storage/contents/";
+    $ziki = new Ziki\Core\Document($directory);
+    $result = $ziki->delete($id);
+    return $this->template->render('timeline.html', ['delete' => $result] );
+});
 
 Router::get('/published-posts', function($request) {
     $user = new Ziki\Core\Auth();
