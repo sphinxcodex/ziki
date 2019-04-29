@@ -18,7 +18,7 @@
               <li class="p-3 active">
                 <a href="/profile" class="profile-top-link">Profile</a>
               </li>
-              <li class="p-3"><a href="/themes" class="profile-top-link">Themes</a></li>
+              <li class="p-3"><a href="/settings" class="profile-top-link">Settings</a></li>
               <li class="p-3"><a href="/following" class="profile-top-link"><span class="follow-numbers">76
                   </span>Following</a>
               </li>
@@ -71,12 +71,12 @@
         var imageInput = document.getElementById('imagefile');
         var editPic = document.querySelector('.profile-dp-link img');
         var profilePic = document.querySelector('.profile-pic');
-    
+
         imageInput.addEventListener('change', function(){
           var fileData = this.files[0],
           fileType = fileData.type,
           match = ["image/jpeg", "image/png", "image/jpg"];
-          
+
           if (match.indexOf(fileType) == -1) {
             alert('Please select a valid image','warning');
             return false;
@@ -85,7 +85,7 @@
             reader.onload = imageIsLoaded;
             reader.readAsDataURL(this.files[0]);
           }
-          
+
           //render image preview
           function imageIsLoaded(e) {
             editPic.setAttribute('src', e.target.result);
@@ -94,13 +94,13 @@
             //perform upload in background
             handleUpload(fileData);
           };
-          
+
         });
-    
+
         function handleUpload(fileData){
           var formData = new FormData();
           formData.append("image", fileData);
-          //call upload image api      
+          //call upload image api
           fetch('/api/upload-image', {
             method: 'POST',
             body: formData
@@ -110,7 +110,7 @@
           }).catch((err) => {
             alert(`Upload request failed : ${err.message}`);
           });
-        }        
+        }
       </script>
     </div>
   </div>
