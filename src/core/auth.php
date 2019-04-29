@@ -1,7 +1,7 @@
 <?php
 namespace Ziki\Core;
 
-use Ziki\Core\Filesystem as FileSystem;
+use Ziki\Core\FileSystem;
 
 class Auth {
     /**
@@ -74,8 +74,8 @@ class Auth {
         //Close the cURL handle.
         curl_close($ch);
         $res = json_decode($result);
-        //Save User data to settings.json
-        $dir = "./src/config/settings.json";
+        //Save User data to auth.json
+        $dir = "./src/config/auth.json";
         $check_settings = FileSystem::read($dir);
         if(!$check_settings) {
             $json_user = FileSystem::write($dir, $result);
@@ -99,5 +99,10 @@ class Auth {
             }
         }  
         return $auth_response;  
+    }
+
+    public function redirect($location)
+    {
+        header('Location:'.$location);
     }
 }
