@@ -5,39 +5,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <!-- for the sidebar -->
-        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3 offset-lg-4 offset-md-4 offset-sm-12 offset-xs-12">
 
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 mt-3">
-
-            <!-- for any other part of the page -->
-            <div class="row profile-header d-flex flex-row justify-content-between pt-5 pb-1 px-3 flex-nowrap">
-                <div class="col profilenav-area">
-                    <nav class="navbar pb-0 row">
-                        <ul class="d-flex flex-row navbar-nav col-12">
-                            <li class="p-3">
-                                <a href="/profile" class="profile-top-link">Profile</a>
-                            </li>
-                            <li class="p-3">
-                                <a href="/themes" class="profile-top-link">Themes</a>
-                            </li>
-                            <li class="p-3 active">
-                                <a href="/subscriptions" class="profile-top-link"><span class="follow-numbers">76</span>
-                                    Subscriptions</a>
-                            </li>
-                            <li class="p-3">
-                                <a href="/subscribers" class="profile-top-link "><span class="follow-numbers">52</span>
-                                    Subscribers</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
-            </div>
+            {% include "navtabs.html" with {'current_page': 'subscriptions'} %}
 
             <div class="row profile-main py-2">
-                <div class="col-10 subscription-content-area p-1 pb-5 my-5 mx-auto px-4">
+                <div class="col subscription-content-area pb-5 mt-5 mr-3">
 
                     <div class="px-3">
                         <div class="subscription-content-header row d-flex align-items-center ">
