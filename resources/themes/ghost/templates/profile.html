@@ -5,30 +5,9 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <!-- for the sidebar -->
-    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3 offset-lg-4 offset-md-4 offset-sm-12 offset-xs-12">
 
-    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3">
-      <!-- for any other part of the page -->
-      <div class="row profile-header d-flex flex-row justify-content-between pt-5 pb-1 flex-nowrap">
-        <div class="col profilenav-area">
-          <nav class="navbar pb-0 row">
-            <ul class="d-flex flex-row navbar-nav col-12">
-              <li class="p-3 active">
-                <a href="/profile" class="profile-top-link">Profile</a>
-              </li>
-              <li class="p-3"><a href="/themes" class="profile-top-link">Themes</a></li>
-              <li class="p-3"><a href="/following" class="profile-top-link"><span class="follow-numbers">76
-                  </span>Following</a>
-              </li>
-              <li class="p-3"><a href="/followers" class="profile-top-link "><span class="follow-numbers">52</span>
-                  Followers</a></li>
-            </ul>
-          </nav>
-        </div>
-
-      </div>
+        {% include "navtabs.html" with {'current_page': 'profile'} %}
 
       <div class="row profile-main py-2">
         <div class="col profile-content-area p-1 pb-5 mt-5 mr-3">

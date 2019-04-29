@@ -1,0 +1,54 @@
+<!-- for any other part of the page -->
+<div class="row profile-header d-flex flex-row justify-content-between pt-5 pb-1 flex-nowrap">
+    <div class="col profilenav-area">
+        <nav class="navbar pb-0 row">
+        <ul class="d-flex flex-row navbar-nav col-12">
+            {% if current_page == "profile" %}
+            <li class="p-3 active">
+                <a href="/profile" class="profile-top-link">Profile</a>
+            </li>
+            {% else %}
+            <li class="p-3">
+                <a href="/profile" class="profile-top-link">Profile</a>
+            </li>
+            {% endif %}
+
+            {% if current_page == "themes" %}
+            <li class="p-3 active">
+                <a href="/themes" class="profile-top-link">Themes</a>
+            </li>
+            {% else %}
+            <li class="p-3">
+                <a href="/themes" class="profile-top-link">Themes</a>
+            </li>
+            {% endif %}
+
+            {% if current_page == "subscriptions" %}
+            <li class="p-3 active">
+                <a href="/subscriptions" class="profile-top-link"><span class="follow-numbers">76
+                    </span>subscriptions</a>
+            </li>
+            {% else %}
+            <li class="p-3">
+                <a href="/subscriptions" class="profile-top-link"><span class="follow-numbers">76
+                    </span>subscriptions</a>
+            </li>
+            {% endif %}
+
+            {% if current_page == "subscribers" %}
+            <li class="p-3 active">
+                <a href="/subscribers" class="profile-top-link"><span class="follow-numbers">52
+                    </span>subscribers</a>
+            </li>
+            {% else %}
+            <li class="p-3">
+                <a href="/subscribers" class="profile-top-link "><span class="follow-numbers">52</span>
+                    subscribers</a>
+            </li>
+            {% endif %}
+
+            <li class="p-3"></li>
+        </ul>
+        </nav>
+    </div>
+</div>
