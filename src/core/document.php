@@ -30,6 +30,7 @@ class Document
     }
 
     //for creating markdown files
+    //kjarts code here
     public function create($title, $content,$tags,$image)
     {
         $time = date("F j, Y, g:i a");
@@ -42,7 +43,7 @@ class Document
         $yaml = $markdown->getYAML();
         $html = $markdown->getContent();
         $this->createRSS();
-        $doc = FileSystem::write($this->file, $yaml . "\n" . $html);
+        //$doc = FileSystem::write($this->file, $yaml . "\n" . $html);
 
         $yamlfile = new Doc();
         $yamlfile['title'] = $title;
@@ -117,7 +118,8 @@ class Document
         }
     }
 
-    //
+    //kjarts code for getting and creating markdown files end here
+    
     public function fetchAllRss()
     {
         $rss = new \DOMDocument();
@@ -278,6 +280,7 @@ class Document
         }
         return $posts;
     }
+    //code for returnng details of each codes
     public function getEach($id)
     {
         $finder = new Finder();
@@ -306,6 +309,7 @@ class Document
             return $posts;
         }
     }
+    //end of get a post function
 
 /* Working on draft by devmohy */
 //for creating markdown files
@@ -416,7 +420,7 @@ public function createDraft($title, $content,$tags)
             }
         }
     
-    //deletepost
+    //kjarts code for deleting post 
     public function delete($id)
     {
         $finder = new Finder();

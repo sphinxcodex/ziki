@@ -31,6 +31,7 @@
 </script>
 
 <!--Email login modal-->
+
 <script>
   const $ = document.querySelector.bind(document)
   let congrat = $('.login-mail-sent')
@@ -65,10 +66,10 @@
 
 <script>
   // added by sleekX
-  var form = document.querySelector('.timeline-editor');
+  var forms = document.querySelector('.timeline-editor');
 
   // handle creating new post
-  form.onsubmit = newPostSubmitHandler;
+  forms.onsubmit = newPostSubmitHandler;
 
   // handle saving draft
   document.querySelector('input[value="Save Draft"]').addEventListener('click', newPostSubmitHandler);
@@ -109,7 +110,10 @@
     }
 
     formData.set('postVal', markdown);
-
+      var getit = formData.entries();
+      for(var el of getit){
+        console.log(el);
+      }
     // get tags
     const selected = document.querySelectorAll('#new-post-tags option:checked');
     const selectedTags = Array.from(selected).map(el => el.value);
