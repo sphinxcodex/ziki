@@ -33,10 +33,10 @@ Router::get('stay/{id}', function($request, $id) {
    return $this->template->render('blog-details.html', ['result' => $result] );
 });
 Router::get('/timeline', function($request) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return $user->redirect('/');
-    }
+    // $user = new Ziki\Core\Auth();
+    // if (!$user->is_logged_in()) {
+    //     return $user->redirect('/');
+    // }
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
     $post = $ziki->fetchAllRss();
@@ -67,13 +67,13 @@ Router::post('/saveDraft', function($request) {
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
-    $directory = "./storage/contents/drafts";
+    $directory = "./storage/drafts/";
     $data = $request->getBody();
     $title = $data['title'];
     $body = $data['postVal'];
     $tags = $data['tags'];
     $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->create($title, $body,$tags);
+    $result = $ziki->createDraft($title, $body,$tags);
     return $this->template->render('drafts.html', ['ziki' => $result]);
 });
 /* Working on draft by devmohy */
