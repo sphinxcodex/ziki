@@ -100,4 +100,9 @@ class Auth {
         }  
         return $auth_response;  
     }
+
+    public function redirect($location)
+    {
+        header('Location:'.$location);
+    }
 }
