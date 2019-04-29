@@ -5,7 +5,32 @@
 
 <div class="container-fluid">
   <div class="row">
+<<<<<<< HEAD
     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3 offset-lg-4 offset-md-4 offset-sm-12 offset-xs-12">
+=======
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <!-- for the sidebar -->
+    </div>
+
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3">
+      <!-- for any other part of the page -->
+      <div class="row profile-header d-flex flex-row justify-content-between pt-5 pb-1 flex-nowrap">
+        <div class="col profilenav-area">
+          <nav class="navbar pb-0 row">
+            <ul class="d-flex flex-row navbar-nav col-12">
+              <li class="p-3 active">
+                <a href="/profile" class="profile-top-link">Profile</a>
+              </li>
+              <li class="p-3"><a href="/settings" class="profile-top-link">Settings</a></li>
+              <li class="p-3"><a href="/following" class="profile-top-link"><span class="follow-numbers">76
+                  </span>Following</a>
+              </li>
+              <li class="p-3"><a href="/followers" class="profile-top-link "><span class="follow-numbers">52</span>
+                  Followers</a></li>
+            </ul>
+          </nav>
+        </div>
+>>>>>>> 91f128703812563c3c9ddf19514a1123b5de4ac8
 
         {% include "navtabs.html" with {'current_page': 'profile'} %}
 
@@ -50,12 +75,12 @@
         var imageInput = document.getElementById('imagefile');
         var editPic = document.querySelector('.profile-dp-link img');
         var profilePic = document.querySelector('.profile-pic');
-    
+
         imageInput.addEventListener('change', function(){
           var fileData = this.files[0],
           fileType = fileData.type,
           match = ["image/jpeg", "image/png", "image/jpg"];
-          
+
           if (match.indexOf(fileType) == -1) {
             alert('Please select a valid image','warning');
             return false;
@@ -64,7 +89,7 @@
             reader.onload = imageIsLoaded;
             reader.readAsDataURL(this.files[0]);
           }
-          
+
           //render image preview
           function imageIsLoaded(e) {
             editPic.setAttribute('src', e.target.result);
@@ -73,13 +98,13 @@
             //perform upload in background
             handleUpload(fileData);
           };
-          
+
         });
-    
+
         function handleUpload(fileData){
           var formData = new FormData();
           formData.append("image", fileData);
-          //call upload image api      
+          //call upload image api
           fetch('/api/upload-image', {
             method: 'POST',
             body: formData
@@ -89,7 +114,7 @@
           }).catch((err) => {
             alert(`Upload request failed : ${err.message}`);
           });
-        }        
+        }
       </script>
     </div>
   </div>
