@@ -99,15 +99,16 @@
     
         function handleUpload(fileData){
           var formData = new FormData();
-          formData.append("file", fileData);
+          formData.append("image", fileData);
           //call upload image api      
           fetch('/api/upload-image', {
             method: 'POST',
             body: formData
-          }).then(res => console.log(res)).then((res) => {
+          }).then(res => res.json()).then((res) => {
+            //use response to set profile image back
             console.log(res);
           }).catch((err) => {
-            alert(`Upload failed Request failed : ${err.message}`);
+            alert(`Upload request failed : ${err.message}`);
           });
         }        
       </script>
