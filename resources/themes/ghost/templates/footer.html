@@ -34,7 +34,7 @@
 <script>
   const $ = document.querySelector.bind(document)
   let congrat = $('.login-mail-sent')
-  let form = $('.login-form')
+  let form_l = $('.login-form')
   let message = $('.magic-msg')
   congrat.style.display = 'none';
   let sendEmail = () => {
@@ -45,7 +45,7 @@
       .then((res) => { return res.json() })
       .then((data) => { 
         console.log(data)
-          form.style.display = 'none';
+          form_l.style.display = 'none';
           congrat.style.display = 'block';
           message.innerHTML = "Magic link sent successfully, check your email.";
       })

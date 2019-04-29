@@ -21,9 +21,7 @@ Router::get('/', function($request) {
     return $this->template->render('index.html',['posts' => $feed, 'host' => $host] );
 });
 
-
-
-Route::get('blog-details/{id}', function($request, $id) {
+Router::get('blog-details/{id}', function($request, $id) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
@@ -150,7 +148,7 @@ Router::post('/send',function($request){
     $SendMail->clientMessage();
     return $SendMail->redirect('/contact-us');   
 });
-Route::get('delete/{id}', function($request, $id) {
+Router::get('delete/{id}', function($request, $id) {
     
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
