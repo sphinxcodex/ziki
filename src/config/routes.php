@@ -14,7 +14,7 @@ Route::get('/', function($request) {
     $user = new Ziki\Core\Auth();
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
-    $feed = $ziki->fetchAllRss();
+    $feed = $ziki->fetchRss();
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
     $host = $user->hash($url);
     // Render our view
@@ -23,7 +23,7 @@ Route::get('/', function($request) {
 });
 
 
-Route::get('stay/{id}', function($request, $id) {
+Route::get('blog-details/{id}', function($request, $id) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return new RedirectResponse("/");
@@ -58,10 +58,21 @@ Route::post('/publish', function($request) {
     $title = $data['title'];
     $body = $data['postVal'];
     $tags = $data['tags'];
-    $images = $data['images'];
-   
-  $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->create($title, $body,$tags,$images);
+    // filter out non-image data
+    $initial_images = array_filter($data , function($key) {
+        return preg_match('/^img-\w*$/', $key);
+      }, ARRAY_FILTER_USE_KEY);
+  
+      // PHP automatically converts the '.' of the extension to an underscore
+      // undo this
+      $images = [];
+      foreach ($initial_images as $key => $value) {
+        $newKey = preg_replace('/_/', '.', $key);
+        $images[$newKey] = $value;
+      }
+      //return json_encode([$images]);
+      $ziki = new Ziki\Core\Document($directory);
+      $result = $ziki->create($title, $body, $tags, $images);
 
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
@@ -123,7 +134,18 @@ Route::get('/contact-us', function($request) {
     ];
     return $this->template->render('contact-us.html', ['ziki' => $ziki] );
 });
-
+Route::get('delete/{id}', function($request, $id) {
+    
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return new RedirectResponse("/");
+    }
+    
+    $directory = "./storage/contents/";
+    $ziki = new Ziki\Core\Document($directory);
+    $result = $ziki->delete($id);
+    return $this->template->render('timeline.html', ['delete' => $result] );
+});
 
 Route::get('/published-posts', function($request) {
     $user = new Ziki\Core\Auth();

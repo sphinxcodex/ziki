@@ -65,9 +65,9 @@
     if (newPostIsBeingCreated) {
       // get all imageURIs in the document
       const imageURIs = markdown.match(/\!\[\]\(data:image\/\w+;base64,[^)]*\)/g);
+      console.log(imageURIs);
       // are there images in the blog post?
       if (imageURIs) {
-        let image = [];
         imageURIs.forEach(imageURI => {
           const [match, ext, uri] = imageURI.match(/\!\[\]\(data:image\/(\w+);base64,([^)]*)\)/);
           const id = Math.random().toString(36).substr(2, 10);
@@ -75,11 +75,11 @@
           // replace the image URI in the markdown
           markdown = markdown.replace(match, newImgName);
           // add this info to the form data being sent to the backend
-          image.push({[newImgName]: uri })
-         formData.set('images', image);
-
+          formData.set(newImgName, uri);
         });
       }
+
+      
     }
 
     formData.set('postVal', markdown);
@@ -88,8 +88,6 @@
     const selected = document.querySelectorAll('#new-post-tags option:checked');
     const selectedTags = Array.from(selected).map(el => el.value);
     formData.set('tags', selectedTags);
-     
-
     // send the form data
     fetch(newPostIsBeingCreated ? '/publish' : '/draft', {
       method: 'POST',

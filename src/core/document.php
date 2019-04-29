@@ -56,12 +56,13 @@ class Document
         $yamlfile['tags'] = $put;
     }
         if(!empty($image)){
-            foreach($image as $key => $value)
+            foreach($image as $key => $value){
             $yamlfile[$key] = $image[$key];
             $decoded = base64_decode($image[$key]);
             $url = "./storage/images/".$key;
             FileSystem::write($url,$decoded);
         }
+    }
        
         
         $yamlfile['post_dir'] = SITE_URL . "/storage/contents/{$unix}";
@@ -79,7 +80,7 @@ class Document
         } else {
             $result = array("error" => true, "message" => "Fail while publishing, please try again");
         }
-        return $doc;
+        return $result;
     }
     //get post
     public function get()
@@ -387,8 +388,35 @@ public function createDraft($title, $content,$tags)
 
 
     // post
-    public function update()
-    { }
+    public function update($id)
+    { 
+            $finder = new Finder();
+            // find all files in the current directory
+            $finder->files()->in($this->file);
+            $posts = [];
+            if ($finder->hasResults()) {
+                foreach ($finder as $file) {
+                    $document = $file->getContents();
+                    $parser = new Parser();
+                    $document = $parser->parse($document);
+                    $yaml = $document->getYAML();
+                    $body = $document->getContent();
+                    //$document = FileSystem::read($this->file);
+                    $parsedown  = new Parsedown();
+                    $slug = $parsedown->text($yaml['slug']);
+                    $slug = preg_replace("/<[^>]+>/", '', $slug);
+                    if ($slug == $id) {
+                        $content['title'] = $title;
+                        $content['body'] = $bd;
+                        $content['url'] = $url;
+                        $content['timestamp'] = $time;
+                        array_push($posts, $content);
+                    }
+                }
+                return $posts;
+            }
+        }
+    
     //deletepost
     public function delete($id)
     {
