@@ -1,9 +1,7 @@
 <?php
 namespace Ziki\Core;
 
-use Ziki\Core\FileSystem as FileSystem;
-
-session_start();
+use Ziki\Core\FileSystem;
 
 class Auth {
     /**
@@ -15,9 +13,28 @@ class Auth {
         $user['image'] = $data->image;
         $user['last_login'] = $data->updated_at;
         $user['role'] = $role;
-        $user['login_token'] = md5($data->id.$data->name.$email);
+        $user['login_token'] = md5($data->email);
         $_SESSION['login_user'] = $user;
         return true;
+    }
+
+    public function hash($data){
+        $ch = curl_init();
+        //Set the URL that you want to GET by using the CURLOPT_URL option.
+        curl_setopt($ch, CURLOPT_URL, "https://auth.techteel.com/api/encrpt?host={$data}");
+        
+        //Set CURLOPT_RETURNTRANSFER so that the content is returned as a variable.
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        
+        //Set CURLOPT_FOLLOWLOCATION to true to follow redirects.
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        
+        //Execute the request.
+        $result = curl_exec($ch);
+        
+        //Close the cURL handle.
+        curl_close($ch);
+        return $result;
     }
 
     // Log in user check
@@ -32,7 +49,7 @@ class Auth {
     public function log_out() {
         // Destroy and unset active session
         session_destroy();
-        unset($_SESSION['login_user']);
+        unset($_SESSION);
         return true;
     }
 
@@ -43,7 +60,7 @@ class Auth {
         $token = $data[1];
         $ch = curl_init();
         //Set the URL that you want to GET by using the CURLOPT_URL option.
-        curl_setopt($ch, CURLOPT_URL, "http://localhost:8000/api/authcheck/{$provider}/{$token}");
+        curl_setopt($ch, CURLOPT_URL, "https://auth.techteel.com/api/authcheck/{$provider}/{$token}");
         
         //Set CURLOPT_RETURNTRANSFER so that the content is returned as a variable.
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -57,9 +74,8 @@ class Auth {
         //Close the cURL handle.
         curl_close($ch);
         $res = json_decode($result);
-        //var_dump($result); die();
-        //Save User data to settings.json
-        $dir = "./src/config/settings.json";
+        //Save User data to auth.json
+        $dir = "./src/config/auth.json";
         $check_settings = FileSystem::read($dir);
         if(!$check_settings) {
             $json_user = FileSystem::write($dir, $result);
@@ -83,5 +99,10 @@ class Auth {
             }
         }  
         return $auth_response;  
+    }
+
+    public function redirect($location)
+    {
+        header('Location:'.$location);
     }
 }

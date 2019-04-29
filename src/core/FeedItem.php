@@ -32,7 +32,7 @@ use \DateTime;
  * @author          Anis uddin Ahmad <anisniit@gmail.com>
  * @link            http://www.ajaxray.com/projects/rss
  */
-class Item
+class FeedItem
 {
     /**
     * Collection of feed item elements

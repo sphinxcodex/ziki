@@ -77,11 +77,12 @@
                     </div>
                     <script>
                         window.addEventListener('load', function () {
-                            
+
                             //handle filter
                             var theme_cont = document.querySelector('.themes-cont');
                             var theme_list = document.querySelectorAll('.themes-cont div.theme-item'); //each theme div
                             var search_input = document.querySelector('.search-box');
+                            var badge = document.querySelector('.badge-round');
 
                             //not found temp 
                             var notfound = document.createElement('p');
@@ -92,6 +93,7 @@
                             search_input.addEventListener('keyup', function(e){
                                 var value = e.target.value.trim().toLowerCase();
                                 var found = false;
+                                var count = 0;
 
                                 //first remove notfound template if exist
                                 (theme_cont.contains(notfound) ? theme_cont.removeChild(notfound) : null);
@@ -101,10 +103,13 @@
                                     if(name.includes(value)){ //check if the value exist in each theme name
                                         elem.classList.remove('hide');
                                         found = true;
+                                        count += 1;
                                     }else{
                                         elem.classList.add('hide');
                                     }
                                 });
+
+                                badge.innerText = count;
                                 //if no theme match
                                 !found ? theme_cont.appendChild(notfound) : (theme_cont.contains(notfound) ? theme_cont.removeChild(notfound) : null);
                             });
