@@ -7,6 +7,20 @@ class Auth {
     /**
      * This function will get the auth details from specified url
      */
+
+    public static function isInstalled()
+    {
+        $dir = "./src/config/auth.json";
+        $check_settings = FileSystem::read($dir);
+        if(!$check_settings) {
+            $install = true;
+        }
+        else{
+            $install = false;
+        }
+        return $install;
+    }
+
     public static function getAuth($data, $role){
         $user['name'] = $data->name;
         $user['email'] = $data->email;
