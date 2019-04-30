@@ -44,7 +44,7 @@
     let url = `https://auth.techteel.com/api/login/email?address=${param}?domain=${host}`;
     fetch(url)
       .then((res) => { return res.json() })
-      .then((data) => { 
+      .then((data) => {
         console.log(data)
           form_l.style.display = 'none';
           congrat.style.display = 'block';
@@ -92,7 +92,6 @@
     if (newPostIsBeingCreated) {
       // get all imageURIs in the document
       const imageURIs = markdown.match(/\!\[\]\(data:image\/\w+;base64,[^)]*\)/g);
-      console.log(imageURIs);
       // are there images in the blog post?
       if (imageURIs) {
         imageURIs.forEach(imageURI => {
@@ -105,19 +104,15 @@
           formData.set(newImgName, uri);
         });
       }
-
-      
     }
 
     formData.set('postVal', markdown);
-      var getit = formData.entries();
-      for(var el of getit){
-        console.log(el);
-      }
+
     // get tags
     const selected = document.querySelectorAll('#new-post-tags option:checked');
     const selectedTags = Array.from(selected).map(el => el.value);
     formData.set('tags', selectedTags);
+
     // send the form data
     fetch(newPostIsBeingCreated ? '/publish' : '/draft', {
       method: 'POST',
