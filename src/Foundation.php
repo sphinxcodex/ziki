@@ -12,6 +12,7 @@ class Foundation
         $this->basePath = $basePath;
         $this->loadConfig();
         $this->loadTemplate();
+        $this->loadInstaller();
         $this->bootstrapRouter();
     }
 
@@ -25,6 +26,12 @@ class Foundation
     {
         $templatePath = $this->basePath . DIRECTORY_SEPARATOR . 'resources/themes' . DIRECTORY_SEPARATOR . THEME . DIRECTORY_SEPARATOR . 'templates';
         $this->template = new Core\Template($templatePath);
+    }
+
+    private function loadInstaller()
+    {
+        $templatePath = $this->basePath . DIRECTORY_SEPARATOR . 'resources/installation';
+        $this->installer = new Core\Installer($templatePath);
     }
 
     private function bootstrapRouter()
