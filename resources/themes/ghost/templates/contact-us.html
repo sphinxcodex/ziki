@@ -169,6 +169,13 @@
                                 <div class="col-1 text-right"><a id="closebtn" href="javascript:void(0)" style="text-decoration:none;color:#111;">&times;</a></div>
                             </div>
                     </div>
+                    {% elseif message.ownerEmailNotProvided %}
+                    <div class="alert alert-info" id="msgContainer" style="margin-top:20px;">
+                        <div class="row">
+                            <div class="col-11">Oops,Sorry you can't send your feedback yet!</div>
+                            <div class="col-1 text-right"><a id="closebtn" href="javascript:void(0)" style="text-decoration:none;color:#111;">&times;</a></div>
+                        </div>
+                    </div>
                     {% endif %}
                     <form class="contact-us-form mt-5" action="/send" method="POST">
                         <div class="form-group">

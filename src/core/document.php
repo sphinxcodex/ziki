@@ -30,6 +30,7 @@ class Document
     }
 
     //for creating markdown files
+    //kjarts code here
     public function create($title, $content,$tags,$image)
     {
         $time = date("F j, Y, g:i a");
@@ -42,7 +43,7 @@ class Document
         $yaml = $markdown->getYAML();
         $html = $markdown->getContent();
         $this->createRSS();
-        $doc = FileSystem::write($this->file, $yaml . "\n" . $html);
+        //$doc = FileSystem::write($this->file, $yaml . "\n" . $html);
 
         $yamlfile = new Doc();
         $yamlfile['title'] = $title;
@@ -56,7 +57,6 @@ class Document
     }
         if(!empty($image)){
             foreach($image as $key => $value){
-            $yamlfile[$key] = $image[$key];
             $decoded = base64_decode($image[$key]);
             $url = "./storage/images/".$key;
             FileSystem::write($url,$decoded);
@@ -117,7 +117,8 @@ class Document
         }
     }
 
-    //
+    //kjarts code for getting and creating markdown files end here
+    
     public function fetchAllRss()
     {
         $rss = new \DOMDocument();
@@ -278,6 +279,7 @@ class Document
         }
         return $posts;
     }
+    //code for returnng details of each codes
     public function getEach($id)
     {
         $finder = new Finder();
@@ -296,6 +298,10 @@ class Document
                 $slug = $parsedown->text($yaml['slug']);
                 $slug = preg_replace("/<[^>]+>/", '', $slug);
                 if ($slug == $id) {
+                    $title = $parsedown->text($yaml['title']);
+                    $bd = $parsedown->text($body);
+                    $time = $parsedown->text($yaml['timestamp']);
+                    $url = $parsedown->text($yaml['post_dir']);
                     $content['title'] = $title;
                     $content['body'] = $bd;
                     $content['url'] = $url;
@@ -306,6 +312,7 @@ class Document
             return $posts;
         }
     }
+    //end of get a post function
 
 /* Working on draft by devmohy */
 //for creating markdown files
@@ -402,21 +409,29 @@ public function createDraft($title, $content,$tags)
                     $body = $document->getContent();
                     //$document = FileSystem::read($this->file);
                     $parsedown  = new Parsedown();
-                    $slug = $parsedown->text($yaml['slug']);
-                    $slug = preg_replace("/<[^>]+>/", '', $slug);
-                    if ($slug == $id) {
-                        $content['title'] = $title;
-                        $content['body'] = $bd;
-                        $content['url'] = $url;
-                        $content['timestamp'] = $time;
-                        array_push($posts, $content);
+                        $tags = $yaml['tags']; 
+                       for($i = 0; $i<count($tags); $i++){
+                            if($tags[$i] == $id){
+                            $slug = $parsedown->text($yaml['slug']);
+                            $title = $parsedown->text($yaml['title']);
+                            $bd = $parsedown->text($body);
+                            $time = $parsedown->text($yaml['timestamp']);
+                            $url = $parsedown->text($yaml['post_dir']);
+                            $content['title'] = $title;
+                            $content['body'] = $bd;
+                            $content['url'] = $url;
+                            $content['timestamp'] = $time;
+                            array_push($posts, $content);
+                            array_push($posts,$tags);
+                            }
+                        }
+                       
                     }
-                }
                 return $posts;
             }
         }
     
-    //deletepost
+    //kjarts code for deleting post 
     public function delete($id)
     {
         $finder = new Finder();
