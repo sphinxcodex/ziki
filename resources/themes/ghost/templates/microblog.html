@@ -1,0 +1,190 @@
+{% set title = "Micro Blog"%}
+{% extends 'layout.html' %} {% block page_content%}
+
+<style>
+    :root {
+        --primary-color: #280a66;
+        --mb-text-color: #7a7a7a;
+        --mb-title: #000000;
+    }
+
+    .mb-content {
+        color: var(--mb-text-color);
+        font-size: 18px;
+        line-height: 1.4em;
+    }
+
+    .mb-image {
+        object-fit: none;
+        vertical-align: middle;
+    }
+
+    .mb-date {
+        font-size: 14px;
+        color: var(--primary-color);
+    }
+
+    .mb-title {
+        color: #000000;
+        line-height: 1.3em;
+        font-size: 24px;
+    }
+
+    .mb-title:hover {
+        color: #000000;
+        text-decoration: underline;
+    }
+
+    .mb-editlink {
+        font-size: 16px;
+        color: var(--primary-color);
+    }
+
+    .mb-editlink:hover {
+        text-decoration: underline;
+        color: var(--primary-color);
+    }
+
+    .mb-deletelink {
+        color: #c61629;
+        font-size: 16px;
+    }
+
+    .mb-deletelink:hover {
+        color: #c61629;
+        text-decoration: underline;
+    }
+
+    .mb-pagination a {
+        color: var(--primary-color);
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .mb-pagination a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+
+    /* Media Query */
+    @media screen and (max-width: 600px) {
+        .mb-summary {
+            flex-direction: column !important;
+        }
+
+        .mb-image {
+            margin: 0.5rem;
+        }
+    }
+</style>
+
+<div class="container-fluid published-posts">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 the-sidebar">
+
+        </div>
+
+
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 mt-5 pt-2 px-3">
+            <div class="container-fluid w-75 mx-auto my-5">
+                <div class="mb-section">
+                    <div class="mb-summary d-flex flex-row flex-lg-row flex-md-column flex-sm-column my-5">
+                        <div class="pt-4 mr-3"><img src="/resources/themes/ghost/assets/img/mb-1.png" class="mb-image"
+                                alt="mb-1">
+                        </div>
+                        <div class="mb-content">
+                            <div class="mb-date">
+                                2nd April 2019
+                            </div>
+                            <p>The misgivings of life is not extraordinary, don’t you want to fly away. Visitingabia
+                                state was a blessing, i could not have asked for anything better. </p>
+                            <a href="" class="mb-editlink font-weight-bold">Edit</a> <a href=""
+                                class="mb-deletelink ml-3 font-weight-bold">Delete</a>
+                        </div>
+                    </div>
+                    <div class="mb-summary d-flex   my-5">
+
+                        <div class="mb-content">
+                            <div class="mb-date">
+                                2nd April 2019
+                            </div>
+                            <p>Sometimes i miss the lovely sunset not by the riverside lay figures </p>
+                            <a href="" class="mb-editlink font-weight-bold">Edit</a> <a href=""
+                                class="mb-deletelink ml-3 font-weight-bold">Delete</a>
+                        </div>
+                    </div>
+                    <div class="mb-summary d-flex   my-5">
+                        <div class="pt-4 mr-3"><img src="/resources/themes/ghost/assets/img/mb-2.png" class="mb-image"
+                                alt="mb-1">
+                        </div>
+                        <div class="mb-content">
+                            <div class="mb-date">
+                                2nd April 2019
+                            </div>
+                            <a href="" class="mb-title font-weight-bold">Looking For Where To Spend Christmas in the
+                                comform of
+                                your home</a>
+                            <p>The misgivings of life is not extraordinary, don’t you want to fly away. Visitingabia
+                                state was a blessing, i could not have asked for anything better. </p>
+                            <a href="" class="mb-editlink font-weight-bold">Edit</a> <a href=""
+                                class="mb-deletelink ml-3 font-weight-bold">Delete</a>
+                        </div>
+                    </div>
+                    <div class="mb-summary d-flex   my-5">
+
+                        <div class="mb-content">
+                            <div class="mb-date">
+                                2nd April 2019
+                            </div>
+                            <p>Spending christmas with family in a long time and I can’t just wait to see them. My jolly
+                                little little cousins can’t wait to see them all. It’s goign to be an incredible visit.
+                            </p>
+                            <a href="" class="mb-editlink font-weight-bold">Edit</a> <a href=""
+                                class="mb-deletelink ml-3 font-weight-bold">Delete</a>
+                        </div>
+                    </div>
+                    <div class="mb-summary d-flex   my-5">
+
+                        <div class="mb-content">
+                            <div class="mb-date">
+                                2nd April 2019
+                            </div>
+                            <p>Spending christmas with family in a long time and I can’t just wait to see them. My jolly
+                                little little cousins can’t wait to see them all. It’s goign to be an incredible visit.
+                            </p>
+                            <a href="" class="mb-editlink font-weight-bold">Edit</a> <a href=""
+                                class="mb-deletelink ml-3 font-weight-bold">Delete</a>
+                        </div>
+                    </div>
+                    <div class="mb-summary d-flex flex-row flex-lg-row flex-md-column flex-sm-column my-5">
+                        <div class="pt-4 mr-3"><img src="/resources/themes/ghost/assets/img/mb-1.png" class="mb-image"
+                                alt="mb-1">
+                        </div>
+                        <div class="mb-content">
+                            <div class="mb-date">
+                                2nd April 2019
+                            </div>
+                            <p>The misgivings of life is not extraordinary, don’t you want to fly away. Visitingabia
+                                state was a blessing, i could not have asked for anything better. </p>
+                            <a href="" class="mb-editlink font-weight-bold">Edit</a> <a href=""
+                                class="mb-deletelink ml-3 font-weight-bold">Delete</a>
+                        </div>
+                    </div>
+                    <div class="mb-summary d-flex   my-5">
+                        <div class="mb-content">
+                            <div class="mb-date">
+                                2nd April 2019
+                            </div>
+                            <a href="" class="mb-title font-weight-bold">Looking For Where To Spend Christmas in the
+                                comform of
+                                your home</a>
+                            <p>The misgivings of life is not extraordinary, don’t you want to fly away. Visitingabia
+                                state was a blessing, i could not have asked for anything better. </p>
+                            <a href="" class="mb-editlink font-weight-bold">Edit</a> <a href=""
+                                class="mb-deletelink ml-3 font-weight-bold">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-pagination">
+                    <a href="">Next>>></a> <a href="" class="d-none">
+                        <<< Prev </a> </div> </div> </div> </div> </div> {% endblock page_content %}
