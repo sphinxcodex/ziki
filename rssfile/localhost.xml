@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule">
+<channel>
+<title>Elijah feeds</title>
+<link>https://github.com/mibe/FeedWriter</link>
+<description><![CDATA[feeds below.]]></description>
+<image><title>ing &amp; Checking the Feed Writer project</title>
+<link>https://github.com/mibe/FeedWriter</link>
+<url>https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Rss-feed.svg/256px-Rss-feed.svg.png</url>
+</image>
+<language>en-US</language>
+<lastBuildDate>Mon, 22 Apr 2019 10:13:55 +0000</lastBuildDate>
+<pubDate>Sat, 06 Apr 2013 00:00:00 +0000</pubDate>
+<skipDays>
+<day>Saturday</day>
+<day>Sunday</day>
+</skipDays>
+<atom:link href="http://example.com/myfeed" rel="self" type="application/rss+xml"></atom:link>
+<atom:link href="http://pubsubhubbub.appspot.com" rel="hub"></atom:link>
+<creativeCommons:license>http://www.creativecommons.org/licenses/by/1.0</creativeCommons:license>
+<generator>FeedWriter</generator>
+<item>
+<title>&lt;h1&gt;Welcome To Ziki&lt;/h1&gt;</title>
+<link>http://www.example.com</link>
+<description><![CDATA[<p><em>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indus]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">http://example.com/URL/to/article</guid>
+<source url="http://www.example.com">Mike's page</source>
+</item>
+<item>
+<title>&lt;h1&gt;Welcome To Ziki Test&lt;/h1&gt;</title>
+<link>http://www.example.com</link>
+<description><![CDATA[<p><em>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indus]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">http://example.com/URL/to/article</guid>
+<source url="http://www.example.com">Mike's page</source>
+</item>
+<item>
+<title>&lt;h1&gt;We Ride on Dragon&lt;/h1&gt;</title>
+<link>http://www.example.com</link>
+<description><![CDATA[<p><em>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indus]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>okoelijah@gmail.com (elijah okokon)</author>
+<guid isPermaLink="true">http://example.com/URL/to/article</guid>
+<source url="http://www.example.com">Mike's page</source>
+</item>
+</channel>
+</rss>

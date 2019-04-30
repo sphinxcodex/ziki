@@ -7,7 +7,6 @@ use KzykHys\FrontMatter\Document as Doc;
 use Symfony\Component\Finder\Finder;
 
 use Parsedown;
-
 /**
  *	The Document class holds all properties and methods of a single page document.
  *
@@ -169,6 +168,7 @@ class Document
     //store rss
     public function createRSS()
     {
+
         //  date_default_timezone_set('UTC');
         $Feed = new RSS2;
         // Setting some basic channel elements. These three elements are mandatory.
@@ -229,7 +229,6 @@ class Document
             }
             $myFeed = $Feed->generateFeed();
 
-            $handle = fopen("storage/rss/rss.xml", "w");
             fwrite($handle, $myFeed);
             fclose($handle);
         } else {
@@ -301,5 +300,5 @@ class Document
     //deletepost
     public function delete()
     { }
-   
+
 }
