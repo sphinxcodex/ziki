@@ -239,6 +239,6 @@ Router::post('/api/upload-image', function() {
 });
 
 Router::get('/install', function($request) {
-    return $this->installer->render('lucid-installation.html');
+    return $this->installer->render('install.html');
 });
 

@@ -4,241 +4,216 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{title | default("Install Lucid")}}</title>
+    <title>install Lucid</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet" />
-  </head>
-  <body>
-    <h1>helloWorld.lucid();</h1>
-
-    <!-- <style>
-      .ziki-logo {
-        margin: 3rem auto;
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,700,900"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
       }
-    
-      .step-2-form {
-        background-color: rgba(40, 10, 102, 0.05);
+      .logo {
+        margin: 3rem 0 0;
         text-align: center;
+      }
+
+      .main {
+        padding: 1rem 3rem;
+        width: 85%;
+        margin: 0 auto 3rem;
+        background: rgba(40, 10, 102, 0.05);
+        border-radius: 10px;
+      }
+      .welcome-text {
+        font-weight: bold;
+        text-align: center;
+        color: #280a66;
+      }
+      .description-text {
+        text-align: center;
+        width: 70%;
+        margin: auto;
+      }
+      .indicator {
+        margin-top: 10px;
+        border-bottom: 0.5px solid #717171;
+      }
+      .purple {
+        color: #280a66;
+      }
+      .step-form {
         width: 90%;
         margin: auto;
-        padding: 1rem;
       }
-    
       input,
       select {
-        outline: none;
-        border-radius: 10px;
-        border-color: transparent;
-        line-height: 2;
-        background-color: #ffffff;
-        margin-bottom: 1rem;
-        height: 55px;
         color: #717171;
-        padding-left: 1rem;
+        background: #ffffff;
+        padding: 0.6rem 0.8rem;
+        border: none;
+        border-radius: 0.5rem;
       }
-    
-      select {
-        background-image: url(jjkk)
+      ::placeholder {
+        color: #717171;
       }
-    
-      .co-deep-purple {
-        color: #280A66;
+      .names * {
+        width: 45%;
       }
-    
-      .width-20pc {
-        width: 20%;
+      .username-role * {
+        width: 45%;
       }
-    
-      .width-60pc {
-        width: 60%;
-        margin: auto;
-      }
-    
-      .width-75pc {
-        width: 75%;
-      }
-    
-      .width-80pc {
-        width: 90%;
-        margin: auto;
-      }
-    
-      .width-100pc {
+      .e-mail {
         width: 100%;
       }
-    
-      .num {
-        line-height: .5;
-        border: 2px solid #280A66;
-        border-radius: 100%;
-        padding: .5rem;
+      .divider {
+        color: #717171;
       }
-    
-      button {
-        background-color: #3B0E75;
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex-grow: 1;
+        background: #717171;
+        height: 1px;
+        font-size: 0;
+        line-height: 0;
+      }
+      .divider span {
+        margin: 0 2rem;
+      }
+      .social-auth {
+        box-sizing: border-box;
+        width: 45%;
+        border: none;
+        border-radius: 0.5rem;
+        height: 60px;
+      }
+      .social-auth i {
+        font-size: 1.7rem;
         color: #ffffff;
-        border-radius: 5px;
-        padding: 1rem 2rem;
+        padding: 1rem;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
       }
-    
-      .check {
-        /* outline: 2px solid #000000 */
+      .social-auth button {
+        background: transparent;
+        color: #ffffff;
+        width: 100%;
+        border: none;
       }
-    
-      .terms {
-        display: grid;
+      .facebook-auth {
+        background: rgba(71, 89, 147, 0.81);
       }
-    
-      .terms input {
-        margin: auto;
+      .facebook-auth i {
+        background: #475993;
       }
-    
-      /**media queries**/
-      @media screen and (min-width: 768px) {
-        .ziki-logo {}
-    
-        .step-2-form {
-          padding: 2rem;
-        }
-    
-        .terms {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin: auto;
-          width: 45%;
-        }
-    
-        .terms p {
-          margin: 0;
-        }
+      .google-auth {
+        background: rgba(241, 67, 54, 0.8);
       }
-    
-      @media screen and (min-width: 1024px) {
-        .step-2-form {
-          width: 70%;
-        }
-    
-        .set {
-          width: 60%;
-          margin: auto auto 3rem auto;
-        }
-    
-        .last {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
+      .google-auth i {
+        background: #f14336;
       }
     </style>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="ziki-logo">
-          <a href="https://ziki.hng.tech">
-            <img src="https://res.cloudinary.com/softcom/image/upload/v1556381807/softcom%20pen/Vector.png" alt="ziki logo"
-              class="" />
-    
-          </a>
-          <p>
-            ZIKI
-          </p>
-        </div>
-      </div>
-      <section class="step-2-form">
-        <div>
-          <h4 class="co-deep-purple">
-            Welcome to Ziki Installation guide
-          </h4>
-          <p class="set">
-            Setting up Ziki on your domain is a very easy process! Fill in the information below and your Site will be up
-            and running with Ziki in no time.
-          </p>
-        </div>
-        <div class="d-flex justify-content-between border-bottom">
-          <div class="d-flex">
-            <p class="num mr-2">
-              2
-            </p>
-            <p class="co-deep-purple">
-              Site Information
-            </p>
+  </head>
+  <body>
+    <div class="d-flex flex-column container-fluid">
+      <a class="logo" href="https://ziki.hng.tech">
+        <img
+          src="https://res.cloudinary.com/softcom/image/upload/v1556381807/softcom%20pen/Vector.png"
+          alt="ziki logo"
+          class=""
+        />
+      </a>
+      <h2 style="text-align:center">Lucid</h2>
+      <div class="main">
+        <h3 class="welcome-text">Welcome to Lucid Installation guide</h3>
+        <h6 class="description-text">
+          Setting up Lucid on your domain is a very easy process! Fill in the
+          information below and your site will be up and running with lucid in
+          no time
+        </h6>
+        <form action="" id="installForm">
+          <div class="indicator d-flex justify-content-around">
+            <!-- this would be set dynamically later on -->
+            <span class="purple">1</span>
+            <p class="purple">Pofile Information</p>
+            <span class="purple">1of2</span>
           </div>
-          <p>
-            2 of 2
-          </p>
-        </div>
-        <p class="small">
-          Don’t worry, these settings can always be changed later
-        </p>
-        <form action="">
-          <div class="d-flex justify-content-between">
-            <input type="url" name="Domain Url" placeholder="Domain Url" class="width-75pc">
-            <select name="" id="" class="width-20pc">
-              <option value="">
-                .com
-              </option>
-              <option value="">
-                .net
-              </option>
-              <option value="">
-                .org
-              </option>
-              <option value="">
-                .io
-              </option>
-            </select>
+          <!-- this too -->
+          <p>This contains your admin information and details</p>
+          <div class="step-form">
+            <div
+              class="d-flex flex-wrap justify-content-between names mt-4 mb-4"
+            >
+              <input
+                type="text"
+                name="firstname"
+                id="firstName"
+                placeholder="FirstName"
+              />
+              <input
+                type="text"
+                name="lastname"
+                id="lastName"
+                placeholder="LastName"
+              />
+            </div>
+
+            <div
+              class="d-flex flex-wrap justify-content-between username-role mt-4 mb-4"
+            >
+              <input
+                type="text"
+                name="username"
+                id="userName"
+                placeholder="UserName"
+              />
+              <select name="role" id="role">
+                <option value="Site Administrator">Site Administrator</option>
+              </select>
+            </div>
+            <div class="d-flex mt-4 mb-4">
+              <input
+                class="e-mail"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+              />
+            </div>
+            <div class="mt-5 mb-5 divider d-flex align-items-center">
+              <span>OR</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div
+                class="facebook-auth social-auth d-flex justify-content-between"
+              >
+                <i class="fab fa-facebook-square"></i>
+                <button>Sign Up with Facebook</button>
+              </div>
+              <div
+                class="google-auth social-auth d-flex justify-content-between"
+              >
+                <i class="fab fa-google"></i>
+                <button>Sign Up with Google</button>
+              </div>
+            </div>
           </div>
-          <input type="url" name="Domain Url" placeholder="Site Tagline" class="width-100pc">
-          <select name="" id="" class="width-100pc">
-            <option value="">
-              Language
-            </option>
-            <option value="">
-              English
-            </option>
-            <option value="">
-              French
-            </option>
-            <option value="">
-              Spanish
-            </option>
-          </select>
-          <select name="" id="" class="width-100pc">
-            <option value="">
-              Country
-            </option>
-            <option value="">
-              Nigeria
-            </option>
-            <option value="">
-              Spain
-            </option>
-            <option value="">
-              America
-            </option>
-          </select>
         </form>
-        <div class="terms">
-          <input type="checkbox" name="" id="" class="check">
-          <p>
-            Accept Ziki Terms and Conditions
-          </p>
-        </div>
-        <div class="last">
-          <div>
-    
-            Back to Profile Information
-          </div>
-          <button class="mt-1">
-            Install Ziki
-          </button>
-        </div>
-      </section>
-    </div> -->
+      </div>
+    </div>
   </body>
 </html>
