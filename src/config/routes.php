@@ -217,4 +217,3 @@ Router::get('/api/images', function() {
 Router::post('/api/upload-image', function() {
     return (new Ziki\Core\UploadImage)->upload();
 });
-  
