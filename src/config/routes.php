@@ -1,6 +1,6 @@
 <?php
 use Ziki\Http\Router;
-session_start();
+//session_start();
 Router::get('/about/{id}', function($request,$id) {
      return $this->template->render('about-us.html');
 });
@@ -115,12 +115,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
-      $directory = "./storage/contents/";
-      $ziki = new Ziki\Core\Document($directory);
-      $feed = $ziki->fetchAllRss();
+//      $directory = "./storage/contents/";
+//      $ziki = new Ziki\Core\Document($directory);
+//      $feed = $ziki->fetchAllRss();
       // Render our view
       //print_r($feed);
-      return $this->template->render('timeline.html',['posts' => $feed] );
+//      return $this->template->render('timeline.html',['posts' => $feed] );
   });
 }
 Router::get('/contact-us', function($request) {
@@ -209,6 +209,13 @@ Router::get('/drafts', function($request) {
         return $user->redirect('/');
     }
     return $this->template->render('drafts.html');
+});
+Router::get('/videos', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
+    return $this->template->render('videos.html');
 });
 Router::get('/about', function($request) {
     return $this->template->render('about-us.html');
