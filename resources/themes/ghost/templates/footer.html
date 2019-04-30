@@ -95,13 +95,13 @@
       // are there images in the blog post?
       if (imageURIs) {
         imageURIs.forEach(imageURI => {
-          const [match, ext, uri] = imageURI.match(/\!\[\]\(data:image\/(\w+);base64,([^)]*)\)/);
+          const [, fullURI, ext, uriData] = imageURI.match(/\!\[\]\((data:image\/(\w+);base64,([^)]*))\)/);
           const id = Math.random().toString(36).substr(2, 10);
           const newImgName = `img-${id}.${ext}`;
           // replace the image URI in the markdown
-          markdown = markdown.replace(match, newImgName);
+          markdown = markdown.replace(fullURI, `/storage/images/${newImgName}`);
           // add this info to the form data being sent to the backend
-          formData.set(newImgName, uri);
+          formData.set(newImgName, uriData);
         });
       }
     }
