@@ -30,6 +30,33 @@
     });
 </script>
 
+<!--Email login modal-->
+
+<script>
+  const $ = document.querySelector.bind(document)
+  let congrat = $('.login-mail-sent')
+  let form_l = $('.login-form')
+  let message = $('.magic-msg')
+  congrat.style.display = 'none';
+  let sendEmail = () => {
+    let param = $('.email-input').value;
+    let host = $('.host').value;
+    let url = `https://auth.techteel.com/api/login/email?address=${param}?domain=${host}`;
+    fetch(url)
+      .then((res) => { return res.json() })
+      .then((data) => { 
+        console.log(data)
+          form_l.style.display = 'none';
+          congrat.style.display = 'block';
+          message.innerHTML = "Magic link sent successfully, check your email.";
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  };
+  $('.email-login-button').addEventListener('click', sendEmail);
+</script>
+
 <!-- Convert to markdown script -->
 <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" integrity="sha256-LSUpTY0kkXGKvcBC9kbmgibmx3NVVgJvAEfTZbs51mU=" crossorigin="anonymous"></script> -->
@@ -64,11 +91,12 @@
     const newPostIsBeingCreated = event.target instanceof HTMLFormElement;
     if (newPostIsBeingCreated) {
       // get all imageURIs in the document
-      const imageURIs = markdown.match(/data:image\/\w+;base64,.*==/g);
+      const imageURIs = markdown.match(/\!\[\]\(data:image\/\w+;base64,[^)]*\)/g);
+      console.log(imageURIs);
       // are there images in the blog post?
       if (imageURIs) {
         imageURIs.forEach(imageURI => {
-          const [match, ext, uri] = imageURI.match(/data:image\/(\w+);base64,(.*==)/);
+          const [match, ext, uri] = imageURI.match(/\!\[\]\(data:image\/(\w+);base64,([^)]*)\)/);
           const id = Math.random().toString(36).substr(2, 10);
           const newImgName = `img-${id}.${ext}`;
           // replace the image URI in the markdown
@@ -77,15 +105,19 @@
           formData.set(newImgName, uri);
         });
       }
+
+      
     }
 
     formData.set('postVal', markdown);
-
+      var getit = formData.entries();
+      for(var el of getit){
+        console.log(el);
+      }
     // get tags
     const selected = document.querySelectorAll('#new-post-tags option:checked');
     const selectedTags = Array.from(selected).map(el => el.value);
     formData.set('tags', selectedTags);
-
     // send the form data
     fetch(newPostIsBeingCreated ? '/publish' : '/draft', {
       method: 'POST',
