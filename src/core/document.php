@@ -57,7 +57,6 @@ class Document
     }
         if(!empty($image)){
             foreach($image as $key => $value){
-            $yamlfile[$key] = $image[$key];
             $decoded = base64_decode($image[$key]);
             $url = "./storage/images/".$key;
             FileSystem::write($url,$decoded);
@@ -299,6 +298,10 @@ class Document
                 $slug = $parsedown->text($yaml['slug']);
                 $slug = preg_replace("/<[^>]+>/", '', $slug);
                 if ($slug == $id) {
+                    $title = $parsedown->text($yaml['title']);
+                    $bd = $parsedown->text($body);
+                    $time = $parsedown->text($yaml['timestamp']);
+                    $url = $parsedown->text($yaml['post_dir']);
                     $content['title'] = $title;
                     $content['body'] = $bd;
                     $content['url'] = $url;
@@ -406,16 +409,24 @@ public function createDraft($title, $content,$tags)
                     $body = $document->getContent();
                     //$document = FileSystem::read($this->file);
                     $parsedown  = new Parsedown();
-                    $slug = $parsedown->text($yaml['slug']);
-                    $slug = preg_replace("/<[^>]+>/", '', $slug);
-                    if ($slug == $id) {
-                        $content['title'] = $title;
-                        $content['body'] = $bd;
-                        $content['url'] = $url;
-                        $content['timestamp'] = $time;
-                        array_push($posts, $content);
+                        $tags = $yaml['tags']; 
+                       for($i = 0; $i<count($tags); $i++){
+                            if($tags[$i] == $id){
+                            $slug = $parsedown->text($yaml['slug']);
+                            $title = $parsedown->text($yaml['title']);
+                            $bd = $parsedown->text($body);
+                            $time = $parsedown->text($yaml['timestamp']);
+                            $url = $parsedown->text($yaml['post_dir']);
+                            $content['title'] = $title;
+                            $content['body'] = $bd;
+                            $content['url'] = $url;
+                            $content['timestamp'] = $time;
+                            array_push($posts, $content);
+                            array_push($posts,$tags);
+                            }
+                        }
+                       
                     }
-                }
                 return $posts;
             }
         }

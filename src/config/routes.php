@@ -41,7 +41,13 @@ Router::get('/timeline', function($request) {
     $post = $ziki->fetchAllRss();
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
+Router::get('/tags{id}', function($request,$id) {
 
+    $directory = "./storage/contents/";
+    $ziki = new Ziki\Core\Document($directory);
+    $result = $ziki->update($id);
+    return $this->template->render('timeline.html', ['posts' => $result] );
+});
 Router::post('/publish', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
