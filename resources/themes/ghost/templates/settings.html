@@ -1,41 +1,13 @@
 {% set title = "Themes"%}
 {% extends 'layout.html' %} {% block page_content%}
+
 <!-- content goes here -->
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <!-- for the sidebar -->
-        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3 offset-lg-4 offset-md-4 offset-sm-12 offset-xs-12">
 
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3">
-
-            <!-- for any other part of the page -->
-            <div class="row themes-header d-flex flex-row justify-content-between pt-5 pb-1 flex-nowrap">
-                <div class="col themesnav-area">
-                    <nav class="navbar pb-0 row">
-                        <ul class="d-flex flex-row navbar-nav col-12">
-                            <li class="p-3">
-                                <a href="/profile" class="themes-top-link">Profile</a>
-                            </li>
-                            <li class="p-3 active">
-                                <a href="/themes" class="themes-top-link">Themes</a>
-                            </li>
-                            <li class="p-3">
-                                <a href="/subscriptions" class="themes-top-link">
-                                    <span class="follow-numbers">76</span> Subscriptions
-                                </a>
-                            </li>
-                            <li class="p-3">
-                                <a href="/subscribers" class="themes-top-link ">
-                                    <span class="follow-numbers">52</span> Subscribers
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
-            </div>
+            {% include "navtabs.html" with {'current_page': 'settings'} %}
 
             <div class="row themes-main py-2">
                 <div class="col themes-content-area pb-5 mt-5 mr-3">
@@ -77,11 +49,12 @@
                     </div>
                     <script>
                         window.addEventListener('load', function () {
-                            
+
                             //handle filter
                             var theme_cont = document.querySelector('.themes-cont');
                             var theme_list = document.querySelectorAll('.themes-cont div.theme-item'); //each theme div
                             var search_input = document.querySelector('.search-box');
+                            var badge = document.querySelector('.badge-round');
 
                             //not found temp 
                             var notfound = document.createElement('p');
@@ -92,6 +65,7 @@
                             search_input.addEventListener('keyup', function(e){
                                 var value = e.target.value.trim().toLowerCase();
                                 var found = false;
+                                var count = 0;
 
                                 //first remove notfound template if exist
                                 (theme_cont.contains(notfound) ? theme_cont.removeChild(notfound) : null);
@@ -101,10 +75,13 @@
                                     if(name.includes(value)){ //check if the value exist in each theme name
                                         elem.classList.remove('hide');
                                         found = true;
+                                        count += 1;
                                     }else{
                                         elem.classList.add('hide');
                                     }
                                 });
+
+                                badge.innerText = count;
                                 //if no theme match
                                 !found ? theme_cont.appendChild(notfound) : (theme_cont.contains(notfound) ? theme_cont.removeChild(notfound) : null);
                             });
