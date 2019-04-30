@@ -5,43 +5,19 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <!-- for the sidebar -->
-    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3 offset-lg-4 offset-md-4 offset-sm-12 offset-xs-12">
 
-    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3">
-      <!-- for any other part of the page -->
-      <div class="row profile-header d-flex flex-row justify-content-between pt-5 pb-1 px-3 flex-nowrap">
-        <div class="col profilenav-area">
-          <nav class="navbar pb-0 row">
-            <ul class="d-flex flex-row navbar-nav col-12">
-              <li class="p-3 active">
-                <a href="/profile" class="profile-top-link">Profile</a>
-              </li>
-              <li class="p-3"><a href="/themes" class="profile-top-link">Themes</a></li>
-              <li class="p-3"><a href="/following" class="profile-top-link"><span class="follow-numbers">76
-                  </span>Following</a>
-              </li>
-              <li class="p-3"><a href="/followers" class="profile-top-link "><span class="follow-numbers">52</span>
-                  Followers</a></li>
-            </ul>
-          </nav>
-        </div>
-
-      </div>
+      {% include "navtabs.html" with {'current_page': 'profile'} %}
 
       <div class="row profile-main py-2">
-        <div class="col profile-content-area p-1 pb-5 m-5">
-          <h3 class="px-5 profile-edit-title">Profile</h3>
+        <div class="col profile-content-area p-1 pb-5 mt-5 mr-3">
+          <h3 class="px-5 py-2 profile-edit-title">Profile</h3>
           <div class="row px-5 pt-2 pb-5">
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 profile-dp-container text-center">
-              <a href="" class="profile-dp-link mx-auto"> <img src="/resources/themes/ghost/assets/img/profiledp.png"
-                  class="profile-dp d-block w-100 mx-auto" alt=""></a>
-
-              <!-- Overlay edit icon -->
-              <!-- <div class="edit"><a href="#" class="text-white"><i class="far fa-edit fa-lg"></i></a></div> -->
-
-
+              <figure class="profile-dp-link mx-auto">
+                <input type="file" name="" id="imagefile" accept="image/*" />
+                <img src="/resources/themes/ghost/assets/img/user-icon-placeholder.png" class="profile-dp d-block mx-auto rounded-circle" alt="profile avatar" accept="image/*">
+              </figure>
             </div>
             <div class="col">
               <form class="pb-5">
@@ -68,6 +44,53 @@
 
         </div>
       </div>
+      <script>
+        // handle image upload
+        var defaultImagePath = '/resources/themes/ghost/assets/img/user-icon-placeholder.png';
+        var imageInput = document.getElementById('imagefile');
+        var editPic = document.querySelector('.profile-dp-link img');
+        var profilePic = document.querySelector('.profile-pic');
+
+        imageInput.addEventListener('change', function(){
+          var fileData = this.files[0],
+          fileType = fileData.type,
+          match = ["image/jpeg", "image/png", "image/jpg"];
+
+          if (match.indexOf(fileType) == -1) {
+            alert('Please select a valid image','warning');
+            return false;
+          }else{
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+          }
+
+          //render image preview
+          function imageIsLoaded(e) {
+            editPic.setAttribute('src', e.target.result);
+            profilePic.setAttribute('src', e.target.result);
+            localStorage.setItem("profilepic", e.target.result); //save offline
+            //perform upload in background
+            handleUpload(fileData);
+          };
+
+        });
+
+        function handleUpload(fileData){
+          var formData = new FormData();
+          formData.append("image", fileData);
+          //call upload image api
+          fetch('/api/upload-image', {
+            method: 'POST',
+            body: formData
+          }).then(res => res.json()).then((res) => {
+            //use response to set profile image back
+            console.log(res);
+          }).catch((err) => {
+            alert(`Upload request failed : ${err.message}`);
+          });
+        }
+      </script>
     </div>
   </div>
 </div>

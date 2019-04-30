@@ -571,11 +571,21 @@
     <div class="row">
       <div class="col-12 col-sm-8 mx-md-auto">
         <ul class="pl-0 mt-0">
+          {% if user.role == 'admin' %}
+          <li><a href="/published-posts">Published Posts</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/about">About Ziki</a></li>
+          {% elseif user.role == 'guest' %}
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Ziki</a></li>
+          <li><a href="/contact-us">Contact Me</a></li>
+          {% else %}
           <li><a href="/">Home</a></li>
           <li><a href="/published-posts">Published Posts</a></li>
           <li><a href="/profile">Profile</a></li>
           <li><a href="/about">About Ziki</a></li>
           <li><a href="/contact-us">Contact Me</a></li>
+          {% endif %}
         </ul>
       </div>
       <div class="pl-4 col-12">
@@ -636,11 +646,12 @@
         </div>
 
         <!-- for the login auth -->
-        <div class="login-modal-popup-right-column col-md-6 text-center">
+        <div class="login-modal-popup-right-column col-md-6 text-center login-form">
           <p class="mt-5">LOGIN TO CONTINUE</p>
           <div
             class="signin-btn d-flex justify-content-between email-login-container"
           >
+            <input class="host" type="hidden" value="{{host}}">
             <input
               type="email"
               placeholder="Enter your Email Address"
@@ -675,18 +686,16 @@
           </div>
         </div>
 
-        <!-- for the magic link -->
-        <!--
-          <div class="login-modal-popup-right-column col-md-6 text-center">
+        
+          <div class="login-modal-popup-right-column col-md-6 text-center login-mail-sent">
             <p class=" mt-5 fa-2x">
               Check your Email
             </p>
             <img class="magic-link-img" src="resources/themes/ghost/assets/img/magic-link-img.png" alt="magic link image">
             <p class="magic-msg">
-              A magic link has been sent to your email address
+              
             </p>
           </div>
-        -->
       </div>
     </div>
   </div>
