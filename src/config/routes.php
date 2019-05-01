@@ -169,7 +169,7 @@ Router::get('/published-posts', function($request) {
     }
     return $this->template->render('published-posts.html');
 });
-Router::get('/published-posts', function($request) {
+Router::get('/microblog', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
