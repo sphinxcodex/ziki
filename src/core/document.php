@@ -153,8 +153,10 @@ class Document
     {
         $rss = new \DOMDocument();
         $feed = [];
+        $user = file_get_contents("src/config/auth.json");
+        $user = json_decode($user, true);
         $urlArray = array(
-            array('name' => 'Elijah Okokn', 'url' => 'storage/rss/rss.xml', 'img' => '\/landing\/assets\/img\/black-logo.png'),
+            array('name' => $user['name'], 'url' => 'storage/rss/rss.xml', 'img' => $user['image']),
         );
 
         foreach ($urlArray as $url) {

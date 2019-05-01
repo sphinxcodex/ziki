@@ -11,8 +11,8 @@ Router::get('/', function($request) {
     }
     else{
         $directory = "./storage/contents/";
-        $ziki = new Ziki\Core\Document();
-        $feed = $ziki->fetchRss($directory);
+        $ziki = new Ziki\Core\Document($directory);
+        $feed = $ziki->fetchRss();
         $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
         $host = $user->hash($url);
         // Render our view
@@ -184,7 +184,7 @@ Router::post('/subscriptions', function($request) {
   $list = $ziki->subscription();
   $count = new Ziki\Core\Subscribe();
   $count = $count->count();
-  
+
     return $this->template->render('subscriptions.html', ['sub' => $list, 'count' => $count ] );
 });
 Router::get('/unsubscribe', function($request) {
