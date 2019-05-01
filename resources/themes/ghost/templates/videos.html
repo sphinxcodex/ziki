@@ -2,114 +2,55 @@
 {% extends 'layout.html' %} {% block page_content %}
 
 <style>
-    .published-posts ul {
-        list-style: none;
-    }
 
-    .nav-item .navbar-link.active {
-        border-top: 0 solid #280966 !important;
-        border-right: 0 solid #280966 !important;
-        border-left: 0 solid #280966 !important;
-        border-bottom:4px solid #280966 !important;
-        border-top-left-radius: 0 !important;
-        border-top-right-radius: 0 !important;
+    video-wrapper {
+        width: 1020px;
+        height: auto;
+        margin: 0 auto;
     }
+    video-first {
 
-    .published-posts .nav-item a {
-        color: #5c5c5c;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-        font-size: 20px;
-    }
-
-    .published-posts .nav-item a:hover {
-        color: #280a66;
-        text-decoration: none;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-    }
-
-    .published-posts .nav-item a .active {
-        color: #280a66;
+        width: 200px;
+        height: 200px;
+        float: left;
+        margin-left: auto;
 
     }
 
+    video-second {
 
-    .published-posts .nav-bar {
-        border-bottom: 1px solid #a4a4a4;
+
+        width: 200px;
+        height: 200px;
+        float: right;
+        margin-right: auto;
     }
 
-    .published-posts .post-title a {
-        color: #1b1b1b;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
+    .clear{
+        clear: both;
     }
 
-    .published-posts .post-title a:hover {
-        color: #280a66;
-        text-decoration: none;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-    }
+    @media (max-width:767px) {
+        video-wrapper{
+            width: 100%;
+            height: auto;
 
-    .published-posts .post-author {
-        font-weight: 700;
-        color: #280a66;
-    }
+        }
+        video-first {
+            width: 100%;
+            height: auto;
+            float: none;
+            float: right;
+            border: 100px;
 
-    .published-posts .post-content-summary {
-        color: #717171;
-        font-size: 14px;
-    }
-
-    .published-posts .post-date {
-        color: #717171;
-        font-size: 10px;
-    }
-
-    .published-posts .post-comment a {
-        font-size: 11px;
-        color: #280a66;
-        font-weight: 700;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-    }
-
-    .published-posts .post-comment a:hover {
-        color: #471aa1;
-        text-decoration: none;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-    }
-
-    .published-posts .post-item:after {
-        content: "";
-        display: block;
-        position: relative;
-        width: 120%;
-        border-bottom: 1px solid #ebebeb;
-    }
-
-    .published-posts .logo-on-page {
-        position: relative;
-        top: -0.5em;
-    }
-
-    @media screen and (max-width:700px) {
-        .published-posts .post-item:after {
-            content: "";
-            display: block;
-            position: relative;
-            width: 90%;
-            border-bottom: 1px solid #ebebeb;
         }
 
     }
 </style>
-
-<div class="col-12 col-sm-9 two published-posts">
+<body>
+<div class="col-12 col-sm-9 ">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 the-sidebar">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
 
         </div>
 
@@ -117,67 +58,27 @@
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-5 pt-2">
 
 
-            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-5">
-                <div class="post-item mt-12">
-                    <p class="post-author">Samaila Bala</p>
+            <div class=" video-wrapper row col-12">
+                <div class = "video-first col-6" width="400" height="300"  >
+                    <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4s" width="400px" controls/>
 
-                    <h4 class="post-title">
-                        <a href="#">
-                            Looking For Where To Spend Christmas in the comfort of your home
-                        </a>
-                    </h4>
-
-                    <p class="post-content-summary">
-                        Lorem
-
-                    </p>
-                    <div class="row">
-                        <p class="post-date mb-4 col-6 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
-                        <p class="post-comment mb-4 col-6 d-flex justify-content-end"> <a href="">Comment</a> </p>
-                    </div>
                 </div>
 
+                <br/><br/>
 
-                <div class="post-item mt-3">
-                    <p class="post-author">Samaila Bala</p>
+                <div class = "video-second col-6" width="400" height="300"  >
+                    <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4s"  width="400px" controls/>
 
-                    <h4 class="post-title">
-                        <a href="#">
-                            Looking For Where To Spend Christmas in the comfort of your home
-                        </a>
-                    </h4>
-
-                    <p class="post-content-summary">
-                        Lorem
-                    </p>
-                    <div class="row">
-                        <p class="post-date mb-4 col-6 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
-                        <p class="post-comment mb-4 col-6 d-flex justify-content-end"> <a href="">Comment</a> </p>
-                    </div>
                 </div>
 
-                <div class="post-item mt-3">
-                    <p class="post-author">Samaila Bala</p>
+            </div>
 
-                    <h4 class="post-title">
-                        <a href="#">
-                            Looking For Where To Spend Christmas in the comfort of your home
-                        </a>
-                    </h4>
-
-                    <p class="post-content-summary">
-                        Lorem ipsum
-                    </p>
-                    <div class="row">
-                        <p class="post-date mb-4 col-6 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
-                        <p class="post-comment mb-4 col-6 d-flex justify-content-end"> <a href="">Comment</a> </p>
-                    </div>
-                </div>
 
             </div>
         </div>
     </div>
     <!-- using semantic tags -->
 </div>
+
 
 {% endblock page_content %}
