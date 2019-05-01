@@ -224,7 +224,7 @@ Router::get('/auth/{provider}/{token}', function($request, $token){
         return $user->redirect('/');
     }
     else{
-        return $user->redirect('/settings');
+        return $user->redirect('/timeline');
     }
 });
 Router::get('/setup/{provider}/{token}', function($request, $token){
