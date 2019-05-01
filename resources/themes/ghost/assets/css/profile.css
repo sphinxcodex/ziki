@@ -10,12 +10,12 @@ body {
   --post-summary-border-bottom: #ebebeb;
   --published-post-header: transparent;
   --top-tab-link: #5c5c5c;
-  --profile-edit-form: var(--body-of-blog-bg);
+  --profile-edit-form: #ffffff
   --body-bg: #fff;
   --not-following-btn: transparent;
   --subscribe-header: #313131;
   /* THEMES STYLING */
-  --theme-main-bg: #f9f9f9;
+  --theme-main-bg: #ffffff;
   --switcher-bg: #ccc;
 }
 /* Dark Theme */
@@ -75,7 +75,7 @@ a {
 }
 
 .profile-content-area {
-  background: #ffffff;
+  background: var(--profile-edit-form);
   height: 930px;
 }
 .profile-edit-label {
@@ -133,7 +133,7 @@ a {
 }
 
 .themes-content-area {
-  background: #ffffff;
+  background: var(--theme-main-bg);
   height: 930px;
 }
 
