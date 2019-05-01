@@ -41,10 +41,10 @@
   let sendEmail = () => {
     let param = $('.email-input').value;
     let host = $('.host').value;
-    let url = `https://auth.techteel.com/api/login/email?address=${param}?domain=${host}`;
+    let url = `https://auth.techteel.com/api/login/email?address=${param}&domain=${host}`;
     fetch(url)
       .then((res) => { return res.json() })
-      .then((data) => { 
+      .then((data) => {
         console.log(data)
           form_l.style.display = 'none';
           congrat.style.display = 'block';
@@ -91,33 +91,43 @@
     const newPostIsBeingCreated = event.target instanceof HTMLFormElement;
     if (newPostIsBeingCreated) {
       // get all imageURIs in the document
-      const imageURIs = markdown.match(/\!\[\]\(data:image\/\w+;base64,[^)]*\)/g);
-      console.log(imageURIs);
+      let imageURIs = markdown.match(/\!\[\]\(data:image\/\w+;base64,[^)]*\)/g);
       // are there images in the blog post?
       if (imageURIs) {
+        // remove duplicates
+        imageURIs = imageURIs.reduce((acc, curVal) => {
+          if (!acc.includes(curVal)) acc.push(curVal);
+          return acc;
+        }, []);
+
         imageURIs.forEach(imageURI => {
-          const [match, ext, uri] = imageURI.match(/\!\[\]\(data:image\/(\w+);base64,([^)]*)\)/);
+          const [, fullURI, ext, uriData] = imageURI.match(/\!\[\]\((data:image\/(\w+);base64,([^)]*))\)/);
           const id = Math.random().toString(36).substr(2, 10);
           const newImgName = `img-${id}.${ext}`;
-          // replace the image URI in the markdown
-          markdown = markdown.replace(match, newImgName);
+
+          // replace the image URI everywhere it occurs in the markdown
+          let stillMatching = true;
+          while (stillMatching) {
+            if (markdown.includes(fullURI)) {
+              markdown = markdown.replace(fullURI, `/storage/images/${newImgName}`);
+            } else {
+              stillMatching = false;
+            }
+          }
+
           // add this info to the form data being sent to the backend
-          formData.set(newImgName, uri);
+          formData.set(newImgName, uriData);
         });
       }
-
-      
     }
 
     formData.set('postVal', markdown);
-      var getit = formData.entries();
-      for(var el of getit){
-        console.log(el);
-      }
+
     // get tags
     const selected = document.querySelectorAll('#new-post-tags option:checked');
     const selectedTags = Array.from(selected).map(el => el.value);
     formData.set('tags', selectedTags);
+
     // send the form data
     fetch(newPostIsBeingCreated ? '/publish' : '/draft', {
       method: 'POST',
