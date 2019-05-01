@@ -34,7 +34,7 @@ class Document
     public function create($title, $content,$tags,$image)
     {
         $time = date("F j, Y, g:i a");
-        $unix = strtotime($time); 
+        $unix = strtotime($time);
         // Write md file
         $document = FrontMatter::parse($content);
         $md = new Parser();
@@ -42,7 +42,6 @@ class Document
 
         $yaml = $markdown->getYAML();
         $html = $markdown->getContent();
-        $this->createRSS();
         //$doc = FileSystem::write($this->file, $yaml . "\n" . $html);
 
         $yamlfile = new Doc();
@@ -62,8 +61,8 @@ class Document
             FileSystem::write($url,$decoded);
         }
     }
-       
-        
+
+
         $yamlfile['post_dir'] = SITE_URL . "/storage/contents/{$unix}";
         $striped = str_replace(' ', '-', $title);
         $yamlfile['slug'] = $striped . "-{$unix}";
@@ -76,6 +75,7 @@ class Document
         $doc = FileSystem::write($dir, $yaml);
         if ($doc) {
             $result = array("error" => false, "message" => "Post published successfully");
+            $this->createRSS();
         } else {
             $result = array("error" => true, "message" => "Fail while publishing, please try again");
         }
@@ -109,7 +109,7 @@ class Document
                 $content['url'] = $url;
                 $content['slug'] = $slug;
                 $content['timestamp'] = $time;
-                array_push($posts, $content);
+                array_push55($posts, $content);
             }
             return $posts;
         } else {
@@ -118,7 +118,7 @@ class Document
     }
 
     //kjarts code for getting and creating markdown files end here
-    
+
     public function fetchAllRss()
     {
         $rss = new \DOMDocument();
@@ -150,12 +150,15 @@ class Document
         });
         return $feed;
     }
+      //RSS designed By DMAtrix;
     public function fetchRss()
     {
         $rss = new \DOMDocument();
         $feed = [];
+        $user = file_get_contents("src/config/auth.json");
+        $user = json_decode($user, true);
         $urlArray = array(
-            array('name' => 'Elijah Okokn', 'url' => 'storage/rss/rss.xml', 'img' => '\/landing\/assets\/img\/black-logo.png'),
+            array('name' => $user['name'], 'url' => 'storage/rss/rss.xml', 'img' => $user['image']),
         );
 
         foreach ($urlArray as $url) {
@@ -178,31 +181,29 @@ class Document
         });
         return $feed;
     }
-    //store rss
+    //store rss By DMAtrix
     public function createRSS()
     {
-        //  date_default_timezone_set('UTC');
+      $user = file_get_contents("src/config/auth.json");
+      $user = json_decode($user, true);
+
+          date_default_timezone_set('UTC');
         $Feed = new RSS2;
         // Setting some basic channel elements. These three elements are mandatory.
-        $Feed->setTitle('Elijah feeds');
-        $Feed->setLink('https://github.com/mibe/FeedWriter');
-        $Feed->setDescription('feeds below.');
+        $Feed->setTitle($user['name']);
+        $Feed->setLink(SITE_URL);
+        $Feed->setDescription("");
 
         // Image title and link must match with the 'title' and 'link' channel elements for RSS 2.0,
         // which were set above.
-        $Feed->setImage('ing & Checking the Feed Writer project', 'https://github.com/mibe/FeedWriter', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Rss-feed.svg/256px-Rss-feed.svg.png');
+        $Feed->setImage($user['name'], '', $user['image']);
 
-        // Use core setChannelElement() function for other optional channel elements.
-        // See http://www.rssboard.org/rss-specification#optionalChannelElements
-        // for other optional channel elements. Here the language code for American English and
         $Feed->setChannelElement('language', 'en-US');
-
-        // The date when this feed was lastly updated. The publication date is also set.
         $Feed->setDate(date(DATE_RSS, time()));
         $Feed->setChannelElement('pubDate', date(\DATE_RSS, strtotime('2013-04-06')));
 
 
-        $Feed->setSelfLink('http://example.com/myfeed');
+        $Feed->setSelfLink(SITE_URL.'storage/rss/rss.xml');
         $Feed->setAtomLink('http://pubsubhubbub.appspot.com', 'hub');
 
         $Feed->addNamespace('creativeCommons', 'http://backend.userland.com/creativeCommonsRssModule');
@@ -224,26 +225,98 @@ class Document
                 $parsedown  = new Parsedown();
 
                 $title = $parsedown->text($yaml['title']);
-                $bd = $parsedown->text($body);
-                $time = $parsedown->text($yaml['timestamp']);
-                $url = $parsedown->text($yaml['post_dir']);
                 $slug = $parsedown->text($yaml['slug']);
+                $slug = preg_replace("/<[^>]+>/", '', $slug);
+                $bd = $parsedown->text($body);
+                $time = $parsedown->text(time());
+                $url = $parsedown->text($yaml['post_dir']);
 
                 $newItem = $Feed->createNewItem();
                 $newItem->setTitle(strip_tags($title));
-                $newItem->setLink("/" . "post" . "/" . strip_tags($slug));
+                $newItem->setLink($slug);
                 $newItem->setDescription(substr(strip_tags($bd), 0, 100));
-                $newItem->setDate('2013-04-07 00:50:30');
-                $newItem->setAuthor('elijah okokon', 'okoelijah@gmail.com');
+                $newItem->setDate("2013-04-07 00:50:30");
+
+                $newItem->setAuthor($user['name'], $user['email']);
                 $newItem->setId($url, true);
-                $newItem->addElement('source', 'Elijah\'s page', array('url' => 'http://www.example.com'));
+                $newItem->addElement('source', $user['name'].'\'s page', array('url' => SITE_URL));
+                $Feed->addItem($newItem);
+            }
+            $myFeed = $Feed->generateFeed();
+  $handle = "storage/rss/rss.xml";
+  $doc = FileSystem::write($handle, $myFeed);
+    //        fwrite($handle, $myFeed);
+      //      fclose($handle);
+      $strxml= $Feed->printFeed();
+        } else {
+            return false;
+        }
+    }
+
+    //RSS designed By DMAtrix;
+    public function getRss()
+    {
+      $user = file_get_contents("src/config/auth.json");
+      $user = json_decode($user, true);
+
+          date_default_timezone_set('UTC');
+        $Feed = new RSS2;
+        // Setting some basic channel elements. These three elements are mandatory.
+        $Feed->setTitle($user['name']);
+        $Feed->setLink(SITE_URL);
+        $Feed->setDescription("");
+
+        // Image title and link must match with the 'title' and 'link' channel elements for RSS 2.0,
+        // which were set above.
+        $Feed->setImage($user['name'], '', $user['image']);
+
+        $Feed->setChannelElement('language', 'en-US');
+        $Feed->setDate(date(DATE_RSS, time()));
+        $Feed->setChannelElement('pubDate', date(\DATE_RSS, strtotime('2013-04-06')));
+
+
+        $Feed->setSelfLink(SITE_URL.'storage/rss/rss.xml');
+        $Feed->setAtomLink('http://pubsubhubbub.appspot.com', 'hub');
+
+        $Feed->addNamespace('creativeCommons', 'http://backend.userland.com/creativeCommonsRssModule');
+        $Feed->setChannelElement('creativeCommons:license', 'http://www.creativecommons.org/licenses/by/1.0');
+
+        $Feed->addGenerator();
+
+        $finder = new Finder();
+        $finder->files()->in($this->file);
+
+        if ($finder->hasResults()) {
+            foreach ($finder as $file) {
+                $document = $file->getContents();
+                $parser = new Parser();
+                $document = $parser->parse($document);
+                $yaml = $document->getYAML();
+                $body = $document->getContent();
+
+                $parsedown  = new Parsedown();
+
+                $title = $parsedown->text($yaml['title']);
+                $slug = $parsedown->text($yaml['slug']);
+                $slug = preg_replace("/<[^>]+>/", '', $slug);
+                $bd = $parsedown->text($body);
+                $time = $parsedown->text(time());
+                $url = $parsedown->text($yaml['post_dir']);
+
+                $newItem = $Feed->createNewItem();
+                $newItem->setTitle(strip_tags($title));
+                $newItem->setLink($slug);
+                $newItem->setDescription(substr(strip_tags($bd), 0, 100));
+                $newItem->setDate("2013-04-07 00:50:30");
+
+                $newItem->setAuthor($user['name'], $user['email']);
+                $newItem->setId($url, true);
+                $newItem->addElement('source', $user['name'].'\'s page', array('url' => SITE_URL));
                 $Feed->addItem($newItem);
             }
             $myFeed = $Feed->generateFeed();
 
-            $handle = fopen("storage/rss/rss.xml", "w");
-            fwrite($handle, $myFeed);
-            fclose($handle);
+      $strxml= $Feed->printFeed();
         } else {
             return false;
         }
@@ -251,7 +324,7 @@ class Document
     public function subscriber()
     {
         $db = "storage/rss/subscriber.json";
-        $file = file_get_contents($db, true);
+        $file = FileSystem::read($db);
         $data = json_decode($file, true);
         unset($file);
         $posts = [];
@@ -267,7 +340,7 @@ class Document
     public function subscription()
     {
         $db = "storage/rss/subscriber.json";
-        $file = file_get_contents($db, true);
+        $file = FileSystem::read($db);
         $data = json_decode($file, true);
         unset($file);
         $posts = [];
@@ -275,6 +348,8 @@ class Document
 
             $content['name'] = $value['name'];
             $content['img'] = $value['img'];
+            $content['time'] = $value['time'];
+            $content['desc'] = $value['desc'];
             array_push($posts, $content);
         }
         return $posts;
@@ -316,7 +391,7 @@ class Document
 
 /* Working on draft by devmohy */
 //for creating markdown files
-public function createDraft($title, $content,$tags)
+public function createDraft($title, $content,$tags,$image)
      {
         $time = date("F j, Y, g:i a");
         $unix = strtotime($time);
@@ -328,16 +403,25 @@ public function createDraft($title, $content,$tags)
         $yaml = $markdown->getYAML();
         $html = $markdown->getContent();
         $doc = FileSystem::write($this->file, $yaml . "\n" . $html);
-
+        
         $yamlfile = new Doc();
         $yamlfile['title'] = $title;
-        $tag = explode(",",$tags);
-        $put = [];
-        foreach($tag as $value){
-            array_push($put,$value);
+        if($tags != ""){
+            $tag = explode(",",$tags);
+            $put = [];
+        foreach ($tag as $value) {
+                array_push($put, $value);
+            }
+            $yamlfile['tags'] = $put;
         }
-        $yamlfile['tags'] = $put;
-        $yamlfile['post_dir'] = SITE_URL . "/storage/contents/drafts/{$unix}";
+        if(!empty($image)){
+            foreach($image as $key => $value){
+            $decoded = base64_decode($image[$key]);
+            $url = "./storage/images/".$key;
+            FileSystem::write($url,$decoded);
+            }
+        }
+        $yamlfile['post_dir'] = SITE_URL . "/storage/drafts/{$unix}";
         $striped = str_replace(' ', '-', $title);
         $yamlfile['slug'] = $striped."-{$unix}";
         $yamlfile['timestamp'] = $time;
@@ -356,13 +440,13 @@ public function createDraft($title, $content,$tags)
         return $doc;
      }
      //get post
-     public function getDraft()
+     public function getDrafts()
      {
          $finder = new Finder();
- 
+
          // find all files in the current directory
          $finder->files()->in($this->file);
-         $posts = [];
+         $drafts = [];
          if ($finder->hasResults()) {
              foreach ($finder as $file) {
                  $document = $file->getContents();
@@ -383,9 +467,9 @@ public function createDraft($title, $content,$tags)
                  $content['url'] = $url;
                  $content['slug'] = $slug;
                  $content['timestamp'] = $time;
-                 array_push($posts, $content);
+                 array_push($drafts, $content);
              }
-             return $posts;
+             return $drafts;
          } else {
              return false;
          }
@@ -393,9 +477,9 @@ public function createDraft($title, $content,$tags)
 /* Working on draft by devmohy */
 
 
-    // post
-    public function update($id)
-    { 
+    // function for getting posts according to tags
+    public function getPostTags($id)
+    {
             $finder = new Finder();
             // find all files in the current directory
             $finder->files()->in($this->file);
@@ -409,7 +493,7 @@ public function createDraft($title, $content,$tags)
                     $body = $document->getContent();
                     //$document = FileSystem::read($this->file);
                     $parsedown  = new Parsedown();
-                        $tags = $yaml['tags']; 
+                        $tags = $yaml['tags'];
                        for($i = 0; $i<count($tags); $i++){
                             if($tags[$i] == $id){
                             $slug = $parsedown->text($yaml['slug']);
@@ -425,13 +509,13 @@ public function createDraft($title, $content,$tags)
                             array_push($posts,$tags);
                             }
                         }
-                       
+
                     }
                 return $posts;
             }
         }
-    
-    //kjarts code for deleting post 
+
+    //kjarts code for deleting post
     public function delete($id)
     {
         $finder = new Finder();
@@ -452,8 +536,69 @@ public function createDraft($title, $content,$tags)
                     $delete = "File deleted successfully";
                 }
             }
+            $this->createRSS();
             return $delete;
         }
      }
-   
+
+     /**
+      * updates a post stored in an md file
+      * and echos a json object; 
+      *
+      * @param [type] $mdfile
+      * @param [type] $title
+      * @param [type] $content
+      * @param [type] $tags
+      * @param [type] $image
+      * @return void
+      */
+     public function updatePost($mdfile,$title,$content,$tags,$image)
+     {
+        $text = file_get_contents($mdfile);
+        $document = FrontMatter::parse($text);
+        $date = date("F j, Y, g:i a");
+        // var_dump($document);
+        // var_dump($document->getConfig());
+        // var_dump($document->getContent());
+        // var_dump($document['tags']);
+        $document = new Doc();
+        $tmp_title = explode(' ',$title);
+        $slug = implode('-',$tmp_title);
+        $document['title'] = $title;
+        $document['slug'] = $slug;
+        $document['timestamp'] = $date;
+        $document['tags'] = explode(',',$tags);
+        $hashedTags = [];
+        // adding hash to the tags before storage
+        foreach ($document['tags'] as $tag) {
+        $hashedTags[] = '#'.$tag;
+        }
+        $document['tags'] = $hashedTags;
+        $document['image'] = $image;
+        $document->setContent($content);
+        $yamlText = FrontMatter::dump($document);
+        // var_dump($yamlText);
+        $doc = FileSystem::write($mdfile, $yamlText);
+        if ($doc) {
+            $result = array("error" => false, "message" => "Post published successfully");
+        } else {
+            $result = array("error" => true, "message" => "Fail while publishing, please try again");
+        }
+        echo json_encode($result);
+     }
+
+     public function getSinglePost($id)
+     {
+        $directory = "./storage/contents/${id}.md";
+        // var_dump($directory);
+        $document = FrontMatter::parse(file_get_contents($directory));
+        // var_dump($document);
+        $content['title'] = $document['title'];
+        $content['body'] = $document->getContent();
+        // $content['url'] = $url;
+        $content['timestamp'] = $document['timestamp'];
+
+        return $content;
+     }
+
 }

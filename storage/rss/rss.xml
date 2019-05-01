@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule">
 <channel>
-<title>Elijah feeds</title>
-<link>https://github.com/mibe/FeedWriter</link>
-<description><![CDATA[feeds below.]]></description>
-<image><title>ing &amp; Checking the Feed Writer project</title>
-<link>https://github.com/mibe/FeedWriter</link>
-<url>https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Rss-feed.svg/256px-Rss-feed.svg.png</url>
+<title>Ojinaka Tochukwu</title>
+<link>http://localhost:8000/</link>
+<description><![CDATA[]]></description>
+<image><title>Ojinaka Tochukwu</title>
+<link></link>
+<url>https://lh3.googleusercontent.com/-m12SmjDkYCA/AAAAAAAAAAI/AAAAAAAAAKM/qd1755LlbfI/photo.jpg</url>
 </image>
 <language>en-US</language>
-<lastBuildDate>Mon, 29 Apr 2019 10:58:15 +0200</lastBuildDate>
-<pubDate>Sat, 06 Apr 2013 00:00:00 +0200</pubDate>
-<atom:link href="http://example.com/myfeed" rel="self" type="application/rss+xml"></atom:link>
+<lastBuildDate>Wed, 01 May 2019 14:16:25 +0000</lastBuildDate>
+<pubDate>Sat, 06 Apr 2013 00:00:00 +0000</pubDate>
+<atom:link href="http://localhost:8000/storage/rss/rss.xml" rel="self" type="application/rss+xml"></atom:link>
 <atom:link href="http://pubsubhubbub.appspot.com" rel="hub"></atom:link>
 <creativeCommons:license>http://www.creativecommons.org/licenses/by/1.0</creativeCommons:license>
 <generator>Ziki</generator>
 <item>
-<title>Welcome To Ziki</title>
-<link>/post/post-detail-1555682341</link>
-<description><![CDATA[is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's s]]></description>
-<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
-<author>okoelijah@gmail.com (elijah okokon)</author>
-<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;https://localhost:8000/storage/contents/1554771061&quot;&gt;https://localhost:8000/storage/contents/1554771061&lt;/a&gt;&lt;/p&gt;</guid>
-<source url="http://www.example.com">Elijah's page</source>
+<title>Hello sphinx world</title>
+<link>Hello-sphinx-world-1556714760</link>
+<description><![CDATA[hello world prick]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>ojinakatochukwu@gmail.com (Ojinaka Tochukwu)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556714760&quot;&gt;http://localhost:8000//storage/contents/1556714760&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://localhost:8000/">Ojinaka Tochukwu's page</source>
 </item>
 <item>
-<title>Welcome To Ziki Test</title>
-<link>/post/post-detail-1555682342</link>
-<description><![CDATA[is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's s]]></description>
-<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
-<author>okoelijah@gmail.com (elijah okokon)</author>
-<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;https://localhost:8000/storage/contents/1554771061&quot;&gt;https://localhost:8000/storage/contents/1554771061&lt;/a&gt;&lt;/p&gt;</guid>
-<source url="http://www.example.com">Elijah's page</source>
+<title>new post title</title>
+<link>new-post-title-1556720160</link>
+<description><![CDATA[this is a test content Laborum cupidatat eiusmod duis duis. Sit voluptate ea fugiat duis velit Lorem]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>ojinakatochukwu@gmail.com (Ojinaka Tochukwu)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556720160&quot;&gt;http://localhost:8000//storage/contents/1556720160&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://localhost:8000/">Ojinaka Tochukwu's page</source>
 </item>
 <item>
-<title>We Ride on Dragon</title>
-<link>/post/post-detail-1555682343</link>
-<description><![CDATA[is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's s]]></description>
-<pubDate>Sun, 07 Apr 2013 00:50:30 +0200</pubDate>
-<author>okoelijah@gmail.com (elijah okokon)</author>
-<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;https://localhost:8000/storage/contents/1554771061&quot;&gt;https://localhost:8000/storage/contents/1554771061&lt;/a&gt;&lt;/p&gt;</guid>
-<source url="http://www.example.com">Elijah's page</source>
+<title>this is the title 1556714760</title>
+<link>this-is-the-title-1556714760</link>
+<description><![CDATA[this is a test content Laborum cupidatat eiusmod duis duis. Sit voluptate ea fugiat duis velit Lorem]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>ojinakatochukwu@gmail.com (Ojinaka Tochukwu)</author>
+<guid isPermaLink="true"></guid>
+<source url="http://localhost:8000/">Ojinaka Tochukwu's page</source>
 </item>
 </channel>
 </rss>

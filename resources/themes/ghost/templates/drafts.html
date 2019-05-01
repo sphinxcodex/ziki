@@ -1,318 +1,348 @@
 {% set title = "Drafts"%}
 {% extends 'layout.html' %} {% block page_content %}
 
-<style>
-    .post-drafts ul {
-        list-style: none;
-    }
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 
-    .nav-item .navbar-link.active {
-        border-top: 0 solid #280966 !important;
-        border-right: 0 solid #280966 !important;
-        border-left: 0 solid #280966 !important;
-        border-bottom: 4px solid #280966 !important;
-        border-top-left-radius: 0 !important;
-        border-top-right-radius: 0 !important;
-    }
-
-    .post-drafts .nav-item a {
-        color: #5c5c5c;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-        font-size: 20px;
-    }
-
-    .post-drafts .nav-item a:hover {
-        color: #280a66;
-        text-decoration: none;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-    }
-
-    .post-drafts .nav-item a .active {
-        color: #280a66;
-
-    }
-
-
-    .post-drafts .nav-bar {
-        border-bottom: 1px solid #a4a4a4;
-    }
-
-    .post-drafts .post-title a {
-        color: #1b1b1b;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-    }
-
-    .post-drafts .post-title a:hover {
-        color: #280a66;
-        text-decoration: none;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-    }
-
-    .post-drafts .post-author {
-        font-weight: 700;
-        color: #280a66;
-    }
-
-    .post-drafts .post-content-summary {
-        color: #717171;
-        font-size: 14px;
-    }
-
-    .post-drafts .post-date {
-        color: #717171;
-        font-size: 10px;
-    }
-
-    .post-drafts .post-comment a {
-        font-size: 11px;
-        color: #280a66;
-        font-weight: 700;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-    }
-
-    .post-drafts .post-comment a:hover {
-        color: #471aa1;
-        text-decoration: none;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-    }
-
-    .post-drafts .post-item:after {
-        content: "";
-        display: block;
-        position: relative;
-        width: 120%;
-        border-bottom: 1px solid #ebebeb;
-    }
-
-    .post-drafts .dropdown-menu {
-        position: relative;
-        margin-top: 2em;
-        margin-left: -2.5em;
-    }
-
-    .post-drafts .dropdown-icon {
-        font-size: 30px;
-        margin-left: -30px;
-    }
-
-
-    .post-drafts .dropdown-btn-link {
-        font-size: 15px;
-        color: #280a66;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-    }
-
-    .post-drafts .dropdown-btn-link:hover {
-        text-decoration: none;
-        -webkit-transition: all ease-in .3s;
-        transition: all ease-in .3s;
-    }
-
-    .post-drafts .edit-post {
-        color: black;
-    }
-
-    .post-drafts .edit-post:active:active {
-        color: #fff;
-    }
-
-    .post-drafts .edit-post:hover {
-        color: black;
-        text-decoration: none;
-    }
-
-    /*------------------------------------------------------
-    MODAL STYLE
-    ----------------------------------------------------*/
-    .no-border {
-        border: none;
-    }
-
-    .modal-content {
-        border-radius: .7rem;
-    }
-
-    .modal-header .close {
-        opacity: 1;
-    }
-
-    .cancel-modal-text {
-        font-size: 1.1rem;
-        margin-bottom: 0;
-        margin-top: 1.2rem;
-    }
-
-    .btn.btn-primary.canel-post {
-        background-color: transparent !important;
-        border: 1px solid red;
-        color: red;
-        padding: 6px 20px;
-    }
-
-    .btn.btn-primary.publish-post {
-        background-color: #280a66 !important;
-        border: 1px solid #280a66;
-        padding: 6px 20px;
-    }
-
-    .btn.btn-primary.canel-post,
-    .btn.btn-primary.publish-post {
-        margin-left: 15px;
-    }
-
-    /*------------------------------------------------------
-    MODAL STYLE
-    ----------------------------------------------------*/
-
-    @media screen and (max-width:700px) {
-        .post-drafts .post-item:after {
-            content: "";
-            display: block;
-            position: relative;
-            width: 90%;
-            border-bottom: 1px solid #ebebeb;
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
         }
 
-        .post-drafts .dropdown-menu {
-            position: relative;
-            margin-top: 2em;
-            margin-left: -6em;
+        .drafts .draft-date {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+            color: #280A66;
         }
 
-    }
-
-    @media screen and (max-width:900px) {
-        .post-drafts .dropdown-menu {
-            position: relative;
-            margin-top: 2em;
-            margin-left: -6em;
+        .drafts .draft-title {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 130%;
+            color: #000000;
         }
 
-    }
-</style>
+        .drafts .draft-content {
 
-<div class="container-fluid post-drafts">
-    <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 the-sidebar">
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 140%;
+            color: #7A7A7A;
+        }
 
-        </div>
+        .no-drafts-alert p {
+
+            font-style: italic;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 130%;
+            color: #979797;
+        }
+
+        .draft-img {
+            height: 100%;
+            width: 100%;
+        }
+
+        /**DROPDOWN STYLING**/
+        .drafts .dropdown-menu {
+            position: relative;
+            margin-top: 0.9em;
+            margin-left: -3.9em;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.24);
+            border-radius: 5px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .drafts .dropdown-menu button {
+            text-align: center;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 17px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all ease-in 0.3s;
+        }
+
+        .drafts .dropdown-menu button:hover {
+            color: #280A66;
+            transition: all ease-in 0.3s;
+        }
+
+        .drafts .icon {
+            font-size: 20px;
+            margin-left: -30px;
+        }
 
 
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-5 pt-2">
-            <div class="nav-bar row mt-3">
-                <ul class="col-12 d-flex justify-content-start mb-0 pb-0">
-                    <li class="nav-item mr-5 pb-0 mb-0">
-                        <a href="/published-posts" class="navbar-link ">Published</a>
-                    </li>
-                    <li class="nav-item mr-5 pb-0 mb-0"><a href="#" class="active navbar-link">Drafts</a></li>
-                </ul>
+        .drafts .dropdown-btn-link {
+            font-size: 15px;
+            color: #280a66;
+            -webkit-transition: all ease-in .3s;
+            transition: all ease-in .3s;
+        }
+
+        .drafts .dropdown-btn-link:hover {
+            text-decoration: none;
+            -webkit-transition: all ease-in .3s;
+            transition: all ease-in .3s;
+        }
+
+        .drafts .edit-post {
+            color: black;
+        }
+
+        .drafts .edit-post:active:active {
+            color: #fff;
+        }
+
+        .drafts .edit-post:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+        /**DROPDOWN STYLING**/
+
+
+
+        /****MODAL STYLING****/
+        .no-border {
+            border: none;
+        }
+
+        .modal-content {
+            border-radius: .7rem;
+        }
+
+        .modal-header .close {
+            opacity: 1;
+        }
+
+        .cancel-modal-text {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            margin-top: 1.2rem;
+        }
+
+        .btn.btn-primary.canel-post {
+            background-color: transparent !important;
+            border: 1px solid red;
+            color: red;
+            padding: 6px 20px;
+        }
+
+        .btn.btn-primary.publish-post {
+            background-color: #280a66 !important;
+            border: 1px solid #280a66;
+            padding: 6px 20px;
+        }
+
+        .btn.btn-primary.canel-post,
+        .btn.btn-primary.publish-post {
+            margin-left: 15px;
+        }
+
+        /****MODAL STYLING****/
+
+
+
+        /****MEDIA QUERIES****/
+        @media screen and (max-width:700px) {
+            .drafts .post-item:after {
+                content: "";
+                display: block;
+                position: relative;
+                width: 90%;
+                border-bottom: 1px solid #ebebeb;
+            }
+
+            .drafts .draft-date {
+                margin-top: 1em;
+            }
+
+            .drafts .icon {
+                position: relative;
+                left: 7em;
+                margin-top: 1em;
+                margin-left: 2em;
+                color: white;
+                background-color: #280a66;
+                border-radius: 50%;
+                width: 2.5em;
+                height: 2.5em;
+                font-size: 15px;
+                text-align: center;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.24);
+            }
+
+            .drafts .dropdown-menu {
+                margin-left: -3.9em;
+                margin-bottom: 20px;
+            }
+
+        }
+
+        @media screen and (max-width:900px) and (min-width:700px) {
+            .drafts .dropdown-menu {
+                position: relative;
+                margin-top: 2em;
+                margin-left: -8em;
+            }
+
+        }
+
+        /****MEDIA QUERIES****/
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid drafts">
+        <div class="row">
+            <div class="col-12 col-sm-3">
+                <!--SIDEBAR CONTENTS HERE-->>
             </div>
 
-            <div class="row draft-starts-here">
-                <div class="col-10 mt-5">
-                    <div class="post-item mt-3">
-                        <p class="post-author">Samaila Bala</p>
+            <div class="col-12 col-sm-9 ">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row pt-4 pb-4   draft-content">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 p-0 m-0 "><img
+                                    src="/resources/themes/ghost/assets/img/draft-img.png" alt="the-image-for-drafts"
+                                    class="img-fluid draft-img"></div>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <div class="second">
+                                    <p class="draft-date">2nd April, 2019</p>
+                                    <h6 class="draft-title">
+                                        Looking for where to spend Christmas from the comfort of your own home
+                                    </h6>
+                                    <p class="draft-content">
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione magni
+                                        voluptates dignissimos !...
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                <div class="dropdown col-2 mx-auto" style="cursor:pointer">
+                                    <span class="dropdown-toggle fa fa-angle-down icon" aria-haspopup="true"
+                                        aria-expanded="false" data-toggle="dropdown">
 
-                        <h4 class="post-title">
-                            <a href="#">
-                                Looking For Where To Spend Christmas in the comfort of your home
-                            </a>
-                        </h4>
-
-                        <p class="post-content-summary">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-                            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore
-                        </p>
-                        <div class="row">
-                            <p class="post-date mb-4 col-12 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="dropdown col-2" style="cursor:pointer">
-                    <span class="dropdown-toggle dropdown-icon " aria-haspopup="true" aria-expanded="false"
-                        data-toggle="dropdown">
-                    </span>
-                    <div class="dropdown-menu">
-                        <button class="dropdown-item"> <a href="\editor" class="edit-post">Edit post</a></button>
-                        <button class="dropdown-item" data-toggle="modal" data-target="#cancelModal">Delete
-                            post</button>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="row draft-starts-here">
-                    <div class="col-10 mt-5">
-                        <div class="post-item mt-3">
-                            <p class="post-author">Samaila Bala</p>
-    
-                            <h4 class="post-title">
-                                <a href="#">
-                                    Looking For Where To Spend Christmas in the comfort of your home
-                                </a>
-                            </h4>
-    
-                            <p class="post-content-summary">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-                                sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore
-                            </p>
-                            <div class="row">
-                                <p class="post-date mb-4 col-12 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
+                                    </span>
+                                    <div class="dropdown-menu">
+                                        <button class="dropdown-item"> <a href="\editor" class="edit-post">Edit
+                                                post</a></button>
+                                        <button class="dropdown-item" data-toggle="modal"
+                                            data-target="#cancelModal">Delete
+                                            post</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-    
-                    </div>
-    
-                    <div class="dropdown col-2" style="cursor:pointer">
-                        <span class="dropdown-toggle dropdown-icon " aria-haspopup="true" aria-expanded="false"
-                            data-toggle="dropdown">
-                        </span>
-                        <div class="dropdown-menu">
-                            <button class="dropdown-item"> <a href="\editor" class="edit-post">Edit post</a></button>
-                            <button class="dropdown-item" data-toggle="modal" data-target="#cancelModal">Delete
-                                post</button>
+
+
+
+                        <div class="row pt-4 pb-4   draft-content">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 p-0 m-0 "><img
+                                    src="/resources/themes/ghost/assets/img/draft-img.png" alt="the-image-for-drafts"
+                                    class="img-fluid draft-img"></div>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <div class="second">
+                                    <p class="draft-date">2nd April, 2019</p>
+                                    <h6 class="draft-title">
+                                        Looking for where to spend Christmas from the comfort of your own home
+                                    </h6>
+                                    <p class="draft-content">
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione magni
+                                        voluptates dignissimos !...
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                <div class="dropdown col-2 mx-auto" style="cursor:pointer">
+                                    <span class="dropdown-toggle fa fa-angle-down icon" aria-haspopup="true"
+                                        aria-expanded="false" data-toggle="dropdown">
+
+                                    </span>
+                                    <div class="dropdown-menu">
+                                        <button class="dropdown-item"> <a href="\editor" class="edit-post">Edit
+                                                post</a></button>
+                                        <button class="dropdown-item" data-toggle="modal"
+                                            data-target="#cancelModal">Delete
+                                            post</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row pt-4 pb-4   draft-content">
+
+                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                                <div class="second">
+                                    <p class="draft-date">2nd April, 2019</p>
+                                    <h6 class="draft-title">
+                                        Looking for where to spend Christmas from the comfort of your own home
+                                    </h6>
+                                    <p class="draft-content">
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione magni
+                                        voluptates dignissimos !...
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                <div class="dropdown col-2 mx-auto" style="cursor:pointer">
+                                    <span class="dropdown-toggle fa fa-angle-down icon" aria-haspopup="true"
+                                        aria-expanded="false" data-toggle="dropdown">
+
+                                    </span>
+                                    <div class="dropdown-menu">
+                                        <button class="dropdown-item"> <a href="\editor" class="edit-post">Edit
+                                                post</a></button>
+                                        <button class="dropdown-item" data-toggle="modal"
+                                            data-target="#cancelModal">Delete
+                                            post</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-    
-                </div>
-        </div>
-    </div>
-    <!-- using semantic tags -->
-    <!-- modal begins here -->
-    <div id="cancelModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content no-border">
-                <div class="modal-header no-border">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body no-border">
-                    <img src="/resources/themes/ghost/assets/img/cancel-post-modal.png"
-                        class="img-fluid mx-auto d-block dialog-img" alt="cancel post image">
-                    <p class="cancel-modal-text text-center font-weight-bold">Do you want to delete this post?</p>
-                </div>
-                <div class="modal-footer no-border mx-auto d-block">
-
-                    <button class="btn btn-primary canel-post">Delete</button>
                 </div>
 
+                <div class="row">
+                    <div class="no-drafts-alert mx-auto">
+                        <p class="text-grey">
+                            You have no more drafts
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- modal ends here -->
-</div>
+        <!-- modal begins here -->
+        <div id="cancelModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content no-border">
+                    <div class="modal-header no-border">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body no-border">
+                        <img src="/resources/themes/ghost/assets/img/cancel-post-modal.png"
+                            class="img-fluid mx-auto d-block dialog-img" alt="cancel post image">
+                        <p class="cancel-modal-text text-center font-weight-bold">Do you want to delete this post?</p>
+                    </div>
+                    <div class="modal-footer no-border mx-auto d-block">
 
-{% endblock page_content %}
+                        <button class="btn btn-primary canel-post">Delete</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- modal ends here -->
+    </div>
+
+    {% endblock page_content %}

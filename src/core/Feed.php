@@ -285,7 +285,7 @@ abstract class Feed
      */
     public function createNewItem()
     {
-        $item = new Item($this->version);
+        $item = new FeedItem($this->version);
 
         return $item;
     }
@@ -335,7 +335,7 @@ abstract class Feed
      * @param    Item instance of FeedItem class
      * @return   self
      */
-    public function addItem(Item $feedItem)
+    public function addItem(FeedItem $feedItem)
     {
         if ($feedItem->getVersion() != $this->version)
             die('Feed type mismatch: This instance can handle ' . $this->version . ' feeds only, but item with type ' . $feedItem->getVersion() . ' given.');
