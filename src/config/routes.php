@@ -31,10 +31,10 @@ Router::get('blog-details/{id}', function($request, $id) {
    return $this->template->render('blog-details.html', ['result' => $result] );
 });
 Router::get('/timeline', function($request) {
-    // $user = new Ziki\Core\Auth();
-    // if (!$user->is_logged_in()) {
-    //     return $user->redirect('/');
-    // }
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
     $post = $ziki->fetchAllRss();
