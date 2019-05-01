@@ -109,7 +109,7 @@ class Document
                 $content['url'] = $url;
                 $content['slug'] = $slug;
                 $content['timestamp'] = $time;
-                array_push($posts, $content);
+                array_push55($posts, $content);
             }
             return $posts;
         } else {
@@ -180,29 +180,26 @@ class Document
     //store rss
     public function createRSS()
     {
+      $user = file_get_contents("src/config/auth.json");
+      $user = json_decode($user, true);
 
-        //  date_default_timezone_set('UTC');
+          date_default_timezone_set('UTC');
         $Feed = new RSS2;
         // Setting some basic channel elements. These three elements are mandatory.
-        $Feed->setTitle('Elijah feeds');
-        $Feed->setLink('https://github.com/mibe/FeedWriter');
-        $Feed->setDescription('feeds below.');
+        $Feed->setTitle($user['name']);
+        $Feed->setLink(SITE_URL);
+        $Feed->setDescription("");
 
         // Image title and link must match with the 'title' and 'link' channel elements for RSS 2.0,
         // which were set above.
-        $Feed->setImage('ing & Checking the Feed Writer project', 'https://github.com/mibe/FeedWriter', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Rss-feed.svg/256px-Rss-feed.svg.png');
+        $Feed->setImage($user['name'], '', $user['image']);
 
-        // Use core setChannelElement() function for other optional channel elements.
-        // See http://www.rssboard.org/rss-specification#optionalChannelElements
-        // for other optional channel elements. Here the language code for American English and
         $Feed->setChannelElement('language', 'en-US');
-
-        // The date when this feed was lastly updated. The publication date is also set.
         $Feed->setDate(date(DATE_RSS, time()));
         $Feed->setChannelElement('pubDate', date(\DATE_RSS, strtotime('2013-04-06')));
 
 
-        $Feed->setSelfLink('http://example.com/myfeed');
+        $Feed->setSelfLink(SITE_URL.'storage/rss/rss.xml');
         $Feed->setAtomLink('http://pubsubhubbub.appspot.com', 'hub');
 
         $Feed->addNamespace('creativeCommons', 'http://backend.userland.com/creativeCommonsRssModule');
@@ -224,25 +221,99 @@ class Document
                 $parsedown  = new Parsedown();
 
                 $title = $parsedown->text($yaml['title']);
-                $bd = $parsedown->text($body);
-                $time = $parsedown->text($yaml['timestamp']);
-                $url = $parsedown->text($yaml['post_dir']);
                 $slug = $parsedown->text($yaml['slug']);
+                $slug = preg_replace("/<[^>]+>/", '', $slug);
+                $bd = $parsedown->text($body);
+                $time = $parsedown->text(time());
+                $url = $parsedown->text($yaml['post_dir']);
 
                 $newItem = $Feed->createNewItem();
                 $newItem->setTitle(strip_tags($title));
-                $newItem->setLink("/" . "post" . "/" . strip_tags($slug));
+                $newItem->setLink($slug);
                 $newItem->setDescription(substr(strip_tags($bd), 0, 100));
-                $newItem->setDate('2013-04-07 00:50:30');
-                $newItem->setAuthor('elijah okokon', 'okoelijah@gmail.com');
+                $newItem->setDate("2013-04-07 00:50:30");
+
+                $newItem->setAuthor($user['name'], $user['email']);
                 $newItem->setId($url, true);
-                $newItem->addElement('source', 'Elijah\'s page', array('url' => 'http://www.example.com'));
+                $newItem->addElement('source', $user['name'].'\'s page', array('url' => SITE_URL));
                 $Feed->addItem($newItem);
             }
             $myFeed = $Feed->generateFeed();
+  $handle = "storage/rss/rss.xml";
+  $doc = FileSystem::write($handle, $myFeed);
+    //        fwrite($handle, $myFeed);
+      //      fclose($handle);
+      $strxml= $Feed->printFeed();
+        } else {
+            return false;
+        }
+    }
+    public function getRss()
+    {
+      $user = file_get_contents("src/config/auth.json");
+      $user = json_decode($user, true);
 
-            fwrite($handle, $myFeed);
-            fclose($handle);
+          date_default_timezone_set('UTC');
+        $Feed = new RSS2;
+        // Setting some basic channel elements. These three elements are mandatory.
+        $Feed->setTitle($user['name']);
+        $Feed->setLink(SITE_URL);
+        $Feed->setDescription("");
+
+        // Image title and link must match with the 'title' and 'link' channel elements for RSS 2.0,
+        // which were set above.
+        $Feed->setImage($user['name'], '', $user['image']);
+
+        $Feed->setChannelElement('language', 'en-US');
+        $Feed->setDate(date(DATE_RSS, time()));
+        $Feed->setChannelElement('pubDate', date(\DATE_RSS, strtotime('2013-04-06')));
+
+
+        $Feed->setSelfLink(SITE_URL.'storage/rss/rss.xml');
+        $Feed->setAtomLink('http://pubsubhubbub.appspot.com', 'hub');
+
+        $Feed->addNamespace('creativeCommons', 'http://backend.userland.com/creativeCommonsRssModule');
+        $Feed->setChannelElement('creativeCommons:license', 'http://www.creativecommons.org/licenses/by/1.0');
+
+        $Feed->addGenerator();
+
+        $finder = new Finder();
+        $finder->files()->in($this->file);
+
+        if ($finder->hasResults()) {
+            foreach ($finder as $file) {
+                $document = $file->getContents();
+                $parser = new Parser();
+                $document = $parser->parse($document);
+                $yaml = $document->getYAML();
+                $body = $document->getContent();
+
+                $parsedown  = new Parsedown();
+
+                $title = $parsedown->text($yaml['title']);
+                $slug = $parsedown->text($yaml['slug']);
+                $slug = preg_replace("/<[^>]+>/", '', $slug);
+                $bd = $parsedown->text($body);
+                $time = $parsedown->text(time());
+                $url = $parsedown->text($yaml['post_dir']);
+
+                $newItem = $Feed->createNewItem();
+                $newItem->setTitle(strip_tags($title));
+                $newItem->setLink($slug);
+                $newItem->setDescription(substr(strip_tags($bd), 0, 100));
+                $newItem->setDate("2013-04-07 00:50:30");
+
+                $newItem->setAuthor($user['name'], $user['email']);
+                $newItem->setId($url, true);
+                $newItem->addElement('source', $user['name'].'\'s page', array('url' => SITE_URL));
+                $Feed->addItem($newItem);
+            }
+            $myFeed = $Feed->generateFeed();
+  //$handle = "storage/rss/rss.xml";
+  //$doc = FileSystem::write($handle, $myFeed);
+    //        fwrite($handle, $myFeed);
+      //      fclose($handle);
+      $strxml= $Feed->printFeed();
         } else {
             return false;
         }
@@ -250,7 +321,7 @@ class Document
     public function subscriber()
     {
         $db = "storage/rss/subscriber.json";
-        $file = file_get_contents($db, true);
+        $file = FileSystem::read($db);
         $data = json_decode($file, true);
         unset($file);
         $posts = [];
@@ -266,7 +337,7 @@ class Document
     public function subscription()
     {
         $db = "storage/rss/subscriber.json";
-        $file = file_get_contents($db, true);
+        $file = FileSystem::read($db);
         $data = json_decode($file, true);
         unset($file);
         $posts = [];
@@ -274,6 +345,8 @@ class Document
 
             $content['name'] = $value['name'];
             $content['img'] = $value['img'];
+            $content['time'] = $value['time'];
+            $content['desc'] = $value['desc'];
             array_push($posts, $content);
         }
         return $posts;

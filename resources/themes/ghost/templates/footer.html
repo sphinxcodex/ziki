@@ -8,7 +8,15 @@
 
 <!-- jQuery Custom Scroller CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
+<script language="JavaScript" type="text/javascript">
+ function unsubscribe(id,data)
+ {
+   if (confirm("Are you sure you want to unsubscribe '" + id + "'"))
+   {
+     window.location.href = '/unsubscribe?n=' + data;
+   }
+ }
+ </script>
 <script type="text/javascript">
     $(document).ready(function () {
         $(".sidebar-container").mCustomScrollbar({
@@ -43,7 +51,7 @@
     let url = `https://auth.techteel.com/api/login/email?address=${param}?domain=${host}`;
     fetch(url)
       .then((res) => { return res.json() })
-      .then((data) => { 
+      .then((data) => {
         console.log(data)
           form_l.style.display = 'none';
           congrat.style.display = 'block';
@@ -105,7 +113,7 @@
         });
       }
 
-      
+
     }
 
     formData.set('postVal', markdown);
