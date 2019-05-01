@@ -184,7 +184,7 @@ Router::post('/subscriptions', function($request) {
   $list = $ziki->subscription();
   $count = new Ziki\Core\Subscribe();
   $count = $count->count();
-  print_r($list);
+  
     return $this->template->render('subscriptions.html', ['sub' => $list, 'count' => $count ] );
 });
 Router::get('/unsubscribe', function($request) {
