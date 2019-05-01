@@ -17,30 +17,19 @@
    }
  }
  </script>
+
+<!-- Side bar script -->
 <script type="text/javascript">
     $(document).ready(function () {
-        $(".sidebar-container").mCustomScrollbar({
-            theme: "minimal"
-        });
-
         $('#sidebarCollapse').on('click', function () {
-            // show sidebar
-            $('.sidebar-container').addClass('sidebar-shown');
-            $('#sidebar').addClass('shown');
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-          });
-
-        $('.sidebar-close').on('click', function () {
-            // hide sidebar
-            $('.sidebar-container').removeClass('sidebar-shown');
-            $('#sidebar').removeClass('shown');
+            $('#sidebar').toggleClass('active');
         });
     });
 </script>
 
 <!--Email login modal-->
 
-<script>
+<!-- <script>
   const $ = document.querySelector.bind(document)
   let congrat = $('.login-mail-sent')
   let form_l = $('.login-form')
@@ -63,7 +52,7 @@
       })
   };
   $('.email-login-button').addEventListener('click', sendEmail);
-</script>
+</script> -->
 
 <!-- Convert to markdown script -->
 <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
