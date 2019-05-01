@@ -41,7 +41,7 @@
   let sendEmail = () => {
     let param = $('.email-input').value;
     let host = $('.host').value;
-    let url = `https://auth.techteel.com/api/login/email?address=${param}?domain=${host}`;
+    let url = `https://auth.techteel.com/api/login/email?address=${param}&domain=${host}`;
     fetch(url)
       .then((res) => { return res.json() })
       .then((data) => {
@@ -129,13 +129,13 @@
     formData.set('tags', selectedTags);
 
     // send the form data
-    fetch(newPostIsBeingCreated ? '/publish' : '/draft', {
+    fetch(newPostIsBeingCreated ? '/publish' : '/saveDraft', {
       method: 'POST',
       body: formData
     }).then(res => res.text()).then((res) => {
       console.log(res);
       if(window.confirm(`Check console for response.
-      Redirect to view new post?`)) {
+      Redirect to view new drafts?`)) {
         window.location = '/timeline';
       }
     }).catch((err) => {
