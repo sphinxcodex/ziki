@@ -121,8 +121,8 @@
     }).then(res => res.text()).then((res) => {
       console.log(res);
       if(window.confirm(`Check console for response.
-      Redirect to view new post?`)) {
-        window.location = '/timeline';
+      Redirect to view new drafts?`)) {
+        window.location = '/drafts';
       }
     }).catch((err) => {
       alert(`Failed with the following message: ${err.message}`);
