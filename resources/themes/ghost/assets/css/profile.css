@@ -226,7 +226,9 @@ input:checked + .slider:before {
 /*the container must be positioned relative:*/
 .lucid-custom-select {
   position: relative;
-  width: 300px;
+  border: 1px solid rgba(17, 20, 76, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 
 .lucid-custom-select select {
@@ -234,7 +236,7 @@ input:checked + .slider:before {
 }
 
 .select-selected {
-  background-color: DodgerBlue;
+  background-color: #FFFFFF;
 }
 
 /*style the arrow inside the select element:*/
@@ -245,19 +247,20 @@ input:checked + .slider:before {
   right: 10px;
   width: 0;
   height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
+  border: 6px solid #222222;
+  border-color: #222222 transparent transparent transparent;
 }
 
 /*point the arrow upwards when the select box is open (active):*/
 .select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
+  border-color: transparent transparent #222222 transparent;
   top: 7px;
 }
 
 /*style the items (options), including the selected item:*/
 .select-items div,.select-selected {
-  color: #ffffff;
+  color: #222222;
+  font-weight: 400;
   padding: 8px 16px;
   border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
@@ -265,14 +268,21 @@ input:checked + .slider:before {
   user-select: none;
 }
 
+.select-selected { 
+  border-radius: 5px;
+}
+
 /*style items (options):*/
 .select-items {
   position: absolute;
-  background-color: DodgerBlue;
+  background-color: #fff;
+  border: 1px solid #eee;
   top: 100%;
   left: 0;
   right: 0;
   z-index: 99;
+  margin-top: .25rem!important;
+  border-radius: 5px;
 }
 
 /*hide the items when the select box is closed:*/
