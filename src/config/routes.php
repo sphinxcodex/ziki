@@ -1,6 +1,6 @@
 <?php
 use Ziki\Http\Router;
-//session_start();
+session_start();
 Router::get('/about/{id}', function($request,$id) {
      return $this->template->render('about-us.html');
 });
