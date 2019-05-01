@@ -6,10 +6,10 @@ Router::get('/about/{id}', function($request,$id) {
 });
 Router::get('/', function($request) {
     $user = new Ziki\Core\Auth();
-    // if ($user::isInstalled() == true) {
-    //     return $user->redirect('/install');
-    // }
-    // else{
+    if ($user::isInstalled() == true) {
+        return $user->redirect('/install');
+    }
+    else{
         $directory = "./storage/contents/";
         $ziki = new Ziki\Core\Document($directory);
         $feed = $ziki->fetchRss();
@@ -18,7 +18,7 @@ Router::get('/', function($request) {
         // Render our view
         //print_r($feed);
         return $this->template->render('index.html',['posts' => $feed, 'host' => $host] );
-    // }
+    }
 });
 Router::get('blog-details/{id}', function($request, $id) {
     $user = new Ziki\Core\Auth();
@@ -192,10 +192,10 @@ Router::get('/404', function($request) {
 /* Devmohy working on draft */
 /* Save draft*/
 Router::post('/saveDraft', function($request) {
-    // $user = new Ziki\Core\Auth();
-    // if (!$user->is_logged_in()) {
-    //     return $user->redirect('/');
-    // }
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
     $directory = "./storage/drafts/";
     $data = $request->getBody();
     $title = $data['title'];
@@ -214,21 +214,21 @@ Router::post('/saveDraft', function($request) {
       }
 
     $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->createDraft($title, $body,$tags, $images, true);
+    $result = $ziki->create($title, $body,$tags, $images, true);
     return $this->template->render('drafts.html', ['ziki' => $result]);
 });
 /* Save draft */
 
 /* Get all saved draft */
 Router::get('/drafts', function($request) {
-    // $user = new Ziki\Core\Auth();
-    // if (!$user->is_logged_in()) {
-    //     return $user->redirect('/');
-    // }
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
     $directory = "./storage/drafts/";
     $ziki = new Ziki\Core\Document($directory);
-    $draft = $ziki->getDrafts();
-    return $this->template->render('drafts.html', ['drafts' => $draft]);
+    $posts = $ziki->get();
+    return $this->template->render('drafts.html', ['drafts' => $posts]);
 });
 /* Get all saved draft */
 
@@ -240,13 +240,10 @@ Router::get('deleteDraft/{id}', function($request, $id) {
     }
     $directory = "./storage/drafts/";
     $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->delete($id);
+    $result = $ziki->delete($id, true);
     return $this->template->render('drafts.html', ['delete' => $result] );
 });
 /* Delete draft */
-
-/* Edit draft */
-/* Edit draft */
 
 /* Devmohy working on draft */
 
