@@ -14,8 +14,8 @@
                 {% if current_page == item.href %}
                 <li class="p-3 active">
                     <a href="/{{ item.href }}" class="profile-top-link">
-                        {%if item.count %} 
-                        <span class="follow-numbers">{{ item.count }}</span> 
+                        {%if item.count %}
+                        <span class="follow-numbers">{{ count }}</span>
                         {{ item.caption }}</a>
                         {% else %}
                         {{ item.caption }}
@@ -25,8 +25,8 @@
                 {% else %}
                 <li class="p-3">
                     <a href="/{{ item.href }}" class="profile-top-link">
-                        {%if item.count %} 
-                        <span class="follow-numbers">{{ item.count }}</span>
+                        {%if item.count %}
+                        <span class="follow-numbers">{{ fcount }}</span>
                         {{ item.caption }}</a>
                         {% else %}
                         {{ item.caption }}

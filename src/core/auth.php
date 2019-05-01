@@ -21,6 +21,16 @@ class Auth {
         return $install;
     }
 
+    public static function setup ($data)
+    {
+        $check_settings = self::isInstalled();
+        if(!$check_settings) {
+            $s_file = "./src/config/auth.json";
+            $core = FileSysyem::read($s_file);
+            $doc = FileSystem::write($s_file, $data);
+        }
+    }
+
     public static function getAuth($data, $role){
         $user['name'] = $data->name;
         $user['email'] = $data->email;
