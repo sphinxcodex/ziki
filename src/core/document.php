@@ -562,7 +562,10 @@ public function createDraft($title, $content,$tags,$image)
         // var_dump($document->getContent());
         // var_dump($document['tags']);
         $document = new Doc();
+        $tmp_title = explode(' ',$title);
+        $slug = implode('-',$tmp_title);
         $document['title'] = $title;
+        $document['slug'] = $slug;
         $document['timestamp'] = $date;
         $document['tags'] = explode(',',$tags);
         $hashedTags = [];
@@ -571,7 +574,6 @@ public function createDraft($title, $content,$tags,$image)
         $hashedTags[] = '#'.$tag;
         }
         $document['tags'] = $hashedTags;
-        // var_dump($hashedTags);
         $document['image'] = $image;
         $document->setContent($content);
         $yamlText = FrontMatter::dump($document);
