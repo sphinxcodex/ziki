@@ -1,6 +1,8 @@
 <?php
 use Ziki\Http\Router;
+
 session_start();
+
 Router::get('/about/{id}', function($request,$id) {
      return $this->template->render('about-us.html');
 });
@@ -103,8 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $directory = "./storage/contents/";
       $ziki = new Ziki\Core\Document($directory);
       $feed = $ziki->fetchAllRss();
-      // Render our view
-      //print_r($feed);
+     //  Render our view
+      print_r($feed);
       return $this->template->render('timeline.html',['posts' => $feed] );
   });
 }
@@ -230,6 +232,17 @@ Router::get('/drafts', function($request) {
     $posts = $ziki->get();
     return $this->template->render('drafts.html', ['drafts' => $posts]);
 });
+
+Router::get('/videos', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
+
+    return $this->template->render('videos.html');
+
+});
+
 /* Get all saved draft */
 
 /* Delete draft */

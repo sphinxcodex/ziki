@@ -403,7 +403,7 @@ class Document
     //end of get a post function
 
     // post
-    public function update($id)
+public function update($id)
     {
             $finder = new Finder();
             // find all files in the current directory
@@ -436,7 +436,6 @@ class Document
                         }
 
                     }
-                    $this->createRSS();
                 return $posts;
             }
         }
