@@ -272,29 +272,31 @@ Router::get('/install', function($request) {
 });
 
 Router::post('/appsetting', function($request) {
-    $data = $request->gegtBody();
-    // $arr = $_POST['json'];
-	$postedData = json_decode($data); //expect an array format ["action", "value"]
-    $action = $postedData[0];
-
-    $actionType = $postedData[0]; //action point for  app setting
-    $value = $postedData[1]; //value for app setting
-
-    switch($actionType){		
-        case 'change_plugin':
-            $name = htmlentities($dt->plugin_name);
-            // echo $result = json_encode({ msg: 'Plugin channge successfully', status: 'Success', data: $name });
-        break;
-        case 'enable_video':
-            $useVideo = htmlentities($dt->use_video);
-            // echo $result = json_encode({ msg: 'Plugin channge successfully', status: 'Success', data: $useVideo });
-        break;
-        case 'enable_portfolio':
-
-        break;
-        case 'switch_theme':
-
-        break;
+   
+    
+    //create middleware to protect api from non auth user
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return json_encode(array("msg" => "Authentication failed, pls login.", "status" => "error", "data" => null));
     }
+
+    $data = $request->getBody();
+    $field = $data['field']; //field to update in  app.json
+    $value = $data['value']; //value for setting field in app.json
+
+    $setting = new Ziki\Core\Setting();
+
+    try {
+        $result = $setting->updateSetting($field, $value);
+        if($result){
+            echo json_encode(array("msg" => "Plugin change successfully", "status" => "success", "data" => $result));
+        }else{
+            echo json_encode(array("msg" => "Field does not exist", "status" => "error", "data" => null));
+        }
+    }
+    catch (Exception $e) {
+        echo json_encode(array("msg" => "Caught exception: ",  $e->getMessage(), "\n", "status" => "error", "data" => null));
+    }
+
     return;
 });
