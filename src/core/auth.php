@@ -70,8 +70,16 @@ class Auth {
 //    }
 //
 
+//    public function is_logged_in() {
+//        $_SESSION['login_user']['name'] = 'anonymous';
+//    // public function is_logged_in() {
+//    //     // Check if user session has been set
+//    //     if (isset($_SESSION['login_user']) && ($_SESSION['login_user']['login_token'] != '')) {
+//    //         return $_SESSION;
+//    //     }
+//    // }
     public function is_logged_in() {
-        $_SESSION['login_user']['name'] = 'anonymous';
+        $_SESSION['login_user']['name'] = 'anonymous'; 
         $_SESSION['login_user']['email'] = 'anonymous@gmail.com';
         $_SESSION['login_user']['image'] = 'https://lh3.googleusercontent.com/-m12SmjDkYCA/AAAAAAAAAAI/AAAAAAAAAKM/qd1755LlbfI/photo.jpg';
         $_SESSION['login_user']['last_login'] = '2019-04-27 14:07:52';
