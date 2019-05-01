@@ -127,6 +127,8 @@ class Auth {
 
     public function redirect($location)
     {
+
         header('Location:'.$location);
+
     }
 }
