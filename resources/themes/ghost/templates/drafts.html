@@ -222,7 +222,7 @@
                             {% for key, draft in drafts %}
                         <div class="row pt-4 pb-4   draft-content">
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 p-0 m-0 "><img
-                                    src="/resources/themes/ghost/assets/img/draft-img.png" alt="the-image-for-drafts"
+                                    src="{{draft.image | raw}}" alt="the-image-for-drafts"
                                     class="img-fluid draft-img"></div>
                             <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                                 <div class="second">
