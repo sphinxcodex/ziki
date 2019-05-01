@@ -109,9 +109,12 @@ class Auth {
         $result = curl_exec($ch);
         
         //Close the cURL handle.
+
         curl_close($ch);
         $res = json_decode($result);
+
         //Save User data to auth.json
+
         $dir = "./src/config/auth.json";
         $check_settings = FileSystem::read($dir);
         if(!$check_settings) {
@@ -140,6 +143,8 @@ class Auth {
 
     public function redirect($location)
     {
+
         header('Location:'.$location);
+
     }
 }
