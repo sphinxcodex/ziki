@@ -1,6 +1,6 @@
 {% set title = "Videos"%}
 {% extends 'layout.html' %} {% block page_content %}
-
+<html>
 <style>
 
     video-wrapper {
@@ -23,7 +23,7 @@
     }
 
     video-text{
-        font-family: Lato;
+
         font-style: normal;
         font-weight: bold;
         font-size: 14px;
@@ -50,7 +50,8 @@
     }
 </style>
 <body>
-<div class="col-12 col-sm-9 ">
+
+<div class="container-fluid ">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
 
@@ -62,25 +63,40 @@
 
             <div class=" video-wrapper row col-12">
                 <div class = "video-first col-6" >
-                    <p class="video-class">
+                    <p class="video-class"> 2nd April, 2019</p>
 
-                    </p>
                     <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4s" width="400px" controls/>
 
                 </div>
-
                 <br/><br/> <br/>
 
-                <div class = "video-second col-sm-3  " >
+                <div class = "video-second col-md-4   col-sm-3 col-xs-12 "  >
+                    <p class="video-class">
+                        2nd April, 2019
+                    </p>
                     <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4s"  width="400px"  controls/>
 
                 </div>
             </div>
 
-                <div class = "video-second  col-6   " >
+            <div class=" video-wrapper row col-12">
+
+                <div class = "video-first col-6" >
+                    <p class="video-class">
+                        2nd April, 2019
+                    </p>
                     <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4s"  width="400px"  controls/>
 
                 </div>
+                <br/><br/> <br/>
+                <div class = "video-second col-md-4   col-sm-3 col-xs-12 "  >
+                <p class="video-class">
+                    2nd April, 2019
+                </p>
+                <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4s"  width="400px"  controls/>
+
+            </div>
+            </div>
 
             </div>
 
@@ -90,6 +106,7 @@
     </div>
     <!-- using semantic tags -->
 </div>
-
+</body>
+</html>
 
 {% endblock page_content %}
