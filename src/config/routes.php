@@ -205,6 +205,39 @@ Router::get('/editor', function($request) {
 Router::get('/404', function($request) {
     return $this->template->render('404.html');
 });
+
+/* Devmohy working on draft */
+/* Save draft*/
+Router::post('/saveDraft', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
+    $directory = "./storage/drafts/";
+    $data = $request->getBody();
+    $title = $data['title'];
+    $body = $data['postVal'];
+    $tags = $data['tags'];
+
+    $initial_images = array_filter($data , function($key) {
+        return preg_match('/^img-\w*$/', $key);
+      }, ARRAY_FILTER_USE_KEY);
+      // PHP automatically converts the '.' of the extension to an underscore
+      // undo this
+      $images = [];
+      foreach ($initial_images as $key => $value) {
+        $newKey = preg_replace('/_/', '.', $key);
+        $images[$newKey] = $value;
+      }
+
+    $ziki = new Ziki\Core\Document($directory);
+    $result = $ziki->create($title, $body,$tags, $images, true);
+    return $this->template->render('drafts.html', ['ziki' => $result]);
+});
+/* Save draft */
+
+/* Get all saved draft */
+
 Router::get('/drafts', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
@@ -212,8 +245,8 @@ Router::get('/drafts', function($request) {
     }
     $directory = "./storage/drafts/";
     $ziki = new Ziki\Core\Document($directory);
-    $draft = $ziki->getDrafts();
-    return $this->template->render('drafts.html', ['drafts' => $draft]);
+    $posts = $ziki->get();
+    return $this->template->render('drafts.html', ['drafts' => $posts]);
 });
 
 Router::get('/videos', function($request) {
@@ -236,9 +269,14 @@ Router::get('deleteDraft/{id}', function($request, $id) {
     }
     $directory = "./storage/drafts/";
     $ziki = new Ziki\Core\Document($directory);
-    $result = $ziki->delete($id);
+    $result = $ziki->delete($id, true);
     return $this->template->render('drafts.html', ['delete' => $result] );
 });
+
+/* Delete draft */
+
+/* Devmohy working on draft */
+
 Router::get('/about', function($request) {
     return $this->template->render('about-us.html');
 });
