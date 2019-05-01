@@ -198,10 +198,6 @@ a {
   transition: 0.4s;
 }
 
-input:checked + .slider {
-  /*background-color: #E0E0E0;*/
-}
-
 input:focus + .slider {
   box-shadow: 0 0 1px #e0e0e0;
   outline: 0;
@@ -510,9 +506,6 @@ input:checked + .slider:before {
 @media screen and (max-width: 600px) {
   .profile-edit-title {
     display: none;
-  }
-  .themes-edit-title {
-    /*display: none;*/
   }
   .profile-top-link {
     font-size: 12px !important;

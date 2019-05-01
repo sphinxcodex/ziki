@@ -6,15 +6,6 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3 offset-lg-4 offset-md-4 offset-sm-12 offset-xs-12">
-<<<<<<< HEAD
-            {% set navigation = [
-                {'href': 'profile', 'caption': 'Profile'},
-                {'href': 'settings', 'caption': 'Settings'},
-                {'href': 'subscriptions', 'caption': 'subscriptions', 'count': 72},
-                {'href': 'subscribers', 'caption': 'subscribers', 'count': 56}
-            ]
-            %}            
-=======
 
             {% set navigation = [
                 {'href': 'settings', 'caption': 'Settings'},
@@ -22,7 +13,6 @@
                 ]
             %}
 
->>>>>>> lucid
             {% include "navtabs.html" with {'current_page': 'settings'} %}
 
             <div class="row themes-main py-2">
@@ -91,7 +81,7 @@
                                     <img src="{{ theme.imagePath }}" alt="" class="img-fluid w-100 rounded-top">
                                     {% if theme.isActive %} <p class="d-md-none"></p> {% endif %}
                                 </figure>                                
-                                <div class="theme-state d-flex justify-content-start align-items-center px-3 py-2 rounded-bottom" style="background-color:{{ theme.color }};"> 
+                                <div class="theme-state d-flex justify-content-start align-items-center px-3 py-2 rounded-bottom" {% if theme.color %} style="background-color:{{ theme.color }};" {% endif %}> 
                                     <p class="text-white my-0 align-self-center">{{ theme.name }}</p></div>
                             </div>
                         {% endfor %}

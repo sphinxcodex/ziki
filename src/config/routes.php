@@ -151,17 +151,17 @@ Router::get('/published-posts', function($request) {
     return $this->template->render('published-posts.html');
 });
 Router::get('/settings', function($request) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return $user->redirect('/');
-    }
+    // $user = new Ziki\Core\Auth();
+    // if (!$user->is_logged_in()) {
+    //     return $user->redirect('/');
+    // }
     return $this->template->render('settings.html');
 });
 Router::get('/profile', function($request) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return $user->redirect('/');
-    }
+    // $user = new Ziki\Core\Auth();
+    // if (!$user->is_logged_in()) {
+    //     return $user->redirect('/');
+    // }
     return $this->template->render('profile.html');
 });
 Router::post('/subscriptions', function($request) {
@@ -291,9 +291,6 @@ Router::post('/api/upload-image', function() {
 });
 
 Router::get('/install', function($request) {
-<<<<<<< HEAD
-    return $this->installer->render('lucid-installation.html');
-=======
     $user = new Ziki\Core\Auth();
     if ($user::isInstalled() == false) {
         return $user->redirect('/');
@@ -309,6 +306,5 @@ Router::post('/setup', function($request) {
     $data = $request->getBody();
     $user = new Ziki\Core\Auth();
     die(json_encode($data));
->>>>>>> 75592415fb0efff4b4b0f3339bb9a0a4ee33dea9
 });
 
