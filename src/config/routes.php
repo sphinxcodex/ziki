@@ -165,6 +165,13 @@ Router::get('/published-posts', function($request) {
     }
     return $this->template->render('published-posts.html');
 });
+Router::get('/published-posts', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
+    return $this->template->render('microblog.html');
+});
 Router::get('/settings', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
