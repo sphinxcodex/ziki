@@ -9,7 +9,7 @@
 <url>https://lh3.googleusercontent.com/-m12SmjDkYCA/AAAAAAAAAAI/AAAAAAAAAKM/qd1755LlbfI/photo.jpg</url>
 </image>
 <language>en-US</language>
-<lastBuildDate>Wed, 01 May 2019 12:46:20 +0000</lastBuildDate>
+<lastBuildDate>Wed, 01 May 2019 14:16:25 +0000</lastBuildDate>
 <pubDate>Sat, 06 Apr 2013 00:00:00 +0000</pubDate>
 <atom:link href="http://localhost:8000/storage/rss/rss.xml" rel="self" type="application/rss+xml"></atom:link>
 <atom:link href="http://pubsubhubbub.appspot.com" rel="hub"></atom:link>
@@ -25,9 +25,18 @@
 <source url="http://localhost:8000/">Ojinaka Tochukwu's page</source>
 </item>
 <item>
-<title>testing post</title>
-<link></link>
-<description><![CDATA[testing content]]></description>
+<title>new post title</title>
+<link>new-post-title-1556720160</link>
+<description><![CDATA[this is a test content Laborum cupidatat eiusmod duis duis. Sit voluptate ea fugiat duis velit Lorem]]></description>
+<pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
+<author>ojinakatochukwu@gmail.com (Ojinaka Tochukwu)</author>
+<guid isPermaLink="true">&lt;p&gt;&lt;a href=&quot;http://localhost:8000//storage/contents/1556720160&quot;&gt;http://localhost:8000//storage/contents/1556720160&lt;/a&gt;&lt;/p&gt;</guid>
+<source url="http://localhost:8000/">Ojinaka Tochukwu's page</source>
+</item>
+<item>
+<title>this is the title 1556714760</title>
+<link>this-is-the-title-1556714760</link>
+<description><![CDATA[this is a test content Laborum cupidatat eiusmod duis duis. Sit voluptate ea fugiat duis velit Lorem]]></description>
 <pubDate>Sun, 07 Apr 2013 00:50:30 +0000</pubDate>
 <author>ojinakatochukwu@gmail.com (Ojinaka Tochukwu)</author>
 <guid isPermaLink="true"></guid>
