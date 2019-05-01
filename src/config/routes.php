@@ -16,7 +16,7 @@ Router::get('/', function($request) {
         $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
         $host = $user->hash($url);
         // Render our view
-        //print_r($feed);
+        //print_r($host);
         return $this->template->render('index.html',['posts' => $feed, 'host' => $host] );
     }
 });
@@ -40,6 +40,7 @@ Router::get('/timeline', function($request) {
     $post = $ziki->fetchAllRss();
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
+
 
 Router::get('/tags/{id}', function($request,$id) {
     $user = new Ziki\Core\Auth();
@@ -77,6 +78,7 @@ Router::post('/publish', function($request) {
       $result = $ziki->create($title, $body, $tags, $images);
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
+
 /* Working on draft by devmohy */
 Router::post('/saveDraft', function($request) {
     $user = new Ziki\Core\Auth();
@@ -93,23 +95,25 @@ Router::post('/saveDraft', function($request) {
     return $this->template->render('drafts.html', ['ziki' => $result]);
 });
 /* Working on draft by devmohy */
+
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 Router::post('/timeline', function($request) {
   $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
+
     $data = $request->getBody();
     $url = $_POST['domain'];
     $ziki = new Ziki\Core\Subscribe();
     $result = $ziki->extract($url);
-    $directory = "./storage/contents/";
-    $ziki = new Ziki\Core\Document($directory);
-    $feed = $ziki->fetchAllRss();
-    return $this->template->render('index.html', ['posts' => $feed]);
+    return $r->redirect('/subscriptions');
+
 });
 }
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
   Router::get('/timeline', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
@@ -122,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       //print_r($feed);
       return $this->template->render('timeline.html',['posts' => $feed] );
   });
-}
+
 Router::get('/contact-us', function($request) {
     include ZIKI_BASE_PATH."/src/core/SendMail.php";
     $checkifOwnersMailIsprovided = new  SendContactMail();
@@ -165,6 +169,13 @@ Router::get('/published-posts', function($request) {
     }
     return $this->template->render('published-posts.html');
 });
+Router::get('/microblog', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
+    return $this->template->render('microblog.html');
+});
 Router::get('/settings', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
@@ -184,8 +195,26 @@ Router::post('/subscriptions', function($request) {
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
-    return $this->template->render('subscriptions.html');
+    $directory = "./storage/contents/";
+  $ziki = new Ziki\Core\Document($directory);
+  $list = $ziki->subscription();
+  $count = new Ziki\Core\Subscribe();
+  $count = $count->count();
+
+    return $this->template->render('subscriptions.html', ['sub' => $list, 'count' => $count ] );
 });
+Router::get('/unsubscribe', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
+
+    $id = $_GET['n'];
+  $ziki = new Ziki\Core\Subscribe();
+  $list = $ziki->unfollow($id);
+
+  return $user->redirect('/subscriptions');
+    });
 Router::get('/subscribers', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
@@ -203,13 +232,69 @@ Router::get('/editor', function($request) {
 Router::get('/404', function($request) {
     return $this->template->render('404.html');
 });
+
+/* Devmohy working on draft */
+/* Save draft*/
+Router::post('/saveDraft', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
+    $directory = "./storage/drafts/";
+    $data = $request->getBody();
+    $title = $data['title'];
+    $body = $data['postVal'];
+    $tags = $data['tags'];
+
+    $initial_images = array_filter($data , function($key) {
+        return preg_match('/^img-\w*$/', $key);
+      }, ARRAY_FILTER_USE_KEY);
+      // PHP automatically converts the '.' of the extension to an underscore
+      // undo this
+      $images = [];
+      foreach ($initial_images as $key => $value) {
+        $newKey = preg_replace('/_/', '.', $key);
+        $images[$newKey] = $value;
+      }
+
+    $ziki = new Ziki\Core\Document($directory);
+    $result = $ziki->createDraft($title, $body,$tags, $images, true);
+    return $this->template->render('drafts.html', ['ziki' => $result]);
+});
+/* Save draft */
+
+/* Get all saved draft */
 Router::get('/drafts', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
-    return $this->template->render('drafts.html');
+    $directory = "./storage/drafts/";
+    $ziki = new Ziki\Core\Document($directory);
+    $draft = $ziki->getDrafts();
+    return $this->template->render('drafts.html', ['drafts' => $draft]);
 });
+/* Get all saved draft */
+
+/* Delete draft */
+Router::get('deleteDraft/{id}', function($request, $id) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return new RedirectResponse("/");
+    }
+    $directory = "./storage/drafts/";
+    $ziki = new Ziki\Core\Document($directory);
+    $result = $ziki->delete($id);
+    return $this->template->render('drafts.html', ['delete' => $result] );
+});
+/* Delete draft */
+
+/* Edit draft */
+/* Edit draft */
+
+/* Devmohy working on draft */
+
+
 Router::get('/about', function($request) {
     return $this->template->render('about-us.html');
 });
@@ -217,6 +302,7 @@ Router::get('/download', function($request) {
     return $this->template->render('download.html');
 });
 Router::get('/auth/{provider}/{token}', function($request, $token){
+    $param = $request->getBody();
     $user = new Ziki\Core\Auth();
     $check = $user->validateAuth($token);
     if($_SESSION['login_user']['role'] == 'guest'){
@@ -224,6 +310,16 @@ Router::get('/auth/{provider}/{token}', function($request, $token){
     }
     else{
         return $user->redirect('/timeline');
+    }
+});
+Router::get('/setup/{provider}/{token}', function($request, $token){
+    $user = new Ziki\Core\Auth();
+    $check = $user->validateAuth($token);
+    if($_SESSION['login_user']['role'] == 'guest'){
+        return $user->redirect('/');
+    }
+    else{
+        return $user->redirect('/profile');
     }
 });
 Router::get('/logout', function($request) {
@@ -239,6 +335,19 @@ Router::post('/api/upload-image', function() {
 });
 
 Router::get('/install', function($request) {
-    return $this->installer->render('install.html');
+    $user = new Ziki\Core\Auth();
+    if ($user::isInstalled() == false) {
+        return $user->redirect('/');
+    }
+    else{
+        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+        $host = $user->hash($url);
+        return $this->installer->render('install.html', ['host' => $host]);
+    }
 });
 
+Router::post('/setup', function($request) {
+    $data = $request->getBody();
+    $user = new Ziki\Core\Auth();
+    die(json_encode($data));
+});
