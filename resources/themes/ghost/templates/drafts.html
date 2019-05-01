@@ -214,26 +214,23 @@
                     <li class="nav-item mr-5 pb-0 mb-0"><a href="#" class="active navbar-link">Drafts</a></li>
                 </ul>
             </div>
-
+            {% for key, draft in drafts %}
             <div class="row draft-starts-here">
                 <div class="col-10 mt-5">
                     <div class="post-item mt-3">
-                        <p class="post-author">Samaila Bala</p>
+                        <p class="post-author">{{draft.site | raw}}</p>
 
                         <h4 class="post-title">
                             <a href="#">
-                                Looking For Where To Spend Christmas in the comfort of your home
+                                {{draft.title | raw}}
                             </a>
                         </h4>
 
                         <p class="post-content-summary">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-                            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore
+                            {{draft.body | raw}}
                         </p>
                         <div class="row">
-                            <p class="post-date mb-4 col-12 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
+                            <p class="post-date mb-4 col-12 d-flex justify-content-start">{{draft.timestamp | raw}}</p>
                         </div>
                     </div>
 
@@ -253,42 +250,7 @@
             </div>
 
 
-            <div class="row draft-starts-here">
-                    <div class="col-10 mt-5">
-                        <div class="post-item mt-3">
-                            <p class="post-author">Samaila Bala</p>
-    
-                            <h4 class="post-title">
-                                <a href="#">
-                                    Looking For Where To Spend Christmas in the comfort of your home
-                                </a>
-                            </h4>
-    
-                            <p class="post-content-summary">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore , Lorem ipsum dolor
-                                sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore
-                            </p>
-                            <div class="row">
-                                <p class="post-date mb-4 col-12 d-flex justify-content-start">2nd April, 2019 : 04:30</p>
-                            </div>
-                        </div>
-    
-                    </div>
-    
-                    <div class="dropdown col-2" style="cursor:pointer">
-                        <span class="dropdown-toggle dropdown-icon " aria-haspopup="true" aria-expanded="false"
-                            data-toggle="dropdown">
-                        </span>
-                        <div class="dropdown-menu">
-                            <button class="dropdown-item"> <a href="\editor" class="edit-post">Edit post</a></button>
-                            <button class="dropdown-item" data-toggle="modal" data-target="#cancelModal">Delete
-                                post</button>
-                        </div>
-                    </div>
-    
-                </div>
+            {% endfor %}
         </div>
     </div>
     <!-- using semantic tags -->
