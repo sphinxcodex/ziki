@@ -251,9 +251,14 @@ Router::post('/api/upload-image', function() {
 
 Router::get('/install', function($request) {
     $user = new Ziki\Core\Auth();
-    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-    $host = $user->hash($url);
-    return $this->installer->render('install.html', ['host' => $host]);
+    if ($user::isInstalled() == false) {
+        return $user->redirect('/');
+    }
+    else{
+        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+        $host = $user->hash($url);
+        return $this->installer->render('install.html', ['host' => $host]);
+    }
 });
 
 Router::post('/setup', function($request) {
