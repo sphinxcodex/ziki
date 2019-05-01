@@ -1,6 +1,8 @@
 <?php
 use Ziki\Http\Router;
+
 session_start();
+
 Router::get('/about/{id}', function($request,$id) {
      return $this->template->render('about-us.html');
 });
@@ -118,8 +120,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $directory = "./storage/contents/";
       $ziki = new Ziki\Core\Document($directory);
       $feed = $ziki->fetchAllRss();
-      // Render our view
-      //print_r($feed);
+     //  Render our view
+      print_r($feed);
       return $this->template->render('timeline.html',['posts' => $feed] );
   });
 }
@@ -208,7 +210,34 @@ Router::get('/drafts', function($request) {
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
-    return $this->template->render('drafts.html');
+    $directory = "./storage/drafts/";
+    $ziki = new Ziki\Core\Document($directory);
+    $draft = $ziki->getDrafts();
+    return $this->template->render('drafts.html', ['drafts' => $draft]);
+});
+
+Router::get('/videos', function($request) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
+
+    return $this->template->render('videos.html');
+
+});
+
+/* Get all saved draft */
+
+/* Delete draft */
+Router::get('deleteDraft/{id}', function($request, $id) {
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return new RedirectResponse("/");
+    }
+    $directory = "./storage/drafts/";
+    $ziki = new Ziki\Core\Document($directory);
+    $result = $ziki->delete($id);
+    return $this->template->render('drafts.html', ['delete' => $result] );
 });
 Router::get('/about', function($request) {
     return $this->template->render('about-us.html');
@@ -242,3 +271,30 @@ Router::get('/install', function($request) {
     return $this->installer->render('lucid-installation.html');
 });
 
+Router::post('/appsetting', function($request) {
+    $data = $request->gegtBody();
+    // $arr = $_POST['json'];
+	$postedData = json_decode($data); //expect an array format ["action", "value"]
+    $action = $postedData[0];
+
+    $actionType = $postedData[0]; //action point for  app setting
+    $value = $postedData[1]; //value for app setting
+
+    switch($actionType){		
+        case 'change_plugin':
+            $name = htmlentities($dt->plugin_name);
+            // echo $result = json_encode({ msg: 'Plugin channge successfully', status: 'Success', data: $name });
+        break;
+        case 'enable_video':
+            $useVideo = htmlentities($dt->use_video);
+            // echo $result = json_encode({ msg: 'Plugin channge successfully', status: 'Success', data: $useVideo });
+        break;
+        case 'enable_portfolio':
+
+        break;
+        case 'switch_theme':
+
+        break;
+    }
+    return;
+});
