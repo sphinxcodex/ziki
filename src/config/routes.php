@@ -213,6 +213,9 @@ Router::get('/drafts', function($request) {
 Router::get('/about', function($request) {
     return $this->template->render('about-us.html');
 });
+Router::get('/microblog', function($request) {
+    return $this->template->render('microblog.html');
+});
 Router::get('/download', function($request) {
     return $this->template->render('download.html');
 });
