@@ -1,3 +1,5 @@
+@import "https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css";
+
 body {
   background: var(--body-bg) !important;
 }
@@ -237,19 +239,26 @@ input:checked + .slider:before {
 
 /*style the arrow inside the select element:*/
 .select-selected:after {
+  font-family: 'themify';
+  font-weight: normal;
+	font-style: normal;
   position: absolute;
-  content: "";
-  top: 14px;
+  content: "\e64b";
+  top: 10px;
   right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid #222222;
-  border-color: #222222 transparent transparent transparent;
+  width: 20px;
+  height: 20px;
+  /* border: 6px solid #222222; */
+  /* border-color: #222222 transparent transparent transparent; */
 }
 
 /*point the arrow upwards when the select box is open (active):*/
 .select-selected.select-arrow-active:after {
-  border-color: transparent transparent #222222 transparent;
+  /* border-color: transparent transparent #222222 transparent; */
+  font-family: 'themify';
+  font-weight: normal;
+	font-style: normal;
+  content: "\e648";
   top: 7px;
 }
 
