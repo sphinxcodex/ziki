@@ -68,7 +68,7 @@ class Auth {
 //            return $_SESSION;
 //        }
 //    }
-
+//
 
     public function is_logged_in() {
         $_SESSION['login_user']['name'] = 'anonymous';

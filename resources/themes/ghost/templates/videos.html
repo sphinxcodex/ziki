@@ -10,22 +10,25 @@
     }
     video-first {
 
-        width: 200px;
-        height: 200px;
         float: left;
         margin-left: auto;
+        position: absolute;
 
     }
 
     video-second {
-
-
-        width: 200px;
-        height: 200px;
         float: right;
-        margin-right: auto;
+        margin-right: 50px;
+        position: relative;
     }
 
+    video-text{
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        color: #280A66;
+    }
     .clear{
         clear: both;
     }
@@ -39,7 +42,6 @@
         video-first {
             width: 100%;
             height: auto;
-            float: none;
             float: right;
             border: 100px;
 
@@ -59,13 +61,24 @@
 
 
             <div class=" video-wrapper row col-12">
-                <div class = "video-first col-6" width="400" height="300"  >
+                <div class = "video-first col-6" >
+                    <p class="video-class">
+
+                    </p>
                     <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4s" width="400px" controls/>
 
                 </div>
 
-                <div class = "video-second col-6" width="400" height="300"  >
-                    <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4s"  width="400px" controls/>
+                <br/><br/> <br/>
+
+                <div class = "video-second col-sm-3  " >
+                    <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4s"  width="400px"  controls/>
+
+                </div>
+            </div>
+
+                <div class = "video-second  col-6   " >
+                    <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4s"  width="400px"  controls/>
 
                 </div>
 
