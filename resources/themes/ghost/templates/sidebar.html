@@ -616,6 +616,39 @@ img.profile-pic{
       <hr />
     </div>
 
+<<<<<<< HEAD
+    <!-- side bar menu links -->
+    <div class="row">
+      <div class="col-12 col-sm-8 mx-md-auto">
+        <ul class="pl-0 mt-0">
+          {% if user.role == 'admin' %}
+          <li><a href="/published-posts">Published Posts</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/videos">Videos</a></li>
+          <li><a href="/about">About Ziki</a></li>
+          {% elseif user.role == 'guest' %}
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Ziki</a></li>
+          <li><a href="/contact-us">Contact Me</a></li>
+          {% else %}
+          <li><a href="/">Home</a></li>
+          <li><a href="/published-posts">Published Posts</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/about">About Ziki</a></li>
+          <li><a href="/contact-us">Contact Me</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="pl-4 col-12">
+        <button
+          type="button"
+          class="mobile-login px-5 px-sm-3 px-md-5 py-2 mt-2 mt-sm-0 mt-md-2 btn btn-primary"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+=======
 <div class="container-fluid">
   <div class="row">
     <div class="wrapper">
@@ -640,6 +673,7 @@ img.profile-pic{
           <hr>
           <!-- <strong>BS</strong> -->
         </div>
+>>>>>>> d0d99e86041e1215ad687bd55911336256b06709
 
         <div class="row">
           <div class="col-12">
