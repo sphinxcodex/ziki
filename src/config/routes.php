@@ -280,7 +280,9 @@ Router::get('/videos', function($request) {
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
+
     return $this->template->render('videos.html');
+
 });
 
 /* Get all saved draft */
