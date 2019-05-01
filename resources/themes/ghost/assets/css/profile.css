@@ -74,7 +74,7 @@ a {
 }
 
 .profile-content-area {
-  background: var(--profile-edit-form);
+  background: #ffffff;
   height: 930px;
 }
 .profile-edit-label {
@@ -86,7 +86,7 @@ a {
 }
 
 .profile-dp {
-  width: 200px;
+  width: 150px;
   height: 150px;
   max-width: 100%;
   background: #dddde5;
@@ -543,9 +543,11 @@ input:checked + .slider:before {
   text-decoration: none;
   position: relative;
   display: inline-block;
+  width: 150px;
+  height: 150px;
 }
 
-.profile-dp-link:hover:before {
+.profile-dp-link:before {
   font-family: "Font Awesome 5 Free";
   content: "\f044";
   font-size: 28px;
