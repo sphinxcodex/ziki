@@ -31,7 +31,7 @@ public function extract($url)
 {
   $rss = new \DOMDocument();
 
-
+//$url = "https://www.feedforall.com//sample-feed.xml";
       $rss->load(trim($url));
       foreach ($rss->getElementsByTagName('channel') as $r) {
         $title = $r->getElementsByTagName('title')->item(0)->nodeValue;
@@ -40,7 +40,7 @@ public function extract($url)
         if (is_null($r->getElementsByTagName('image')->item(0)->nodeValue)) {
         $image ="resources/themes/ghost/assets/img/bubbles.png";
       }else {
-        $image = $r->getElementsByTagName('image')->item(0)->nodeValue;
+        $image = $r->getElementsByTagName('url')->item(0)->nodeValue;
 
       }
 
@@ -53,8 +53,8 @@ public function extract($url)
 
               $db = "storage/rss/subscriber.json";
 
-              $file = file_get_contents($db, true);
-              $data=json_decode($file,true);
+              $file = FileSystem::read($db);
+              $data=json_decode($file, true);
               unset($file);
 
               if (count($data) >= 1) {
@@ -84,10 +84,8 @@ public function extract($url)
                   $file = file_get_contents($db);
                   $prev_sub = json_decode($file);
                   $new =array_merge($sub, $prev_sub);
-                  $fp = fopen($json_db, 'w') or die("post DB not found");
-                  //die(json_encode($new));
-                  $new_sub = fwrite($fp, json_encode($new));
-                  fclose($fp);
+                  $new = json_encode($new);
+                  $doc = FileSystem::write($json_db, $new);
 }
               }else {
               $time = date("Y-m-d h:i:sa");
@@ -97,38 +95,39 @@ public function extract($url)
               $json_db = "storage/rss/subscriber.json";
               $file = file_get_contents($db);
               $prev_sub = json_decode($file);
-          //print_r($prev_sub);
-              $new =array_merge($sub, $prev_sub);
-              $fp = fopen($json_db, 'w') or die("post DB not found");
-              //die(json_encode($new));
-              $new_sub = fwrite($fp, json_encode($new));
-              fclose($fp);
+
+              $new = array_merge($sub, $prev_sub);
+              $new = json_encode($new);
+              $doc = FileSystem::write($json_db, $new);
+
 
           }
-          header("loaction: /timeline");
+          header("loaction: /subscriptions");
   }
   public function unfollow($del)
   {
-    $db = "storage/contents/subscriber.json";
-    $file = file_get_contents($db, true);
+    $db = "storage/rss/subscriber.json";
+    $file = FileSystem::read($db);
     $data = json_decode($file, true);
     unset($file);
+    //Sample Feed - Favorite RSS Related Software & Resources
+
     foreach ($data as $key => $value) {
 
-      if ($value["name"] == $del) {
+      if ($value["time"] == $del) {
         unset($data[$key]);
       }
     };
 
     $result = json_encode($data);
-    file_put_contents($db, $result);
+    FileSystem::write($db, $result);
     unset($result);
   }
   public function count()
   {
     $db = "storage/rss/subscriber.json";
 
-    $file = file_get_contents($db, true);
+    $file = FileSystem::read($db);
     $data=json_decode($file,true);
     unset($file);
    return count($data);
