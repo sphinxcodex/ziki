@@ -1,5 +1,7 @@
 <?php
 use Ziki\Http\Router;
+use Ziki\Core\Document;
+
 session_start();
 Router::get('/about/{id}', function($request,$id) {
      return $this->template->render('about-us.html');
@@ -244,4 +246,21 @@ Router::post('/api/upload-image', function() {
 Router::get('/install', function($request) {
     return $this->installer->render('install.html');
 });
-
+Router::get('/{id}', function($request, $id) {
+ try {
+    // echo 'this page is for the /{id} route';
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
+    $directory = './storage/contents/';
+    $path = ZIKI_BASE_PATH.'/src/core/document.php';
+    require_once $path;
+    $doc = new Document($directory);
+    $result = $doc->getSinglePost($id);
+    // var_dump($result);
+ } catch (\Throwable $th) {
+     echo $th->getMessage();
+ }
+   return $this->template->render('blog-details.html', ['result' => $result] );
+});
