@@ -143,14 +143,12 @@
 			<!--Navbar-->
 			<div class="col-12 col-sm-9">
 				<div class="nav-bar row mt-3">
-					<ul class="col-12 d-flex justify-content-start mb-0 pb-0">
-						<li class="nav-item mr-5 pb-0 mb-0">
-							<a href="followers" class="navbar-link ">Followers</a>
-						</li>
-						<li class="nav-item mr-5 pb-0 mb-0">
-							<a href="following" class="active navbar-link">Following</a>
-						</li>
-					</ul>
+                        {% set navigation = [
+                            {'href': 'followers', 'caption': 'Followers'},
+                            {'href': 'following', 'caption': 'Following'}
+                            ]
+                        %}
+                        {% include "navtabs.html" with {'current_page': 'following'} %}
 				</div><hr>
 				
 				<!--Following Content-->
