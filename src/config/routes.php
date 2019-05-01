@@ -166,19 +166,19 @@ Router::get('/profile', function($request) {
     }
     return $this->template->render('profile.html');
 });
-Router::post('/subscriptions', function($request) {
+Router::post('/following', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
-    return $this->template->render('subscriptions.html');
+    return $this->template->render('following.html');
 });
-Router::get('/subscribers', function($request) {
+Router::get('/followers', function($request) {
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
-    return $this->template->render('subscribers.html');
+    return $this->template->render('followers.html');
 });
 Router::get('/editor', function($request) {
     $user = new Ziki\Core\Auth();
