@@ -78,7 +78,7 @@ Router::post('/publish', function($request) {
       $result = $ziki->create($title, $body, $tags, $images);
     return $this->template->render('timeline.html', ['ziki' => $result]);
 });
-<<<<<<< HEAD
+
 /* Working on draft by devmohy */
 Router::post('/saveDraft', function($request) {
     $user = new Ziki\Core\Auth();
@@ -96,9 +96,7 @@ Router::post('/saveDraft', function($request) {
 });
 /* Working on draft by devmohy */
 
-Router::post('/addrss', function($request) {
-    $r = new Ziki\Core\Auth();
-=======
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 Router::post('/timeline', function($request) {
@@ -106,7 +104,7 @@ Router::post('/timeline', function($request) {
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
->>>>>>> working
+
     $data = $request->getBody();
     $url = $_POST['domain'];
     $ziki = new Ziki\Core\Subscribe();
@@ -114,7 +112,7 @@ Router::post('/timeline', function($request) {
     return $r->redirect('/subscriptions');
 
 });
-
+}
 
   Router::get('/timeline', function($request) {
     $user = new Ziki\Core\Auth();
