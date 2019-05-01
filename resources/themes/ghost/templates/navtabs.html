@@ -2,8 +2,8 @@
 {% set navigation = [
         {'href': 'profile', 'caption': 'Profile'},
         {'href': 'settings', 'caption': 'Settings'},
-        {'href': 'subscriptions', 'caption': 'subscriptions', 'count': 72},
-        {'href': 'subscribers', 'caption': 'subscribers', 'count': 56}
+        {'href': 'following', 'caption': 'Following', 'count': 72},
+        {'href': 'followers', 'caption': 'Followers', 'count': 56}
     ]
 %}
 <div class="row profile-header d-flex flex-row justify-content-between pt-5 pb-1 flex-nowrap">
@@ -14,8 +14,8 @@
                 {% if current_page == item.href %}
                 <li class="p-3 active">
                     <a href="/{{ item.href }}" class="profile-top-link">
-                        {%if item.count %} 
-                        <span class="follow-numbers">{{ item.count }}</span> 
+                        {%if item.count %}
+                        <span class="follow-numbers">{{ count }}</span>
                         {{ item.caption }}</a>
                         {% else %}
                         {{ item.caption }}
@@ -25,8 +25,8 @@
                 {% else %}
                 <li class="p-3">
                     <a href="/{{ item.href }}" class="profile-top-link">
-                        {%if item.count %} 
-                        <span class="follow-numbers">{{ item.count }}</span>
+                        {%if item.count %}
+                        <span class="follow-numbers">{{ fcount }}</span>
                         {{ item.caption }}</a>
                         {% else %}
                         {{ item.caption }}

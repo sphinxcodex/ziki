@@ -32,9 +32,9 @@ Router::get('blog-details/{id}', function($request, $id) {
 });
 Router::get('/timeline', function($request) {
     $user = new Ziki\Core\Auth();
-    // if (!$user->is_logged_in()) {
-    //     return $user->redirect('/');
-    // }
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
     $post = $ziki->fetchAllRss();
@@ -52,10 +52,10 @@ Router::get('/tags/{id}', function($request,$id) {
     return $this->template->render('timeline.html', ['posts' => $result] );
 });
 Router::post('/publish', function($request) {
-    // $user = new Ziki\Core\Auth();
-    // if (!$user->is_logged_in()) {
-    //     return $user->redirect('/');
-    // }
+    $user = new Ziki\Core\Auth();
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
     $directory = "./storage/contents/";
     $data = $request->getBody();
     $title = $data['title'];
@@ -97,9 +97,9 @@ Router::post('/timeline', function($request) {
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   Router::get('/timeline', function($request) {
     $user = new Ziki\Core\Auth();
-    // if (!$user->is_logged_in()) {
-    //     return $user->redirect('/');
-    // }
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
       $directory = "./storage/contents/";
       $ziki = new Ziki\Core\Document($directory);
       $feed = $ziki->fetchAllRss();
