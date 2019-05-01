@@ -391,7 +391,7 @@ class Document
 
 /* Working on draft by devmohy */
 //for creating markdown files
-public function createDraft($title, $content,$tags)
+public function createDraft($title, $content,$tags,$image)
      {
         $time = date("F j, Y, g:i a");
         $unix = strtotime($time);
@@ -403,16 +403,25 @@ public function createDraft($title, $content,$tags)
         $yaml = $markdown->getYAML();
         $html = $markdown->getContent();
         $doc = FileSystem::write($this->file, $yaml . "\n" . $html);
-
+        
         $yamlfile = new Doc();
         $yamlfile['title'] = $title;
-        $tag = explode(",",$tags);
-        $put = [];
-        foreach($tag as $value){
-            array_push($put,$value);
+        if($tags != ""){
+            $tag = explode(",",$tags);
+            $put = [];
+        foreach ($tag as $value) {
+                array_push($put, $value);
+            }
+            $yamlfile['tags'] = $put;
         }
-        $yamlfile['tags'] = $put;
-        $yamlfile['post_dir'] = SITE_URL . "/storage/contents/drafts/{$unix}";
+        if(!empty($image)){
+            foreach($image as $key => $value){
+            $decoded = base64_decode($image[$key]);
+            $url = "./storage/images/".$key;
+            FileSystem::write($url,$decoded);
+            }
+        }
+        $yamlfile['post_dir'] = SITE_URL . "/storage/drafts/{$unix}";
         $striped = str_replace(' ', '-', $title);
         $yamlfile['slug'] = $striped."-{$unix}";
         $yamlfile['timestamp'] = $time;
@@ -431,13 +440,13 @@ public function createDraft($title, $content,$tags)
         return $doc;
      }
      //get post
-     public function getDraft()
+     public function getDrafts()
      {
          $finder = new Finder();
 
          // find all files in the current directory
          $finder->files()->in($this->file);
-         $posts = [];
+         $drafts = [];
          if ($finder->hasResults()) {
              foreach ($finder as $file) {
                  $document = $file->getContents();
@@ -458,9 +467,9 @@ public function createDraft($title, $content,$tags)
                  $content['url'] = $url;
                  $content['slug'] = $slug;
                  $content['timestamp'] = $time;
-                 array_push($posts, $content);
+                 array_push($drafts, $content);
              }
-             return $posts;
+             return $drafts;
          } else {
              return false;
          }
