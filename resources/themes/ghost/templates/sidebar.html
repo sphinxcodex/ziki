@@ -15,7 +15,9 @@
     top: 0;
     z-index: 2;
   }
-
+a {
+  color: #000000;
+}
   .sidebar-container.sidebar-shown {
     min-height: 100%;
     background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%),
@@ -101,6 +103,9 @@
     align-items: center;
     flex-direction: column;
   }
+  .width-100-150px {
+    width: 100px;
+  }
 
   .profile-pic {
     width: 140px;
@@ -156,7 +161,20 @@
   .sidebar-bubble {
     display: none;
   }
+  .text-14px {
+    font-size: 14px;
+  }
+  .mb {
+    margin-bottom: 5rem !important;
+  }
 
+  .s-avatar {
+    width: 20px;
+    height:20px;
+  }
+  .signin-btn {
+    padding: 0.5rem;
+  }
   @media screen and (min-width: 500px) and (max-width: 757px) {
     #sidebar ul {
       margin-top: 0px;
@@ -235,6 +253,9 @@
       display: block;
       padding: 10em 0 0 1em;
     }
+    .width-100-150px {
+    width: 150px;
+  }
   }
 
   @media screen and (min-height: 500px) {
@@ -255,15 +276,17 @@
   .login-modal-popup-left-column {
     background: linear-gradient(180deg, #973793 0%, rgba(134, 64, 131, 0) 100%),
       #3b0e75;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
   }
 
   .login-modal-popup-right-column {
     background: #ffffff;
     box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.25);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 87%;
+    margin: auto;
   }
 
   .login-modal-border-radius {
@@ -368,14 +391,6 @@
     border: none;
   }
 
-  .email-login-container {
-    align-items: center;
-    padding: 0.5rem 1rem;
-    background-color: #ffffff;
-    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
-    border-radius: 0.6rem;
-    font-size: 1.1rem;
-  }
   .email-input {
     padding: 0.4rem;
   }
@@ -383,9 +398,10 @@
   .optional-login-text {
     width: 100%;
     text-align: center;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #979797;
     line-height: 0.1em;
     margin: 10px 0 20px;
+    color: #979797;
   }
   .optional-login-text span {
     background: #fff;
@@ -397,6 +413,14 @@
     border: none;
     box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
     padding: 0.5rem 1rem;
+  }
+  .email-login-container {
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 0.6rem;
+    font-size: 1.1rem;
   }
 
   .width-100pc {
@@ -432,20 +456,6 @@
 
     #modalLoginForm .modal-content {
       border: none;
-    }
-
-    .login-modal-popup-left-column {
-      background: transparent;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-    }
-
-    .login-modal-popup-right-column {
-      width: 87%;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.26);
-      box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.25);
-      border-radius: 20px;
     }
 
     .login-dialog {
@@ -496,6 +506,9 @@
       margin: auto;
       left: -12%;
     }
+    .width-100-150px {
+    width: 150px;
+  }
   }
 
   @media screen and (min-width: 992px) {
@@ -647,7 +660,7 @@
 
         <!-- for the login auth -->
         <div class="login-modal-popup-right-column col-md-6 text-center login-form">
-          <p class="mt-5">LOGIN TO CONTINUE</p>
+          <p class="mt-5 mb-5">LOGIN TO CONTINUE</p>
           <div
             class="signin-btn d-flex justify-content-between email-login-container"
           >
@@ -655,10 +668,9 @@
             <input
               type="email"
               placeholder="Enter your Email Address"
-              class="width-100pc ml-1 no-border email-input"
+              class="width-100pc ml-1 no-border text-14px"
               required
             />
-            <button class="email-login-button">
               <svg
                 width="20"
                 height="16"
@@ -671,22 +683,21 @@
                   fill="#682681"
                 />
               </svg>
-            </button>
           </div>
           <p class="optional-login-text mt-5 mb-5">
             <span>or sign in with</span>
           </p>
-          <div class="d-flex justify-content-around mb-5">
-            <a href="https://auth.techteel.com/login/facebook?type=login&url={{host}}">
-              <button class="signin-btn width-150px">facebook</button>
+          <div class="d-flex justify-content-around mb-5 mb">
+            <a href="https://auth.techteel.com/login/facebook?type=login&url={{host}}" class="width-100-150px d-flex signin-btn align-items-center justify-content-between">
+              <img src="/resources/themes/ghost/assets/img/facebook.png" alt="" class="s-avatar">
+              <p class="m-0">Facebook</p>
             </a>
-            <a href="https://auth.techteel.com/login/google?type=login&url={{host}}">
-              <button class="signin-btn width-150px">google</button>
+            <a href="https://auth.techteel.com/login/google?type=login&url={{host}}" class="width-100-150px d-flex signin-btn align-items-center justify-content-between">
+              <img src="/resources/themes/ghost/assets/img/google.png" alt="" class="s-avatar">
+              <p class="m-0">Google</p>
             </a>
           </div>
         </div>
-
-        
           <div class="login-modal-popup-right-column col-md-6 text-center login-mail-sent">
             <p class=" mt-5 fa-2x">
               Check your Email
