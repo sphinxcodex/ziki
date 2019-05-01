@@ -166,17 +166,17 @@ Router::get('/published-posts', function($request) {
     return $this->template->render('published-posts.html');
 });
 Router::get('/settings', function($request) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return $user->redirect('/');
-    }
+    // $user = new Ziki\Core\Auth();
+    // if (!$user->is_logged_in()) {
+    //     return $user->redirect('/');
+    // }
     return $this->template->render('settings.html');
 });
 Router::get('/profile', function($request) {
-    $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return $user->redirect('/');
-    }
+    // $user = new Ziki\Core\Auth();
+    // if (!$user->is_logged_in()) {
+    //     return $user->redirect('/');
+    // }
     return $this->template->render('profile.html');
 });
 Router::post('/subscriptions', function($request) {
@@ -239,6 +239,6 @@ Router::post('/api/upload-image', function() {
 });
 
 Router::get('/install', function($request) {
-    return $this->installer->render('install.html');
+    return $this->installer->render('lucid-installation.html');
 });
 

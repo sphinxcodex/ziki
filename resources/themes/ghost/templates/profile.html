@@ -7,6 +7,12 @@
   <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3 offset-lg-4 offset-md-4 offset-sm-12 offset-xs-12">
 
+      {% set navigation = [
+        {'href': 'settings', 'caption': 'Settings'},
+        {'href': 'profile', 'caption': 'Profile'}
+        ]
+      %}
+
       {% include "navtabs.html" with {'current_page': 'profile'} %}
 
       <div class="row profile-main py-2">

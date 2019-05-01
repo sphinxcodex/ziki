@@ -7,44 +7,82 @@
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3 offset-lg-4 offset-md-4 offset-sm-12 offset-xs-12">
 
+            {% set navigation = [
+                {'href': 'settings', 'caption': 'Settings'},
+                {'href': 'profile', 'caption': 'Profile'}
+                ]
+            %}
+
             {% include "navtabs.html" with {'current_page': 'settings'} %}
 
             <div class="row themes-main py-2">
-                <div class="col themes-content-area pb-5 mt-5 mr-3">
-                    <div class="row px-3 pt-4 pb-5">
+                <div class="col themes-content-area pb-5 mt-5 mr-3 px-0">
 
-                        <div class="col-lg-5 col-md-3 col-sm-6 col-6 order-lg-1 order-md-1 order-sm-1 order-1">
-                            <h3 class="themes-edit-title">Themes<span class="badge badge-round ml-3">4</span></h3>
+                    <div class="row d-flex flex-column px-3 pb-4">
+
+                        <div class="col-lg-5 col-md-3 col-sm-6 col-6 order-lg-1 order-md-1 order-sm-1 order-1 pb-3 px-0">
+                            <h6 class="h6 mb-0">Comment Plugin</h6>
                         </div>
 
-                        <div class="col-lg-4 col-md-5 select-option col-sm-12 order-lg-2 order-md-2 order-sm-2 order-2">
-                            <form><input class="form-control form-control-no-border rounded-0 search-box" type="text" placeholder="Search installed themes"></form>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-6 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1 d-flex align-items-center px-0 pb-5">
+                            <select class="custom-select plugin-select" placeholder="Select Plugin">
+                                <option selected>Select Plugin</option>
+                                <option value="discus">Discus</option>
+                                <option value="facebook">Facebook</option>
+                            </select>
                         </div>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-6 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1 d-flex align-items-center">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-6 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1 d-flex align-items-center px-0 pb-2">
+                            <h6 class="switch-text flex-grow-1 font-weight-normal">Enable Videos Page</h6>
                             <label class="switch d-flex align-items-center">
-                                <input type="checkbox"><span class="slider round"></span>
-                                <h6 class="switch-text flex-grow-1">Light Mode</h6>
+                                <input type="checkbox"><span class="slider round"></span>                                
+                            </label>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-6 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1 d-flex align-items-center px-0">
+                            <h6 class="switch-text flex-grow-1 font-weight-normal">Enable Portfolio Page</h6>
+                            <label class="switch d-flex align-items-center">
+                                <input type="checkbox"><span class="slider round"></span>                                
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="row d-flex flex-column px-3 pt-4 pb-4">
+
+                        <div class="col-lg-5 col-md-3 col-sm-6 col-6 order-lg-1 order-md-1 order-sm-1 order-1 pb-3 px-0">
+                            <h6 class="h6 mb-0">Themes</h6>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-6 switch-toggle order-lg-3 order-md-3 order-sm-1 order-1 d-flex align-items-center px-0">
+                            <h6 class="switch-text flex-grow-1 font-weight-normal">Light Mode</h6>
+                            <label class="switch d-flex align-items-center">
+                                <input type="checkbox"><span class="slider round"></span>                                
                             </label>
                         </div>
                     </div>
 
-                    <div class="row themes-main px-3 themes-cont">
+                    <!-- theme list: the idea is to load from a theme.json file -->
+                    {% set themeList = [
+                        {'name': 'Ghost', 'imagePath': '/resources/themes/ghost/assets/img/theme1.png', isActive: true, color: '#280A66'},
+                        {'name': 'Ruby', 'imagePath': '/resources/themes/ghost/assets/img/theme2.png', isActive: false, color: '#C61639'},
+                        {'name': 'Pine', 'imagePath': '/resources/themes/ghost/assets/img/theme3.png', isActive: false, color: '#4A794F'},
+                        ]
+                    %}
+
+                    <div class="row themes-main px-0 themes-cont">
                         <!-- just add backend looping code here: use of the div as template for looping -->
-                        <div class="col-md-5 col-sm-6 pb-2 theme-item mt-3" data-name="Ghost">
-                            <img src="/resources/themes/ghost/assets/img/theme1.png" alt="" class="img-fluid w-100">
-                            <div class="theme-state theme-active"><span class="text-uppercase">Active:</span> Ghost</div>
-                        </div>
-
-                        <div class="col-md-5 col-sm-6 pb-2 theme-item mt-3" data-name="Canery">
-                            <img src="/resources/themes/ghost/assets/img/theme2.png" alt="" class="img-fluid w-100">
-                            <div class="theme-state">Canery</div>
-                        </div>
-
-                        <div class="col-md-5 col-sm-6 pb-2 theme-item mt-3" data-name="Jumbo">
-                            <img src="/resources/themes/ghost/assets/img/theme3.png" alt="" class="img-fluid w-100">
-                            <div class="theme-state">Jumbo</div>
-                        </div>
+                        {% for theme in themeList %}
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xm-12 pb-2 theme-item mt-3 d-flex flex-column" data-name="{{ theme.name }}" 
+                                title="Click to set {{ theme.name }} theme">
+                                <figure class="px-0 py-0 mb-0">
+                                    <img src="{{ theme.imagePath }}" alt="" class="img-fluid w-100 rounded-top">
+                                    {% if theme.isActive %} <p class="d-md-none"></p> {% endif %}
+                                </figure>                                
+                                <div class="theme-state d-flex justify-content-start align-items-center px-3 py-2 rounded-bottom" style="background-color:{{ theme.color }};"> 
+                                    <p class="text-white my-0 align-self-center">{{ theme.name }}</p></div>
+                            </div>
+                        {% endfor %}
                         <!-- /end backend looping code here -->
                     </div>
                     <script>

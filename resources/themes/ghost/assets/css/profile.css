@@ -132,7 +132,7 @@ a {
 }
 
 .themes-content-area {
-  background: var(--theme-main-bg);
+  background: #ffffff;
   height: 930px;
 }
 
@@ -154,8 +154,8 @@ a {
 .switch {
   position: relative;
   display: inline-block;
-  width: 55px;
-  height: 28px;
+  width: 43px;
+  height: 19px;
 }
 .switch-toggle .switch h6 {
   width: 200px;
@@ -164,10 +164,6 @@ a {
   padding-top: 10px;
   position: absolute;
   top: -30%;
-}
-.switch-toggle h6 {
-  padding-left: 4.2em;
-  clear: both;
 }
 
 /* Hide default HTML checkbox */
@@ -193,11 +189,11 @@ a {
 .slider:before {
   position: absolute;
   content: "";
-  height: 20px;
-  width: 20px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
+  height: 18px;
+  width: 18px;
+  left: 0;
+  bottom: 0;
+  background-color: black;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -226,20 +222,29 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.theme-state {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 3% 20px;
-  /*font-style: normal;*/
-  /*font-weight: bold;*/
-  /*font-size: 16px;*/
-  line-height: normal;
-  letter-spacing: -0.02em;
-  color: #000000;
+/* comment plugin */
+.plugin-select:focus {
+  border-color: #ced4da !important;
+  box-shadow: 0 0 0 !important;
+  outline: 0 none !important;
+}
+
+.plugin-select option:not(seleted) {
+  background: #fff;
+}
+
+/* thmes styles */
+.theme-item {
+  cursor: pointer;
 }
 
 .theme-active {
   background: var(--custom-deep-purple);
   color: #fff;
+}
+
+.theme-state {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .form-control-no-border:focus {
