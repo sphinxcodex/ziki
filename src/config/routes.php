@@ -40,26 +40,17 @@ Router::get('/timeline', function($request) {
     $post = $ziki->fetchAllRss();
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
-<<<<<<< HEAD
-Router::get('/rss', function($request) {
-=======
+
 
 Router::get('/tags/{id}', function($request,$id) {
->>>>>>> working
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
-<<<<<<< HEAD
-    $post = $ziki->getRss();
-$post = preg_replace('/\s\s+/', ' ', $post);
-    return $this->template->render('rss.xml', ['posts' => $post] );
-=======
     $result = $ziki->update($id);
     return $this->template->render('timeline.html', ['posts' => $result] );
->>>>>>> working
 });
 Router::post('/publish', function($request) {
     $user = new Ziki\Core\Auth();
