@@ -102,12 +102,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
-//      $directory = "./storage/contents/";
-//      $ziki = new Ziki\Core\Document($directory);
-//      $feed = $ziki->fetchAllRss();
-      // Render our view
-      //print_r($feed);
-//      return $this->template->render('timeline.html',['posts' => $feed] );
+      $directory = "./storage/contents/";
+      $ziki = new Ziki\Core\Document($directory);
+      $feed = $ziki->fetchAllRss();
+     //  Render our view
+      print_r($feed);
+      return $this->template->render('timeline.html',['posts' => $feed] );
   });
 }
 Router::get('/contact-us', function($request) {
