@@ -477,8 +477,8 @@ public function createDraft($title, $content,$tags,$image)
 /* Working on draft by devmohy */
 
 
-    // post
-    public function update($id)
+    // function for getting posts according to tags
+    public function getPostTags($id)
     {
             $finder = new Finder();
             // find all files in the current directory
@@ -511,7 +511,6 @@ public function createDraft($title, $content,$tags,$image)
                         }
 
                     }
-                    $this->createRSS();
                 return $posts;
             }
         }
