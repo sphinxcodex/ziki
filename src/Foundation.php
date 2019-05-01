@@ -30,7 +30,7 @@ class Foundation
 
     private function loadInstaller()
     {
-        $templatePath = $this->basePath . DIRECTORY_SEPARATOR . 'installer';
+        $templatePath = $this->basePath . DIRECTORY_SEPARATOR . 'resources/installation';
         $this->installer = new Core\Installer($templatePath);
     }
 

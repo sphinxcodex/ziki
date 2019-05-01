@@ -40,16 +40,26 @@ Router::get('/timeline', function($request) {
     $post = $ziki->fetchAllRss();
     return $this->template->render('timeline.html', ['posts' => $post] );
 });
+<<<<<<< HEAD
 Router::get('/rss', function($request) {
+=======
+
+Router::get('/tags/{id}', function($request,$id) {
+>>>>>>> working
     $user = new Ziki\Core\Auth();
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
+<<<<<<< HEAD
     $post = $ziki->getRss();
 $post = preg_replace('/\s\s+/', ' ', $post);
     return $this->template->render('rss.xml', ['posts' => $post] );
+=======
+    $result = $ziki->update($id);
+    return $this->template->render('timeline.html', ['posts' => $result] );
+>>>>>>> working
 });
 Router::post('/publish', function($request) {
     $user = new Ziki\Core\Auth();
@@ -230,6 +240,7 @@ Router::get('/download', function($request) {
     return $this->template->render('download.html');
 });
 Router::get('/auth/{provider}/{token}', function($request, $token){
+    $param = $request->getBody();
     $user = new Ziki\Core\Auth();
     $check = $user->validateAuth($token);
     if($_SESSION['login_user']['role'] == 'guest'){
@@ -237,6 +248,16 @@ Router::get('/auth/{provider}/{token}', function($request, $token){
     }
     else{
         return $user->redirect('/timeline');
+    }
+});
+Router::get('/setup/{provider}/{token}', function($request, $token){
+    $user = new Ziki\Core\Auth();
+    $check = $user->validateAuth($token);
+    if($_SESSION['login_user']['role'] == 'guest'){
+        return $user->redirect('/');
+    }
+    else{
+        return $user->redirect('/profile');
     }
 });
 Router::get('/logout', function($request) {
@@ -252,5 +273,14 @@ Router::post('/api/upload-image', function() {
 });
 
 Router::get('/install', function($request) {
-    return $this->installer->render('lucid-installation.html');
+    $user = new Ziki\Core\Auth();
+    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+    $host = $user->hash($url);
+    return $this->installer->render('install.html', ['host' => $host]);
+});
+
+Router::post('/setup', function($request) {
+    $data = $request->getBody();
+    $user = new Ziki\Core\Auth();
+    die(json_encode($data));
 });

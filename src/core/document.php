@@ -30,6 +30,7 @@ class Document
     }
 
     //for creating markdown files
+    //kjarts code here
     public function create($title, $content,$tags,$image)
     {
         $time = date("F j, Y, g:i a");
@@ -41,8 +42,7 @@ class Document
 
         $yaml = $markdown->getYAML();
         $html = $markdown->getContent();
-        $this->createRSS();
-        $doc = FileSystem::write($this->file, $yaml . "\n" . $html);
+        //$doc = FileSystem::write($this->file, $yaml . "\n" . $html);
 
         $yamlfile = new Doc();
         $yamlfile['title'] = $title;
@@ -56,7 +56,6 @@ class Document
     }
         if(!empty($image)){
             foreach($image as $key => $value){
-            $yamlfile[$key] = $image[$key];
             $decoded = base64_decode($image[$key]);
             $url = "./storage/images/".$key;
             FileSystem::write($url,$decoded);
@@ -76,6 +75,7 @@ class Document
         $doc = FileSystem::write($dir, $yaml);
         if ($doc) {
             $result = array("error" => false, "message" => "Post published successfully");
+            $this->createRSS();
         } else {
             $result = array("error" => true, "message" => "Fail while publishing, please try again");
         }
@@ -117,7 +117,8 @@ class Document
         }
     }
 
-    //
+    //kjarts code for getting and creating markdown files end here
+
     public function fetchAllRss()
     {
         $rss = new \DOMDocument();
@@ -149,6 +150,7 @@ class Document
         });
         return $feed;
     }
+      //RSS designed By DMAtrix;
     public function fetchRss()
     {
         $rss = new \DOMDocument();
@@ -179,7 +181,7 @@ class Document
         });
         return $feed;
     }
-    //store rss
+    //store rss By DMAtrix
     public function createRSS()
     {
       $user = file_get_contents("src/config/auth.json");
@@ -250,6 +252,8 @@ class Document
             return false;
         }
     }
+
+    //RSS designed By DMAtrix;
     public function getRss()
     {
       $user = file_get_contents("src/config/auth.json");
@@ -311,10 +315,7 @@ class Document
                 $Feed->addItem($newItem);
             }
             $myFeed = $Feed->generateFeed();
-  //$handle = "storage/rss/rss.xml";
-  //$doc = FileSystem::write($handle, $myFeed);
-    //        fwrite($handle, $myFeed);
-      //      fclose($handle);
+
       $strxml= $Feed->printFeed();
         } else {
             return false;
@@ -353,6 +354,7 @@ class Document
         }
         return $posts;
     }
+    //code for returnng details of each codes
     public function getEach($id)
     {
         $finder = new Finder();
@@ -371,6 +373,10 @@ class Document
                 $slug = $parsedown->text($yaml['slug']);
                 $slug = preg_replace("/<[^>]+>/", '', $slug);
                 if ($slug == $id) {
+                    $title = $parsedown->text($yaml['title']);
+                    $bd = $parsedown->text($body);
+                    $time = $parsedown->text($yaml['timestamp']);
+                    $url = $parsedown->text($yaml['post_dir']);
                     $content['title'] = $title;
                     $content['body'] = $bd;
                     $content['url'] = $url;
@@ -381,6 +387,7 @@ class Document
             return $posts;
         }
     }
+    //end of get a post function
 
 /* Working on draft by devmohy */
 //for creating markdown files
@@ -477,21 +484,30 @@ public function createDraft($title, $content,$tags)
                     $body = $document->getContent();
                     //$document = FileSystem::read($this->file);
                     $parsedown  = new Parsedown();
-                    $slug = $parsedown->text($yaml['slug']);
-                    $slug = preg_replace("/<[^>]+>/", '', $slug);
-                    if ($slug == $id) {
-                        $content['title'] = $title;
-                        $content['body'] = $bd;
-                        $content['url'] = $url;
-                        $content['timestamp'] = $time;
-                        array_push($posts, $content);
+                        $tags = $yaml['tags'];
+                       for($i = 0; $i<count($tags); $i++){
+                            if($tags[$i] == $id){
+                            $slug = $parsedown->text($yaml['slug']);
+                            $title = $parsedown->text($yaml['title']);
+                            $bd = $parsedown->text($body);
+                            $time = $parsedown->text($yaml['timestamp']);
+                            $url = $parsedown->text($yaml['post_dir']);
+                            $content['title'] = $title;
+                            $content['body'] = $bd;
+                            $content['url'] = $url;
+                            $content['timestamp'] = $time;
+                            array_push($posts, $content);
+                            array_push($posts,$tags);
+                            }
+                        }
+
                     }
-                }
+                    $this->createRSS();
                 return $posts;
             }
         }
 
-    //deletepost
+    //kjarts code for deleting post
     public function delete($id)
     {
         $finder = new Finder();
@@ -512,6 +528,7 @@ public function createDraft($title, $content,$tags)
                     $delete = "File deleted successfully";
                 }
             }
+            $this->createRSS();
             return $delete;
         }
      }
