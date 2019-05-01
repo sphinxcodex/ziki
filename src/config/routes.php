@@ -245,6 +245,9 @@ Router::get('deleteDraft/{id}', function($request, $id) {
 });
 /* Delete draft */
 
+/* Edit draft */
+/* Edit draft */
+
 /* Devmohy working on draft */
 
 
