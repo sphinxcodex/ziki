@@ -1,7 +1,6 @@
-@import "https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css";
-
 body {
   background: var(--body-bg) !important;
+  font-family: 'lato' !important;
 }
 :root {
   --custom-deep-purple: #280a66;
