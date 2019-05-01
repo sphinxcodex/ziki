@@ -44,7 +44,7 @@
           information below and your site will be up and running with lucid in
           no time
         </h6>
-        <form action="" id="installForm">
+        <form action="/setup" method="POST" id="installForm">
           <!-- step one starts here -->
           <div class="step-form">
             <div class="indicator d-flex justify-content-around">
@@ -61,13 +61,13 @@
               <input
                 type="text"
                 name="firstname"
-                id="firstName"
+                id="firstname"
                 placeholder="FirstName"
               />
               <input
                 type="text"
                 name="lastname"
-                id="lastName"
+                id="lastname"
                 placeholder="LastName"
               />
             </div>
@@ -78,7 +78,7 @@
               <input
                 type="text"
                 name="username"
-                id="userName"
+                id="username"
                 placeholder="UserName"
               />
               <select name="role" id="role">
@@ -102,13 +102,17 @@
                 class="facebook-auth social-auth d-flex justify-content-between"
               >
                 <i class="fab fa-facebook-square"></i>
-                <button>Sign Up with Facebook</button>
+                <a href="https://auth.techteel.com/login/facebook?type=setup&url={{host}}" class="m-auto">
+                  <button>Sign Up with Facebook</button>
+                </a>
               </div>
               <div
                 class="google-auth social-auth d-flex justify-content-between"
               >
                 <i class="fab fa-google"></i>
-                <button>Sign Up with Google</button>
+                <a href="https://auth.techteel.com/login/google?type=setup&url={{host}}" class="m-auto">
+                  <button>Sign Up with Google</button>
+                </a>
               </div>
             </div>
             <div class="d-flex justify-content-around mt-5 mb-5">
@@ -144,7 +148,7 @@
                     </option>
                 </select>
             </div>
-            <input type="url" name="siteTagline" placeholder="Site Tagline" style="width:100%" class="mt-4">
+            <input type="text" name="siteTagline" placeholder="Site Tagline" style="width:100%" class="mt-4 tag">
             <select name="Language" id=""style="width:100%" class="mt-4">
               <option value="">
                 Language
@@ -159,7 +163,7 @@
                 Spanish
               </option>
             </select>
-            <select name="Country" id="" style="width:100%" class="mt-4">
+            <select name="Country" id="" style="width:100%" class="mt-4 country">
                 <option value="">
                   Country
                 </option>
@@ -183,7 +187,7 @@
               <button id="previousButton" class="previous">
                   <i class=" arrow fas fa-arrow-left"></i>Back to Profile Information
               </button>
-              <button id="installButton" disabled> 
+              <button type="submit" id="installButton" disabled> 
                   Install Ziki
               </button>
            </div>

@@ -244,6 +244,7 @@ Router::get('/download', function($request) {
     return $this->template->render('download.html');
 });
 Router::get('/auth/{provider}/{token}', function($request, $token){
+    $param = $request->getBody();
     $user = new Ziki\Core\Auth();
     $check = $user->validateAuth($token);
     if($_SESSION['login_user']['role'] == 'guest'){
@@ -251,6 +252,16 @@ Router::get('/auth/{provider}/{token}', function($request, $token){
     }
     else{
         return $user->redirect('/timeline');
+    }
+});
+Router::get('/setup/{provider}/{token}', function($request, $token){
+    $user = new Ziki\Core\Auth();
+    $check = $user->validateAuth($token);
+    if($_SESSION['login_user']['role'] == 'guest'){
+        return $user->redirect('/');
+    }
+    else{
+        return $user->redirect('/profile');
     }
 });
 Router::get('/logout', function($request) {
@@ -266,6 +277,20 @@ Router::post('/api/upload-image', function() {
 });
 
 Router::get('/install', function($request) {
-    return $this->installer->render('install.html');
+    $user = new Ziki\Core\Auth();
+    if ($user::isInstalled() == false) {
+        return $user->redirect('/');
+    }
+    else{
+        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+        $host = $user->hash($url);
+        return $this->installer->render('install.html', ['host' => $host]);
+    }
+});
+
+Router::post('/setup', function($request) {
+    $data = $request->getBody();
+    $user = new Ziki\Core\Auth();
+    die(json_encode($data));
 });
 
