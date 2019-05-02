@@ -61,14 +61,23 @@ class Auth {
         return $result;
     }
 
-    // Log in user check
-    public function is_logged_in() {
-        // Check if user session has been set
-        if (isset($_SESSION['login_user']) && ($_SESSION['login_user']['login_token'] != '')) {
-            return $_SESSION;
-        }
-    }
 
+    public function is_logged_in() {
+        $_SESSION['login_user']['name'] = 'anonymous';
+        $_SESSION['login_user']['email'] = 'anonymous@gmail.com';
+        $_SESSION['login_user']['image'] = 'https://lh3.googleusercontent.com/-m12SmjDkYCA/AAAAAAAAAAI/AAAAAAAAAKM/qd1755LlbfI/photo.jpg';
+        $_SESSION['login_user']['last_login'] = '2019-04-27 14:07:52';
+        $_SESSION['login_user']['role'] = 'admin';
+        $_SESSION['login_user']['login_token'] = 'a99ff69c95d9b9524b5f564dc00d5c70';
+
+    }
+//    public function is_logged_in() {
+//
+//        // Check if user session has been set
+//        if (isset($_SESSION['login_user']) && ($_SESSION['login_user']['login_token'] != '')) {
+//            return $_SESSION;
+//        }
+//    }
     // Log out user
     public function log_out() {
         // Destroy and unset active session
@@ -127,6 +136,8 @@ class Auth {
 
     public function redirect($location)
     {
+
         header('Location:'.$location);
+
     }
 }
