@@ -1,13 +1,10 @@
 <?php
 namespace Ziki\Core;
-
 use Ziki\Core\FileSystem;
-
 class Auth {
     /**
      * This function will get the auth details from specified url
      */
-
     public static function isInstalled()
     {
         $dir = "./src/config/auth.json";
@@ -20,7 +17,6 @@ class Auth {
         }
         return $install;
     }
-
     public static function setup ($data)
     {
         $check_settings = self::isInstalled();
@@ -30,7 +26,6 @@ class Auth {
             $doc = FileSystem::write($s_file, $data);
         }
     }
-
     public static function getAuth($data, $role){
         $user['name'] = $data->name;
         $user['email'] = $data->email;
@@ -41,7 +36,6 @@ class Auth {
         $_SESSION['login_user'] = $user;
         return true;
     }
-
     public function hash($data){
         $ch = curl_init();
         //Set the URL that you want to GET by using the CURLOPT_URL option.
@@ -60,24 +54,13 @@ class Auth {
         curl_close($ch);
         return $result;
     }
-
-
+    // Log in user check
     public function is_logged_in() {
-        $_SESSION['login_user']['name'] = 'anonymous';
-        $_SESSION['login_user']['email'] = 'anonymous@gmail.com';
-        $_SESSION['login_user']['image'] = 'https://lh3.googleusercontent.com/-m12SmjDkYCA/AAAAAAAAAAI/AAAAAAAAAKM/qd1755LlbfI/photo.jpg';
-        $_SESSION['login_user']['last_login'] = '2019-04-27 14:07:52';
-        $_SESSION['login_user']['role'] = 'admin';
-        $_SESSION['login_user']['login_token'] = 'a99ff69c95d9b9524b5f564dc00d5c70';
-
+        // Check if user session has been set
+        if (isset($_SESSION['login_user']) && ($_SESSION['login_user']['login_token'] != '')) {
+            return $_SESSION;
+        }
     }
-//    public function is_logged_in() {
-//
-//        // Check if user session has been set
-//        if (isset($_SESSION['login_user']) && ($_SESSION['login_user']['login_token'] != '')) {
-//            return $_SESSION;
-//        }
-//    }
     // Log out user
     public function log_out() {
         // Destroy and unset active session
@@ -85,7 +68,6 @@ class Auth {
         unset($_SESSION);
         return true;
     }
-
     public function validateAuth($params) {
         $auth_response =  array();
         $data =  explode(",", $params);
@@ -133,11 +115,8 @@ class Auth {
         }  
         return $auth_response;  
     }
-
     public function redirect($location)
     {
-
         header('Location:'.$location);
-
     }
 }
