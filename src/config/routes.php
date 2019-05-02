@@ -29,8 +29,10 @@ Router::get('blog-details/{id}', function($request, $id) {
     }
     $directory = "./storage/contents/";
     $ziki = new Ziki\Core\Document($directory);
-   $result = $ziki->getEach($id);
-   return $this->template->render('blog-details.html', ['result' => $result] );
+    $result = $ziki->getEach($id);
+    $setting = new Ziki\Core\Setting();
+    $settings = $setting->getSetting();
+   return $this->template->render('blog-details.html', $settings, ['result' => $result] );
 });
 Router::get('/timeline', function($request) {
     $user = new Ziki\Core\Auth();
