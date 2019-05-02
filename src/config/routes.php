@@ -216,9 +216,9 @@ Router::post('/saveDraft', function($request) {
 /* Get all saved draft */
 Router::get('/drafts', function($request) {
     $user = new Ziki\Core\Auth();
-    // if (!$user->is_logged_in()) {
-    //     return $user->redirect('/');
-    // }
+    if (!$user->is_logged_in()) {
+        return $user->redirect('/');
+    }
     $directory = "./storage/drafts/";
     $ziki = new Ziki\Core\Document($directory);
     $draft = $ziki->getDrafts();
