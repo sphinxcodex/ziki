@@ -242,9 +242,9 @@ Router::post('/saveDraft', function($request) {
 
 Router::get('/drafts', function($request) {
     $user = new Ziki\Core\Auth();
-    if (!$user->is_logged_in()) {
-        return $user->redirect('/');
-    }
+    // if (!$user->is_logged_in()) {
+    //     return $user->redirect('/');
+    // }
     $directory = "./storage/drafts/";
     $ziki = new Ziki\Core\Document($directory);
     $posts = $ziki->get();
