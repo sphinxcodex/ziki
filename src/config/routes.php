@@ -308,9 +308,9 @@ Router::get('/{id}', function($request, $id) {
  try {
      // echo 'this page is for the /{id} route';
      $user = new Ziki\Core\Auth();
-    //  if (!$user->is_logged_in()) {
-    //      return $user->redirect('/');
-    //     }
+     if (!$user->is_logged_in()) {
+         return $user->redirect('/');
+        }
         $directory = './storage/contents/';
         $doc = new Ziki\Core\Document($directory);
     $result = $doc->getSinglePost($id);
