@@ -7,25 +7,77 @@
 
 require 'vendor/autoload.php';
 use Ziki\Core\Document;
-$text = 'this is a test content Laborum cupidatat eiusmod duis duis. Sit voluptate ea fugiat duis velit Lorem culpa enim et ex. Magna pariatur dolor et Lorem Lorem non sint duis consequat elit consequat. Id culpa aliqua Lorem proident.
+$text = "
+# ziki
 
-Nulla quis proident non excepteur quis tempor aliquip nostrud nulla nostrud dolore excepteur minim. Fugiat et ea non ipsum cupidatat duis. Do amet velit enim aliquip cillum. Non esse cillum sit dolore veniam et. Cupidatat cillum officia nisi elit aliqua culpa consequat culpa voluptate. Exercitation commodo aliquip ut mollit velit reprehenderit aliqua amet deserunt.
+ziki is a blogging service like wordpress it runs on your own self-hosted domain. Think of it as a distributed social network.
+It does not run on a url like `medium.com/markessien` or `wordpress.com/markessien`. I can install ziki on my own personal domain and set up my own blog.
 
-Mollit officia reprehenderit aliqua quis voluptate. Aliquip culpa magna et voluptate ullamco culpa adipisicing consequat enim minim cupidatat eu. Esse qui excepteur anim ipsum ut magna sint nisi. Consequat id in irure anim ex deserunt elit eu ipsum magna id ad. Nisi sit cupidatat amet excepteur veniam consectetur quis aute fugiat exercitation. Anim consectetur sunt commodo ut sit nisi sit exercitation commodo incididunt cillum.
+I can install ziki on `markessien.com` or on a custom domain of my choosing.
 
-Magna anim ad qui consequat excepteur voluptate ullamco aute. Quis consequat proident culpa nisi cillum in nulla occaecat laboris Lorem et et. Reprehenderit consequat incididunt ad ipsum et irure non. Duis aliqua mollit sunt ex fugiat non sint anim aliqua sint non in sunt. Do excepteur sit proident adipisicing elit esse veniam excepteur laborum excepteur anim esse proident aliquip.
+Ziki relies on the use of two terms:
 
-Voluptate enim Lorem duis ipsum deserunt occaecat voluptate. Aliqua aute magna duis amet amet eu eu sint eiusmod. Cillum ullamco laboris reprehenderit reprehenderit esse. Veniam non sit amet voluptate excepteur id fugiat ad aute occaecat irure id. Eu reprehenderit officia sunt adipisicing consequat occaecat Lorem commodo.
+`Owner` and `Guest`
 
-Veniam enim consequat aliqua cupidatat sunt. Ullamco anim magna commodo cupidatat tempor laboris labore duis. Exercitation cillum aliquip qui duis est exercitation fugiat minim nulla reprehenderit cillum.
+## The owner
 
-Tempor pariatur esse dolor esse velit cillum reprehenderit sunt ut dolore aliqua irure. Fugiat quis enim incididunt enim cillum dolor minim esse sit do in fugiat. Voluptate laboris dolor sunt quis culpa. Ex dolor eiusmod et ut ea aliquip ut non velit aute. Reprehenderit deserunt exercitation consequat minim velit qui consectetur nisi deserunt.
+This is the person that downloaded ziki and installed it on their domain. The owner has permission to view their timeline, write and publish posts and follow other `ziki` users' posts using RSS. The owner only has an additional link called `timeline` which is private. The owner can choose to make their timeline public.
 
-Occaecat aliqua dolor Lorem eiusmod do cillum eiusmod irure consequat aute consequat cupidatat eu. Et ipsum proident consectetur quis aliqua nisi velit pariatur est mollit laborum. Sint officia anim culpa dolor dolore incididunt esse in velit consequat proident quis officia. Ullamco officia elit amet commodo eu aliquip. Ea anim nostrud Lorem in elit ipsum aute ea. Reprehenderit ad nulla non non ipsum magna do magna in sit anim reprehenderit. Sint labore duis elit nisi cupidatat dolore id cillum pariatur Lorem ea sint elit.
+## The Guest
 
-Eu proident sunt excepteur incididunt laboris laboris laborum tempor nulla. Non excepteur qui commodo esse consequat est qui quis occaecat. Exercitation in do dolor veniam. Adipisicing nostrud et id reprehenderit. Tempor culpa consectetur pariatur eiusmod consequat non in qui ex.
+This is the person visiting a `ziki` site. When on the site, the users can view posts by the site [owner](##The-owner). If a guest wants to interact with the posts i.e like or comment they can login to the site to access these privilleges. If the site uses [disqus](https://disqus.com/) for commenting, the guest has no access to native login only the site [owner](##The-owner) does.
 
-Officia officia cillum sit qui veniam qui esse incididunt consequat esse excepteur anim. Esse enim incididunt eu elit. Laboris minim minim ad officia. Pariatur labore mollit quis ut id eiusmod voluptate proident deserunt consequat commodo. Nisi minim pariatur id fugiat non aute laboris id culpa culpa magna elit.';
+### Contributing
+
+- Make sure you have setup your `PHP` development environment
+- Ensure `composer` is setup on your development environment
+- Fork your own copy of the repository
+- Clone it
+- Run `composer install --no-dev`
+- Run `php -S localhost:8000`.
+- In your browser, go to `localhost:8000` to view the website.
+
+#### The Pull Request Template:
+
+```
+PR Title: <one-line desciption of your changes>
+
+**Changes**
+- descibe first change
+- describe more changes (if necessary)
+- ...
+
+**Testing**
+Describe how to test the changes you've made. For example, if
+you added a logout button to the timeline page:
+Visit `localhost:8000/timeline` and click on the logout button.
+
+**Other Info**
+Add any info that may be necessary. This section is not required.
+
+**Screenshots**
+Add if appropriate. Screenshots are needed for most front end work.
+```
+
+#### Pull Request Example:
+
+```
+**Changes**
+- Add a logout button to the timeline page
+
+**Testing**
+Visit `localhost:8000/timeline` and click on the logout button
+at the top right corner of the page.
+
+**Other Info**
+N/A
+
+**Screenshots**
+A screenshot would be added here showing the button on the page.
+```
+
+";
+
 $file_url = '/home/sphinx/ziki/storage/contents/1556628960.md';
 $title = 'this is the title 1556714760';
 $tags = 'tech,politics';

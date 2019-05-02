@@ -516,12 +516,14 @@ public function update($id)
 
      public function getSinglePost($id)
      {
+        $parsedown  = new Parsedown();
         $directory = "./storage/contents/${id}.md";
         // var_dump($directory);
         $document = FrontMatter::parse(file_get_contents($directory));
         // var_dump($document);
         $content['title'] = $document['title'];
-        $content['body'] = $document->getContent();
+        $body = $document->getContent();
+        $content['body'] = $parsedown->text($body);
         // $content['url'] = $url;
         $content['timestamp'] = $document['timestamp'];
 
