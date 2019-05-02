@@ -301,9 +301,11 @@ Router::get('/logout', function($request) {
     $user->log_out();
     return $user->redirect('/');
 });
+
 Router::get('/api/images', function() {
     return (new Ziki\Core\UploadImage)->getAllImages();
 });
+
 Router::post('/api/upload-image', function() {
     return (new Ziki\Core\UploadImage)->upload();
 });
@@ -311,6 +313,7 @@ Router::post('/api/upload-image', function() {
 Router::get('/install', function($request) {
     return $this->installer->render('lucid-installation.html');
 });
+
 
 // ahmzyjazzy add this (^_^)
 Router::post('/appsetting', function($request) {
@@ -343,6 +346,7 @@ Router::post('/appsetting', function($request) {
     $user = new Ziki\Core\Auth();
     die(json_encode($data));
 });
+
 Router::get('/{id}', function($request, $id) {
  try {
     // echo 'this page is for the /{id} route';
