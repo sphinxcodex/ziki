@@ -1,8 +1,6 @@
 <?php
 use Ziki\Http\Router;
-
 session_start();
-
 Router::get('/about/{id}', function($request,$id) {
      return $this->template->render('about-us.html');
 });
@@ -119,12 +117,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!$user->is_logged_in()) {
         return $user->redirect('/');
     }
-      $directory = "./storage/contents/";
-      $ziki = new Ziki\Core\Document($directory);
-      $feed = $ziki->fetchAllRss();
-     //  Render our view
-      print_r($feed);
-      return $this->template->render('timeline.html',['posts' => $feed] );
+//      $directory = "./storage/contents/";
+//      $ziki = new Ziki\Core\Document($directory);
+//      $feed = $ziki->fetchAllRss();
+      // Render our view
+      //print_r($feed);
+//      return $this->template->render('timeline.html',['posts' => $feed] );
   });
 }
 Router::get('/contact-us', function($request) {
@@ -305,9 +303,11 @@ Router::get('/logout', function($request) {
     $user->log_out();
     return $user->redirect('/');
 });
+
 Router::get('/api/images', function() {
     return (new Ziki\Core\UploadImage)->getAllImages();
 });
+
 Router::post('/api/upload-image', function() {
     return (new Ziki\Core\UploadImage)->upload();
 });
@@ -315,6 +315,7 @@ Router::post('/api/upload-image', function() {
 Router::get('/install', function($request) {
     return $this->installer->render('lucid-installation.html');
 });
+
 
 // ahmzyjazzy add this (^_^)
 Router::post('/appsetting', function($request) {
@@ -347,6 +348,7 @@ Router::post('/appsetting', function($request) {
     $user = new Ziki\Core\Auth();
     die(json_encode($data));
 });
+
 Router::get('/{id}', function($request, $id) {
  try {
     // echo 'this page is for the /{id} route';
